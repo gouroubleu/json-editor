@@ -1,0 +1,56 @@
+{
+  "id": "BigTest-1757629984299",
+  "name": "BigTest",
+  "version": "1.0",
+  "schema": {
+    "type": "object",
+    "title": "tz",
+    "description": "",
+    "properties": {
+      "Images": {
+        "type": "array",
+        "description": "",
+        "items": {
+          "type": "object",
+          "properties": {
+            "pop": {
+              "type": "string",
+              "description": ""
+            },
+            "ees": {
+              "type": "boolean",
+              "description": ""
+            },
+            "test": {
+              "type": "object",
+              "description": "",
+              "properties": {
+                "pop": {
+                  "type": "string",
+                  "description": ""
+                }
+              }
+            }
+          },
+          "required": []
+        }
+      },
+      "produit": {
+        "type": "object",
+        "description": ""
+      }
+    },
+    "required": [
+      "produit"
+    ],
+    "version": "1.0"
+  },
+  "versionInfo": {
+    "version": "1.0",
+    "createdAt": "2025-09-11T22:33:04.299Z",
+    "changeType": "major",
+    "changeDescription": "Version initiale"
+  },
+  "createdAt": "2025-09-11T19:37:41.503Z",
+  "updatedAt": "2025-09-11T22:33:04.299Z"
+}

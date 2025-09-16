@@ -1,0 +1,69 @@
+{
+  "id": "order_complex_002",
+  "version": "1.0",
+  "schemaName": "order",
+  "data": {
+    "orderNumber": "ORD-2024-001235",
+    "customer": {
+      "id": "cust_002",
+      "name": "Jean Martin",
+      "email": "jean.martin@company.com",
+      "address": {
+        "street": "456 Avenue des Champs",
+        "city": "Lyon",
+        "zipCode": "69000",
+        "country": "FR"
+      }
+    },
+    "items": [
+      {
+        "productId": "prod_003",
+        "name": "Ordinateur portable",
+        "price": 899,
+        "quantity": 1,
+        "options": {
+          "color": "Gris Sidéral",
+          "warranty": true
+        }
+      },
+      {
+        "productId": "prod_004",
+        "name": "Souris sans fil",
+        "price": 45,
+        "quantity": 2,
+        "options": {
+          "color": "Blanc",
+          "warranty": false
+        }
+      },
+      {
+        "productId": "prod_005",
+        "name": "Clavier mécanique",
+        "price": 129.99,
+        "quantity": 1,
+        "options": {
+          "color": "RGB",
+          "warranty": true
+        }
+      }
+    ],
+    "payment": {
+      "method": "bank_transfer",
+      "amount": 1118.99,
+      "currency": "EUR",
+      "status": "pending"
+    },
+    "metadata": {
+      "source": "mobile_app",
+      "sessionId": "sess_def456",
+      "userAgent": "Mobile App v2.1.0",
+      "tags": [
+        "business",
+        "bulk-order",
+        "priority"
+      ]
+    }
+  },
+  "createdAt": "2025-09-10T23:19:25.097Z",
+  "updatedAt": "2025-09-11T23:19:25.097Z"
+}

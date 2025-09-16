@@ -1,0 +1,241 @@
+{
+  "name": "order",
+  "version": "1.0",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "Commande E-commerce",
+    "description": "Schéma complexe pour une commande e-commerce avec objets imbriqués",
+    "properties": {
+      "orderNumber": {
+        "type": "string",
+        "title": "Numéro de commande",
+        "description": "Numéro unique de la commande"
+      },
+      "customer": {
+        "type": "object",
+        "title": "Client",
+        "description": "Informations du client",
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "ID Client",
+            "description": "Identifiant unique du client"
+          },
+          "name": {
+            "type": "string",
+            "title": "Nom complet",
+            "description": "Nom et prénom du client"
+          },
+          "email": {
+            "type": "string",
+            "title": "Email",
+            "description": "Adresse email du client"
+          },
+          "address": {
+            "type": "object",
+            "title": "Adresse",
+            "description": "Adresse de livraison",
+            "properties": {
+              "street": {
+                "type": "string",
+                "title": "Rue",
+                "description": "Numéro et nom de rue"
+              },
+              "city": {
+                "type": "string",
+                "title": "Ville",
+                "description": "Nom de la ville"
+              },
+              "zipCode": {
+                "type": "string",
+                "title": "Code postal",
+                "description": "Code postal"
+              },
+              "country": {
+                "type": "string",
+                "title": "Pays",
+                "description": "Code pays ISO"
+              }
+            },
+            "required": [
+              "street",
+              "city",
+              "zipCode",
+              "country"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "email",
+          "address"
+        ]
+      },
+      "items": {
+        "type": "array",
+        "title": "Articles",
+        "description": "Liste des articles commandés",
+        "items": {
+          "type": "object",
+          "properties": {
+            "productId": {
+              "type": "string",
+              "title": "ID Produit",
+              "description": "Identifiant du produit"
+            },
+            "name": {
+              "type": "string",
+              "title": "Nom du produit",
+              "description": "Nom commercial du produit"
+            },
+            "price": {
+              "type": "number",
+              "title": "Prix unitaire",
+              "description": "Prix unitaire en euros",
+              "minimum": 0
+            },
+            "quantity": {
+              "type": "integer",
+              "title": "Quantité",
+              "description": "Nombre d'articles",
+              "minimum": 1
+            },
+            "options": {
+              "type": "object",
+              "title": "Options",
+              "description": "Options sélectionnées pour ce produit",
+              "properties": {
+                "color": {
+                  "type": "string",
+                  "title": "Couleur",
+                  "description": "Couleur choisie"
+                },
+                "size": {
+                  "type": "string",
+                  "title": "Taille",
+                  "description": "Taille sélectionnée",
+                  "enum": [
+                    "XS",
+                    "S",
+                    "M",
+                    "L",
+                    "XL",
+                    "XXL"
+                  ]
+                },
+                "warranty": {
+                  "type": "boolean",
+                  "title": "Garantie étendue",
+                  "description": "Garantie étendue souscrite"
+                }
+              }
+            }
+          },
+          "required": [
+            "productId",
+            "name",
+            "price",
+            "quantity"
+          ]
+        }
+      },
+      "payment": {
+        "type": "object",
+        "title": "Paiement",
+        "description": "Informations de paiement",
+        "properties": {
+          "method": {
+            "type": "string",
+            "title": "Mode de paiement",
+            "description": "Méthode de paiement utilisée",
+            "enum": [
+              "card",
+              "paypal",
+              "bank_transfer",
+              "cash"
+            ]
+          },
+          "amount": {
+            "type": "number",
+            "title": "Montant total",
+            "description": "Montant total de la commande",
+            "minimum": 0
+          },
+          "currency": {
+            "type": "string",
+            "title": "Devise",
+            "description": "Code devise ISO",
+            "enum": [
+              "EUR",
+              "USD",
+              "GBP"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "title": "Statut paiement",
+            "description": "Statut du paiement",
+            "enum": [
+              "pending",
+              "completed",
+              "failed",
+              "refunded"
+            ]
+          }
+        },
+        "required": [
+          "method",
+          "amount",
+          "currency",
+          "status"
+        ]
+      },
+      "metadata": {
+        "type": "object",
+        "title": "Métadonnées",
+        "description": "Informations techniques",
+        "properties": {
+          "source": {
+            "type": "string",
+            "title": "Source",
+            "description": "Canal de vente"
+          },
+          "sessionId": {
+            "type": "string",
+            "title": "ID Session",
+            "description": "Identifiant de session"
+          },
+          "userAgent": {
+            "type": "string",
+            "title": "User Agent",
+            "description": "Navigateur utilisé"
+          },
+          "tags": {
+            "type": "array",
+            "title": "Tags",
+            "description": "Tags de classification",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "required": [
+      "orderNumber",
+      "customer",
+      "items",
+      "payment"
+    ]
+  },
+  "versionInfo": {
+    "version": "1.0",
+    "createdAt": "2025-09-11T23:19:25.091Z",
+    "changeType": "major",
+    "changeDescription": "Version initiale (correction format)"
+  },
+  "createdAt": "2025-09-11T23:19:25.091Z",
+  "updatedAt": "2025-09-11T23:23:56.183Z"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "entity_mfg3476d_sm6aqu",
+  "version": "1.0",
+  "schemaName": "test-entity",
+  "data": {
+    "name": "op",
+    "email": "w.gallavardin@gmail.com",
+    "age": 12,
+    "active": true
+  },
+  "createdAt": "2025-09-12T00:13:58.741Z",
+  "updatedAt": "2025-09-12T00:13:58.741Z"
+}

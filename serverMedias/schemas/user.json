@@ -1,0 +1,72 @@
+{
+  "id": "user-001",
+  "name": "user",
+  "version": "1.1",
+  "schema": {
+    "type": "object",
+    "title": "Utilisateur",
+    "description": "Schéma pour les données utilisateur",
+    "properties": {
+      "firstName": {
+        "type": "string",
+        "description": "Prénom de l'utilisateur",
+        "minLength": 2,
+        "maxLength": 50
+      },
+      "lastName": {
+        "type": "string",
+        "description": "Nom de famille de l'utilisateur",
+        "minLength": 2,
+        "maxLength": 50
+      },
+      "email": {
+        "type": "string",
+        "description": "Adresse email",
+        "format": "email"
+      },
+      "age": {
+        "type": "integer",
+        "description": "Âge en années",
+        "minimum": 0,
+        "maximum": 120
+      },
+      "adresses": {
+        "type": "array",
+        "description": "",
+        "items": {
+          "type": "object",
+          "properties": {
+            "address": {
+              "type": "string",
+              "description": ""
+            },
+            "cp": {
+              "type": "string",
+              "description": ""
+            },
+            "ville": {
+              "type": "string",
+              "description": ""
+            }
+          },
+          "required": []
+        }
+      }
+    },
+    "required": [
+      "firstName",
+      "lastName",
+      "email"
+    ],
+    "version": "1.1"
+  },
+  "versionInfo": {
+    "version": "1.1",
+    "createdAt": "2025-09-14T13:18:58.754Z",
+    "changeType": "minor",
+    "changeDescription": "Nouvelles propriétés: adresses",
+    "previousVersion": "1.0"
+  },
+  "createdAt": "2025-09-11T10:00:00.000Z",
+  "updatedAt": "2025-09-14T13:18:58.754Z"
+}

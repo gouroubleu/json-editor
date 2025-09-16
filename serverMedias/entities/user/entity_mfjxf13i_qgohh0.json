@@ -1,0 +1,20 @@
+{
+  "id": "entity_mfjxf13i_qgohh0",
+  "version": "1.1",
+  "schemaName": "user",
+  "data": {
+    "firstName": "Robert",
+    "lastName": "DEniro",
+    "email": "deniro@gmail.com",
+    "age": 22,
+    "adresses": [
+      {
+        "address": "pop",
+        "cp": "test",
+        "ville": "testi"
+      }
+    ]
+  },
+  "createdAt": "2025-09-14T16:45:31.086Z",
+  "updatedAt": "2025-09-15T23:17:41.699Z"
+}

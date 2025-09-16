@@ -1,0 +1,334 @@
+// Styles pour la page de création d'entité
+.new-entity-page {
+  padding: 2rem;
+  background: #f8fafc;
+  min-height: 100vh;
+  
+  .page-header {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    
+    .header-content {
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        
+        .breadcrumb-link {
+          background: none;
+          border: none;
+          color: #3b82f6;
+          cursor: pointer;
+          font-size: 0.875rem;
+          padding: 0.25rem 0;
+          
+          &:hover {
+            color: #2563eb;
+            text-decoration: underline;
+          }
+        }
+        
+        .breadcrumb-separator {
+          color: #9ca3af;
+          font-size: 0.875rem;
+        }
+      }
+      
+      .page-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin: 0 0 1rem 0;
+      }
+      
+      .page-meta {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        
+        .schema-badge {
+          padding: 0.25rem 0.75rem;
+          background: #f3f4f6;
+          color: #374151;
+          border-radius: 12px;
+          font-size: 0.75rem;
+          font-weight: 500;
+        }
+        
+        .version-badge {
+          padding: 0.25rem 0.75rem;
+          background: #dbeafe;
+          color: #1d4ed8;
+          border-radius: 12px;
+          font-size: 0.75rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  
+  .form-section {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    
+    .entity-form {
+      padding: 2rem;
+      
+      .form-grid {
+        display: grid;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        
+        .form-group {
+          .form-label {
+            display: block;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            
+            .required-asterisk {
+              color: #ef4444;
+              margin-left: 0.25rem;
+            }
+          }
+          
+          .field-description {
+            color: #6b7280;
+            font-size: 0.75rem;
+            margin: 0 0 0.5rem 0;
+            line-height: 1.4;
+          }
+          
+          .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+            background: white;
+            
+            &:focus {
+              outline: none;
+              border-color: #3b82f6;
+              box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            }
+            
+            &.error {
+              border-color: #ef4444;
+              
+              &:focus {
+                box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+              }
+            }
+            
+            &::placeholder {
+              color: #9ca3af;
+            }
+            
+            &:disabled {
+              background: #f9fafb;
+              color: #6b7280;
+              cursor: not-allowed;
+            }
+          }
+          
+          textarea.form-input {
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+          }
+          
+          select.form-input {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem;
+          }
+          
+          .checkbox-field {
+            .checkbox-label {
+              display: flex;
+              align-items: flex-start;
+              gap: 0.75rem;
+              cursor: pointer;
+              
+              input[type="checkbox"] {
+                width: 1rem;
+                height: 1rem;
+                border: 1px solid #d1d5db;
+                border-radius: 4px;
+                background: white;
+                cursor: pointer;
+                margin-top: 0.125rem;
+                
+                &:checked {
+                  background: #3b82f6;
+                  border-color: #3b82f6;
+                }
+                
+                &:focus {
+                  outline: none;
+                  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+                }
+              }
+              
+              .checkbox-text {
+                color: #374151;
+                font-size: 0.875rem;
+                line-height: 1.5;
+              }
+            }
+          }
+          
+          .form-error {
+            margin-top: 0.5rem;
+            color: #ef4444;
+            font-size: 0.75rem;
+            font-weight: 500;
+          }
+          
+          .field-info {
+            margin-top: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            font-size: 0.75rem;
+            
+            .field-type {
+              color: #6b7280;
+              background: #f9fafb;
+              padding: 0.125rem 0.5rem;
+              border-radius: 4px;
+            }
+            
+            .field-constraint {
+              color: #d97706;
+              background: #fef3c7;
+              padding: 0.125rem 0.5rem;
+              border-radius: 4px;
+            }
+          }
+        }
+      }
+      
+      .form-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-end;
+        padding-top: 1.5rem;
+        border-top: 1px solid #f1f5f9;
+        
+        .btn {
+          padding: 0.75rem 1.5rem;
+          border-radius: 8px;
+          font-weight: 500;
+          border: none;
+          cursor: pointer;
+          transition: all 0.2s;
+          font-size: 0.875rem;
+          
+          &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+          }
+          
+          &.btn-secondary {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+            
+            &:hover:not(:disabled) {
+              background: #e2e8f0;
+            }
+          }
+          
+          &.btn-primary {
+            background: #3b82f6;
+            color: white;
+            
+            &:hover:not(:disabled) {
+              background: #2563eb;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .notification {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    
+    &.success {
+      background: #10b981;
+    }
+    
+    &.error {
+      background: #ef4444;
+    }
+    
+    &.warning {
+      background: #f59e0b;
+    }
+  }
+}
+
+// Grille responsive pour les champs du formulaire
+@media (min-width: 768px) {
+  .new-entity-page .form-section .entity-form .form-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    
+    // Les champs textarea et select prennent toute la largeur
+    .form-group:has(textarea),
+    .form-group:has(select) {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .new-entity-page {
+    padding: 1rem;
+    
+    .page-header {
+      padding: 1.5rem;
+    }
+    
+    .form-section .entity-form {
+      padding: 1.5rem;
+    }
+    
+    .form-actions {
+      flex-direction: column;
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
+    .notification {
+      left: 1rem;
+      right: 1rem;
+      top: auto;
+      bottom: 2rem;
+    }
+  }
+}

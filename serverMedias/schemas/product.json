@@ -1,0 +1,63 @@
+{
+  "id": "product-001",
+  "name": "product",
+  "version": "1.0",
+  "schema": {
+    "type": "object",
+    "title": "Produit",
+    "description": "Schéma pour les données produit",
+    "properties": {
+      "name": {
+        "type": "string",
+        "title": "Nom du produit",
+        "description": "Nom commercial du produit",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "description": {
+        "type": "string",
+        "title": "Description",
+        "description": "Description détaillée du produit",
+        "format": "textarea"
+      },
+      "price": {
+        "type": "number",
+        "title": "Prix",
+        "description": "Prix en euros",
+        "minimum": 0
+      },
+      "category": {
+        "type": "string",
+        "title": "Catégorie",
+        "description": "Catégorie du produit",
+        "enum": [
+          "électronique",
+          "vêtements",
+          "maison",
+          "livres",
+          "sport"
+        ]
+      },
+      "inStock": {
+        "type": "boolean",
+        "title": "En stock",
+        "description": "Disponibilité du produit"
+      }
+    },
+    "required": [
+      "name",
+      "price",
+      "category"
+    ],
+    "additionalProperties": true,
+    "version": "1.0"
+  },
+  "versionInfo": {
+    "version": "1.0",
+    "createdAt": "2025-09-11T10:30:00.000Z",
+    "changeType": "major",
+    "changeDescription": "Version initiale (migration automatique)"
+  },
+  "createdAt": "2025-09-11T10:30:00.000Z",
+  "updatedAt": "2025-09-11T22:30:26.613Z"
+}

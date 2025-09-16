@@ -1,0 +1,53 @@
+{
+  "id": "book-1757622154935",
+  "name": "book",
+  "version": "1.0",
+  "schema": {
+    "type": "object",
+    "title": "Book",
+    "description": "",
+    "properties": {
+      "id": {
+        "type": "number",
+        "description": ""
+      },
+      "images": {
+        "type": "array",
+        "description": "",
+        "items": {
+          "type": "string"
+        }
+      },
+      "products": {
+        "type": "array",
+        "description": "",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "number",
+              "description": ""
+            },
+            "images": {
+              "type": "array",
+              "description": "",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": []
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "versionInfo": {
+    "version": "1.0",
+    "createdAt": "2025-09-11T20:22:34.935Z",
+    "changeType": "major",
+    "changeDescription": "Version initiale (migration automatique)"
+  },
+  "createdAt": "2025-09-11T20:22:34.935Z",
+  "updatedAt": "2025-09-11T22:30:26.602Z"
+}

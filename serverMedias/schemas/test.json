@@ -1,0 +1,61 @@
+{
+  "id": "test-1726080000000",
+  "name": "test",
+  "version": "1.0",
+  "schema": {
+    "type": "object",
+    "title": "Test Schema",
+    "description": "Un schéma de test créé automatiquement",
+    "properties": {
+      "nom": {
+        "type": "string",
+        "description": "Nom de la personne",
+        "minLength": 2,
+        "maxLength": 7,
+        "format": "email"
+      },
+      "age": {
+        "type": "integer",
+        "description": "Age en années",
+        "minimum": 0,
+        "maximum": 120
+      },
+      "email": {
+        "type": "string",
+        "description": "Adresse email",
+        "format": "email"
+      },
+      "test": {
+        "type": "string",
+        "description": ""
+      },
+      "klkl": {
+        "type": "array",
+        "description": "",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": ""
+            }
+          },
+          "required": []
+        }
+      }
+    },
+    "required": [
+      "nom",
+      "email"
+    ],
+    "version": "1.0"
+  },
+  "versionInfo": {
+    "version": "1.0",
+    "createdAt": "2025-09-11T18:00:00.000Z",
+    "changeType": "major",
+    "changeDescription": "Version initiale (migration automatique)"
+  },
+  "createdAt": "2025-09-11T18:00:00.000Z",
+  "updatedAt": "2025-09-11T22:30:26.618Z"
+}

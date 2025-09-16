@@ -1,0 +1,47 @@
+{
+  "id": "order_complex_003",
+  "version": "1.0",
+  "schemaName": "order",
+  "data": {
+    "orderNumber": "ORD-2024-001236",
+    "customer": {
+      "id": "cust_003",
+      "name": "Sophie Bernard",
+      "email": "sophie@example.fr",
+      "address": {
+        "street": "789 Boulevard Saint-Germain",
+        "city": "Marseille",
+        "zipCode": "13001",
+        "country": "FR"
+      }
+    },
+    "items": [
+      {
+        "productId": "prod_006",
+        "name": "Livre de cuisine",
+        "price": 24.9,
+        "quantity": 3,
+        "options": {
+          "warranty": false
+        }
+      }
+    ],
+    "payment": {
+      "method": "paypal",
+      "amount": 74.7,
+      "currency": "EUR",
+      "status": "completed"
+    },
+    "metadata": {
+      "source": "marketplace",
+      "sessionId": "sess_ghi789",
+      "userAgent": "Safari/15.0",
+      "tags": [
+        "gift",
+        "express-delivery"
+      ]
+    }
+  },
+  "createdAt": "2025-09-09T23:19:25.097Z",
+  "updatedAt": "2025-09-09T23:19:25.097Z"
+}

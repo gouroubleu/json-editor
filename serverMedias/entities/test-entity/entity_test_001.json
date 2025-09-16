@@ -1,0 +1,13 @@
+{
+  "id": "entity_test_001",
+  "version": "1.0",
+  "schemaName": "test-entity",
+  "data": {
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "age": 30,
+    "active": true
+  },
+  "createdAt": "2025-09-11T23:06:55.540Z",
+  "updatedAt": "2025-09-11T23:06:55.540Z"
+}

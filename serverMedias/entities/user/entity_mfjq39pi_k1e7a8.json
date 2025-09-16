@@ -1,0 +1,25 @@
+{
+  "id": "entity_mfjq39pi_k1e7a8",
+  "version": "1.1",
+  "schemaName": "user",
+  "data": {
+    "firstName": "Wiliam",
+    "lastName": "Gallavardin",
+    "email": "gouroubleu@gmail.com",
+    "age": 42,
+    "adresses": [
+      {
+        "address": "testpjhhhh",
+        "cp": "33800",
+        "ville": "Bordeaux"
+      },
+      {
+        "address": "test",
+        "cp": "",
+        "ville": ""
+      }
+    ]
+  },
+  "createdAt": "2025-09-14T13:20:25.062Z",
+  "updatedAt": "2025-09-14T16:23:34.739Z"
+}

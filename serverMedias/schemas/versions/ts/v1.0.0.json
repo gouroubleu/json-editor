@@ -1,0 +1,56 @@
+{
+  "id": "ts-1757619461503",
+  "name": "ts",
+  "version": "1.0.0",
+  "schema": {
+    "type": "object",
+    "title": "tz",
+    "description": "",
+    "properties": {
+      "Images": {
+        "type": "array",
+        "description": "",
+        "items": {
+          "type": "object",
+          "properties": {
+            "pop": {
+              "type": "string",
+              "description": ""
+            },
+            "ees": {
+              "type": "boolean",
+              "description": ""
+            },
+            "test": {
+              "type": "object",
+              "description": "",
+              "properties": {
+                "pop": {
+                  "type": "string",
+                  "description": ""
+                }
+              }
+            }
+          },
+          "required": []
+        }
+      },
+      "produit": {
+        "type": "object",
+        "description": ""
+      }
+    },
+    "required": [
+      "produit"
+    ],
+    "version": "1.0.0"
+  },
+  "versionInfo": {
+    "version": "1.0.0",
+    "createdAt": "2025-09-11T19:37:41.503Z",
+    "changeType": "major",
+    "changeDescription": "Version initiale (migration automatique)"
+  },
+  "createdAt": "2025-09-11T19:37:41.503Z",
+  "updatedAt": "2025-09-11T22:30:26.622Z"
+}
