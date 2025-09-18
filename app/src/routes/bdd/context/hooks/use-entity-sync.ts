@@ -4,9 +4,9 @@ import { useEntityContext } from '../hooks';
 import { debounceEntity } from '../context';
 
 /**
- * Interface pour l'état de synchronisation simplifié
+ * Type pour l'état de synchronisation simplifié
  */
-export interface SimpleSyncState {
+export type SimpleSyncState = {
   isOnline: boolean;
   lastSync: string | null;
   autoSaveEnabled: boolean;
@@ -16,9 +16,9 @@ export interface SimpleSyncState {
 }
 
 /**
- * Interface pour le statut de synchronisation
+ * Type pour le statut de synchronisation
  */
-export interface SyncStatus {
+export type SyncStatus = {
   status: 'online' | 'offline' | 'syncing' | 'error';
   message: string;
   lastSync: string | null;

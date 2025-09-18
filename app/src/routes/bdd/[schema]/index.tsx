@@ -169,7 +169,7 @@ export default component$(() => {
       <div class="page-header">
         <div class="header-content">
           <div class="breadcrumb">
-            <button class="breadcrumb-link" onClick$={() => nav('/bo/schemaEditor/bdd/')}>
+            <button class="breadcrumb-link" onClick$={() => nav('/bdd/')}>
               ← Base de Données
             </button>
           </div>
@@ -183,7 +183,7 @@ export default component$(() => {
         <div class="header-actions">
           <button
             class="btn btn-primary"
-            onClick$={() => nav(`/bo/schemaEditor/bdd/${schemaData.value.schemaName}/new/`)}
+            onClick$={() => nav(`/bdd/${schemaData.value.schemaName}/new/`)}
           >
             ➕ Nouvelle entité
           </button>
@@ -245,7 +245,7 @@ export default component$(() => {
             {!filters.value.search && !filters.value.version && (
               <button
                 class="btn btn-primary"
-                onClick$={() => nav(`/bo/schemaEditor/bdd/${schemaData.value.schemaName}/new/`)}
+                onClick$={() => nav(`/bdd/${schemaData.value.schemaName}/new/`)}
               >
                 Créer une entité
               </button>
@@ -306,7 +306,7 @@ export default component$(() => {
                   <div class="entity-actions">
                     <button
                       class="btn btn-secondary btn-sm"
-                      onClick$={() => nav(`/bo/schemaEditor/bdd/${schemaData.value.schemaName}/${entity.id}/`)}
+                      onClick$={() => nav(`/bdd/${schemaData.value.schemaName}/${entity.id}/`)}
                       title="Voir les détails avec interface colonnes"
                     >
                       👁️ Voir
@@ -314,7 +314,7 @@ export default component$(() => {
                     
                     <button
                       class="btn btn-primary btn-sm"
-                      onClick$={() => nav(`/bo/schemaEditor/bdd/${schemaData.value.schemaName}/${entity.id}/edit/`)}
+                      onClick$={() => nav(`/bdd/${schemaData.value.schemaName}/${entity.id}/edit/`)}
                       title="Modifier avec interface colonnes"
                     >
                       ✏️ Modifier

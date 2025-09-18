@@ -112,8 +112,6 @@
 
   .columns-container {
     height: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
 
     .columns-scroll {
       height: calc(100% - 50px); // Space for breadcrumb

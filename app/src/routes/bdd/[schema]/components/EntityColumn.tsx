@@ -438,10 +438,17 @@ export const EntityColumn = component$<EntityColumnProps>((props) => {
 
     // Ajouter un nouvel élément vide basé sur le schéma de l'item
     const newItem = generateDefaultValue(props.schema.items);
-    const newArray = [...props.data, newItem];
+
+    // Sécurité : si generateDefaultValue retourne null ou undefined, créer un objet par défaut
+    const safeNewItem = (newItem !== null && newItem !== undefined) ? newItem : (
+      props.schema.items?.type === 'object' || props.schema.items?.properties ? {} : ''
+    );
+
+    const newArray = [...props.data, safeNewItem];
     const fieldPath = [...props.path];
 
-    console.log('🔧 EntityColumn - Nouvel élément créé:', newItem);
+    console.log('🔧 EntityColumn - Nouvel élément généré:', newItem);
+    console.log('🔧 EntityColumn - Nouvel élément utilisé (sécurisé):', safeNewItem);
     console.log('🔧 EntityColumn - Nouveau tableau:', newArray);
 
     // Sauvegarder les nouvelles données
@@ -507,7 +514,7 @@ export const EntityColumn = component$<EntityColumnProps>((props) => {
   };
 
   return (
-    <div class="entity-column" style={{ width: '350px', minWidth: '350px' }}>
+    <div class="entity-column" style={{ width: '400px', minWidth: '400px' }}>
       {/* Header de la colonne */}
       <div class="column-header">
         {props.level > 0 && (

@@ -20,7 +20,7 @@ import { MigrationWrapper, usePropertyHandlers, useSchemaHandlers } from './migr
 // ========================================================================================
 
 /**
- * Exemple d'intégration complète pour remplacer src/routes/bo/schemaEditor/index.tsx
+ * Exemple d'intégration complète pour remplacer src/routes/index.tsx
  */
 export const IntegratedSchemaListPage = component$(() => {
   const nav = useNavigate();
@@ -48,7 +48,7 @@ export const IntegratedSchemaListPage = component$(() => {
           <span>Modifiés aujourd'hui: {statistics.modifiedToday}</span>
         </div>
         <div class="actions">
-          <button onClick$={() => nav('/bo/schemaEditor/new/')}>
+          <button onClick$={() => nav('/new/')}>
             ➕ Nouveau Schéma
           </button>
           <button onClick$={handleRefresh} disabled={loading}>
@@ -64,7 +64,7 @@ export const IntegratedSchemaListPage = component$(() => {
             <h3>{schema.name}</h3>
             <p>{schema.schema.description}</p>
             <div class="card-actions">
-              <button onClick$={() => nav(`/bo/schemaEditor/edit/${schema.id}/`)}>
+              <button onClick$={() => nav(`/edit/${schema.id}/`)}>
                 ✏️ Éditer
               </button>
               <button onClick$={() => handleCopy(schema)}>
@@ -263,7 +263,7 @@ export const IntegratedSchemaForm = component$<IntegratedSchemaFormProps>((props
     const result = await saveCurrentSchema();
     if (result.success) {
       showNotification('success', result.message);
-      setTimeout(() => nav('/bo/schemaEditor/'), 1500);
+      setTimeout(() => nav('/'), 1500);
     } else {
       showNotification('error', result.message);
     }
@@ -333,7 +333,7 @@ export const IntegratedSchemaForm = component$<IntegratedSchemaFormProps>((props
       <div class="form-actions">
         <button
           class="btn btn-secondary"
-          onClick$={() => nav('/bo/schemaEditor/')}
+          onClick$={() => nav('/')}
         >
           Annuler
         </button>
@@ -535,7 +535,7 @@ export const HybridMigrationWrapper = component$<HybridMigrationWrapperProps>((p
 // ========================================================================================
 
 /**
- * Exemple d'intégration dans src/routes/bo/schemaEditor/index.tsx
+ * Exemple d'intégration dans src/routes/index.tsx
  */
 export const RouteIndexExample = component$(() => {
   // Option 1: Migration complète
@@ -552,14 +552,14 @@ export const RouteIndexExample = component$(() => {
 });
 
 /**
- * Exemple d'intégration dans src/routes/bo/schemaEditor/new/index.tsx
+ * Exemple d'intégration dans src/routes/new/index.tsx
  */
 export const RouteNewExample = component$(() => {
   return <CreatePageIntegrated />;
 });
 
 /**
- * Exemple d'intégration dans src/routes/bo/schemaEditor/edit/[id]/index.tsx
+ * Exemple d'intégration dans src/routes/edit/[id]/index.tsx
  */
 export const RouteEditExample = component$(() => {
   // Dans un vrai routeur, schemaId viendrait des params

@@ -7,7 +7,7 @@ import { generateDefaultValue } from './services';
  * Test de validation pour vérifier que le problème de synchronisation des arrays est résolu
  *
  * Ce test simule exactement le scénario suivant :
- * 1. Aller sur /bo/schemaEditor/bdd/encoreuntest/new/
+ * 1. Aller sur /bdd/encoreuntest/new/
  * 2. Naviguer vers le champ "pop" (qui est un array)
  * 3. Ajouter un élément au tableau
  * 4. Vérifier que :
@@ -302,7 +302,7 @@ export const TestArraySyncValidation = component$(() => {
           <div style="background: #007bff; color: white; padding: 1rem;">
             <h2 style="margin: 0;">🔧 Interface de Test - Éditeur d'Entité</h2>
             <p style="margin: 0.5rem 0 0 0; opacity: 0.9;">
-              Simulation de: /bo/schemaEditor/bdd/encoreuntest/new/
+              Simulation de: /bdd/encoreuntest/new/
             </p>
           </div>
 

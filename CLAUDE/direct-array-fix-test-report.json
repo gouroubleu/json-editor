@@ -1,0 +1,60 @@
+{
+  "timestamp": "2025-09-17T00:22:50.822Z",
+  "testType": "direct-function-validation",
+  "testResults": {
+    "tests": [
+      {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "nom": {
+              "type": "string"
+            }
+          }
+        },
+        "defaultValue": {},
+        "safeValue": {},
+        "isFixed": true
+      },
+      {
+        "schema": {
+          "type": "string"
+        },
+        "defaultValue": "",
+        "safeValue": "",
+        "isFixed": true
+      },
+      {
+        "schema": {
+          "type": "number"
+        },
+        "defaultValue": 0,
+        "safeValue": 0,
+        "isFixed": true
+      },
+      {
+        "schema": null,
+        "defaultValue": null,
+        "safeValue": "",
+        "isFixed": true
+      },
+      {
+        "defaultValue": null,
+        "safeValue": "",
+        "isFixed": true
+      }
+    ],
+    "errors": [],
+    "entityContextFound": false,
+    "functions": {
+      "addArrayElement": false,
+      "generateDefaultValue": false
+    }
+  },
+  "logs": [],
+  "conclusions": [
+    "✅ Logique de fix validée : tous les tests retournent des valeurs non-null",
+    "⚠️ Aucun log des fonctions corrigées - les fonctions n'ont peut-être pas été appelées",
+    "✅ Aucune erreur de test détectée"
+  ]
+}

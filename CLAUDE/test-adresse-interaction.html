@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Interaction Adresse</title>
+</head>
+<body>
+    <h1>Test d'interaction avec la propriété adresse</h1>
+    <p>Cette page va ouvrir l'application et simuler le clic sur la flèche adresse.</p>
+
+    <script>
+        // Ouvrir la page dans un nouvel onglet pour les tests manuels
+        const testWindow = window.open('http://localhost:5505/bdd/test-user/new/', '_blank');
+
+        console.log('🚀 Page de test ouverte. Instructions:');
+        console.log('1. Allez dans l\\'onglet ouvert');
+        console.log('2. Ouvrez les DevTools (F12)');
+        console.log('3. Cliquez sur la flèche → de la propriété "adresse"');
+        console.log('4. Observez les logs dans la console');
+        console.log('5. Revenez ici pour documenter les résultats');
+
+        // Instructions affichées sur la page
+        setTimeout(() => {
+            document.body.innerHTML += `
+                <div style="margin: 20px; padding: 20px; border: 1px solid #ccc;">
+                    <h2>Instructions pour le test manuel</h2>
+                    <ol>
+                        <li>La page de test s'est ouverte dans un nouvel onglet</li>
+                        <li>Ouvrez les DevTools (F12) dans cet onglet</li>
+                        <li>Allez dans l'onglet Console</li>
+                        <li>Localisez la propriété "adresse" dans l'interface</li>
+                        <li>Cliquez sur la flèche → à droite de "adresse"</li>
+                        <li>Observez :
+                            <ul>
+                                <li>Les logs dans la console</li>
+                                <li>L'apparition d'une nouvelle colonne</li>
+                                <li>Le contenu de cette colonne</li>
+                            </ul>
+                        </li>
+                        <li>Documentez vos observations</li>
+                    </ol>
+                </div>
+            `;
+        }, 1000);
+    </script>
+</body>
+</html>

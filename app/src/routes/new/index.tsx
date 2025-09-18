@@ -21,12 +21,12 @@ import {
   handleUpdatePropertyType,
   handleUpdateArrayItemType
 } from '../nestedHandlers';
-import { HorizontalSchemaEditor } from '../components/HorizontalSchemaEditor';
+import { HorizontalSchemaEditor } from '../../components/HorizontalSchemaEditor';
 import { generatePropertyId, ensureAllPropertyIds } from '../utils';
 import type { SchemaProperty, SchemaInfo, JsonSchemaType } from '../types';
-import HORIZONTAL_STYLES from '../components/HorizontalSchemaEditor.scss?inline';
-import COLUMN_STYLES from '../components/PropertyColumn.scss?inline';
-import COMMON_STYLES from '../components/CommonStyles.scss?inline';
+import HORIZONTAL_STYLES from '../../components/HorizontalSchemaEditor.scss?inline';
+import COLUMN_STYLES from '../../components/PropertyColumn.scss?inline';
+import COMMON_STYLES from '../../components/CommonStyles.scss?inline';
 
 export default component$(() => {
   useStyles$(HORIZONTAL_STYLES);
@@ -188,7 +188,7 @@ export default component$(() => {
       uiState.hasUnsavedChanges = false;
       console.log('✅ Redirection vers la liste...');
       setTimeout(() => {
-        nav('/bo/schemaEditor/');
+        nav('/');
       }, 1500);
     }
   });

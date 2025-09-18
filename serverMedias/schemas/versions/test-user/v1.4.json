@@ -1,0 +1,96 @@
+{
+  "id": "test-user",
+  "name": "test-user",
+  "version": "1.4",
+  "schema": {
+    "type": "object",
+    "title": "Utilisateur de test",
+    "description": "Schéma de test pour valider le fonctionnement après restructuration",
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "Identifiant unique de l'utilisateur"
+      },
+      "nom": {
+        "type": "string",
+        "description": "Nom de famille de l'utilisateur"
+      },
+      "email": {
+        "type": "string",
+        "description": "Adresse email de l'utilisateur",
+        "format": "email"
+      },
+      "age": {
+        "type": "integer",
+        "description": "Âge de l'utilisateur",
+        "minimum": 0,
+        "maximum": 150
+      },
+      "adresse": {
+        "type": "array",
+        "description": "",
+        "items": {
+          "type": "object",
+          "properties": {
+            "adresse": {
+              "type": "string",
+              "description": ""
+            },
+            "cp": {
+              "type": "string",
+              "description": ""
+            },
+            "ville": {
+              "type": "string",
+              "description": ""
+            },
+            "place": {
+              "type": "object",
+              "description": "",
+              "properties": {
+                "nom": {
+                  "type": "string",
+                  "description": ""
+                },
+                "test": {
+                  "type": "array",
+                  "description": "",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": ""
+                      }
+                    },
+                    "required": []
+                  }
+                }
+              }
+            }
+          },
+          "required": []
+        }
+      },
+      "romain": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "id",
+      "nom",
+      "email"
+    ],
+    "version": "1.4"
+  },
+  "versionInfo": {
+    "version": "1.4",
+    "createdAt": "2025-09-18T14:05:58.000Z",
+    "changeType": "minor",
+    "changeDescription": "Nouvelles propriétés: romain",
+    "previousVersion": "1.3"
+  },
+  "createdAt": "2025-09-17T00:34:00.000Z",
+  "updatedAt": "2025-09-18T14:05:58.000Z"
+}

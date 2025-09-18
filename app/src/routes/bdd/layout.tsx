@@ -6,8 +6,8 @@ export const useBddLayout = routeLoader$(async () => {
     title: 'Base de Données - Entités',
     breadcrumbs: [
       { label: 'Admin', href: '/bo/' },
-      { label: 'Schema Editor', href: '/bo/schemaEditor/' },
-      { label: 'Base de Données', href: '/bo/schemaEditor/bdd/' }
+      { label: 'Schema Editor', href: '/' },
+      { label: 'Base de Données', href: '/bdd/' }
     ]
   };
 });

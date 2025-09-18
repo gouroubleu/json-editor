@@ -5,9 +5,9 @@ import { loadSchemas } from '../../../services';
 import type { UpdateEntityRequest } from '../../types';
 import { EntityCreationProvider, useEntityCreation } from '../../context/entity-creation-context';
 import { ContextualHorizontalEntityViewer } from '../components/ContextualHorizontalEntityViewer';
-import HORIZONTAL_STYLES from '../../../components/HorizontalSchemaEditor.scss?inline';
-import COLUMN_STYLES from '../../../components/PropertyColumn.scss?inline';
-import COMMON_STYLES from '../../../components/CommonStyles.scss?inline';
+import HORIZONTAL_STYLES from '../../../../components/HorizontalSchemaEditor.scss?inline';
+import COLUMN_STYLES from '../../../../components/PropertyColumn.scss?inline';
+import COMMON_STYLES from '../../../../components/CommonStyles.scss?inline';
 import ENTITY_STYLES from '../components/EntityViewer.scss?inline';
 
 export const useEditEntityLoader = routeLoader$(async (requestEvent) => {
@@ -79,7 +79,7 @@ const EditEntityPageContent = component$<{ isOutdated: boolean }>((props) => {
 
         // Rediriger vers la liste des entités après sauvegarde
         setTimeout(() => {
-          nav(`/bo/schemaEditor/bdd/${store.state.schemaName}/`);
+          nav(`/bdd/${store.state.schemaName}/`);
         }, 1500);
       } else {
         actions.showNotification(result.message, 'error');
@@ -98,7 +98,7 @@ const EditEntityPageContent = component$<{ isOutdated: boolean }>((props) => {
       if (!confirmed) return;
     }
 
-    nav(`/bo/schemaEditor/bdd/${store.state.schemaName}/${store.state.entity.id}`);
+    nav(`/bdd/${store.state.schemaName}/${store.state.entity.id}`);
   });
 
   const handleGoBack = $(() => {
@@ -107,7 +107,7 @@ const EditEntityPageContent = component$<{ isOutdated: boolean }>((props) => {
       if (!confirmed) return;
     }
 
-    nav(`/bo/schemaEditor/bdd/${store.state.schemaName}/`);
+    nav(`/bdd/${store.state.schemaName}/`);
   });
 
   return (

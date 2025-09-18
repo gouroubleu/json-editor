@@ -14,7 +14,7 @@ import type { SchemaEditorContextValue } from '../../context/types';
 
 // ===== ÉTATS DU CONTEXTE ENTITÉS =====
 
-export interface EntityContextState {
+export type EntityContextState = {
   // Liste des résumés d'entités par schéma
   summaries: EntitySummary[];
 
@@ -40,7 +40,7 @@ export interface EntityContextState {
   filters: EntityFilters;
 }
 
-export interface PaginationState {
+export type PaginationState = {
   totalCount: number;
   currentPage: number;
   pageSize: number;
@@ -48,7 +48,7 @@ export interface PaginationState {
   offset: number;
 }
 
-export interface EntityUIState {
+export type EntityUIState = {
   // Vue active
   activeView: 'summary' | 'list' | 'editor' | 'viewer';
 
@@ -80,7 +80,7 @@ export interface EntityUIState {
   pendingConfirmation: PendingConfirmation | null;
 }
 
-export interface PendingConfirmation {
+export type PendingConfirmation = {
   type: 'delete' | 'migrate' | 'overwrite';
   title: string;
   message: string;
@@ -90,7 +90,7 @@ export interface PendingConfirmation {
   onCancel: () => void;
 }
 
-export interface EntityLoadingState {
+export type EntityLoadingState = {
   // États globaux
   isLoadingSummaries: boolean;
   isLoadingEntities: boolean;
@@ -104,7 +104,7 @@ export interface EntityLoadingState {
   loadingOperations: Map<string, EntityLoadingOperation>;
 }
 
-export interface EntityLoadingOperation {
+export type EntityLoadingOperation = {
   id: string;
   type: 'load' | 'create' | 'update' | 'delete' | 'migrate' | 'validate';
   entityId?: string;
@@ -114,7 +114,7 @@ export interface EntityLoadingOperation {
   startTime: string;
 }
 
-export interface EntityNotification {
+export type EntityNotification = {
   id: string;
   type: 'success' | 'error' | 'warning' | 'info';
   title: string;
@@ -126,7 +126,7 @@ export interface EntityNotification {
   actions?: EntityNotificationAction[];
 }
 
-export interface EntityNotificationAction {
+export type EntityNotificationAction = {
   label: string;
   action: () => void;
   style?: 'primary' | 'secondary' | 'danger';
@@ -134,7 +134,7 @@ export interface EntityNotificationAction {
 
 // ===== ACTIONS DU CONTEXTE ENTITÉS =====
 
-export interface EntityContextActions {
+export type EntityContextActions = {
   // === GESTION DES RÉSUMÉS ===
   summaries: {
     // Chargement
@@ -266,14 +266,14 @@ export interface EntityContextActions {
 
 // ===== TYPES AUXILIAIRES =====
 
-export interface EntityNotificationOptions {
+export type EntityNotificationOptions = {
   duration?: number;
   entityId?: string;
   schemaName?: string;
   actions?: EntityNotificationAction[];
 }
 
-export interface SearchOptions {
+export type SearchOptions = {
   schemaName?: string;
   includeData?: boolean;
   limit?: number;
@@ -282,7 +282,7 @@ export interface SearchOptions {
 
 // ===== INTÉGRATION AVEC SCHEMA EDITOR =====
 
-export interface EntityContextConfig {
+export type EntityContextConfig = {
   // Configuration de la pagination
   pagination: {
     defaultPageSize: number;
@@ -309,7 +309,7 @@ export interface EntityContextConfig {
   };
 }
 
-export interface EntityContextValue {
+export type EntityContextValue = {
   // État réactif
   state: EntityContextState;
 
@@ -337,7 +337,7 @@ export interface EntityContextValue {
 
 // ===== TYPES DE PROPS POUR LES COMPOSANTS =====
 
-export interface EntityProviderProps {
+export type EntityProviderProps = {
   // Configuration optionnelle
   config?: Partial<EntityContextConfig>;
 
@@ -348,7 +348,7 @@ export interface EntityProviderProps {
   children?: any;
 }
 
-export interface EntityListProps {
+export type EntityListProps = {
   schemaName?: string;
   filters?: Partial<EntityFilters>;
   onEntitySelect?: (entity: EntityData) => void;
@@ -356,7 +356,7 @@ export interface EntityListProps {
   onEntityDelete?: (entity: EntityData) => void;
 }
 
-export interface EntityEditorProps {
+export type EntityEditorProps = {
   entityId?: string;
   schemaName?: string;
   mode?: 'create' | 'edit' | 'view';
@@ -365,7 +365,7 @@ export interface EntityEditorProps {
   onDelete?: (entityId: string) => void;
 }
 
-export interface EntitySummaryProps {
+export type EntitySummaryProps = {
   summary: EntitySummary;
   onExpand?: (schemaName: string) => void;
   onCollapse?: (schemaName: string) => void;

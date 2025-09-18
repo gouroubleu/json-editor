@@ -84,7 +84,7 @@ export default component$(() => {
         <div class="header-actions">
           <button
             class="btn btn-info btn-large"
-            onClick$={() => nav('/bo/schemaEditor/bdd/')}
+            onClick$={() => nav('/bdd/')}
             title="Accéder aux entités basées sur vos schémas"
           >
             🗃️ Base de Données
@@ -92,7 +92,7 @@ export default component$(() => {
           
           <button
             class="btn btn-primary btn-large"
-            onClick$={() => nav('/bo/schemaEditor/new/')}
+            onClick$={() => nav('/new/')}
           >
             ➕ Nouveau Schéma
           </button>
@@ -148,7 +148,7 @@ export default component$(() => {
             </p>
             <button
               class="btn btn-primary"
-              onClick$={() => nav('/bo/schemaEditor/new/')}
+              onClick$={() => nav('/new/')}
             >
               Créer mon premier schéma
             </button>
@@ -241,7 +241,7 @@ export default component$(() => {
                 <div class="card-actions">
                   <button
                     class="btn btn-primary btn-sm"
-                    onClick$={() => nav(`/bo/schemaEditor/edit/${schema.id}/`)}
+                    onClick$={() => nav(`/edit/${schema.id}/`)}
                     title="Éditer le schéma"
                   >
                     ✏️ Éditer
@@ -249,7 +249,7 @@ export default component$(() => {
                   
                   <button
                     class="btn btn-success btn-sm"
-                    onClick$={() => nav(`/bo/schemaEditor/bdd/${schema.name}/`)}
+                    onClick$={() => nav(`/bdd/${schema.name}/`)}
                     title="Voir les entités basées sur ce schéma"
                   >
                     🗃️ Entités

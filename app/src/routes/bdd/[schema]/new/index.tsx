@@ -5,9 +5,9 @@ import { loadSchemas } from '../../../services';
 import type { CreateEntityRequest, EntityData } from '../../types';
 import { EntityCreationProvider, useEntityCreation } from '../../context/entity-creation-context';
 import { ContextualHorizontalEntityViewer } from '../components/ContextualHorizontalEntityViewer';
-import HORIZONTAL_STYLES from '../../../components/HorizontalSchemaEditor.scss?inline';
-import COLUMN_STYLES from '../../../components/PropertyColumn.scss?inline';
-import COMMON_STYLES from '../../../components/CommonStyles.scss?inline';
+import HORIZONTAL_STYLES from '../../../../components/HorizontalSchemaEditor.scss?inline';
+import COLUMN_STYLES from '../../../../components/PropertyColumn.scss?inline';
+import COMMON_STYLES from '../../../../components/CommonStyles.scss?inline';
 import ENTITY_STYLES from '../components/EntityViewer.scss?inline';
 
 export const useNewEntityLoader = routeLoader$(async (requestEvent) => {
@@ -78,7 +78,7 @@ const NewEntityPageContent = component$(() => {
 
         // Rediriger vers la liste des entités après création
         setTimeout(() => {
-          nav(`/bo/schemaEditor/bdd/${store.state.schemaName}/`);
+          nav(`/bdd/${store.state.schemaName}/`);
         }, 1500);
       } else {
         actions.showNotification(result.message, 'error');
@@ -97,7 +97,7 @@ const NewEntityPageContent = component$(() => {
       if (!confirmed) return;
     }
 
-    nav(`/bo/schemaEditor/bdd/${store.state.schemaName}/`);
+    nav(`/bdd/${store.state.schemaName}/`);
   });
 
   const handleGoBack = $(() => {
@@ -106,7 +106,7 @@ const NewEntityPageContent = component$(() => {
       if (!confirmed) return;
     }
 
-    nav(`/bo/schemaEditor/bdd/${store.state.schemaName}/`);
+    nav(`/bdd/${store.state.schemaName}/`);
   });
 
   return (

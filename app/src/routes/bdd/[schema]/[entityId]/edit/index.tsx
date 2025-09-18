@@ -4,9 +4,9 @@ import { getEntity, updateEntity } from '../../../services';
 import { loadSchemas } from '../../../../services';
 import type { EntityData, UpdateEntityRequest } from '../../../types';
 import { HorizontalEntityViewer } from '../../components/HorizontalEntityViewer';
-import HORIZONTAL_STYLES from '../../../../components/HorizontalSchemaEditor.scss?inline';
-import COLUMN_STYLES from '../../../../components/PropertyColumn.scss?inline';
-import COMMON_STYLES from '../../../../components/CommonStyles.scss?inline';
+import HORIZONTAL_STYLES from '../../../../../components/HorizontalSchemaEditor.scss?inline';
+import COLUMN_STYLES from '../../../../../components/PropertyColumn.scss?inline';
+import COMMON_STYLES from '../../../../../components/CommonStyles.scss?inline';
 import ENTITY_STYLES from '../../components/EntityViewer.scss?inline';
 
 export const useEntityEditData = routeLoader$(async (requestEvent) => {
@@ -123,7 +123,7 @@ export default component$(() => {
         
         // Rediriger vers la page de visualisation après sauvegarde
         setTimeout(() => {
-          nav(`/bo/schemaEditor/bdd/${entityData.value.schemaName}/${editableEntity.id}/`);
+          nav(`/bdd/${entityData.value.schemaName}/${editableEntity.id}/`);
         }, 1500);
       } else {
         await showNotification('error', result.message);
@@ -142,7 +142,7 @@ export default component$(() => {
       if (!confirmed) return;
     }
     
-    nav(`/bo/schemaEditor/bdd/${entityData.value.schemaName}/${editableEntity.id}/`);
+    nav(`/bdd/${entityData.value.schemaName}/${editableEntity.id}/`);
   });
 
   const handleGoBack = $(() => {
@@ -151,7 +151,7 @@ export default component$(() => {
       if (!confirmed) return;
     }
     
-    nav(`/bo/schemaEditor/bdd/${entityData.value.schemaName}/`);
+    nav(`/bdd/${entityData.value.schemaName}/`);
   });
 
   const handleDataChange = $((newData: Record<string, any>) => {

@@ -228,7 +228,7 @@ export const backupVersion = server$(async function(
     const fs = await import('fs/promises');
     const path = await import('path');
     
-    const schemasDir = path.join(process.cwd(), 'serverMedias', 'schemas');
+    const schemasDir = path.join(process.cwd(), '..', 'serverMedias', 'schemas');
     const versionsDir = path.join(schemasDir, 'versions', schemaName);
     
     // Créer les dossiers si nécessaire
@@ -259,7 +259,7 @@ export const getCurrentSchemaVersion = server$(async function(
     const fs = await import('fs/promises');
     const path = await import('path');
     
-    const schemasDir = path.join(process.cwd(), 'serverMedias', 'schemas');
+    const schemasDir = path.join(process.cwd(), '..', 'serverMedias', 'schemas');
     const filePath = path.join(schemasDir, `${schemaName}.json`);
     
     await fs.access(filePath);
@@ -368,7 +368,7 @@ export const getSchemaVersionHistory = server$(async function(
     const fs = await import('fs/promises');
     const path = await import('path');
     
-    const schemasDir = path.join(process.cwd(), 'serverMedias', 'schemas');
+    const schemasDir = path.join(process.cwd(), '..', 'serverMedias', 'schemas');
     const versionsDir = path.join(schemasDir, 'versions', schemaName);
     
     try {
@@ -414,7 +414,7 @@ export const restoreVersion = server$(async function(
     const fs = await import('fs/promises');
     const path = await import('path');
     
-    const schemasDir = path.join(process.cwd(), 'serverMedias', 'schemas');
+    const schemasDir = path.join(process.cwd(), '..', 'serverMedias', 'schemas');
     const versionFilePath = path.join(schemasDir, 'versions', schemaName, `v${version}.json`);
     const currentFilePath = path.join(schemasDir, `${schemaName}.json`);
     

@@ -41,7 +41,7 @@ export const ContextualHorizontalEntityViewer = component$<ContextualHorizontalE
           position: 'absolute',
           left: 0,
           top: 0,
-          width: '350px',
+          width: '400px',
           height: '100%',
           overflow: 'auto',
           borderRight: '1px solid #e9ecef',
@@ -212,13 +212,13 @@ export const ContextualHorizontalEntityViewer = component$<ContextualHorizontalE
       <div
         class="columns-container"
         style={{
-          marginLeft: '350px'
+          marginLeft: '400px'
         }}
       >
         <div
           class="columns-scroll"
           style={{
-            width: `${store.state.columns.length * 350}px`,
+            // width: `${store.state.columns.length * 350}px`,
             minWidth: '100%',
             display: 'flex',
             height: '100%'
@@ -240,7 +240,7 @@ export const ContextualHorizontalEntityViewer = component$<ContextualHorizontalE
         style={{
           position: 'fixed',
           bottom: 0,
-          left: '350px',
+          left: '400px',
           right: 0,
           backgroundColor: '#fff',
           borderTop: '1px solid #e9ecef',

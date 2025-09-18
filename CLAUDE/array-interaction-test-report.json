@@ -1,0 +1,161 @@
+{
+  "timestamp": "2025-09-17T00:23:53.054Z",
+  "testType": "array-interaction-validation",
+  "pageUrl": "http://localhost:5505/bdd/test-user/new/",
+  "interactions": {
+    "attempts": [
+      {
+        "strategy": "text-search",
+        "found": 22,
+        "details": [
+          {
+            "tag": "HTML",
+            "className": "",
+            "text": ":root{view-transition-name:none}.horizontal-schema"
+          },
+          {
+            "tag": "BODY",
+            "className": "",
+            "text": ".horizontal-schema-editor {\n  display: flex;\n  hei"
+          },
+          {
+            "tag": "DIV",
+            "className": "header-offset-container",
+            "text": ".horizontal-schema-editor {\n  display: flex;\n  hei"
+          },
+          {
+            "tag": "DIV",
+            "className": "",
+            "text": ".horizontal-schema-editor {\n  display: flex;\n  hei"
+          },
+          {
+            "tag": "DIV",
+            "className": "schema-editor-layout",
+            "text": ".horizontal-schema-editor {\n  display: flex;\n  hei"
+          },
+          {
+            "tag": "DIV",
+            "className": "layout-bdd",
+            "text": ".horizontal-schema-editor {\n  display: flex;\n  hei"
+          },
+          {
+            "tag": "DIV",
+            "className": "bdd-container",
+            "text": ".horizontal-schema-editor {\n  display: flex;\n  hei"
+          },
+          {
+            "tag": "DIV",
+            "className": "entity-new-page",
+            "text": "← Retour à la listeCréation d'une nouvelle entitéN"
+          },
+          {
+            "tag": "DIV",
+            "className": "horizontal-entity-viewer",
+            "text": "← Retour à la listeCréation d'une nouvelle entitéN"
+          },
+          {
+            "tag": "DIV",
+            "className": "columns-container",
+            "text": "Utilisateur de testNiveau 0📝id*stringIdentifiant "
+          },
+          {
+            "tag": "DIV",
+            "className": "columns-scroll",
+            "text": "Utilisateur de testNiveau 0📝id*stringIdentifiant "
+          },
+          {
+            "tag": "DIV",
+            "className": "entity-column",
+            "text": "Utilisateur de testNiveau 0📝id*stringIdentifiant "
+          },
+          {
+            "tag": "DIV",
+            "className": "column-content",
+            "text": "📝id*stringIdentifiant unique de l'utilisateur📝no"
+          },
+          {
+            "tag": "DIV",
+            "className": "object-container",
+            "text": "📝id*stringIdentifiant unique de l'utilisateur📝no"
+          },
+          {
+            "tag": "DIV",
+            "className": "object-fields",
+            "text": "📝id*stringIdentifiant unique de l'utilisateur📝no"
+          },
+          {
+            "tag": "DIV",
+            "className": "field-item",
+            "text": "📝email*stringAdresse email de l'utilisateur"
+          },
+          {
+            "tag": "DIV",
+            "className": "field-description",
+            "text": "Adresse email de l'utilisateur"
+          },
+          {
+            "tag": "DIV",
+            "className": "field-item",
+            "text": "📋adressearray→📝 Éditer en JSON"
+          },
+          {
+            "tag": "DIV",
+            "className": "field-header",
+            "text": "📋adressearray→"
+          },
+          {
+            "tag": "DIV",
+            "className": "field-info",
+            "text": "📋adressearray"
+          },
+          {
+            "tag": "SPAN",
+            "className": "field-name",
+            "text": "adresse"
+          },
+          {
+            "tag": "SCRIPT",
+            "className": "",
+            "text": "{\n  \"refs\": {\n    \"10\": \"4e 1f!\",\n    \"11\": \"3j\",\n"
+          }
+        ]
+      },
+      {
+        "strategy": "click-first-address",
+        "success": true
+      },
+      {
+        "strategy": "add-buttons",
+        "found": 0,
+        "details": []
+      },
+      {
+        "strategy": "custom-event",
+        "success": true
+      }
+    ],
+    "success": false,
+    "elements": {
+      "before": 143,
+      "after": 143
+    }
+  },
+  "domChanges": 0,
+  "fixLogs": [
+    {
+      "type": "log",
+      "text": "🎪 Event custom addArrayElement déclenché",
+      "timestamp": 1758068628039
+    }
+  ],
+  "finalTest": {
+    "newItem": {},
+    "safeNewItem": {},
+    "isFixed": true
+  },
+  "totalLogs": 10,
+  "conclusions": [
+    "✅ Fix validé : la logique de sécurité fonctionne correctement",
+    "✅ 1 log(s) des fonctions corrigées détecté(s)"
+  ]
+}

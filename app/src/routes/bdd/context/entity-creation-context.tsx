@@ -14,7 +14,7 @@ import type { EntityData } from '../types';
 import { generateDefaultValue } from '../services';
 
 // Types pour le contexte de création d'entité
-export interface EntityCreationState {
+export type EntityCreationState = {
   // Données de l'entité
   entity: EntityData;
 
@@ -48,7 +48,7 @@ export interface EntityCreationState {
   };
 }
 
-export interface EntityCreationUI {
+export type EntityCreationUI = {
   loading: boolean;
   saving: boolean;
   validating: boolean;
@@ -60,12 +60,12 @@ export interface EntityCreationUI {
   };
 }
 
-export interface EntityCreationStore {
+export type EntityCreationStore = {
   state: EntityCreationState;
   ui: EntityCreationUI;
 }
 
-export interface EntityCreationActions {
+export type EntityCreationActions = {
   // Actions sur les données
   updateEntityData: (path: string[], newValue: any) => void;
   addArrayElement: (path: string[], schema: any) => void;
@@ -96,7 +96,7 @@ export interface EntityCreationActions {
   exportEntityJson: () => string;
 }
 
-export interface EntityCreationContextType {
+export type EntityCreationContextType = {
   store: EntityCreationStore;
   actions: EntityCreationActions;
 }
@@ -194,12 +194,23 @@ const calculateColumns = (
 
     if (!currentData || !currentSchema) break;
 
-    // Gérer les objets
-    if (typeof currentData[key] === 'object' && !Array.isArray(currentData[key]) && currentData[key] !== null) {
-      const nextData = currentData[key];
+    // Gérer les objets (y compris vides/null)
+    if (typeof currentData[key] === 'object' && !Array.isArray(currentData[key])) {
+      let nextData = currentData[key];
       const nextSchema = currentSchema.properties?.[key];
 
-      if (nextSchema) {
+      // Si la valeur est vide/null mais le schéma définit des propriétés, générer
+      if ((!nextData || (nextData !== null && Object.keys(nextData).length === 0)) && nextSchema?.properties && Object.keys(nextSchema.properties).length > 0) {
+        console.log('🔧 calculateColumns - Génération pour objet vide/null:', key);
+        nextData = generateDefaultValue(nextSchema);
+        console.log('🔧 calculateColumns - Valeur générée:', nextData, typeof nextData);
+        // Mettre à jour directement dans les données
+        currentData[key] = nextData;
+      }
+
+      console.log('🔧 calculateColumns - Test colonne pour', key, ':', { nextSchema: !!nextSchema, nextData, nextDataType: typeof nextData });
+
+      if (nextSchema && nextData !== null) {
         columns.push({
           data: nextData,
           schema: nextSchema,
@@ -235,6 +246,14 @@ const calculateColumns = (
             const itemSchema = arraySchema.items;
 
             if (itemSchema) {
+              console.log('🔧 DEBUG SCHEMA ARRAY ITEM:', {
+                key,
+                arrayIndex,
+                itemSchema,
+                hasProperties: !!itemSchema.properties,
+                propertiesKeys: itemSchema.properties ? Object.keys(itemSchema.properties) : 'NO PROPERTIES'
+              });
+
               columns.push({
                 data: itemData,
                 schema: itemSchema,
@@ -349,9 +368,31 @@ export const EntityCreationProvider = component$<{
 
     addArrayElement: $((path: string[], schema: any) => {
       console.log('🔧 EntityCreationContext - addArrayElement:', { path, schema });
+      console.log('🔧 Schema.items:', schema.items);
 
       const currentArray = getValueAtPath(store.state.entity.data, path) || [];
-      const newItem = generateDefaultValue(schema.items);
+
+      // Correction : s'assurer que generateDefaultValue génère TOUTES les propriétés
+      let newItem = generateDefaultValue(schema.items);
+
+      // SOLUTION SIMPLE : Créer un élément complet avec toutes les propriétés
+      if (schema.items?.type === 'object' && schema.items?.properties) {
+        if (!newItem || typeof newItem !== 'object') {
+          newItem = {};
+        }
+
+        // Générer TOUTES les propriétés du schéma
+        for (const [propName, propSchema] of Object.entries(schema.items.properties)) {
+          newItem[propName] = generateDefaultValue(propSchema);
+        }
+
+        // Marquer comme temporaire pour validation ultérieure
+        newItem._temporary = true;
+      }
+
+      console.log('🔧 generateDefaultValue result:', newItem);
+      console.log('🔧 newItem after property check:', newItem);
+
       const newArray = [...currentArray, newItem];
 
       updateEntityDataInternal(path, newArray);
@@ -399,13 +440,92 @@ export const EntityCreationProvider = component$<{
     }),
 
     navigateToProperty: $((key: string, columnIndex: number) => {
+      console.log('🔧 NAVIGATE TO PROPERTY - CALLED:', key, 'columnIndex:', columnIndex);
+
       const newPath = [...store.state.navigation.selectedPath.slice(0, columnIndex), key];
-
-      // Vérifier si cette propriété peut avoir des enfants
       const currentColumn = store.state.columns[columnIndex];
-      const value = currentColumn.data[key];
+      let value = currentColumn.data[key];
 
-      if (value && (typeof value === 'object' || Array.isArray(value))) {
+      console.log('🔧 NAVIGATE - Valeur actuelle:', value, typeof value);
+
+      // NOUVEAU: Générer automatiquement la valeur si elle manque
+      const fieldSchema = currentColumn.schema.properties?.[key];
+      console.log('🔧 NAVIGATE - Schéma trouvé:', !!fieldSchema);
+
+      if ((value === null || value === undefined || (typeof value === 'object' && value !== null && Object.keys(value).length === 0)) && fieldSchema) {
+        console.log('🔧 NAVIGATE - Génération nécessaire pour:', key);
+        value = generateDefaultValue(fieldSchema);
+        console.log('🔧 NAVIGATE - Valeur générée:', value, typeof value);
+
+        // FALLBACK: Si generateDefaultValue retourne undefined, créer un objet minimal basé sur le schéma
+        if (value === undefined || value === null) {
+          if (fieldSchema.type === 'object' && fieldSchema.properties) {
+            console.log('🔧 NAVIGATE - FALLBACK: Création objet minimal pour:', key);
+            value = {};
+            // Ajouter les propriétés de base
+            for (const [propName, propSchema] of Object.entries(fieldSchema.properties)) {
+              if (propSchema.type === 'string') {
+                value[propName] = '';
+              } else if (propSchema.type === 'array') {
+                value[propName] = [];
+              } else if (propSchema.type === 'object') {
+                value[propName] = {};
+              }
+            }
+            console.log('🔧 NAVIGATE - FALLBACK: Objet créé:', value);
+          } else if (fieldSchema.type === 'array' && fieldSchema.items) {
+            console.log('🔧 NAVIGATE - FALLBACK: Création array minimal pour:', key);
+            // Créer un array avec un élément par défaut si items est défini
+            value = [{}];
+            if (fieldSchema.items.properties) {
+              const itemDefault = {};
+              for (const [propName, propSchema] of Object.entries(fieldSchema.items.properties)) {
+                if (propSchema.type === 'string') {
+                  itemDefault[propName] = '';
+                } else if (propSchema.type === 'array') {
+                  itemDefault[propName] = [];
+                } else if (propSchema.type === 'object') {
+                  itemDefault[propName] = {};
+                }
+              }
+              value = [itemDefault];
+            }
+            console.log('🔧 NAVIGATE - FALLBACK: Array créé:', value);
+          }
+        }
+
+        // Mettre à jour les données
+        const fieldPath = [...currentColumn.path, key];
+        console.log('🔧 NAVIGATE - Appel updateEntityDataInternal avec path:', fieldPath, 'value:', value);
+        updateEntityDataInternal(fieldPath, value);
+        console.log('🔧 NAVIGATE - updateEntityDataInternal terminé');
+      }
+
+      // Debug logs for navigation issue at level 3+
+      if (key === 'test') {
+        console.log('🐛 DEBUG navigateToProperty - key "test"', {
+          key,
+          columnIndex,
+          newPath,
+          currentColumn,
+          value,
+          valueType: typeof value,
+          isArray: Array.isArray(value),
+          fieldSchema,
+          canNavigate: fieldSchema && (
+            (fieldSchema.type === 'object' && fieldSchema.properties) ||
+            (fieldSchema.type === 'array' && fieldSchema.items)
+          ) || (value && (typeof value === 'object' || Array.isArray(value)))
+        });
+      }
+
+      // Permettre la navigation basée sur le schéma OU la valeur
+      const canNavigate = fieldSchema && (
+        (fieldSchema.type === 'object' && fieldSchema.properties) ||
+        (fieldSchema.type === 'array' && fieldSchema.items)
+      ) || (value && (typeof value === 'object' || Array.isArray(value)));
+
+      if (canNavigate) {
         store.state.navigation.selectedPath = newPath;
         store.state.navigation.expandedColumns = Math.max(store.state.navigation.expandedColumns, columnIndex + 2);
 

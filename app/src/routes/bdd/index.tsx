@@ -28,11 +28,11 @@ export default component$(() => {
   });
 
   const handleSchemaClick = $((schemaName: string) => {
-    nav(`/bo/schemaEditor/bdd/${schemaName}/`);
+    nav(`/bdd/${schemaName}/`);
   });
 
   const handleCreateEntity = $((schemaName: string) => {
-    nav(`/bo/schemaEditor/bdd/${schemaName}/new/`);
+    nav(`/bdd/${schemaName}/new/`);
   });
 
   const refreshData = $(async () => {
@@ -97,7 +97,7 @@ export default component$(() => {
           
           <button
             class="btn btn-info"
-            onClick$={() => nav('/bo/schemaEditor/')}
+            onClick$={() => nav('/')}
             title="Retour à la gestion des schémas JSON"
           >
             📋 JSON Schemas
@@ -147,7 +147,7 @@ export default component$(() => {
             </p>
             <button
               class="btn btn-primary"
-              onClick$={() => nav('/bo/schemaEditor/')}
+              onClick$={() => nav('/')}
             >
               Voir les schémas disponibles
             </button>

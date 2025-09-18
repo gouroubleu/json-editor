@@ -3,10 +3,10 @@ import { routeLoader$, useNavigate } from '@builder.io/qwik-city';
 import { createEntity, generateDefaultValue } from '../../services';
 import { loadSchemas } from '../../../services';
 import type { CreateEntityRequest, EntityData } from '../../types';
-import { HorizontalEntityViewer } from '../components/HorizontalEntityViewer';
-import HORIZONTAL_STYLES from '../../../components/HorizontalSchemaEditor.scss?inline';
-import COLUMN_STYLES from '../../../components/PropertyColumn.scss?inline';
-import COMMON_STYLES from '../../../components/CommonStyles.scss?inline';
+import { HorizontalEntityViewer } from '../../components/HorizontalEntityViewer';
+import HORIZONTAL_STYLES from '../../../../components/HorizontalSchemaEditor.scss?inline';
+import COLUMN_STYLES from '../../../../components/PropertyColumn.scss?inline';
+import COMMON_STYLES from '../../../../components/CommonStyles.scss?inline';
 import ENTITY_STYLES from '../components/EntityViewer.scss?inline';
 
 export const useNewEntityLoader = routeLoader$(async (requestEvent) => {
@@ -109,7 +109,7 @@ export default component$(() => {
         
         // Rediriger vers la liste des entités après création
         setTimeout(() => {
-          nav(`/bo/schemaEditor/bdd/${entityData.value.schemaName}/`);
+          nav(`/bdd/${entityData.value.schemaName}/`);
         }, 1500);
       } else {
         await showNotification('error', result.message);
@@ -128,7 +128,7 @@ export default component$(() => {
       if (!confirmed) return;
     }
     
-    nav(`/bo/schemaEditor/bdd/${entityData.value.schemaName}/`);
+    nav(`/bdd/${entityData.value.schemaName}/`);
   });
 
   const handleGoBack = $(() => {
@@ -137,7 +137,7 @@ export default component$(() => {
       if (!confirmed) return;
     }
     
-    nav(`/bo/schemaEditor/bdd/${entityData.value.schemaName}/`);
+    nav(`/bdd/${entityData.value.schemaName}/`);
   });
 
   const handleDataChange = $((newData: Record<string, any>) => {

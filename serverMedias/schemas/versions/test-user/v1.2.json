@@ -1,0 +1,78 @@
+{
+  "id": "test-user",
+  "name": "test-user",
+  "version": "1.2",
+  "schema": {
+    "type": "object",
+    "title": "Utilisateur de test",
+    "description": "Schéma de test pour valider le fonctionnement après restructuration",
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "Identifiant unique de l'utilisateur"
+      },
+      "nom": {
+        "type": "string",
+        "description": "Nom de famille de l'utilisateur"
+      },
+      "email": {
+        "type": "string",
+        "description": "Adresse email de l'utilisateur",
+        "format": "email"
+      },
+      "age": {
+        "type": "integer",
+        "description": "Âge de l'utilisateur",
+        "minimum": 0,
+        "maximum": 150
+      },
+      "adresse": {
+        "type": "array",
+        "description": "",
+        "items": {
+          "type": "object",
+          "properties": {
+            "adresse": {
+              "type": "string",
+              "description": ""
+            },
+            "cp": {
+              "type": "string",
+              "description": ""
+            },
+            "ville": {
+              "type": "string",
+              "description": ""
+            },
+            "place": {
+              "type": "object",
+              "description": "",
+              "properties": {
+                "nom": {
+                  "type": "string",
+                  "description": ""
+                }
+              }
+            }
+          },
+          "required": []
+        }
+      }
+    },
+    "required": [
+      "id",
+      "nom",
+      "email"
+    ],
+    "version": "1.2"
+  },
+  "versionInfo": {
+    "version": "1.2",
+    "createdAt": "2025-09-16T23:54:28.295Z",
+    "changeType": "minor",
+    "changeDescription": "Améliorations compatibles avec BDD",
+    "previousVersion": "1.1"
+  },
+  "createdAt": "2025-09-17T00:34:00.000Z",
+  "updatedAt": "2025-09-16T23:54:28.295Z"
+}

@@ -7,7 +7,7 @@ L'architecture EntityEditor fournit un contexte dynamique complet pour la gestio
 ## Structure de l'architecture
 
 ```
-src/routes/bo/schemaEditor/bdd/context/
+src/routes/bdd/context/
 ├── types.ts                    # Types TypeScript complets
 ├── context.ts                  # Configuration et utilitaires du contexte
 ├── provider.tsx                # Provider principal avec toutes les actions

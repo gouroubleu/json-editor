@@ -8,7 +8,7 @@ export const useSchemas = () => {
   const loadSchemas = $(async () => {
     loading.value = true;
     try {
-      const response = await fetch('/bo/schemaEditor/api/schemas');
+      const response = await fetch('/api/schemas');
       if (response.ok) {
         schemas.value = await response.json();
       }
@@ -21,7 +21,7 @@ export const useSchemas = () => {
 
   const createSchema = $(async (schemaData: Omit<JsonSchema, 'id' | 'createdAt' | 'updatedAt'>) => {
     try {
-      const response = await fetch('/bo/schemaEditor/api/schemas', {
+      const response = await fetch('/api/schemas', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(schemaData)
@@ -37,7 +37,7 @@ export const useSchemas = () => {
 
   const updateSchema = $(async (id: string, schemaData: Partial<JsonSchema>) => {
     try {
-      const response = await fetch(`/bo/schemaEditor/api/schemas/${id}`, {
+      const response = await fetch(`/api/schemas/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(schemaData)
@@ -53,7 +53,7 @@ export const useSchemas = () => {
 
   const deleteSchema = $(async (id: string) => {
     try {
-      const response = await fetch(`/bo/schemaEditor/api/schemas/${id}`, {
+      const response = await fetch(`/api/schemas/${id}`, {
         method: 'DELETE'
       });
       
@@ -87,7 +87,7 @@ export const useEntities = (schemaId?: string) => {
   const loadEntities = $(async () => {
     loading.value = true;
     try {
-      const url = schemaId ? `/bo/schemaEditor/api/entities?schemaId=${schemaId}` : '/bo/schemaEditor/api/entities';
+      const url = schemaId ? `/api/entities?schemaId=${schemaId}` : '/api/entities';
       const response = await fetch(url);
       if (response.ok) {
         entities.value = await response.json();
@@ -101,7 +101,7 @@ export const useEntities = (schemaId?: string) => {
 
   const createEntity = $(async (entityData: Omit<Entity, 'id' | 'createdAt' | 'updatedAt'>) => {
     try {
-      const response = await fetch('/bo/schemaEditor/api/entities', {
+      const response = await fetch('/api/entities', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(entityData)
@@ -117,7 +117,7 @@ export const useEntities = (schemaId?: string) => {
 
   const updateEntity = $(async (id: string, entityData: Partial<Entity>) => {
     try {
-      const response = await fetch(`/bo/schemaEditor/api/entities/${id}`, {
+      const response = await fetch(`/api/entities/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(entityData)
@@ -133,7 +133,7 @@ export const useEntities = (schemaId?: string) => {
 
   const deleteEntity = $(async (id: string) => {
     try {
-      const response = await fetch(`/bo/schemaEditor/api/entities/${id}`, {
+      const response = await fetch(`/api/entities/${id}`, {
         method: 'DELETE'
       });
       

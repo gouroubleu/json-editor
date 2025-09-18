@@ -11,7 +11,7 @@ import type { DraftSchema } from '../localStorage';
 
 // ===== ÉTATS DU CONTEXTE =====
 
-export interface SchemaEditorContextState {
+export type SchemaEditorContextState = {
   // État principal du schéma en cours d'édition
   currentSchema: SchemaEditorState;
 
@@ -32,7 +32,7 @@ export interface SchemaEditorContextState {
   notifications: NotificationState;
 }
 
-export interface LoadedSchema {
+export type LoadedSchema = {
   name: string;
   schema: JsonSchemaOutput;
   createdAt: string;
@@ -44,7 +44,7 @@ export interface LoadedSchema {
   isModified?: boolean;
 }
 
-export interface UIState {
+export type UIState = {
   // Navigation et sélection
   selectedSchemaName: string | null;
   selectedPropertyId: string | null;
@@ -71,7 +71,7 @@ export interface UIState {
   showValidationErrors: boolean;
 }
 
-export interface SchemaFilters {
+export type SchemaFilters = {
   type?: 'object' | 'array';
   hasErrors?: boolean;
   version?: string;
@@ -81,7 +81,7 @@ export interface SchemaFilters {
   };
 }
 
-export interface CacheState {
+export type CacheState = {
   // Dernière synchronisation
   lastSync: string | null;
 
@@ -96,7 +96,7 @@ export interface CacheState {
   ttl: number; // Time To Live en millisecondes
 }
 
-export interface CachedSchemaEntry {
+export type CachedSchemaEntry = {
   schema: LoadedSchema;
   timestamp: string;
   accessCount: number;
@@ -104,7 +104,7 @@ export interface CachedSchemaEntry {
   isDirty: boolean;
 }
 
-export interface DraftsState {
+export type DraftsState = {
   // Brouillons par nom de schéma
   drafts: Map<string, SchemaDraft>;
 
@@ -116,7 +116,7 @@ export interface DraftsState {
   lastAutoSave: string | null;
 }
 
-export interface SchemaDraft {
+export type SchemaDraft = {
   name: string;
   schemaInfo: SchemaInfo;
   properties: SchemaProperty[];
@@ -126,7 +126,7 @@ export interface SchemaDraft {
   autoSaved: boolean;
 }
 
-export interface LoadingState {
+export type LoadingState = {
   // États de chargement globaux
   isLoading: boolean;
   isLoadingSchemas: boolean;
@@ -138,7 +138,7 @@ export interface LoadingState {
   loadingOperations: Map<string, LoadingOperation>;
 }
 
-export interface LoadingOperation {
+export type LoadingOperation = {
   id: string;
   type: 'load' | 'save' | 'delete' | 'validate' | 'generate';
   message: string;
@@ -146,12 +146,12 @@ export interface LoadingOperation {
   startTime: string;
 }
 
-export interface NotificationState {
+export type NotificationState = {
   notifications: AppNotification[];
   maxNotifications: number;
 }
 
-export interface AppNotification {
+export type AppNotification = {
   id: string;
   type: 'success' | 'error' | 'warning' | 'info';
   title: string;
@@ -161,7 +161,7 @@ export interface AppNotification {
   actions?: NotificationAction[];
 }
 
-export interface NotificationAction {
+export type NotificationAction = {
   label: string;
   action: () => void;
   style?: 'primary' | 'secondary' | 'danger';
@@ -169,7 +169,7 @@ export interface NotificationAction {
 
 // ===== ACTIONS DU CONTEXTE =====
 
-export interface SchemaEditorActions {
+export type SchemaEditorActions = {
   // === GESTION DES SCHÉMAS ===
   schemas: {
     // CRUD opérations
@@ -303,7 +303,7 @@ export interface SchemaEditorActions {
 
 // ===== TYPES AUXILIAIRES =====
 
-export interface PropertyChange {
+export type PropertyChange = {
   type: 'added' | 'modified' | 'deleted';
   propertyId: string;
   propertyName: string;
@@ -312,7 +312,7 @@ export interface PropertyChange {
   path: string[];
 }
 
-export interface CacheStats {
+export type CacheStats = {
   totalEntries: number;
   totalSizeBytes: number;
   hitRate: number;
@@ -324,7 +324,7 @@ export interface CacheStats {
 
 // ===== CONFIGURATION DU CONTEXTE =====
 
-export interface SchemaEditorContextConfig {
+export type SchemaEditorContextConfig = {
   // Configuration du cache
   cache: {
     ttl: number;
@@ -357,7 +357,7 @@ export interface SchemaEditorContextConfig {
 
 // ===== HOOKS ET SIGNAL TYPES =====
 
-export interface SchemaEditorContextValue {
+export type SchemaEditorContextValue = {
   // État réactif
   state: SchemaEditorContextState;
 

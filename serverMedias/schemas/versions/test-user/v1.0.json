@@ -1,0 +1,48 @@
+{
+  "id": "test-user",
+  "name": "test-user",
+  "version": "1.0",
+  "schema": {
+    "type": "object",
+    "title": "Utilisateur de test",
+    "description": "Schéma de test pour valider le fonctionnement après restructuration",
+    "properties": {
+      "id": {
+        "type": "string",
+        "title": "Identifiant",
+        "description": "Identifiant unique de l'utilisateur"
+      },
+      "nom": {
+        "type": "string",
+        "title": "Nom",
+        "description": "Nom de famille de l'utilisateur"
+      },
+      "email": {
+        "type": "string",
+        "title": "Email",
+        "description": "Adresse email de l'utilisateur",
+        "format": "email"
+      },
+      "age": {
+        "type": "integer",
+        "title": "Âge",
+        "description": "Âge de l'utilisateur",
+        "minimum": 0,
+        "maximum": 150
+      }
+    },
+    "required": [
+      "id",
+      "nom",
+      "email"
+    ]
+  },
+  "versionInfo": {
+    "version": "1.0",
+    "createdAt": "2025-09-17T00:34:00.000Z",
+    "changeType": "major",
+    "changeDescription": "Version initiale"
+  },
+  "createdAt": "2025-09-17T00:34:00.000Z",
+  "updatedAt": "2025-09-17T00:34:00.000Z"
+}

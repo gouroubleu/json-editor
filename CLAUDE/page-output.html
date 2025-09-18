@@ -1,0 +1,4088 @@
+<!DOCTYPE html><html lang="en-us" q:route="/" q:container="paused" q:version="1.16.0" q:render="ssr-dev" q:base="/build/" q:locale="" q:manifest-hash="devdzsv3eaol" q:instance="j0wdgs3qdv"><!--qv q:id=0 q:key=tntn:Qb_0--><!--qv q:id=1 q:key=p1yC:vp_3--><!--qv q:s q:sref=1 q:key=--><head q:head><meta charset="utf-8" q:head><!--qv q:id=2 q:key=0vph:vp_1--><!--qv q:key=0D_0--><title q:head></title><link rel="canonical" href="http://localhost:5501/" q:id="3" q:head><meta name="viewport" content="width=device-width, initial-scale=1.0" q:head><link rel="icon" type="image/svg+xml" href="/favicon.svg" q:head><!--/qv--><!--/qv--><link rel="stylesheet" href="/src/global.css"><style q:style="vfonbe-0" hidden>:root{view-transition-name:none}</style></head><body lang="en" data-qwik-inspector="/src/root.tsx:27:7"><!--qv q:id=4 q:key=ScE8:vp_2--><!--qv q:key=ni_2--><!--qv q:id=5 q:key=VKFl:ni_0--><div style="position: fixed; top: 50px; left: 0; right: 0; height: calc(100vh - 50px); overflow: auto;" class="header-offset-container" q:key="yB_1" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/layout.tsx:16:5"><div style="position: relative; width: 100%; height: 100%;" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/layout.tsx:17:7"><div class="schema-editor-layout" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/layout.tsx:18:9"><!--qv q:s q:sref=5 q:key=--><!--qv q:id=6 q:key=B0lq:ni_0--><style q:style="o748ip-0" hidden>.page-schema-editor {
+  container-type: inline-size;
+  container-name: schema-editor;
+  margin: 0 auto;
+  padding: 1.5rem;
+  min-height: 100vh;
+}
+.page-schema-editor > .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+@container schema-editor (max-width: 768px) {
+  .page-schema-editor > .header {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+.page-schema-editor > .header > .title {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  margin: 0;
+  font-weight: 600;
+}
+.page-schema-editor > .header > .subtitle {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  margin: 0.5rem 0 0 0;
+}
+.page-schema-editor > .header > .header-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+.page-schema-editor > .header > .header-actions > .btn-large {
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.page-schema-editor > .stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.page-schema-editor > .stats-section > .stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e9ecef;
+  text-align: center;
+}
+.page-schema-editor > .stats-section > .stat-card > .stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3498db;
+  margin-bottom: 0.5rem;
+}
+.page-schema-editor > .stats-section > .stat-card > .stat-label {
+  color: #6c757d;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.page-schema-editor > .schemas-section > .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.page-schema-editor > .schemas-section > .section-header > .section-title {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 600;
+}
+.page-schema-editor > .schemas-section > .section-header > .section-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+.page-schema-editor > .schemas-section > .empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e9ecef;
+}
+.page-schema-editor > .schemas-section > .empty-state > .empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+.page-schema-editor > .schemas-section > .empty-state > .empty-title {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.page-schema-editor > .schemas-section > .empty-state > .empty-description {
+  color: #6c757d;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+.page-schema-editor > .schemas-section > .schemas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e9ecef;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+@media screen and (hover: hover) {
+  .page-schema-editor > .schemas-section > .schemas-grid > .schema-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-header > .card-title {
+  color: #2c3e50;
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 600;
+  flex: 1;
+  word-break: break-word;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-header > .card-badges {
+  display: flex;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-header > .card-badges > .badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-header > .card-badges > .badge.type-badge {
+  background: #3498db;
+  color: white;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-header > .card-badges > .badge.version-badge {
+  font-weight: 700;
+  font-family: "Monaco", "Menlo", monospace;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-header > .card-badges > .badge.version-badge.major {
+  background: #dc3545;
+  color: white;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-header > .card-badges > .badge.version-badge.minor {
+  background: #198754;
+  color: white;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-content {
+  margin-bottom: 1.5rem;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-content > .card-description {
+  color: #6c757d;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-content > .card-metadata {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-content > .card-metadata > .metadata-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-content > .card-metadata > .metadata-item > .metadata-label {
+  font-size: 0.75rem;
+  color: #6c757d;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-content > .card-metadata > .metadata-item > .metadata-value {
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-content > .card-metadata > .metadata-item > .metadata-value > .version-info {
+  font-size: 0.75rem;
+  color: #6c757d;
+  font-weight: 400;
+  margin-left: 0.5rem;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-content > .properties-preview > .properties-header {
+  font-size: 0.8rem;
+  color: #6c757d;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-content > .properties-preview > .properties-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-content > .properties-preview > .properties-list > .property-tag {
+  background: #f8f9fa;
+  color: #495057;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid #dee2e6;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-content > .properties-preview > .properties-list > .property-tag.more {
+  background: #e9ecef;
+  color: #6c757d;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.page-schema-editor > .schemas-section > .schemas-grid > .schema-card > .card-actions > .btn-sm {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  flex: 1;
+  min-width: 80px;
+  text-align: center;
+}
+.page-schema-editor > .layout {
+  display: grid;
+  grid-template-columns: 400px 1fr 400px;
+  gap: 1.5rem;
+  align-items: start;
+}
+@container schema-editor (max-width: 1200px) {
+  .page-schema-editor > .layout {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+  .page-schema-editor > .layout > .preview-panel {
+    grid-column: 1/-1;
+  }
+}
+@container schema-editor (max-width: 768px) {
+  .page-schema-editor > .layout {
+    grid-template-columns: 1fr;
+  }
+  .page-schema-editor > .layout > .info-panel,
+  .page-schema-editor > .layout > .properties-panel,
+  .page-schema-editor > .layout > .preview-panel {
+    grid-column: 1;
+  }
+}
+.page-schema-editor > .layout > .panel {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e9ecef;
+}
+.page-schema-editor > .layout > .panel > .panel-title {
+  margin: 0 0 1.5rem 0;
+  color: #2c3e50;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #ecf0f1;
+}
+.page-schema-editor > .layout > .panel > .form-group {
+  margin-bottom: 1rem;
+}
+.page-schema-editor > .layout > .panel > .form-group > .label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.9rem;
+}
+.page-schema-editor > .layout > .panel > .form-group > .input,
+.page-schema-editor > .layout > .panel > .form-group > .textarea,
+.page-schema-editor > .layout > .panel > .form-group > .select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.page-schema-editor > .layout > .panel > .form-group > .input:focus,
+.page-schema-editor > .layout > .panel > .form-group > .textarea:focus,
+.page-schema-editor > .layout > .panel > .form-group > .select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+.page-schema-editor > .layout > .panel > .form-group > .input.error,
+.page-schema-editor > .layout > .panel > .form-group > .textarea.error,
+.page-schema-editor > .layout > .panel > .form-group > .select.error {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+.page-schema-editor > .layout > .panel > .form-group > .textarea {
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+}
+.page-schema-editor > .layout > .panel > .form-group > .error-message {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+.page-schema-editor > .layout > .properties-panel > .add-property {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #dee2e6;
+}
+.page-schema-editor > .layout > .properties-panel > .add-property > .add-title {
+  margin: 0 0 1rem 0;
+  color: #495057;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.page-schema-editor > .layout > .properties-panel > .add-property > .form-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+@container schema-editor (max-width: 768px) {
+  .page-schema-editor > .layout > .properties-panel > .add-property > .form-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+.page-schema-editor > .layout > .properties-panel > .add-property > .form-row > .input,
+.page-schema-editor > .layout > .properties-panel > .add-property > .form-row > .select {
+  flex: 1;
+  min-width: 120px;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+.page-schema-editor > .layout > .properties-panel > .add-property > .form-row > .input:focus,
+.page-schema-editor > .layout > .properties-panel > .add-property > .form-row > .select:focus {
+  outline: none;
+  border-color: #3498db;
+}
+.page-schema-editor > .layout > .properties-panel > .add-property > .form-row > .btn-add {
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+@media screen and (hover: hover) {
+  .page-schema-editor > .layout > .properties-panel > .add-property > .form-row > .btn-add:hover:not(:disabled) {
+    background: #219a52;
+  }
+}
+@media screen and (hover: none) {
+  .page-schema-editor > .layout > .properties-panel > .add-property > .form-row > .btn-add:active:not(:disabled) {
+    background: #219a52;
+    transform: scale(0.98);
+  }
+}
+.page-schema-editor > .layout > .properties-panel > .add-property > .form-row > .btn-add:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+}
+.page-schema-editor > .layout > .properties-panel > .add-property > .form-row > .checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: #495057;
+}
+.page-schema-editor > .layout > .properties-panel > .add-property > .form-row > .checkbox-container > .checkbox {
+  width: auto;
+  margin: 0;
+}
+.page-schema-editor > .layout > .properties-panel > .add-property > .constraints-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.5rem;
+}
+.page-schema-editor > .layout > .properties-panel > .add-property > .constraints-row > .input,
+.page-schema-editor > .layout > .properties-panel > .add-property > .constraints-row > .select {
+  padding: 0.4rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+.page-schema-editor > .layout > .properties-panel > .properties-list {
+  max-height: 500px;
+  overflow-y: auto;
+}
+.page-schema-editor > .layout > .properties-panel > .properties-list > .empty-state {
+  text-align: center;
+  color: #7f8c8d;
+  font-style: italic;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 2px dashed #dee2e6;
+}
+.page-schema-editor > .layout > .properties-panel > .properties-list > .property-item {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+@media screen and (hover: hover) {
+  .page-schema-editor > .layout > .properties-panel > .properties-list > .property-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+.page-schema-editor > .layout > .properties-panel > .properties-list > .property-item > .property-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.page-schema-editor > .layout > .properties-panel > .properties-list > .property-item > .property-header > .property-name {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  color: #2c3e50;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.page-schema-editor > .layout > .properties-panel > .properties-list > .property-item > .property-header > .btn-remove {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+@media screen and (hover: hover) {
+  .page-schema-editor > .layout > .properties-panel > .properties-list > .property-item > .property-header > .btn-remove:hover {
+    background: #c0392b;
+  }
+}
+@media screen and (hover: none) {
+  .page-schema-editor > .layout > .properties-panel > .properties-list > .property-item > .property-header > .btn-remove:active {
+    background: #c0392b;
+    transform: scale(0.95);
+  }
+}
+.page-schema-editor > .layout > .properties-panel > .properties-list > .property-item > .badges {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+.page-schema-editor > .layout > .properties-panel > .properties-list > .property-item > .badges > .badge {
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.page-schema-editor > .layout > .properties-panel > .properties-list > .property-item > .badges > .badge.type-badge {
+  background: #3498db;
+  color: white;
+}
+.page-schema-editor > .layout > .properties-panel > .properties-list > .property-item > .badges > .badge.required-badge {
+  background: #e74c3c;
+  color: white;
+}
+.page-schema-editor > .layout > .properties-panel > .properties-list > .property-item > .property-description {
+  margin: 0.5rem 0;
+  color: #6c757d;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+.page-schema-editor > .layout > .properties-panel > .properties-list > .property-item > .constraints {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.page-schema-editor > .layout > .properties-panel > .properties-list > .property-item > .constraints > .constraint {
+  background: #ecf0f1;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: #2c3e50;
+}
+.page-schema-editor > .layout > .preview-panel > .schema-preview {
+  background: #2c3e50;
+  color: #ecf0f1;
+  padding: 1rem;
+  border-radius: 8px;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  max-height: 500px;
+  overflow: auto;
+  margin: 0 0 1rem 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.page-schema-editor > .layout > .preview-panel > .validation-errors {
+  margin-bottom: 1rem;
+}
+.page-schema-editor > .layout > .preview-panel > .validation-errors > .error-item {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  border-left: 4px solid #e74c3c;
+}
+.page-schema-editor > .layout > .preview-panel > .actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.page-schema-editor > .layout > .preview-panel > .actions > .btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.page-schema-editor > .layout > .preview-panel > .actions > .btn.btn-primary {
+  background: #3498db;
+  color: white;
+}
+@media screen and (hover: hover) {
+  .page-schema-editor > .layout > .preview-panel > .actions > .btn.btn-primary:hover {
+    background: #2980b9;
+  }
+}
+@media screen and (hover: none) {
+  .page-schema-editor > .layout > .preview-panel > .actions > .btn.btn-primary:active {
+    background: #2980b9;
+    transform: scale(0.98);
+  }
+}
+.page-schema-editor > .layout > .preview-panel > .actions > .btn.btn-success {
+  background: #27ae60;
+  color: white;
+}
+@media screen and (hover: hover) {
+  .page-schema-editor > .layout > .preview-panel > .actions > .btn.btn-success:hover {
+    background: #219a52;
+  }
+}
+@media screen and (hover: none) {
+  .page-schema-editor > .layout > .preview-panel > .actions > .btn.btn-success:active {
+    background: #219a52;
+    transform: scale(0.98);
+  }
+}
+.page-schema-editor > .layout > .preview-panel > .actions > .btn:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+  transform: none;
+}
+.page-schema-editor .btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.page-schema-editor .btn.btn-primary {
+  background: #3498db;
+  color: white;
+}
+@media screen and (hover: hover) {
+  .page-schema-editor .btn.btn-primary:hover:not(:disabled) {
+    background: #2980b9;
+  }
+}
+@media screen and (hover: none) {
+  .page-schema-editor .btn.btn-primary:active:not(:disabled) {
+    background: #2980b9;
+    transform: scale(0.98);
+  }
+}
+.page-schema-editor .btn.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+@media screen and (hover: hover) {
+  .page-schema-editor .btn.btn-secondary:hover:not(:disabled) {
+    background: #5a6268;
+  }
+}
+@media screen and (hover: none) {
+  .page-schema-editor .btn.btn-secondary:active:not(:disabled) {
+    background: #5a6268;
+    transform: scale(0.98);
+  }
+}
+.page-schema-editor .btn.btn-success {
+  background: #27ae60;
+  color: white;
+}
+@media screen and (hover: hover) {
+  .page-schema-editor .btn.btn-success:hover:not(:disabled) {
+    background: #219a52;
+  }
+}
+@media screen and (hover: none) {
+  .page-schema-editor .btn.btn-success:active:not(:disabled) {
+    background: #219a52;
+    transform: scale(0.98);
+  }
+}
+.page-schema-editor .btn.btn-danger {
+  background: #e74c3c;
+  color: white;
+}
+@media screen and (hover: hover) {
+  .page-schema-editor .btn.btn-danger:hover:not(:disabled) {
+    background: #c0392b;
+  }
+}
+@media screen and (hover: none) {
+  .page-schema-editor .btn.btn-danger:active:not(:disabled) {
+    background: #c0392b;
+    transform: scale(0.98);
+  }
+}
+.page-schema-editor .btn:disabled {
+  background: #bdc3c7 !important;
+  cursor: not-allowed;
+  transform: none !important;
+  opacity: 0.6;
+}
+.page-schema-editor .btn.btn-sm {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+}
+.page-schema-editor .btn.btn-large {
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+}
+.page-schema-editor > .notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  z-index: 1000;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.page-schema-editor > .notification.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+.page-schema-editor > .notification.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+.page-schema-editor > .notification.hidden {
+  opacity: 0;
+  transform: translateX(100%);
+  pointer-events: none;
+}
+
+.btn-info {
+  background: #17a2b8;
+  color: white;
+}
+
+.btn-info:hover {
+  background: #138496;
+}</style><div class="page-schema-editor" q:key="i8_7" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:78:5"><div class="header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:80:7"><h1 class="title" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:81:9">Gestionnaire de Schémas JSON</h1><p class="subtitle" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:82:9">Créez, éditez et gérez vos schémas JSON</p><div class="header-actions" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:84:9"><button title="Accéder aux entités basées sur vos schémas" class="btn btn-info btn-large" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_button_onClick_MK1fMD6AN6A.js#routes_component_div_div_div_button_onClick_MK1fMD6AN6A[0]" q:id="7" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:85:11">🗃️ Base de Données</button><button class="btn btn-primary btn-large" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_button_onClick_1_0EpYkLplE1E.js#routes_component_div_div_div_button_onClick_1_0EpYkLplE1E[0]" q:id="8" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:93:11">➕ Nouveau Schéma</button></div></div><div class="stats-section" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:103:7"><div class="stat-card" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:104:9"><div class="stat-number" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:105:11"><!--t=9-->9<!----></div><div class="stat-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:106:11">Schémas créés</div></div><div class="stat-card" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:108:9"><div class="stat-number" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:109:11">2</div><div class="stat-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:114:11">Modifiés aujourd&#39;hui</div></div></div><div class="schemas-section" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:119:7"><div class="section-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:120:9"><h2 class="section-title" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:121:11">Vos Schémas</h2><div class="section-actions" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:122:11"><button class="btn btn-secondary" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_button_onClick_AmBfNGutk2s.js#routes_component_div_div_div_div_button_onClick_AmBfNGutk2s[0 1]" q:id="a" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:123:13">🔄 Actualiser</button></div></div><div class="schemas-grid" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:157:11"><div class="schema-card" q:key="test-user" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:159:15"><div class="card-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:160:17"><h3 class="card-title" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:161:19">test-user</h3><div class="card-badges" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:162:19"><span class="badge type-badge" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:163:21">object</span><span class="badge version-badge major" q:key="i8_1" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:167:23">v1.0</span></div></div><div class="card-content" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:174:17"><p class="card-description" q:key="i8_2" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:176:21">Schéma de test pour valider le fonctionnement après restructuration</p><div class="card-metadata" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:184:19"><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:185:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:186:23">Propriétés:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:187:23">4</span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:191:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:192:23">Version:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:193:23">1.0<span title="Version initiale (migration)" class="version-info" q:key="i8_3" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:196:27">(major)</span></span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:202:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:203:23">Créé:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:204:23">17/09/2025</span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:208:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:209:23">Modifié:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:210:23">17/09/2025</span></div></div><div class="properties-preview" q:key="i8_5" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:217:21"><div class="properties-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:218:23">Propriétés:</div><div class="properties-list" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:219:23"><span class="property-tag" q:key="id" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">id (string)</span><span class="property-tag" q:key="nom" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">nom (string)</span><span class="property-tag" q:key="email" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">email (string)</span><span class="property-tag more" q:key="i8_4" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:232:27">+1 autres</span></div></div></div><div class="card-actions" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:241:17"><button title="Éditer le schéma" class="btn btn-primary btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_VnSAUSlLYuA.js#routes_component_div_div_div_div_div_button_onClick_VnSAUSlLYuA[0 1]" q:id="b" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:242:19">✏️ Éditer</button><button title="Voir les entités basées sur ce schéma" class="btn btn-success btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_1_dCOG0z5ZXjc.js#routes_component_div_div_div_div_div_button_onClick_1_dCOG0z5ZXjc[0 1]" q:id="c" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:250:19">🗃️ Entités</button><button title="Copier le JSON Schema" class="btn btn-secondary btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_2_Fa1jE2TZSjg.js#routes_component_div_div_div_div_div_button_onClick_2_Fa1jE2TZSjg[0 1]" q:id="d" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:258:19">📋 Copier</button><button title="Supprimer le schéma" class="btn btn-danger btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_3_giSJk0BWdpc.js#routes_component_div_div_div_div_div_button_onClick_3_giSJk0BWdpc[0 1]" q:id="e" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:266:19">🗑️ Supprimer</button></div></div><div class="schema-card" q:key="encoreuntest" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:159:15"><div class="card-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:160:17"><h3 class="card-title" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:161:19">encoreuntest</h3><div class="card-badges" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:162:19"><span class="badge type-badge" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:163:21">object</span><span class="badge version-badge major" q:key="i8_1" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:167:23">v1.0</span></div></div><div class="card-content" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:174:17"><div class="card-metadata" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:184:19"><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:185:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:186:23">Propriétés:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:187:23">2</span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:191:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:192:23">Version:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:193:23">1.0<span title="Version initiale" class="version-info" q:key="i8_3" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:196:27">(major)</span></span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:202:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:203:23">Créé:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:204:23">16/09/2025</span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:208:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:209:23">Modifié:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:210:23">16/09/2025</span></div></div><div class="properties-preview" q:key="i8_5" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:217:21"><div class="properties-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:218:23">Propriétés:</div><div class="properties-list" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:219:23"><span class="property-tag" q:key="test" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">test (string)</span><span class="property-tag" q:key="pop" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">pop (array)</span></div></div></div><div class="card-actions" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:241:17"><button title="Éditer le schéma" class="btn btn-primary btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_VnSAUSlLYuA.js#routes_component_div_div_div_div_div_button_onClick_VnSAUSlLYuA[0 1]" q:id="f" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:242:19">✏️ Éditer</button><button title="Voir les entités basées sur ce schéma" class="btn btn-success btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_1_dCOG0z5ZXjc.js#routes_component_div_div_div_div_div_button_onClick_1_dCOG0z5ZXjc[0 1]" q:id="g" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:250:19">🗃️ Entités</button><button title="Copier le JSON Schema" class="btn btn-secondary btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_2_Fa1jE2TZSjg.js#routes_component_div_div_div_div_div_button_onClick_2_Fa1jE2TZSjg[0 1]" q:id="h" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:258:19">📋 Copier</button><button title="Supprimer le schéma" class="btn btn-danger btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_3_giSJk0BWdpc.js#routes_component_div_div_div_div_div_button_onClick_3_giSJk0BWdpc[0 1]" q:id="i" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:266:19">🗑️ Supprimer</button></div></div><div class="schema-card" q:key="user" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:159:15"><div class="card-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:160:17"><h3 class="card-title" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:161:19">user</h3><div class="card-badges" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:162:19"><span class="badge type-badge" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:163:21">object</span><span class="badge version-badge minor" q:key="i8_1" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:167:23">v1.1</span></div></div><div class="card-content" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:174:17"><p class="card-description" q:key="i8_2" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:176:21">Schéma pour les données utilisateur</p><div class="card-metadata" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:184:19"><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:185:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:186:23">Propriétés:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:187:23">5</span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:191:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:192:23">Version:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:193:23">1.1<span title="Nouvelles propriétés: adresses" class="version-info" q:key="i8_3" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:196:27">(minor)</span></span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:202:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:203:23">Créé:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:204:23">11/09/2025</span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:208:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:209:23">Modifié:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:210:23">14/09/2025</span></div></div><div class="properties-preview" q:key="i8_5" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:217:21"><div class="properties-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:218:23">Propriétés:</div><div class="properties-list" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:219:23"><span class="property-tag" q:key="firstName" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">firstName (string)</span><span class="property-tag" q:key="lastName" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">lastName (string)</span><span class="property-tag" q:key="email" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">email (string)</span><span class="property-tag more" q:key="i8_4" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:232:27">+2 autres</span></div></div></div><div class="card-actions" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:241:17"><button title="Éditer le schéma" class="btn btn-primary btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_VnSAUSlLYuA.js#routes_component_div_div_div_div_div_button_onClick_VnSAUSlLYuA[0 1]" q:id="j" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:242:19">✏️ Éditer</button><button title="Voir les entités basées sur ce schéma" class="btn btn-success btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_1_dCOG0z5ZXjc.js#routes_component_div_div_div_div_div_button_onClick_1_dCOG0z5ZXjc[0 1]" q:id="k" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:250:19">🗃️ Entités</button><button title="Copier le JSON Schema" class="btn btn-secondary btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_2_Fa1jE2TZSjg.js#routes_component_div_div_div_div_div_button_onClick_2_Fa1jE2TZSjg[0 1]" q:id="l" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:258:19">📋 Copier</button><button title="Supprimer le schéma" class="btn btn-danger btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_3_giSJk0BWdpc.js#routes_component_div_div_div_div_div_button_onClick_3_giSJk0BWdpc[0 1]" q:id="m" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:266:19">🗑️ Supprimer</button></div></div><div class="schema-card" q:key="order" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:159:15"><div class="card-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:160:17"><h3 class="card-title" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:161:19">order</h3><div class="card-badges" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:162:19"><span class="badge type-badge" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:163:21">object</span><span class="badge version-badge major" q:key="i8_1" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:167:23">v1.0</span></div></div><div class="card-content" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:174:17"><p class="card-description" q:key="i8_2" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:176:21">Schéma complexe pour une commande e-commerce avec objets imbriqués</p><div class="card-metadata" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:184:19"><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:185:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:186:23">Propriétés:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:187:23">5</span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:191:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:192:23">Version:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:193:23">1.0<span title="Version initiale (correction format)" class="version-info" q:key="i8_3" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:196:27">(major)</span></span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:202:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:203:23">Créé:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:204:23">12/09/2025</span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:208:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:209:23">Modifié:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:210:23">12/09/2025</span></div></div><div class="properties-preview" q:key="i8_5" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:217:21"><div class="properties-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:218:23">Propriétés:</div><div class="properties-list" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:219:23"><span class="property-tag" q:key="orderNumber" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">orderNumber (string)</span><span class="property-tag" q:key="customer" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">customer (object)</span><span class="property-tag" q:key="items" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">items (array)</span><span class="property-tag more" q:key="i8_4" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:232:27">+2 autres</span></div></div></div><div class="card-actions" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:241:17"><button title="Éditer le schéma" class="btn btn-primary btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_VnSAUSlLYuA.js#routes_component_div_div_div_div_div_button_onClick_VnSAUSlLYuA[0 1]" q:id="n" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:242:19">✏️ Éditer</button><button title="Voir les entités basées sur ce schéma" class="btn btn-success btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_1_dCOG0z5ZXjc.js#routes_component_div_div_div_div_div_button_onClick_1_dCOG0z5ZXjc[0 1]" q:id="o" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:250:19">🗃️ Entités</button><button title="Copier le JSON Schema" class="btn btn-secondary btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_2_Fa1jE2TZSjg.js#routes_component_div_div_div_div_div_button_onClick_2_Fa1jE2TZSjg[0 1]" q:id="p" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:258:19">📋 Copier</button><button title="Supprimer le schéma" class="btn btn-danger btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_3_giSJk0BWdpc.js#routes_component_div_div_div_div_div_button_onClick_3_giSJk0BWdpc[0 1]" q:id="q" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:266:19">🗑️ Supprimer</button></div></div><div class="schema-card" q:key="test-entity" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:159:15"><div class="card-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:160:17"><h3 class="card-title" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:161:19">test-entity</h3><div class="card-badges" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:162:19"><span class="badge type-badge" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:163:21">object</span><span class="badge version-badge major" q:key="i8_1" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:167:23">v1.0</span></div></div><div class="card-content" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:174:17"><p class="card-description" q:key="i8_2" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:176:21">Schéma de test pour les entités</p><div class="card-metadata" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:184:19"><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:185:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:186:23">Propriétés:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:187:23">4</span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:191:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:192:23">Version:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:193:23">1.0<span title="Version initiale (correction format)" class="version-info" q:key="i8_3" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:196:27">(major)</span></span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:202:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:203:23">Créé:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:204:23">12/09/2025</span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:208:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:209:23">Modifié:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:210:23">12/09/2025</span></div></div><div class="properties-preview" q:key="i8_5" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:217:21"><div class="properties-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:218:23">Propriétés:</div><div class="properties-list" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:219:23"><span class="property-tag" q:key="name" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">name (string)</span><span class="property-tag" q:key="email" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">email (string)</span><span class="property-tag" q:key="age" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">age (integer)</span><span class="property-tag more" q:key="i8_4" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:232:27">+1 autres</span></div></div></div><div class="card-actions" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:241:17"><button title="Éditer le schéma" class="btn btn-primary btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_VnSAUSlLYuA.js#routes_component_div_div_div_div_div_button_onClick_VnSAUSlLYuA[0 1]" q:id="r" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:242:19">✏️ Éditer</button><button title="Voir les entités basées sur ce schéma" class="btn btn-success btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_1_dCOG0z5ZXjc.js#routes_component_div_div_div_div_div_button_onClick_1_dCOG0z5ZXjc[0 1]" q:id="s" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:250:19">🗃️ Entités</button><button title="Copier le JSON Schema" class="btn btn-secondary btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_2_Fa1jE2TZSjg.js#routes_component_div_div_div_div_div_button_onClick_2_Fa1jE2TZSjg[0 1]" q:id="t" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:258:19">📋 Copier</button><button title="Supprimer le schéma" class="btn btn-danger btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_3_giSJk0BWdpc.js#routes_component_div_div_div_div_div_button_onClick_3_giSJk0BWdpc[0 1]" q:id="u" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:266:19">🗑️ Supprimer</button></div></div><div class="schema-card" q:key="BigTest" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:159:15"><div class="card-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:160:17"><h3 class="card-title" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:161:19">BigTest</h3><div class="card-badges" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:162:19"><span class="badge type-badge" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:163:21">object</span><span class="badge version-badge minor" q:key="i8_1" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:167:23">v2.1</span></div></div><div class="card-content" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:174:17"><div class="card-metadata" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:184:19"><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:185:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:186:23">Propriétés:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:187:23">3</span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:191:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:192:23">Version:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:193:23">2.1<span title="Nouvelles propriétés: state" class="version-info" q:key="i8_3" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:196:27">(minor)</span></span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:202:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:203:23">Créé:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:204:23">11/09/2025</span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:208:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:209:23">Modifié:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:210:23">12/09/2025</span></div></div><div class="properties-preview" q:key="i8_5" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:217:21"><div class="properties-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:218:23">Propriétés:</div><div class="properties-list" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:219:23"><span class="property-tag" q:key="Images" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">Images (array)</span><span class="property-tag" q:key="product" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">product (object)</span><span class="property-tag" q:key="state" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">state (string)</span></div></div></div><div class="card-actions" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:241:17"><button title="Éditer le schéma" class="btn btn-primary btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_VnSAUSlLYuA.js#routes_component_div_div_div_div_div_button_onClick_VnSAUSlLYuA[0 1]" q:id="v" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:242:19">✏️ Éditer</button><button title="Voir les entités basées sur ce schéma" class="btn btn-success btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_1_dCOG0z5ZXjc.js#routes_component_div_div_div_div_div_button_onClick_1_dCOG0z5ZXjc[0 1]" q:id="w" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:250:19">🗃️ Entités</button><button title="Copier le JSON Schema" class="btn btn-secondary btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_2_Fa1jE2TZSjg.js#routes_component_div_div_div_div_div_button_onClick_2_Fa1jE2TZSjg[0 1]" q:id="x" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:258:19">📋 Copier</button><button title="Supprimer le schéma" class="btn btn-danger btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_3_giSJk0BWdpc.js#routes_component_div_div_div_div_div_button_onClick_3_giSJk0BWdpc[0 1]" q:id="y" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:266:19">🗑️ Supprimer</button></div></div><div class="schema-card" q:key="test" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:159:15"><div class="card-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:160:17"><h3 class="card-title" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:161:19">test</h3><div class="card-badges" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:162:19"><span class="badge type-badge" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:163:21">object</span><span class="badge version-badge major" q:key="i8_1" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:167:23">v1.0</span></div></div><div class="card-content" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:174:17"><p class="card-description" q:key="i8_2" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:176:21">Un schéma de test créé automatiquement</p><div class="card-metadata" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:184:19"><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:185:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:186:23">Propriétés:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:187:23">5</span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:191:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:192:23">Version:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:193:23">1.0<span title="Version initiale (migration automatique)" class="version-info" q:key="i8_3" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:196:27">(major)</span></span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:202:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:203:23">Créé:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:204:23">11/09/2025</span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:208:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:209:23">Modifié:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:210:23">12/09/2025</span></div></div><div class="properties-preview" q:key="i8_5" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:217:21"><div class="properties-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:218:23">Propriétés:</div><div class="properties-list" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:219:23"><span class="property-tag" q:key="nom" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">nom (string)</span><span class="property-tag" q:key="age" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">age (integer)</span><span class="property-tag" q:key="email" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">email (string)</span><span class="property-tag more" q:key="i8_4" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:232:27">+2 autres</span></div></div></div><div class="card-actions" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:241:17"><button title="Éditer le schéma" class="btn btn-primary btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_VnSAUSlLYuA.js#routes_component_div_div_div_div_div_button_onClick_VnSAUSlLYuA[0 1]" q:id="z" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:242:19">✏️ Éditer</button><button title="Voir les entités basées sur ce schéma" class="btn btn-success btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_1_dCOG0z5ZXjc.js#routes_component_div_div_div_div_div_button_onClick_1_dCOG0z5ZXjc[0 1]" q:id="10" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:250:19">🗃️ Entités</button><button title="Copier le JSON Schema" class="btn btn-secondary btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_2_Fa1jE2TZSjg.js#routes_component_div_div_div_div_div_button_onClick_2_Fa1jE2TZSjg[0 1]" q:id="11" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:258:19">📋 Copier</button><button title="Supprimer le schéma" class="btn btn-danger btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_3_giSJk0BWdpc.js#routes_component_div_div_div_div_div_button_onClick_3_giSJk0BWdpc[0 1]" q:id="12" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:266:19">🗑️ Supprimer</button></div></div><div class="schema-card" q:key="product" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:159:15"><div class="card-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:160:17"><h3 class="card-title" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:161:19">product</h3><div class="card-badges" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:162:19"><span class="badge type-badge" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:163:21">object</span><span class="badge version-badge major" q:key="i8_1" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:167:23">v1.0</span></div></div><div class="card-content" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:174:17"><p class="card-description" q:key="i8_2" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:176:21">Schéma pour les données produit</p><div class="card-metadata" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:184:19"><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:185:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:186:23">Propriétés:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:187:23">5</span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:191:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:192:23">Version:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:193:23">1.0<span title="Version initiale (migration automatique)" class="version-info" q:key="i8_3" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:196:27">(major)</span></span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:202:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:203:23">Créé:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:204:23">11/09/2025</span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:208:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:209:23">Modifié:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:210:23">12/09/2025</span></div></div><div class="properties-preview" q:key="i8_5" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:217:21"><div class="properties-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:218:23">Propriétés:</div><div class="properties-list" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:219:23"><span class="property-tag" q:key="name" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">name (string)</span><span class="property-tag" q:key="description" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">description (string)</span><span class="property-tag" q:key="price" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">price (number)</span><span class="property-tag more" q:key="i8_4" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:232:27">+2 autres</span></div></div></div><div class="card-actions" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:241:17"><button title="Éditer le schéma" class="btn btn-primary btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_VnSAUSlLYuA.js#routes_component_div_div_div_div_div_button_onClick_VnSAUSlLYuA[0 1]" q:id="13" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:242:19">✏️ Éditer</button><button title="Voir les entités basées sur ce schéma" class="btn btn-success btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_1_dCOG0z5ZXjc.js#routes_component_div_div_div_div_div_button_onClick_1_dCOG0z5ZXjc[0 1]" q:id="14" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:250:19">🗃️ Entités</button><button title="Copier le JSON Schema" class="btn btn-secondary btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_2_Fa1jE2TZSjg.js#routes_component_div_div_div_div_div_button_onClick_2_Fa1jE2TZSjg[0 1]" q:id="15" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:258:19">📋 Copier</button><button title="Supprimer le schéma" class="btn btn-danger btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_3_giSJk0BWdpc.js#routes_component_div_div_div_div_div_button_onClick_3_giSJk0BWdpc[0 1]" q:id="16" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:266:19">🗑️ Supprimer</button></div></div><div class="schema-card" q:key="book" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:159:15"><div class="card-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:160:17"><h3 class="card-title" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:161:19">book</h3><div class="card-badges" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:162:19"><span class="badge type-badge" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:163:21">object</span><span class="badge version-badge major" q:key="i8_1" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:167:23">v1.0</span></div></div><div class="card-content" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:174:17"><div class="card-metadata" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:184:19"><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:185:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:186:23">Propriétés:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:187:23">3</span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:191:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:192:23">Version:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:193:23">1.0<span title="Version initiale (migration automatique)" class="version-info" q:key="i8_3" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:196:27">(major)</span></span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:202:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:203:23">Créé:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:204:23">11/09/2025</span></div><div class="metadata-item" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:208:21"><span class="metadata-label" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:209:23">Modifié:</span><span class="metadata-value" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:210:23">12/09/2025</span></div></div><div class="properties-preview" q:key="i8_5" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:217:21"><div class="properties-header" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:218:23">Propriétés:</div><div class="properties-list" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:219:23"><span class="property-tag" q:key="id" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">id (number)</span><span class="property-tag" q:key="images" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">images (array)</span><span class="property-tag" q:key="products" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:225:31">products (array)</span></div></div></div><div class="card-actions" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:241:17"><button title="Éditer le schéma" class="btn btn-primary btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_VnSAUSlLYuA.js#routes_component_div_div_div_div_div_button_onClick_VnSAUSlLYuA[0 1]" q:id="17" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:242:19">✏️ Éditer</button><button title="Voir les entités basées sur ce schéma" class="btn btn-success btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_1_dCOG0z5ZXjc.js#routes_component_div_div_div_div_div_button_onClick_1_dCOG0z5ZXjc[0 1]" q:id="18" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:250:19">🗃️ Entités</button><button title="Copier le JSON Schema" class="btn btn-secondary btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_2_Fa1jE2TZSjg.js#routes_component_div_div_div_div_div_button_onClick_2_Fa1jE2TZSjg[0 1]" q:id="19" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:258:19">📋 Copier</button><button title="Supprimer le schéma" class="btn btn-danger btn-sm" on:click="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_div_div_div_div_div_button_onClick_3_giSJk0BWdpc.js#routes_component_div_div_div_div_div_button_onClick_3_giSJk0BWdpc[0 1]" q:id="1a" data-qwik-inspector="/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx:266:19">🗑️ Supprimer</button></div></div></div></div></div><!--/qv--><!--/qv--></div></div></div><!--/qv--><script on-document:qcinit="/node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_spaInit_event_9KRx0IOCHt8.js#spaInit_event_9KRx0IOCHt8" on-document:qinit="#0" q:key="ni_1" data-qwik-inspector="/node_modules/@builder.io/qwik-city/lib/index.qwik.mjs:195:35"></script><!--/qv--><!--/qv--></body><!--/qv--><!--/qv--><!--/qv--><script type="qwik/json">{
+  "refs": {
+    "7": "r",
+    "8": "r",
+    "10": "r 8z",
+    "11": "au 8z",
+    "12": "av 8z",
+    "13": "r 9v",
+    "14": "r 9v",
+    "15": "au 9v",
+    "16": "av 9v",
+    "17": "r ad",
+    "18": "r ad",
+    "19": "au ad",
+    "a": "c d",
+    "b": "r 1n",
+    "c": "r 1n",
+    "d": "au 1n",
+    "e": "av 1n",
+    "f": "r 25",
+    "g": "r 25",
+    "h": "au 25",
+    "i": "av 25",
+    "j": "r 31",
+    "k": "r 31",
+    "l": "au 31",
+    "m": "av 31",
+    "n": "r 76",
+    "o": "r 76",
+    "p": "au 76",
+    "q": "av 76",
+    "r": "r 7o",
+    "s": "r 7o",
+    "t": "au 7o",
+    "u": "av 7o",
+    "v": "r 8c",
+    "w": "r 8c",
+    "x": "au 8c",
+    "y": "av 8c",
+    "z": "r 8z",
+    "1a": "av ad"
+  },
+  "ctx": {
+    "1": {
+      "h": " o!",
+      "w": "q",
+      "c": "qc-c=0! qc-ic=a qc-h=6! qc-l=7! qc-n=r qc-s=8! qc-a=b qc-ir=9 qc-p=m"
+    },
+    "2": {
+      "h": "aw",
+      "s": "6! 7!"
+    },
+    "4": {
+      "h": "e",
+      "s": "a"
+    },
+    "6": {
+      "h": "ax",
+      "s": "ay r f9 c d 9q"
+    }
+  },
+  "objs": [
+    {
+      "headings": "fa",
+      "menu": "fa"
+    },
+    [],
+    [],
+    [],
+    [],
+    {},
+    {
+      "title": "f",
+      "meta": "1",
+      "links": "2",
+      "styles": "3",
+      "scripts": "4",
+      "frontmatter": "5"
+    },
+    {
+      "url": "h",
+      "params": "i",
+      "isNavigating": "j",
+      "prevUrl": "fa"
+    },
+    {
+      "HkKe1Rp03j4": "f8"
+    },
+    "\u0012l",
+    "\u0012fa",
+    "\u0012fa",
+    "\u0012ae",
+    "\u0012aj",
+    "\u0002/node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_RouterOutlet_component_ScE8eseirUA.js#RouterOutlet_component_ScE8eseirUA",
+    "",
+    "\u00117! @1",
+    "\u0005http://localhost:5501/",
+    {},
+    false,
+    "initial",
+    {
+      "type": "k",
+      "dest": "h"
+    },
+    "\u0002/node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityProvider_component_registerPreventNav_qGVD1Sz413o.js#QwikCityProvider_component_registerPreventNav_qGVD1Sz413o",
+    {},
+    {},
+    "\u0002/node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityProvider_component_useTask_Ysfvd0zsHZc.js#QwikCityProvider_component_useTask_Ysfvd0zsHZc[b 0! a 6! fa r 8! n o! 9 7!]",
+    "\u00032 h p #1",
+    "\u0002/node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityProvider_component_goto_aww2BzpANGM.js#QwikCityProvider_component_goto_aww2BzpANGM[b n 9 7!]",
+    "test-user",
+    "object",
+    "Utilisateur de test",
+    "Schéma de test pour valider le fonctionnement après restructuration",
+    "string",
+    "Identifiant",
+    "Identifiant unique de l'utilisateur",
+    {
+      "type": "w",
+      "title": "x",
+      "description": "y"
+    },
+    "Nom",
+    "Nom de famille de l'utilisateur",
+    {
+      "type": "w",
+      "title": "10",
+      "description": "11"
+    },
+    "Email",
+    "Adresse email de l'utilisateur",
+    "email",
+    {
+      "type": "w",
+      "title": "13",
+      "description": "14",
+      "format": "15"
+    },
+    "integer",
+    "Âge",
+    "Âge de l'utilisateur",
+    0,
+    150,
+    {
+      "type": "17",
+      "title": "18",
+      "description": "19",
+      "minimum": "1a",
+      "maximum": "1b"
+    },
+    {
+      "id": "z",
+      "nom": "12",
+      "email": "16",
+      "age": "1c"
+    },
+    "id",
+    "nom",
+    [
+      "1e",
+      "1f",
+      "15"
+    ],
+    "1.0",
+    {
+      "type": "t",
+      "title": "u",
+      "description": "v",
+      "properties": "1d",
+      "required": "1g",
+      "additionalProperties": "j",
+      "version": "1h"
+    },
+    "2025-09-17T00:34:00.000Z",
+    "major",
+    "Version initiale (migration)",
+    {
+      "version": "1h",
+      "createdAt": "1j",
+      "changeType": "1k",
+      "changeDescription": "1l"
+    },
+    {
+      "id": "s",
+      "name": "s",
+      "schema": "1i",
+      "createdAt": "1j",
+      "updatedAt": "1j",
+      "version": "1h",
+      "versionInfo": "1m"
+    },
+    "encoreuntest",
+    {
+      "type": "w",
+      "description": "f"
+    },
+    "array",
+    "number",
+    {
+      "type": "1r",
+      "description": "f"
+    },
+    {
+      "type": "1r",
+      "description": "f"
+    },
+    {
+      "pop": "1t"
+    },
+    {
+      "type": "t",
+      "description": "f",
+      "properties": "1u"
+    },
+    {
+      "test": "1s",
+      "pop": "1v"
+    },
+    [],
+    {
+      "type": "t",
+      "properties": "1w",
+      "required": "1x"
+    },
+    {
+      "type": "1q",
+      "description": "f",
+      "items": "1y"
+    },
+    {
+      "test": "1p",
+      "pop": "1z"
+    },
+    {
+      "type": "t",
+      "title": "1o",
+      "description": "f",
+      "properties": "20",
+      "version": "1h"
+    },
+    "2025-09-16T17:13:08.962Z",
+    "Version initiale",
+    {
+      "version": "1h",
+      "createdAt": "22",
+      "changeType": "1k",
+      "changeDescription": "23"
+    },
+    {
+      "id": "1o",
+      "name": "1o",
+      "schema": "21",
+      "createdAt": "22",
+      "updatedAt": "22",
+      "version": "1h",
+      "versionInfo": "24"
+    },
+    "user",
+    "Utilisateur",
+    "Schéma pour les données utilisateur",
+    "Prénom de l'utilisateur",
+    2,
+    50,
+    {
+      "type": "w",
+      "description": "29",
+      "minLength": "2a",
+      "maxLength": "2b"
+    },
+    {
+      "type": "w",
+      "description": "11",
+      "minLength": "2a",
+      "maxLength": "2b"
+    },
+    "Adresse email",
+    {
+      "type": "w",
+      "description": "2e",
+      "format": "15"
+    },
+    "Âge en années",
+    120,
+    {
+      "type": "17",
+      "description": "2g",
+      "minimum": "1a",
+      "maximum": "2h"
+    },
+    {
+      "type": "w",
+      "description": "f"
+    },
+    {
+      "type": "w",
+      "description": "f"
+    },
+    {
+      "type": "w",
+      "description": "f"
+    },
+    {
+      "address": "2j",
+      "cp": "2k",
+      "ville": "2l"
+    },
+    [],
+    {
+      "type": "t",
+      "properties": "2m",
+      "required": "2n"
+    },
+    {
+      "type": "1q",
+      "description": "f",
+      "items": "2o"
+    },
+    {
+      "firstName": "2c",
+      "lastName": "2d",
+      "email": "2f",
+      "age": "2i",
+      "adresses": "2p"
+    },
+    "firstName",
+    "lastName",
+    [
+      "2r",
+      "2s",
+      "15"
+    ],
+    "1.1",
+    {
+      "type": "t",
+      "title": "27",
+      "description": "28",
+      "properties": "2q",
+      "required": "2t",
+      "version": "2u"
+    },
+    "2025-09-11T10:00:00.000Z",
+    "2025-09-14T13:18:58.754Z",
+    "minor",
+    "Nouvelles propriétés: adresses",
+    {
+      "version": "2u",
+      "createdAt": "2x",
+      "changeType": "2y",
+      "changeDescription": "2z",
+      "previousVersion": "1h"
+    },
+    {
+      "id": "26",
+      "name": "26",
+      "schema": "2v",
+      "createdAt": "2w",
+      "updatedAt": "2x",
+      "version": "2u",
+      "versionInfo": "30"
+    },
+    "order",
+    "http://json-schema.org/draft-07/schema#",
+    "Commande E-commerce",
+    "Schéma complexe pour une commande e-commerce avec objets imbriqués",
+    "Numéro de commande",
+    "Numéro unique de la commande",
+    {
+      "type": "w",
+      "title": "36",
+      "description": "37"
+    },
+    "Client",
+    "Informations du client",
+    "ID Client",
+    "Identifiant unique du client",
+    {
+      "type": "w",
+      "title": "3b",
+      "description": "3c"
+    },
+    "Nom complet",
+    "Nom et prénom du client",
+    {
+      "type": "w",
+      "title": "3e",
+      "description": "3f"
+    },
+    "Adresse email du client",
+    {
+      "type": "w",
+      "title": "13",
+      "description": "3h"
+    },
+    "Adresse",
+    "Adresse de livraison",
+    "Rue",
+    "Numéro et nom de rue",
+    {
+      "type": "w",
+      "title": "3l",
+      "description": "3m"
+    },
+    "Ville",
+    "Nom de la ville",
+    {
+      "type": "w",
+      "title": "3o",
+      "description": "3p"
+    },
+    "Code postal",
+    {
+      "type": "w",
+      "title": "3r",
+      "description": "3r"
+    },
+    "Pays",
+    "Code pays ISO",
+    {
+      "type": "w",
+      "title": "3t",
+      "description": "3u"
+    },
+    {
+      "street": "3n",
+      "city": "3q",
+      "zipCode": "3s",
+      "country": "3v"
+    },
+    "street",
+    "city",
+    "zipCode",
+    "country",
+    [
+      "3x",
+      "3y",
+      "3z",
+      "40"
+    ],
+    {
+      "type": "t",
+      "title": "3j",
+      "description": "3k",
+      "properties": "3w",
+      "required": "41"
+    },
+    {
+      "id": "3d",
+      "name": "3g",
+      "email": "3i",
+      "address": "42"
+    },
+    "name",
+    "address",
+    [
+      "1e",
+      "44",
+      "15",
+      "45"
+    ],
+    {
+      "type": "t",
+      "title": "39",
+      "description": "3a",
+      "properties": "43",
+      "required": "46"
+    },
+    "Articles",
+    "Liste des articles commandés",
+    "ID Produit",
+    "Identifiant du produit",
+    {
+      "type": "w",
+      "title": "4a",
+      "description": "4b"
+    },
+    "Nom du produit",
+    "Nom commercial du produit",
+    {
+      "type": "w",
+      "title": "4d",
+      "description": "4e"
+    },
+    "Prix unitaire",
+    "Prix unitaire en euros",
+    {
+      "type": "1r",
+      "title": "4g",
+      "description": "4h",
+      "minimum": "1a"
+    },
+    "Quantité",
+    "Nombre d'articles",
+    1,
+    {
+      "type": "17",
+      "title": "4j",
+      "description": "4k",
+      "minimum": "4l"
+    },
+    "Options",
+    "Options sélectionnées pour ce produit",
+    "Couleur",
+    "Couleur choisie",
+    {
+      "type": "w",
+      "title": "4p",
+      "description": "4q"
+    },
+    "Taille",
+    "Taille sélectionnée",
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "XXL",
+    [
+      "4u",
+      "4v",
+      "4w",
+      "4x",
+      "4y",
+      "4z"
+    ],
+    {
+      "type": "w",
+      "title": "4s",
+      "description": "4t",
+      "enum": "50"
+    },
+    "boolean",
+    "Garantie étendue",
+    "Garantie étendue souscrite",
+    {
+      "type": "52",
+      "title": "53",
+      "description": "54"
+    },
+    {
+      "color": "4r",
+      "size": "51",
+      "warranty": "55"
+    },
+    {
+      "type": "t",
+      "title": "4n",
+      "description": "4o",
+      "properties": "56"
+    },
+    {
+      "productId": "4c",
+      "name": "4f",
+      "price": "4i",
+      "quantity": "4m",
+      "options": "57"
+    },
+    "productId",
+    "price",
+    "quantity",
+    [
+      "59",
+      "44",
+      "5a",
+      "5b"
+    ],
+    {
+      "type": "t",
+      "properties": "58",
+      "required": "5c"
+    },
+    {
+      "type": "1q",
+      "title": "48",
+      "description": "49",
+      "items": "5d"
+    },
+    "Paiement",
+    "Informations de paiement",
+    "Mode de paiement",
+    "Méthode de paiement utilisée",
+    "card",
+    "paypal",
+    "bank_transfer",
+    "cash",
+    [
+      "5j",
+      "5k",
+      "5l",
+      "5m"
+    ],
+    {
+      "type": "w",
+      "title": "5h",
+      "description": "5i",
+      "enum": "5n"
+    },
+    "Montant total",
+    "Montant total de la commande",
+    {
+      "type": "1r",
+      "title": "5p",
+      "description": "5q",
+      "minimum": "1a"
+    },
+    "Devise",
+    "Code devise ISO",
+    "EUR",
+    "USD",
+    "GBP",
+    [
+      "5u",
+      "5v",
+      "5w"
+    ],
+    {
+      "type": "w",
+      "title": "5s",
+      "description": "5t",
+      "enum": "5x"
+    },
+    "Statut paiement",
+    "Statut du paiement",
+    "pending",
+    "completed",
+    "failed",
+    "refunded",
+    [
+      "61",
+      "62",
+      "63",
+      "64"
+    ],
+    {
+      "type": "w",
+      "title": "5z",
+      "description": "60",
+      "enum": "65"
+    },
+    {
+      "method": "5o",
+      "amount": "5r",
+      "currency": "5y",
+      "status": "66"
+    },
+    "method",
+    "amount",
+    "currency",
+    "status",
+    [
+      "68",
+      "69",
+      "6a",
+      "6b"
+    ],
+    {
+      "type": "t",
+      "title": "5f",
+      "description": "5g",
+      "properties": "67",
+      "required": "6c"
+    },
+    "Métadonnées",
+    "Informations techniques",
+    "Source",
+    "Canal de vente",
+    {
+      "type": "w",
+      "title": "6g",
+      "description": "6h"
+    },
+    "ID Session",
+    "Identifiant de session",
+    {
+      "type": "w",
+      "title": "6j",
+      "description": "6k"
+    },
+    "User Agent",
+    "Navigateur utilisé",
+    {
+      "type": "w",
+      "title": "6m",
+      "description": "6n"
+    },
+    "Tags",
+    "Tags de classification",
+    {
+      "type": "w"
+    },
+    {
+      "type": "1q",
+      "title": "6p",
+      "description": "6q",
+      "items": "6r"
+    },
+    {
+      "source": "6i",
+      "sessionId": "6l",
+      "userAgent": "6o",
+      "tags": "6s"
+    },
+    {
+      "type": "t",
+      "title": "6e",
+      "description": "6f",
+      "properties": "6t"
+    },
+    {
+      "orderNumber": "38",
+      "customer": "47",
+      "items": "5e",
+      "payment": "6d",
+      "metadata": "6u"
+    },
+    "orderNumber",
+    "customer",
+    "items",
+    "payment",
+    [
+      "6w",
+      "6x",
+      "6y",
+      "6z"
+    ],
+    {
+      "$schema": "33",
+      "type": "t",
+      "title": "34",
+      "description": "35",
+      "properties": "6v",
+      "required": "70"
+    },
+    "2025-09-11T23:19:25.091Z",
+    "2025-09-11T23:23:56.183Z",
+    "Version initiale (correction format)",
+    {
+      "version": "1h",
+      "createdAt": "72",
+      "changeType": "1k",
+      "changeDescription": "74"
+    },
+    {
+      "id": "32",
+      "name": "32",
+      "schema": "71",
+      "createdAt": "72",
+      "updatedAt": "73",
+      "version": "1h",
+      "versionInfo": "75"
+    },
+    "test-entity",
+    "Test Entity",
+    "Schéma de test pour les entités",
+    "Nom de l'entité",
+    100,
+    {
+      "type": "w",
+      "title": "10",
+      "description": "7a",
+      "minLength": "4l",
+      "maxLength": "7b"
+    },
+    {
+      "type": "w",
+      "title": "13",
+      "description": "2e",
+      "format": "15"
+    },
+    {
+      "type": "17",
+      "title": "18",
+      "description": "2g",
+      "minimum": "1a",
+      "maximum": "1b"
+    },
+    "Actif",
+    "Statut actif/inactif",
+    {
+      "type": "52",
+      "title": "7f",
+      "description": "7g"
+    },
+    {
+      "name": "7c",
+      "email": "7d",
+      "age": "7e",
+      "active": "7h"
+    },
+    [
+      "44",
+      "15"
+    ],
+    {
+      "$schema": "33",
+      "type": "t",
+      "title": "78",
+      "description": "79",
+      "properties": "7i",
+      "required": "7j"
+    },
+    "2025-09-11T23:06:55.533Z",
+    "2025-09-11T23:23:56.177Z",
+    {
+      "version": "1h",
+      "createdAt": "7l",
+      "changeType": "1k",
+      "changeDescription": "74"
+    },
+    {
+      "id": "77",
+      "name": "77",
+      "schema": "7k",
+      "createdAt": "7l",
+      "updatedAt": "7m",
+      "version": "1h",
+      "versionInfo": "7n"
+    },
+    "BigTest",
+    "tz",
+    {
+      "type": "w",
+      "description": "f"
+    },
+    {
+      "type": "52",
+      "description": "f"
+    },
+    {
+      "type": "w",
+      "description": "f"
+    },
+    {
+      "pop": "7t"
+    },
+    {
+      "type": "t",
+      "description": "f",
+      "properties": "7u"
+    },
+    {
+      "pop": "7r",
+      "ees": "7s",
+      "test": "7v"
+    },
+    [],
+    {
+      "type": "t",
+      "properties": "7w",
+      "required": "7x"
+    },
+    {
+      "type": "1q",
+      "description": "f",
+      "items": "7y"
+    },
+    {
+      "type": "t",
+      "description": "f"
+    },
+    {
+      "type": "w",
+      "description": "f"
+    },
+    {
+      "Images": "7z",
+      "product": "80",
+      "state": "81"
+    },
+    "product",
+    [
+      "83"
+    ],
+    "2.1",
+    {
+      "type": "t",
+      "title": "7q",
+      "description": "f",
+      "properties": "82",
+      "required": "84",
+      "version": "85"
+    },
+    "2025-09-11T19:37:41.503Z",
+    "2025-09-11T22:50:13.802Z",
+    "Nouvelles propriétés: state",
+    "2.0",
+    {
+      "version": "85",
+      "createdAt": "88",
+      "changeType": "2y",
+      "changeDescription": "89",
+      "previousVersion": "8a"
+    },
+    {
+      "id": "7p",
+      "name": "7p",
+      "schema": "86",
+      "createdAt": "87",
+      "updatedAt": "88",
+      "version": "85",
+      "versionInfo": "8b"
+    },
+    "test",
+    "Test Schema",
+    "Un schéma de test créé automatiquement",
+    "Nom de la personne",
+    7,
+    {
+      "type": "w",
+      "description": "8g",
+      "minLength": "2a",
+      "maxLength": "8h",
+      "format": "15"
+    },
+    "Age en années",
+    {
+      "type": "17",
+      "description": "8j",
+      "minimum": "1a",
+      "maximum": "2h"
+    },
+    {
+      "type": "w",
+      "description": "2e",
+      "format": "15"
+    },
+    {
+      "type": "w",
+      "description": "f"
+    },
+    {
+      "type": "w",
+      "description": "f"
+    },
+    {
+      "name": "8n"
+    },
+    [],
+    {
+      "type": "t",
+      "properties": "8o",
+      "required": "8p"
+    },
+    {
+      "type": "1q",
+      "description": "f",
+      "items": "8q"
+    },
+    {
+      "nom": "8i",
+      "age": "8k",
+      "email": "8l",
+      "test": "8m",
+      "klkl": "8r"
+    },
+    [
+      "1f",
+      "15"
+    ],
+    {
+      "type": "t",
+      "title": "8e",
+      "description": "8f",
+      "properties": "8s",
+      "required": "8t",
+      "version": "1h"
+    },
+    "2025-09-11T18:00:00.000Z",
+    "2025-09-11T22:30:26.618Z",
+    "Version initiale (migration automatique)",
+    {
+      "version": "1h",
+      "createdAt": "8v",
+      "changeType": "1k",
+      "changeDescription": "8x"
+    },
+    {
+      "id": "8d",
+      "name": "8d",
+      "schema": "8u",
+      "createdAt": "8v",
+      "updatedAt": "8w",
+      "version": "1h",
+      "versionInfo": "8y"
+    },
+    "Produit",
+    "Schéma pour les données produit",
+    200,
+    {
+      "type": "w",
+      "title": "4d",
+      "description": "4e",
+      "minLength": "4l",
+      "maxLength": "92"
+    },
+    "Description",
+    "Description détaillée du produit",
+    "textarea",
+    {
+      "type": "w",
+      "title": "94",
+      "description": "95",
+      "format": "96"
+    },
+    "Prix",
+    "Prix en euros",
+    {
+      "type": "1r",
+      "title": "98",
+      "description": "99",
+      "minimum": "1a"
+    },
+    "Catégorie",
+    "Catégorie du produit",
+    "électronique",
+    "vêtements",
+    "maison",
+    "livres",
+    "sport",
+    [
+      "9d",
+      "9e",
+      "9f",
+      "9g",
+      "9h"
+    ],
+    {
+      "type": "w",
+      "title": "9b",
+      "description": "9c",
+      "enum": "9i"
+    },
+    "En stock",
+    "Disponibilité du produit",
+    {
+      "type": "52",
+      "title": "9k",
+      "description": "9l"
+    },
+    {
+      "name": "93",
+      "description": "97",
+      "price": "9a",
+      "category": "9j",
+      "inStock": "9m"
+    },
+    "category",
+    [
+      "44",
+      "5a",
+      "9o"
+    ],
+    true,
+    {
+      "type": "t",
+      "title": "90",
+      "description": "91",
+      "properties": "9n",
+      "required": "9p",
+      "additionalProperties": "9q",
+      "version": "1h"
+    },
+    "2025-09-11T10:30:00.000Z",
+    "2025-09-11T22:30:26.613Z",
+    {
+      "version": "1h",
+      "createdAt": "9s",
+      "changeType": "1k",
+      "changeDescription": "8x"
+    },
+    {
+      "id": "83",
+      "name": "83",
+      "schema": "9r",
+      "createdAt": "9s",
+      "updatedAt": "9t",
+      "version": "1h",
+      "versionInfo": "9u"
+    },
+    "book",
+    "Book",
+    {
+      "type": "1r",
+      "description": "f"
+    },
+    {
+      "type": "w"
+    },
+    {
+      "type": "1q",
+      "description": "f",
+      "items": "9z"
+    },
+    {
+      "type": "1r",
+      "description": "f"
+    },
+    {
+      "type": "w"
+    },
+    {
+      "type": "1q",
+      "description": "f",
+      "items": "a2"
+    },
+    {
+      "id": "a1",
+      "images": "a3"
+    },
+    [],
+    {
+      "type": "t",
+      "properties": "a4",
+      "required": "a5"
+    },
+    {
+      "type": "1q",
+      "description": "f",
+      "items": "a6"
+    },
+    {
+      "id": "9y",
+      "images": "a0",
+      "products": "a7"
+    },
+    {
+      "type": "t",
+      "title": "9x",
+      "description": "f",
+      "properties": "a8",
+      "version": "1h"
+    },
+    "2025-09-11T20:22:34.935Z",
+    "2025-09-11T22:30:26.602Z",
+    {
+      "version": "1h",
+      "createdAt": "aa",
+      "changeType": "1k",
+      "changeDescription": "8x"
+    },
+    {
+      "id": "9w",
+      "name": "9w",
+      "schema": "a9",
+      "createdAt": "aa",
+      "updatedAt": "ab",
+      "version": "1h",
+      "versionInfo": "ac"
+    },
+    [
+      "1n",
+      "25",
+      "31",
+      "76",
+      "7o",
+      "8c",
+      "8z",
+      "9v",
+      "ad"
+    ],
+    "\u0011c @2",
+    "#9",
+    "success",
+    {
+      "show": "j",
+      "type": "ah",
+      "message": "f"
+    },
+    {
+      "notification": "ai",
+      "loading": "j"
+    },
+    "\u0011d @3",
+    "\u0011d @3",
+    "\u0011d @3",
+    "\u0011d @3",
+    "\u0011d @3",
+    "\u0011d @3",
+    "\u0011d @3",
+    "\u0011d @3",
+    "\u0011d @3",
+    "\u0011d @3",
+    "\u0002/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_handleCopySchema_I0krAfbm70U.js#routes_component_handleCopySchema_I0krAfbm70U[d]",
+    "\u0002/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_handleDelete_4ulbgXfvVhg.js#routes_component_handleDelete_4ulbgXfvVhg[c d]",
+    "\u0002/src/components/router-head/router-head.tsx_RouterHead_component_0vphQYqOdZI.js#RouterHead_component_0vphQYqOdZI",
+    "\u0002/home/gouroubleu/WS/json-editor/app/src/routes/index.tsx_routes_component_B0lqk5IDDy4.js#routes_component_B0lqk5IDDy4",
+    "o748ip-0",
+    {
+      "type": "w",
+      "title": "x",
+      "description": "y"
+    },
+    {
+      "type": "w",
+      "title": "10",
+      "description": "11"
+    },
+    {
+      "type": "w",
+      "title": "13",
+      "description": "14",
+      "format": "15"
+    },
+    {
+      "type": "17",
+      "title": "18",
+      "description": "19",
+      "minimum": "1a",
+      "maximum": "1b"
+    },
+    {
+      "id": "az",
+      "nom": "b0",
+      "email": "b1",
+      "age": "b2"
+    },
+    [
+      "1e",
+      "1f",
+      "15"
+    ],
+    {
+      "type": "t",
+      "title": "u",
+      "description": "v",
+      "properties": "b3",
+      "required": "b4",
+      "additionalProperties": "j",
+      "version": "1h"
+    },
+    {
+      "version": "1h",
+      "createdAt": "1j",
+      "changeType": "1k",
+      "changeDescription": "1l"
+    },
+    {
+      "id": "s",
+      "name": "s",
+      "schema": "b5",
+      "createdAt": "1j",
+      "updatedAt": "1j",
+      "version": "1h",
+      "versionInfo": "b6"
+    },
+    {
+      "type": "w",
+      "description": "f"
+    },
+    {
+      "type": "1r",
+      "description": "f"
+    },
+    {
+      "type": "1r",
+      "description": "f"
+    },
+    {
+      "pop": "ba"
+    },
+    {
+      "type": "t",
+      "description": "f",
+      "properties": "bb"
+    },
+    {
+      "test": "b9",
+      "pop": "bc"
+    },
+    [],
+    {
+      "type": "t",
+      "properties": "bd",
+      "required": "be"
+    },
+    {
+      "type": "1q",
+      "description": "f",
+      "items": "bf"
+    },
+    {
+      "test": "b8",
+      "pop": "bg"
+    },
+    {
+      "type": "t",
+      "title": "1o",
+      "description": "f",
+      "properties": "bh",
+      "version": "1h"
+    },
+    {
+      "version": "1h",
+      "createdAt": "22",
+      "changeType": "1k",
+      "changeDescription": "23"
+    },
+    {
+      "id": "1o",
+      "name": "1o",
+      "schema": "bi",
+      "createdAt": "22",
+      "updatedAt": "22",
+      "version": "1h",
+      "versionInfo": "bj"
+    },
+    {
+      "type": "w",
+      "description": "29",
+      "minLength": "2a",
+      "maxLength": "2b"
+    },
+    {
+      "type": "w",
+      "description": "11",
+      "minLength": "2a",
+      "maxLength": "2b"
+    },
+    {
+      "type": "w",
+      "description": "2e",
+      "format": "15"
+    },
+    {
+      "type": "17",
+      "description": "2g",
+      "minimum": "1a",
+      "maximum": "2h"
+    },
+    {
+      "type": "w",
+      "description": "f"
+    },
+    {
+      "type": "w",
+      "description": "f"
+    },
+    {
+      "type": "w",
+      "description": "f"
+    },
+    {
+      "address": "bp",
+      "cp": "bq",
+      "ville": "br"
+    },
+    [],
+    {
+      "type": "t",
+      "properties": "bs",
+      "required": "bt"
+    },
+    {
+      "type": "1q",
+      "description": "f",
+      "items": "bu"
+    },
+    {
+      "firstName": "bl",
+      "lastName": "bm",
+      "email": "bn",
+      "age": "bo",
+      "adresses": "bv"
+    },
+    [
+      "2r",
+      "2s",
+      "15"
+    ],
+    {
+      "type": "t",
+      "title": "27",
+      "description": "28",
+      "properties": "bw",
+      "required": "bx",
+      "version": "2u"
+    },
+    {
+      "version": "2u",
+      "createdAt": "2x",
+      "changeType": "2y",
+      "changeDescription": "2z",
+      "previousVersion": "1h"
+    },
+    {
+      "id": "26",
+      "name": "26",
+      "schema": "by",
+      "createdAt": "2w",
+      "updatedAt": "2x",
+      "version": "2u",
+      "versionInfo": "bz"
+    },
+    {
+      "type": "w",
+      "title": "36",
+      "description": "37"
+    },
+    {
+      "type": "w",
+      "title": "3b",
+      "description": "3c"
+    },
+    {
+      "type": "w",
+      "title": "3e",
+      "description": "3f"
+    },
+    {
+      "type": "w",
+      "title": "13",
+      "description": "3h"
+    },
+    {
+      "type": "w",
+      "title": "3l",
+      "description": "3m"
+    },
+    {
+      "type": "w",
+      "title": "3o",
+      "description": "3p"
+    },
+    {
+      "type": "w",
+      "title": "3r",
+      "description": "3r"
+    },
+    {
+      "type": "w",
+      "title": "3t",
+      "description": "3u"
+    },
+    {
+      "street": "c5",
+      "city": "c6",
+      "zipCode": "c7",
+      "country": "c8"
+    },
+    [
+      "3x",
+      "3y",
+      "3z",
+      "40"
+    ],
+    {
+      "type": "t",
+      "title": "3j",
+      "description": "3k",
+      "properties": "c9",
+      "required": "ca"
+    },
+    {
+      "id": "c2",
+      "name": "c3",
+      "email": "c4",
+      "address": "cb"
+    },
+    [
+      "1e",
+      "44",
+      "15",
+      "45"
+    ],
+    {
+      "type": "t",
+      "title": "39",
+      "description": "3a",
+      "properties": "cc",
+      "required": "cd"
+    },
+    {
+      "type": "w",
+      "title": "4a",
+      "description": "4b"
+    },
+    {
+      "type": "w",
+      "title": "4d",
+      "description": "4e"
+    },
+    {
+      "type": "1r",
+      "title": "4g",
+      "description": "4h",
+      "minimum": "1a"
+    },
+    {
+      "type": "17",
+      "title": "4j",
+      "description": "4k",
+      "minimum": "4l"
+    },
+    {
+      "type": "w",
+      "title": "4p",
+      "description": "4q"
+    },
+    [
+      "4u",
+      "4v",
+      "4w",
+      "4x",
+      "4y",
+      "4z"
+    ],
+    {
+      "type": "w",
+      "title": "4s",
+      "description": "4t",
+      "enum": "ck"
+    },
+    {
+      "type": "52",
+      "title": "53",
+      "description": "54"
+    },
+    {
+      "color": "cj",
+      "size": "cl",
+      "warranty": "cm"
+    },
+    {
+      "type": "t",
+      "title": "4n",
+      "description": "4o",
+      "properties": "cn"
+    },
+    {
+      "productId": "cf",
+      "name": "cg",
+      "price": "ch",
+      "quantity": "ci",
+      "options": "co"
+    },
+    [
+      "59",
+      "44",
+      "5a",
+      "5b"
+    ],
+    {
+      "type": "t",
+      "properties": "cp",
+      "required": "cq"
+    },
+    {
+      "type": "1q",
+      "title": "48",
+      "description": "49",
+      "items": "cr"
+    },
+    [
+      "5j",
+      "5k",
+      "5l",
+      "5m"
+    ],
+    {
+      "type": "w",
+      "title": "5h",
+      "description": "5i",
+      "enum": "ct"
+    },
+    {
+      "type": "1r",
+      "title": "5p",
+      "description": "5q",
+      "minimum": "1a"
+    },
+    [
+      "5u",
+      "5v",
+      "5w"
+    ],
+    {
+      "type": "w",
+      "title": "5s",
+      "description": "5t",
+      "enum": "cw"
+    },
+    [
+      "61",
+      "62",
+      "63",
+      "64"
+    ],
+    {
+      "type": "w",
+      "title": "5z",
+      "description": "60",
+      "enum": "cy"
+    },
+    {
+      "method": "cu",
+      "amount": "cv",
+      "currency": "cx",
+      "status": "cz"
+    },
+    [
+      "68",
+      "69",
+      "6a",
+      "6b"
+    ],
+    {
+      "type": "t",
+      "title": "5f",
+      "description": "5g",
+      "properties": "d0",
+      "required": "d1"
+    },
+    {
+      "type": "w",
+      "title": "6g",
+      "description": "6h"
+    },
+    {
+      "type": "w",
+      "title": "6j",
+      "description": "6k"
+    },
+    {
+      "type": "w",
+      "title": "6m",
+      "description": "6n"
+    },
+    {
+      "type": "w"
+    },
+    {
+      "type": "1q",
+      "title": "6p",
+      "description": "6q",
+      "items": "d6"
+    },
+    {
+      "source": "d3",
+      "sessionId": "d4",
+      "userAgent": "d5",
+      "tags": "d7"
+    },
+    {
+      "type": "t",
+      "title": "6e",
+      "description": "6f",
+      "properties": "d8"
+    },
+    {
+      "orderNumber": "c1",
+      "customer": "ce",
+      "items": "cs",
+      "payment": "d2",
+      "metadata": "d9"
+    },
+    [
+      "6w",
+      "6x",
+      "6y",
+      "6z"
+    ],
+    {
+      "$schema": "33",
+      "type": "t",
+      "title": "34",
+      "description": "35",
+      "properties": "da",
+      "required": "db"
+    },
+    {
+      "version": "1h",
+      "createdAt": "72",
+      "changeType": "1k",
+      "changeDescription": "74"
+    },
+    {
+      "id": "32",
+      "name": "32",
+      "schema": "dc",
+      "createdAt": "72",
+      "updatedAt": "73",
+      "version": "1h",
+      "versionInfo": "dd"
+    },
+    {
+      "type": "w",
+      "title": "10",
+      "description": "7a",
+      "minLength": "4l",
+      "maxLength": "7b"
+    },
+    {
+      "type": "w",
+      "title": "13",
+      "description": "2e",
+      "format": "15"
+    },
+    {
+      "type": "17",
+      "title": "18",
+      "description": "2g",
+      "minimum": "1a",
+      "maximum": "1b"
+    },
+    {
+      "type": "52",
+      "title": "7f",
+      "description": "7g"
+    },
+    {
+      "name": "df",
+      "email": "dg",
+      "age": "dh",
+      "active": "di"
+    },
+    [
+      "44",
+      "15"
+    ],
+    {
+      "$schema": "33",
+      "type": "t",
+      "title": "78",
+      "description": "79",
+      "properties": "dj",
+      "required": "dk"
+    },
+    {
+      "version": "1h",
+      "createdAt": "7l",
+      "changeType": "1k",
+      "changeDescription": "74"
+    },
+    {
+      "id": "77",
+      "name": "77",
+      "schema": "dl",
+      "createdAt": "7l",
+      "updatedAt": "7m",
+      "version": "1h",
+      "versionInfo": "dm"
+    },
+    {
+      "type": "w",
+      "description": "f"
+    },
+    {
+      "type": "52",
+      "description": "f"
+    },
+    {
+      "type": "w",
+      "description": "f"
+    },
+    {
+      "pop": "dq"
+    },
+    {
+      "type": "t",
+      "description": "f",
+      "properties": "dr"
+    },
+    {
+      "pop": "do",
+      "ees": "dp",
+      "test": "ds"
+    },
+    [],
+    {
+      "type": "t",
+      "properties": "dt",
+      "required": "du"
+    },
+    {
+      "type": "1q",
+      "description": "f",
+      "items": "dv"
+    },
+    {
+      "type": "t",
+      "description": "f"
+    },
+    {
+      "type": "w",
+      "description": "f"
+    },
+    {
+      "Images": "dw",
+      "product": "dx",
+      "state": "dy"
+    },
+    [
+      "83"
+    ],
+    {
+      "type": "t",
+      "title": "7q",
+      "description": "f",
+      "properties": "dz",
+      "required": "e0",
+      "version": "85"
+    },
+    {
+      "version": "85",
+      "createdAt": "88",
+      "changeType": "2y",
+      "changeDescription": "89",
+      "previousVersion": "8a"
+    },
+    {
+      "id": "7p",
+      "name": "7p",
+      "schema": "e1",
+      "createdAt": "87",
+      "updatedAt": "88",
+      "version": "85",
+      "versionInfo": "e2"
+    },
+    {
+      "type": "w",
+      "description": "8g",
+      "minLength": "2a",
+      "maxLength": "8h",
+      "format": "15"
+    },
+    {
+      "type": "17",
+      "description": "8j",
+      "minimum": "1a",
+      "maximum": "2h"
+    },
+    {
+      "type": "w",
+      "description": "2e",
+      "format": "15"
+    },
+    {
+      "type": "w",
+      "description": "f"
+    },
+    {
+      "type": "w",
+      "description": "f"
+    },
+    {
+      "name": "e8"
+    },
+    [],
+    {
+      "type": "t",
+      "properties": "e9",
+      "required": "ea"
+    },
+    {
+      "type": "1q",
+      "description": "f",
+      "items": "eb"
+    },
+    {
+      "nom": "e4",
+      "age": "e5",
+      "email": "e6",
+      "test": "e7",
+      "klkl": "ec"
+    },
+    [
+      "1f",
+      "15"
+    ],
+    {
+      "type": "t",
+      "title": "8e",
+      "description": "8f",
+      "properties": "ed",
+      "required": "ee",
+      "version": "1h"
+    },
+    {
+      "version": "1h",
+      "createdAt": "8v",
+      "changeType": "1k",
+      "changeDescription": "8x"
+    },
+    {
+      "id": "8d",
+      "name": "8d",
+      "schema": "ef",
+      "createdAt": "8v",
+      "updatedAt": "8w",
+      "version": "1h",
+      "versionInfo": "eg"
+    },
+    {
+      "type": "w",
+      "title": "4d",
+      "description": "4e",
+      "minLength": "4l",
+      "maxLength": "92"
+    },
+    {
+      "type": "w",
+      "title": "94",
+      "description": "95",
+      "format": "96"
+    },
+    {
+      "type": "1r",
+      "title": "98",
+      "description": "99",
+      "minimum": "1a"
+    },
+    [
+      "9d",
+      "9e",
+      "9f",
+      "9g",
+      "9h"
+    ],
+    {
+      "type": "w",
+      "title": "9b",
+      "description": "9c",
+      "enum": "el"
+    },
+    {
+      "type": "52",
+      "title": "9k",
+      "description": "9l"
+    },
+    {
+      "name": "ei",
+      "description": "ej",
+      "price": "ek",
+      "category": "em",
+      "inStock": "en"
+    },
+    [
+      "44",
+      "5a",
+      "9o"
+    ],
+    {
+      "type": "t",
+      "title": "90",
+      "description": "91",
+      "properties": "eo",
+      "required": "ep",
+      "additionalProperties": "9q",
+      "version": "1h"
+    },
+    {
+      "version": "1h",
+      "createdAt": "9s",
+      "changeType": "1k",
+      "changeDescription": "8x"
+    },
+    {
+      "id": "83",
+      "name": "83",
+      "schema": "eq",
+      "createdAt": "9s",
+      "updatedAt": "9t",
+      "version": "1h",
+      "versionInfo": "er"
+    },
+    {
+      "type": "1r",
+      "description": "f"
+    },
+    {
+      "type": "w"
+    },
+    {
+      "type": "1q",
+      "description": "f",
+      "items": "eu"
+    },
+    {
+      "type": "1r",
+      "description": "f"
+    },
+    {
+      "type": "w"
+    },
+    {
+      "type": "1q",
+      "description": "f",
+      "items": "ex"
+    },
+    {
+      "id": "ew",
+      "images": "ey"
+    },
+    [],
+    {
+      "type": "t",
+      "properties": "ez",
+      "required": "f0"
+    },
+    {
+      "type": "1q",
+      "description": "f",
+      "items": "f1"
+    },
+    {
+      "id": "et",
+      "images": "ev",
+      "products": "f2"
+    },
+    {
+      "type": "t",
+      "title": "9x",
+      "description": "f",
+      "properties": "f3",
+      "version": "1h"
+    },
+    {
+      "version": "1h",
+      "createdAt": "aa",
+      "changeType": "1k",
+      "changeDescription": "8x"
+    },
+    {
+      "id": "9w",
+      "name": "9w",
+      "schema": "f4",
+      "createdAt": "aa",
+      "updatedAt": "ab",
+      "version": "1h",
+      "versionInfo": "f5"
+    },
+    [
+      "b7",
+      "bk",
+      "c0",
+      "de",
+      "dn",
+      "e3",
+      "eh",
+      "es",
+      "f6"
+    ],
+    {
+      "savedSchemas": "f7"
+    },
+    "\u00138! HkKe1Rp03j4",
+    "\u0001"
+  ],
+  "subs": [
+    [
+      "_1"
+    ],
+    [
+      "_1",
+      "0 #2"
+    ],
+    [
+      "_1",
+      "0 #2"
+    ],
+    [
+      "_1",
+      "0 #2"
+    ],
+    [
+      "_1",
+      "0 #2"
+    ],
+    [
+      "_1"
+    ],
+    [
+      "_1",
+      "0 #2 title",
+      "0 #2 meta",
+      "0 #2 links",
+      "0 #2 styles",
+      "0 #2 scripts"
+    ],
+    [
+      "1 #3 g #2 href url"
+    ],
+    [
+      "0 #6 HkKe1Rp03j4"
+    ],
+    [
+      "0 q"
+    ],
+    [
+      "0 #4"
+    ],
+    [
+      "0 q"
+    ],
+    [
+      "0 #6",
+      "3 #9 af #9"
+    ],
+    [
+      "0 #6",
+      "1 #a ak #6 disabled",
+      "1 #e al #6 disabled",
+      "1 #i am #6 disabled",
+      "1 #m an #6 disabled",
+      "1 #q ao #6 disabled",
+      "1 #u ap #6 disabled",
+      "1 #y aq #6 disabled",
+      "1 #12 ar #6 disabled",
+      "1 #16 as #6 disabled",
+      "1 #1a at #6 disabled"
+    ]
+  ]
+}</script><script q:func="qwik/json">document["qFuncs_j0wdgs3qdv"]=[()=>{((w,h)=>{if(!w._qcs&&h.scrollRestoration==="manual"){w._qcs=true;const s=h.state?._qCityScroll;if(s){w.scrollTo(s.x,s.y);}document.dispatchEvent(new Event("qcinit"));}})(window,history);},
+(p0,)=>(p0.url.href),
+(p0,)=>(p0.value.length),
+(p0,)=>(p0.value.loading)]</script><script id="qwikloader" async type="module">const doc = document;
+const win = window;
+const events = /* @__PURE__ */ new Set();
+const roots = /* @__PURE__ */ new Set([doc]);
+let hasInitialized;
+const nativeQuerySelectorAll = (root, selector) => Array.from(root.querySelectorAll(selector));
+const querySelectorAll = (query) => {
+  const elements = [];
+  roots.forEach((root) => elements.push(...nativeQuerySelectorAll(root, query)));
+  return elements;
+};
+const findShadowRoots = (fragment) => {
+  processEventOrNode(fragment);
+  nativeQuerySelectorAll(fragment, "[q\\:shadowroot]").forEach((parent) => {
+    const shadowRoot = parent.shadowRoot;
+    shadowRoot && findShadowRoots(shadowRoot);
+  });
+};
+const isPromise = (promise) => promise && typeof promise.then === "function";
+const broadcast = (infix, ev, type = ev.type) => {
+  querySelectorAll("[on" + infix + "\\:" + type + "]").forEach((el) => {
+    dispatch(el, infix, ev, type);
+  });
+};
+const resolveContainer = (containerEl) => {
+  if (containerEl._qwikjson_ === void 0) {
+    const parentJSON = containerEl === doc.documentElement ? doc.body : containerEl;
+    let script = parentJSON.lastElementChild;
+    while (script) {
+      if (script.tagName === "SCRIPT" && script.getAttribute("type") === "qwik/json") {
+        containerEl._qwikjson_ = JSON.parse(
+          script.textContent.replace(/\\x3C(\/?script)/gi, "<$1")
+        );
+        break;
+      }
+      script = script.previousElementSibling;
+    }
+  }
+};
+const createEvent = (eventName, detail) => new CustomEvent(eventName, {
+  detail
+});
+const dispatch = async (element, onPrefix, ev, eventName = ev.type) => {
+  const attrName = "on" + onPrefix + ":" + eventName;
+  if (element.hasAttribute("preventdefault:" + eventName)) {
+    ev.preventDefault();
+  }
+  if (element.hasAttribute("stoppropagation:" + eventName)) {
+    ev.stopPropagation();
+  }
+  const ctx = element._qc_;
+  const relevantListeners = ctx && ctx.li.filter((li) => li[0] === attrName);
+  if (relevantListeners && relevantListeners.length > 0) {
+    for (const listener of relevantListeners) {
+      const results = listener[1].getFn([element, ev], () => element.isConnected)(ev, element);
+      const cancelBubble = ev.cancelBubble;
+      if (isPromise(results)) {
+        await results;
+      }
+      if (cancelBubble) {
+        ev.stopPropagation();
+      }
+    }
+    return;
+  }
+  const attrValue = element.getAttribute(attrName);
+  if (attrValue) {
+    const container = element.closest("[q\\:container]");
+    const qBase = container.getAttribute("q:base");
+    const qVersion = container.getAttribute("q:version") || "unknown";
+    const qManifest = container.getAttribute("q:manifest-hash") || "dev";
+    const base = new URL(qBase, doc.baseURI);
+    for (const qrl of attrValue.split("\n")) {
+      const url = new URL(qrl, base);
+      const href = url.href;
+      const symbol = url.hash.replace(/^#?([^?[|]*).*$/, "$1") || "default";
+      const reqTime = performance.now();
+      let handler;
+      let importError;
+      let error;
+      const isSync = qrl.startsWith("#");
+      const eventData = {
+        qBase,
+        qManifest,
+        qVersion,
+        href,
+        symbol,
+        element,
+        reqTime
+      };
+      if (isSync) {
+        const hash = container.getAttribute("q:instance");
+        handler = (doc["qFuncs_" + hash] || [])[Number.parseInt(symbol)];
+        if (!handler) {
+          importError = "sync";
+          error = new Error("sym:" + symbol);
+        }
+      } else {
+        emitEvent("qsymbol", eventData);
+        const uri = url.href.split("#")[0];
+        try {
+          const module = import(
+                        uri
+          );
+          resolveContainer(container);
+          handler = (await module)[symbol];
+          if (!handler) {
+            importError = "no-symbol";
+            error = new Error(`${symbol} not in ${uri}`);
+          }
+        } catch (err) {
+          importError || (importError = "async");
+          error = err;
+        }
+      }
+      if (!handler) {
+        emitEvent("qerror", {
+          importError,
+          error,
+          ...eventData
+        });
+        console.error(error);
+        break;
+      }
+      const previousCtx = doc.__q_context__;
+      if (element.isConnected) {
+        try {
+          doc.__q_context__ = [element, ev, url];
+          const results = handler(ev, element);
+          if (isPromise(results)) {
+            await results;
+          }
+        } catch (error2) {
+          emitEvent("qerror", { error: error2, ...eventData });
+        } finally {
+          doc.__q_context__ = previousCtx;
+        }
+      }
+    }
+  }
+};
+const emitEvent = (eventName, detail) => {
+  doc.dispatchEvent(createEvent(eventName, detail));
+};
+const camelToKebab = (str) => str.replace(/([A-Z])/g, (a) => "-" + a.toLowerCase());
+const processDocumentEvent = async (ev) => {
+  let type = camelToKebab(ev.type);
+  let element = ev.target;
+  broadcast("-document", ev, type);
+  while (element && element.getAttribute) {
+    const results = dispatch(element, "", ev, type);
+    let cancelBubble = ev.cancelBubble;
+    if (isPromise(results)) {
+      await results;
+    }
+    cancelBubble || (cancelBubble = cancelBubble || ev.cancelBubble || element.hasAttribute("stoppropagation:" + ev.type));
+    element = ev.bubbles && cancelBubble !== true ? element.parentElement : null;
+  }
+};
+const processWindowEvent = (ev) => {
+  broadcast("-window", ev, camelToKebab(ev.type));
+};
+const processReadyStateChange = () => {
+  var _a;
+  const readyState = doc.readyState;
+  if (!hasInitialized && (readyState == "interactive" || readyState == "complete")) {
+    roots.forEach(findShadowRoots);
+    hasInitialized = 1;
+    emitEvent("qinit");
+    const riC = (_a = win.requestIdleCallback) != null ? _a : win.setTimeout;
+    riC.bind(win)(() => emitEvent("qidle"));
+    if (events.has("qvisible")) {
+      const results = querySelectorAll("[on\\:qvisible]");
+      const observer = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            observer.unobserve(entry.target);
+            dispatch(entry.target, "", createEvent("qvisible", entry));
+          }
+        }
+      });
+      results.forEach((el) => observer.observe(el));
+    }
+  }
+};
+const addEventListener = (el, eventName, handler, capture = false) => {
+  el.addEventListener(eventName, handler, { capture, passive: false });
+};
+const processEventOrNode = (...eventNames) => {
+  for (const eventNameOrNode of eventNames) {
+    if (typeof eventNameOrNode === "string") {
+      if (!events.has(eventNameOrNode)) {
+        roots.forEach(
+          (root) => addEventListener(root, eventNameOrNode, processDocumentEvent, true)
+        );
+        addEventListener(win, eventNameOrNode, processWindowEvent, true);
+        events.add(eventNameOrNode);
+      }
+    } else {
+      if (!roots.has(eventNameOrNode)) {
+        events.forEach(
+          (eventName) => addEventListener(eventNameOrNode, eventName, processDocumentEvent, true)
+        );
+        roots.add(eventNameOrNode);
+      }
+    }
+  }
+};
+if (!("__q_context__" in doc)) {
+  doc.__q_context__ = 0;
+  const qwikevents = win.qwikevents;
+  if (qwikevents) {
+    if (Array.isArray(qwikevents)) {
+      processEventOrNode(...qwikevents);
+    } else {
+      processEventOrNode("click", "input");
+    }
+  }
+  win.qwikevents = {
+    events,
+    roots,
+    push: processEventOrNode
+  };
+  addEventListener(doc, "readystatechange", processReadyStateChange);
+  processReadyStateChange();
+}</script><script>(window.qwikevents||(window.qwikevents=[])).push("qcinit","qinit","click")</script></html>
+<style>
+vite-error-overlay {
+  --color-bright: rgba(255, 255, 255, 0.8);
+  --color-yellow: rgba(255,246,85,0.8);
+  --qwik-dark-blue: #006ce9;
+  --qwik-light-blue: #3ec2f7;
+  --qwik-light-purple: #ac7ff4;
+  --qwik-dark-purple: #713fc2;
+  --yellow: #fff;                   /* override vite yellow */
+  --purple: var(--color-bright);    /* override vite purple */
+  --red: var(--qwik-light-blue);    /* override vite red */
+
+  --vertical-box-spacing: 15px;
+  --box-padding: 20px;
+  --box-margin: 0 0 var(--vertical-box-spacing) 0;
+  --box-background: rgba(0, 0, 0, 0.5);
+  --box-border-radius: 8px;
+}
+
+vite-error-overlay::part(backdrop) {
+  background: rgb(2 11 17 / 60%);
+}
+
+vite-error-overlay::part(window) {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  margin: 50px auto;
+  max-width: 1200px;
+  padding: var(--box-padding);
+  width: 90%;
+}
+
+vite-error-overlay::part(message) {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+vite-error-overlay::part(plugin) {
+  font-size: 0.8rem;
+  font-weight: 100;
+}
+
+vite-error-overlay::part(file),
+vite-error-overlay::part(frame),
+vite-error-overlay::part(stack),
+vite-error-overlay::part(tip) {
+  background: var(--box-background);
+  border-left: 5px solid transparent;
+  border-radius: var(--box-border-radius);
+  margin: var(--box-margin);
+  min-height: 50px;
+  padding: var(--box-padding);
+  position: relative;
+}
+
+vite-error-overlay::part(file) {
+  border-left-color: rgb(25 182 246);
+  color: var(--color-bright);
+}
+
+vite-error-overlay::part(frame) {
+  border-left-color: var(--color-yellow);
+  color: var(--color-yellow);
+}
+
+vite-error-overlay::part(stack) {
+  border-left-color: #FF5722;
+}
+
+
+vite-error-overlay::part(tip) {
+  border-top: none;
+  border-left-color: rgb(172, 127, 244);
+}
+
+vite-error-overlay::part(file):before,
+vite-error-overlay::part(frame):before,
+vite-error-overlay::part(stack):before {
+  border-bottom: 1px solid #222;
+  color: var(--color-bright);
+  display: block;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  padding-left: 30px; /* space for icon */
+  font-size: .8rem;
+}
+
+vite-error-overlay::part(file):before {
+  content: 'File';
+}
+
+vite-error-overlay::part(frame):before {
+  content: 'Frame';
+}
+
+vite-error-overlay::part(stack):before {
+  content: 'Stack Trace';
+}
+
+vite-error-overlay::part(file):after,
+vite-error-overlay::part(frame):after,
+vite-error-overlay::part(stack):after {
+  content: '';
+  display: block;
+  height: 20px;
+  position: absolute;
+  left: var(--box-padding);
+  top: var(--box-padding);
+  width: 20px;
+}
+
+vite-error-overlay::part(file):after {
+  background-image: url("data:image/svg+xml,%3Csvg width='20px' height='20px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3EFile-Generic%3C/title%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='File-Generic'%3E%3Crect id='Rectangle' fill-rule='nonzero' x='0' y='0' width='24' height='24'%3E%3C/rect%3E%3Cpath d='M4 5 C4 3.89543 4.89543 3 6 3 L15.1716 3 C15.702 3 16.2107 3.21071 16.5858 3.58579 L19.4142 6.41421 C19.7893 6.78929 20 7.29799 20 7.82843 L20 19 C20 20.1046 19.1046 21 18 21 L6 21 C4.89543 21 4 20.1046 4 19 L4 5 Z' id='Path' stroke='rgba(255,255,255,0.7)' stroke-width='1' stroke-linecap='round'%3E%3C/path%3E%3Cpath d='M15 4 L15 6 C15 7.10457 15.8954 8 17 8 L19 8' id='Path' stroke='rgba(255,255,255,0.7)' stroke-width='1' stroke-linecap='round'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+vite-error-overlay::part(frame):after {
+  background-image: url("data:image/svg+xml,%3Csvg width='20px' height='20px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.6602 2.84952H19.1516C20.2555 2.84952 21.1504 3.74444 21.1504 4.84839V8.3398' stroke='rgba(255,255,255,0.7)' stroke-width='1.69904' stroke-linecap='round'/%3E%3Cpath d='M2.84949 8.33981L2.84949 4.8484C2.84949 3.74446 3.74441 2.84953 4.84836 2.84953L8.33977 2.84953' stroke='rgba(255,255,255,0.7)' stroke-width='1.69904' stroke-linecap='round'/%3E%3Cpath d='M21.1505 15.6602L21.1505 19.1516C21.1505 20.2555 20.2556 21.1505 19.1516 21.1505L15.6602 21.1505' stroke='rgba(255,255,255,0.7)' stroke-width='1.69904' stroke-linecap='round'/%3E%3Cpath d='M8.33984 21.1505L4.84843 21.1505C3.74449 21.1505 2.84956 20.2555 2.84956 19.1516L2.84956 15.6602' stroke='rgba(255,255,255,0.7)' stroke-width='1.69904' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+vite-error-overlay::part(stack):after {
+  background-image: url("data:image/svg+xml,%3Csvg width='20px' height='20px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.78 20H9.78C7.98 20 4.58 19.09 4.58 15.64C4.58 12.19 7.98 11.28 9.78 11.28H14.22C14.37 11.28 17.92 11.23 17.92 8.42C17.92 5.61 14.37 5.56 14.22 5.56H9.22C9.02109 5.56 8.83032 5.48098 8.68967 5.34033C8.54902 5.19968 8.47 5.00891 8.47 4.81C8.47 4.61109 8.54902 4.42032 8.68967 4.27967C8.83032 4.13902 9.02109 4.06 9.22 4.06H14.22C16.02 4.06 19.42 4.97 19.42 8.42C19.42 11.87 16.02 12.78 14.22 12.78H9.78C9.63 12.78 6.08 12.83 6.08 15.64C6.08 18.45 9.63 18.5 9.78 18.5H14.78C14.9789 18.5 15.1697 18.579 15.3103 18.7197C15.451 18.8603 15.53 19.0511 15.53 19.25C15.53 19.4489 15.451 19.6397 15.3103 19.7803C15.1697 19.921 14.9789 20 14.78 20Z' fill='rgba(255,255,255,0.7)'/%3E%3Cpath d='M6.44 8.31C5.74314 8.30407 5.06363 8.09202 4.48708 7.70056C3.91054 7.30909 3.46276 6.75573 3.20018 6.11021C2.93759 5.46469 2.87195 4.75589 3.01153 4.07312C3.1511 3.39036 3.48965 2.76418 3.9845 2.2735C4.47935 1.78281 5.10837 1.44958 5.79229 1.31579C6.47622 1.182 7.18444 1.25363 7.82771 1.52167C8.47099 1.78971 9.02054 2.24215 9.40711 2.82199C9.79368 3.40182 9.99998 4.08311 10 4.78C10 5.2461 9.90773 5.70759 9.72846 6.13783C9.54919 6.56808 9.28648 6.95856 8.95551 7.28675C8.62453 7.61494 8.23184 7.87433 7.80009 8.04995C7.36834 8.22558 6.90609 8.31396 6.44 8.31ZM6.44 2.75C6.04444 2.75 5.65776 2.86729 5.32886 3.08706C4.99996 3.30682 4.74362 3.61918 4.59224 3.98463C4.44087 4.35008 4.40126 4.75221 4.47843 5.14018C4.5556 5.52814 4.74609 5.8845 5.02579 6.16421C5.3055 6.44391 5.66186 6.6344 6.04982 6.71157C6.43779 6.78874 6.83992 6.74913 7.20537 6.59776C7.57082 6.44638 7.88318 6.19003 8.10294 5.86114C8.32271 5.53224 8.44 5.14556 8.44 4.75C8.44 4.48735 8.38827 4.22728 8.28776 3.98463C8.18725 3.74198 8.03993 3.5215 7.85422 3.33578C7.6685 3.15007 7.44802 3.00275 7.20537 2.90224C6.96272 2.80173 6.70265 2.75 6.44 2.75Z' fill='rgba(255,255,255,0.7)'/%3E%3Cpath d='M17.56 22.75C16.8614 22.752 16.1779 22.5466 15.5961 22.1599C15.0143 21.7733 14.5603 21.2227 14.2916 20.5778C14.0229 19.933 13.9515 19.2229 14.0866 18.5375C14.2217 17.8521 14.5571 17.2221 15.0504 16.7275C15.5437 16.2328 16.1726 15.8956 16.8577 15.7586C17.5427 15.6215 18.253 15.6909 18.8986 15.9577C19.5442 16.2246 20.0961 16.6771 20.4844 17.2578C20.8727 17.8385 21.08 18.5214 21.08 19.22C21.08 20.1545 20.7095 21.0508 20.0496 21.7125C19.3898 22.3743 18.4945 22.7473 17.56 22.75ZM17.56 17.19C17.1644 17.19 16.7778 17.3073 16.4489 17.5271C16.12 17.7468 15.8636 18.0592 15.7122 18.4246C15.5609 18.7901 15.5213 19.1922 15.5984 19.5802C15.6756 19.9681 15.8661 20.3245 16.1458 20.6042C16.4255 20.8839 16.7819 21.0744 17.1698 21.1516C17.5578 21.2287 17.9599 21.1891 18.3254 21.0377C18.6908 20.8864 19.0032 20.63 19.2229 20.3011C19.4427 19.9722 19.56 19.5856 19.56 19.19C19.56 18.6596 19.3493 18.1508 18.9742 17.7758C18.5991 17.4007 18.0904 17.19 17.56 17.19Z' fill='rgba(255,255,255,0.7)'/%3E%3C/svg%3E");
+}
+
+vite-error-overlay::part(tip):before {
+  content: "Not sure how to solve this? Visit https://qwik.dev or connect with the community on Discord.";
+  display: block;
+  margin-bottom: 1em;
+}
+</style>
+<script type="module" src="/@vite/client"></script>
+<script>
+  document.addEventListener('qerror', (ev) => {
+    const ErrorOverlay = customElements.get('vite-error-overlay');
+    if (!ErrorOverlay) {
+      return;
+    }
+    const err = ev.detail.error;
+    const overlay = new ErrorOverlay(err);
+    document.body.appendChild(overlay);
+  });
+</script>
+<script>
+  /**
+   * Usage:
+   *
+   * <errored-host></errored-host>
+   */
+  class ErroredHost extends HTMLElement {
+    get _root() {
+      return this.shadowRoot || this;
+    }
+
+    constructor() {
+      super();
+      const self = this;
+
+      this.state = {};
+      if (!this.props) {
+        this.props = {};
+      }
+
+      this.componentProps = ['children', 'error'];
+
+      // used to keep track of all nodes created by show/for
+      this.nodesToDestroy = [];
+      // batch updates
+      this.pendingUpdate = false;
+
+      this.attachShadow({ mode: 'open' });
+    }
+
+    destroyAnyNodes() {
+      // destroy current view template refs before rendering again
+      this.nodesToDestroy.forEach((el) => el.remove());
+      this.nodesToDestroy = [];
+    }
+
+    connectedCallback() {
+      this.getAttributeNames().forEach((attr) => {
+        const jsVar = attr.replace(/-/g, '');
+        const regexp = new RegExp(jsVar, 'i');
+        this.componentProps.forEach((prop) => {
+          if (regexp.test(prop)) {
+            const attrValue = this.getAttribute(attr);
+            if (this.props[prop] !== attrValue) {
+              this.props[prop] = attrValue;
+            }
+          }
+        });
+      });
+
+      this._root.innerHTML = `
+
+        <template data-el="show-errored-host">
+        <div class="error">
+          <template data-el="div-errored-host-2">
+            <!-- String(props.error) -->
+          </template>
+        </div>
+        </template>
+
+        <div class="arrow">👇 Uncaught error happened here 👇
+          <span class="dev-tools">DevTools: Cmd+Alt+I</span>
+        </div>
+        <div class="div">
+          <slot></slot>
+        </div>
+
+        <style>
+          .error {
+            border-radius: 5px 5px 0px 0;
+            background: black;
+            color: white;
+            font-family: monospace;
+            font-size: 12px;
+            margin: 0;
+            padding: 10px;
+          }
+          .arrow {
+            background: #f47e81;
+            color: black;
+            font-size: 14px;
+            padding: 10px;
+            text-align: center;
+            font-family: sans-serif;
+          }
+          .dev-tools {
+            background: red;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: 800;
+          }
+          .div {
+            outline: 5px solid red;
+            border-radius: 10px;
+          }
+        </style>`;
+      this.pendingUpdate = true;
+
+      this.render();
+      this.onMount();
+      this.pendingUpdate = false;
+      this.update();
+    }
+
+    showContent(el) {
+      // https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement/content
+      // grabs the content of a node that is between <template> tags
+      // iterates through child nodes to register all content including text elements
+      // attaches the content after the template
+
+      const elementFragment = el.content.cloneNode(true);
+      const children = Array.from(elementFragment.childNodes);
+      children.forEach((child) => {
+        if (el?.scope) {
+          child.scope = el.scope;
+        }
+        if (el?.context) {
+          child.context = el.context;
+        }
+        this.nodesToDestroy.push(child);
+      });
+      el.after(elementFragment);
+    }
+
+    onMount() {}
+
+    onUpdate() {}
+
+    update() {
+      if (this.pendingUpdate === true) {
+        return;
+      }
+      this.pendingUpdate = true;
+      this.render();
+      this.onUpdate();
+      this.pendingUpdate = false;
+    }
+
+    render() {
+      // re-rendering needs to ensure that all nodes generated by for/show are refreshed
+      this.destroyAnyNodes();
+      this.updateBindings();
+    }
+
+    updateBindings() {
+      this._root.querySelectorAll("[data-el='show-errored-host']").forEach((el) => {
+        const whenCondition = this.props.error;
+        if (whenCondition) {
+          this.showContent(el);
+        }
+      });
+
+      this._root.querySelectorAll("[data-el='div-errored-host-2']").forEach((el) => {
+        this.renderTextNode(el, String(this.props.error));
+      });
+    }
+
+    // Helper to render content
+    renderTextNode(el, text) {
+      const textNode = document.createTextNode(text);
+      if (el?.scope) {
+        textNode.scope = el.scope;
+      }
+      if (el?.context) {
+        textNode.context = el.context;
+      }
+      el.after(textNode);
+      this.nodesToDestroy.push(el.nextSibling);
+    }
+  }
+
+  customElements.define('errored-host', ErroredHost);
+</script>
+
+<script>
+  if (!window.__qwikViteLog) {
+    window.__qwikViteLog = true;
+    console.debug(
+      '%c⭐️ Qwik Dev SSR Mode',
+      'background: #0c75d2; color: white; padding: 2px 3px; border-radius: 2px; font-size: 0.8em;',
+      "App is running in SSR development mode!\n - Additional JS is loaded by Vite for debugging and live reloading\n - Rendering performance might not be optimal\n - Delayed interactivity because prefetching is disabled\n - Vite dev bundles do not represent production output\n\nProduction build can be tested running 'npm run preview'"
+    );
+  }
+</script>
+
+<script>
+      globalThis.qwikdevtools = {"hotKeys":["Alt"],"srcDir":"http://local.local/home/gouroubleu/WS/json-editor/app/src/"};
+    </script><style>
+  [data-qwik-cls] {
+    outline: 2px solid red;
+  }
+  [data-qwik-cls]::after {
+    position: absolute;
+    font-size: 12px;
+    content: 'CLS ' attr(data-qwik-cls);
+    font-family: monospace;
+    font-weight: bold;
+    background: red;
+    color: white;
+    margin: -2px;
+    padding: 1px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  #qwik-image-warning-container {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 0 !important;
+    overflow: visible !important;
+    height: 0 !important;
+    pointer-events: none !important;
+    contain: size layout style content;
+    z-index: 1;
+  }
+</style>
+<template id="qwik-image-warning-template">
+  <style>
+    :host {
+      position: absolute;
+      border: 1px solid red;
+      pointer-events: none;
+      z-index: 1;
+      contain: layout size;
+    }
+
+    #icon {
+      border: 0;
+      margin: 5px;
+      color: black;
+      max-width: 100%;
+      width: 20px;
+      background: yellow;
+      border-radius: 100%;
+      height: 20px;
+      padding: 3px;
+      pointer-events: all;
+      cursor: pointer;
+    }
+
+    #icon svg {
+      width: 100%;
+      height: auto;
+      pointer-events: none;
+    }
+
+    dialog {
+      padding: 0;
+      border: 0;
+      margin: 0 5px;
+      background: #ffffe8;
+      color: black;
+      width: 250px;
+      font-size: 11px;
+      position: absolute;
+      inset-inline-start: unset;
+      inset-inline-end: unset;
+      border-radius: 5px;
+      pointer-events: all;
+      overflow: hidden;
+      box-shadow: 0px -2px 20px 0px #0000002e;
+      z-index: 10000;
+    }
+
+    .top {
+      bottom: calc(100% + 5px);
+    }
+    .bottom {
+      top: 40px;
+    }
+    .right {
+      inset-inline-start: 0;
+      inset-inline-end: unset;
+    }
+    .left {
+      inset-inline-start: unset;
+      inset-inline-end: calc(100% - 40px);
+    }
+
+    .content {
+      padding: 5px;
+    }
+
+    #loc {
+      background: #2e3801;
+      color: #d2d2d2;
+      font-family: monospace;
+      padding: 3px 5px;
+      pointer-events: all;
+      margin: 0;
+      border: 0;
+      cursor: pointer;
+      font-size: 11px;
+      width: calc(100% - 24px);
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: block;
+      direction: rtl;
+      text-align: right;
+    }
+    #loc:hover {
+      background: #3a4a01;
+    }
+
+    pre {
+      background: #f1fb8e;
+      padding: 5px;
+      margin: 5px 0;
+      border-radius: 3px;
+      user-select: none;
+    }
+
+    pre span {
+      user-select: all;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+
+    #close {
+      border: 0;
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      background: #ffe14f;
+      color: black;
+      font-weight: 900;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      cursor: pointer;
+    }
+    #close:hover {
+      background: #ffeb6f;
+    }
+
+    #action-btn {
+      border: 2px solid #18ae00;
+      padding: 2px 4px;
+      background: #50ff50;
+      border-radius: 5px;
+      color: #0c5500;
+      font-weight: 800;
+      font-size: 10px;
+      cursor: pointer;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+
+    h2 {
+      font-weight: 900;
+      margin: 10px 0;
+    }
+  </style>
+  <button id="icon" type="button" aria-label="Open image dev dialog">
+    <svg width="32" height="32" viewBox="0 0 24 24">
+      <path
+        fill="currentColor"
+        d="M2.725 21q-.275 0-.5-.138t-.35-.362q-.125-.225-.138-.488t.138-.512l9.25-16q.15-.25.388-.375T12 3q.25 0 .488.125t.387.375l9.25 16q.15.25.138.513t-.138.487q-.125.225-.35.363t-.5.137H2.725ZM12 18q.425 0 .713-.288T13 17q0-.425-.288-.713T12 16q-.425 0-.713.288T11 17q0 .425.288.713T12 18Zm0-3q.425 0 .713-.288T13 14v-3q0-.425-.288-.713T12 10q-.425 0-.713.288T11 11v3q0 .425.288.713T12 15Z"
+      />
+    </svg>
+  </button>
+  <dialog>
+    <form method="dialog">
+      <button id="close" type="submit" aria-label="Close">X</button>
+    </form>
+    <button id="loc"></button>
+    <div class="content">
+      <h2 id="title"></h2>
+      <p id="message"></p>
+      <p class="action-container"></p>
+    </div>
+  </dialog>
+</template>
+<div id="qwik-image-warning-container"></div>
+<script>
+  (function () {
+    function getPositionClasses(target) {
+      const { x, y } = target.getBoundingClientRect();
+      const windowWidth = window.innerWidth;
+      let horizontal = 'right';
+      let vertical = 'bottom';
+      if (x > windowWidth - 260) {
+        horizontal = 'left';
+      }
+      return `${vertical} ${horizontal}`;
+    }
+    class ImageWarning extends HTMLElement {
+      #actionFn = null;
+      constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        this.shadowRoot.appendChild(
+          document.importNode(document.getElementById('qwik-image-warning-template').content, true)
+        );
+        const dialog = this.shadowRoot.querySelector('dialog');
+
+        this.shadowRoot.addEventListener('click', async (ev) => {
+          const target = ev.target;
+          if (target.nodeName === 'BUTTON') {
+            if (target.id === 'action-btn') {
+              if (this.#actionFn) {
+                this.#actionFn();
+                dialog.close();
+              }
+            } else if (target.id === 'icon') {
+              if (dialog.open) {
+                dialog.close();
+              } else {
+                dialog.className = getPositionClasses(target);
+                dialog.show();
+              }
+            } else if (target.id === 'loc' && target.dataset.url) {
+              globalThis.qwikOpenInEditor(target.dataset.url);
+            }
+          }
+        });
+      }
+
+      set loc(value) {
+        const anchor = this.shadowRoot.querySelector('#loc');
+        anchor.textContent = value;
+        if (globalThis.qwikOpenInEditor) {
+          anchor.dataset.url = value;
+        }
+      }
+
+      set header(value) {
+        this.shadowRoot.querySelector('#title').textContent = value;
+      }
+
+      set message(value) {
+        this.shadowRoot.querySelector('#message').innerHTML = value;
+      }
+
+      set actionFn(value) {
+        this.#actionFn = value;
+      }
+      set actionName(value) {
+        if (value) {
+          this.shadowRoot.querySelector('.action-container').innerHTML =
+            `<button id="action-btn" type="button">${value}</button>`;
+        }
+      }
+    }
+    customElements.define('image-warning', ImageWarning);
+
+    const shiftsMap = new Map();
+    const visibleNodes = new Map();
+    const imageContainer = document.querySelector('#qwik-image-warning-container');
+    let skip = false;
+
+    async function _getInfo(originalSrc) {
+      // Put all supported protocols here, see also packages/qwik/src/optimizer/src/plugins/image-size-server.ts
+      if (!/^(https?|file|capacitor):/.test(originalSrc)) {
+        return undefined;
+      }
+      const url = new URL('/__image_info', location.href);
+      url.searchParams.set('url', originalSrc);
+      const res = await fetch(url);
+      if (res.ok) {
+        return await res.json();
+      } else {
+        return null;
+      }
+    }
+
+    const map = new Map();
+    function getInfo(originalSrc) {
+      let p = map.get(originalSrc);
+      if (typeof p === 'undefined') {
+        p = _getInfo(originalSrc);
+        map.set(originalSrc, p);
+      }
+      return p;
+    }
+    function isDefinedUnit(value) {
+      return value.endsWith('px');
+    }
+    async function doImg(node) {
+      const scrollX = window.scrollX;
+      const scrollY = window.scrollY;
+      const rect = node.getBoundingClientRect();
+      const originalSrc = node.currentSrc;
+      const info = await getInfo(originalSrc);
+      let overlay = visibleNodes.get(node);
+      const wideScreen = window.innerWidth > 500;
+      if (info && wideScreen) {
+        let layoutInvalidation = false;
+        const loc = node.getAttribute('data-qwik-inspector');
+        const browserArea = rect.width * rect.height;
+        if (!node.hasAttribute('width') || !node.hasAttribute('height')) {
+          skip = true;
+          const computedStyles = getComputedStyle(node);
+          const hasAspect = computedStyles.getPropertyValue('aspect-ratio').toString() !== 'auto';
+          const hasWidth = isDefinedUnit(computedStyles.getPropertyValue('width').toString());
+          const hasHeight = isDefinedUnit(computedStyles.getPropertyValue('height').toString());
+          const isAbsolute = computedStyles.getPropertyValue('position').toString() === 'absolute';
+          layoutInvalidation =
+            browserArea > 1000 && !isAbsolute && !hasAspect && (!hasWidth || !hasHeight);
+        }
+        const realArea = info.width && info.height;
+        const threshholdArea = realArea * 0.5;
+        const tooBig = browserArea < threshholdArea && info.type !== 'svg';
+        skip = false;
+        if (layoutInvalidation || tooBig) {
+          if (!overlay) {
+            overlay = document.createElement('image-warning');
+            imageContainer.appendChild(overlay);
+            visibleNodes.set(node, overlay);
+          }
+          overlay.style.top = rect.top + scrollY + 'px';
+          overlay.style.left = rect.left + scrollX + 'px';
+          overlay.style.width = rect.width + 'px';
+          overlay.style.height = rect.height + 'px';
+          overlay.info = info;
+          overlay.loc = loc;
+          if (layoutInvalidation) {
+            const clipBoard = `width="${info.width}" height="${info.height}"`;
+            overlay.header = 'Perf: layout shift';
+            overlay.message = `Image\'s size is unknown until it\'s loaded, <a href="https://web.dev/cls/" target="_blank" rel="noopener noreferrer">causing layout shift</a>.</p><p>To solve this problem set the width/height in the img tag:</p><pre>&lt;img <span>${clipBoard}</span></pre>`;
+            const uniqueLoc =
+              document.querySelectorAll('[data-qwik-inspector="' + loc + '"]').length === 1;
+            if (loc) {
+              if (uniqueLoc) {
+                overlay.actionName = 'Auto fix';
+                overlay.actionFn = async () => {
+                  const url = new URL('/__image_fix', location.href);
+                  url.searchParams.set('loc', loc);
+                  url.searchParams.set('width', info.width);
+                  url.searchParams.set('height', info.height);
+                  if (!node.srcset) {
+                    url.searchParams.set('src', node.currentSrc);
+                    url.searchParams.set('currentHref', location.href);
+                  }
+                  await fetch(url, {
+                    method: 'POST',
+                  });
+                };
+              } else {
+                overlay.actionName = 'Open in editor';
+                overlay.actionFn = async () => {
+                  await navigator.clipboard.writeText(clipBoard);
+                  globalThis.qwikOpenInEditor(loc);
+                };
+              }
+            }
+          } else if (tooBig) {
+            overlay.header = 'Perf: properly size image';
+            overlay.message = `The image is too big, <a href="https://developer.chrome.com/en/docs/lighthouse/performance/uses-responsive-images/" target="_blank" rel="noopener noreferrer">hurting performance</a>, it should be resized to the size it\'s displayed at. The image dimensions are ${info.width} x ${info.height} but it\'s displayed at ${rect.width}x${rect.height}.</p>`;
+          }
+          return;
+        }
+      }
+
+      if (overlay) {
+        overlay.remove();
+        visibleNodes.delete(node);
+      }
+    }
+
+    async function updateImg(node) {
+      const overlay = visibleNodes.get(node);
+      if (!node.isConnected) {
+        if (overlay) {
+          overlay.remove();
+          visibleNodes.delete(node);
+        }
+      } else if (node.complete) {
+        doImg(node);
+      }
+    }
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      if (!skip) {
+        for (const entry of entries) {
+          updateImg(entry.target);
+        }
+      }
+    });
+
+    const observer = new MutationObserver((entry) => {
+      for (const mutation of entry) {
+        for (const node of mutation.addedNodes) {
+          if (node.nodeName === 'IMG') {
+            resizeObserver.observe(node);
+          } else if (node.nodeType === 1) {
+            node.querySelectorAll('img').forEach((img) => {
+              resizeObserver.observe(img);
+            });
+          }
+        }
+        for (const node of mutation.removedNodes) {
+          if (node.nodeName === 'IMG') {
+            updateImg(node);
+            resizeObserver.unobserve(node);
+          } else if (node.nodeType === 1) {
+            node.querySelectorAll('img').forEach((img) => {
+              updateImg(img);
+              resizeObserver.unobserve(img);
+            });
+          }
+        }
+      }
+    });
+    let perfObserver;
+    let DCLS = 0;
+    const activate = () => {
+      setTimeout(() => {
+        if (perfObserver) {
+          perfObserver.disconnect();
+          if (DCLS > 0.005) {
+            console.error('Detected Layout Shift during page load', DCLS);
+          }
+        }
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true,
+        });
+        document.body.querySelectorAll('img').forEach((node) => {
+          resizeObserver.observe(node);
+        });
+      }, 100);
+    };
+    if (document.readyState === 'complete') {
+      activate();
+    } else {
+      window.addEventListener('load', activate);
+    }
+    const pageAccessedByReload =
+      performance?.navigation.type === 1 ||
+      performance
+        .getEntriesByType('navigation')
+        .map((nav) => nav.type)
+        .includes('reload');
+    if (typeof PerformanceObserver !== 'undefined' && !pageAccessedByReload) {
+      const shiftsMap = new Map();
+      perfObserver = new PerformanceObserver((list) => {
+        list.getEntries().forEach((entry) => {
+          if (entry.hadRecentInput) {
+            return; // Ignore shifts after recent input.
+          }
+          if (entry.value > 0.006) {
+            for (const source of entry.sources) {
+              if (
+                source.node &&
+                source.node.nodeType === 1 &&
+                source.node.nodeName !== 'IMAGE-WARNING'
+              ) {
+                source.node.setAttribute('data-qwik-cls', Number(entry.value).toFixed(3));
+              }
+            }
+          }
+          DCLS += entry.value;
+        });
+      });
+      perfObserver.observe({ type: 'layout-shift', buffered: true });
+    }
+  })();
+</script>
+<style>
+  #qwik-inspector-overlay {
+    position: fixed;
+    background: rgba(24, 182, 246, 0.27);
+    pointer-events: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(172, 126, 244, 0.46);
+    border-radius: 4px;
+    contain: strict;
+    cursor: pointer;
+    z-index: 999999;
+  }
+
+  #qwik-inspector-info-popup {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-family: monospace;
+    background: #000000c2;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow:
+      0 20px 25px -5px rgb(0 0 0 / 34%),
+      0 8px 10px -6px rgb(0 0 0 / 24%);
+    backdrop-filter: blur(4px);
+    -webkit-animation: fadeOut 0.3s 3s ease-in-out forwards;
+    animation: fadeOut 0.3s 3s ease-in-out forwards;
+    z-index: 999999;
+    contain: layout;
+  }
+
+  #qwik-inspector-info-popup p {
+    margin: 0px;
+  }
+
+  @-webkit-keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+</style>
+<div id="qwik-inspector-info-popup" aria-hidden="true">Click-to-Source</div>
+<script>
+  (function () {
+    const inspectAttribute = 'data-qwik-inspector';
+    const hotKeys = globalThis.qwikdevtools.hotKeys;
+    const srcDir = globalThis.qwikdevtools.srcDir;
+    document.querySelector('#qwik-inspector-info-popup').textContent =
+      `Click-to-Source: ${hotKeys.join(' + ')}`;
+    console.debug(
+      '%c🔍 Qwik Click-To-Source',
+      'background: #564CE0; color: white; padding: 2px 3px; border-radius: 2px; font-size: 0.8em;',
+      `Hold-press the '${hotKeys.join(' + ')}' key${
+        (hotKeys.length > 1 && 's') || ''
+      } and click a component to jump directly to the source code in your IDE!`
+    );
+    window.__qwik_inspector_state = {
+      pressedKeys: new Set(),
+    };
+    const origin = 'http://local.local';
+    const body = document.body;
+    const overlay = document.createElement('div');
+    overlay.id = 'qwik-inspector-overlay';
+    overlay.setAttribute('aria-hidden', 'true');
+    body.appendChild(overlay);
+
+    function findContainer(el) {
+      if (el && el instanceof Element) {
+        return el.closest(`[${inspectAttribute}]`);
+      }
+      return null;
+    }
+
+    document.addEventListener(
+      'keydown',
+      (event) => {
+        window.__qwik_inspector_state.pressedKeys.add(event.code);
+        updateOverlay();
+      },
+      { capture: true }
+    );
+
+    document.addEventListener(
+      'keyup',
+      (event) => {
+        window.__qwik_inspector_state.pressedKeys.delete(event.code);
+        updateOverlay();
+      },
+      { capture: true }
+    );
+
+    window.addEventListener(
+      'blur',
+      (event) => {
+        window.__qwik_inspector_state.pressedKeys.clear();
+        updateOverlay();
+      },
+      { capture: true }
+    );
+
+    document.addEventListener(
+      'mouseover',
+      (event) => {
+        const target = findContainer(event.target);
+        if (target) {
+          window.__qwik_inspector_state.hoveredElement = target;
+        } else {
+          window.__qwik_inspector_state.hoveredElement = undefined;
+        }
+        updateOverlay();
+      },
+      { capture: true }
+    );
+
+    document.addEventListener(
+      'click',
+      (event) => {
+        if (isActive()) {
+          window.__qwik_inspector_state.pressedKeys.clear();
+          const target = findContainer(event.target);
+          if (target) {
+            event.preventDefault();
+            const inspectUrl = target.getAttribute(inspectAttribute);
+            if (inspectUrl !== 'false') {
+              body.style.setProperty('cursor', 'progress');
+              qwikOpenInEditor(inspectUrl);
+            }
+          }
+        }
+      },
+      { capture: true }
+    );
+
+    globalThis.qwikOpenInEditor = function (path) {
+      const isWindows = navigator.platform.includes('Win');
+      const resolvedURL = new URL(path, isWindows ? origin : srcDir);
+      let filePath =
+        resolvedURL.protocol === 'file:' && resolvedURL.pathname.startsWith('/')
+          ? resolvedURL.pathname.slice(1)
+          : resolvedURL.pathname.startsWith('/@fs/')
+            ? resolvedURL.pathname.slice(isWindows ? 5 : 4)
+            : resolvedURL.pathname;
+      if (filePath.startsWith('/src/')) {
+        const prefix = isWindows ? srcDir : srcDir.replace('http://local.local', '');
+        filePath = prefix + filePath.slice(4);
+      }
+      const params = new URLSearchParams();
+      params.set('file', filePath);
+      fetch('/__open-in-editor?' + params.toString());
+    };
+    document.addEventListener(
+      'contextmenu',
+      (event) => {
+        if (isActive()) {
+          window.__qwik_inspector_state.pressedKeys.clear();
+          const target = findContainer(event.target);
+          if (target) {
+            event.preventDefault();
+          }
+        }
+      },
+      { capture: true }
+    );
+
+    function updateOverlay() {
+      const hoverElement = window.__qwik_inspector_state.hoveredElement;
+      if (hoverElement && isActive()) {
+        const rect = hoverElement.getBoundingClientRect();
+        overlay.style.setProperty('height', rect.height + 'px');
+        overlay.style.setProperty('width', rect.width + 'px');
+        overlay.style.setProperty('top', rect.top + 'px');
+        overlay.style.setProperty('left', rect.left + 'px');
+        overlay.style.setProperty('visibility', 'visible');
+        body.style.setProperty('cursor', 'pointer');
+      } else {
+        overlay.style.setProperty('height', '0px');
+        overlay.style.setProperty('width', '0px');
+        overlay.style.setProperty('visibility', 'hidden');
+        body.style.removeProperty('cursor');
+      }
+    }
+
+    function checkKeysArePressed() {
+      const activeKeys = Array.from(window.__qwik_inspector_state.pressedKeys).map((key) =>
+        key ? key.replace(/(Left|Right)$/g, '') : undefined
+      );
+      return hotKeys.every((key) => activeKeys.includes(key));
+    }
+
+    function isActive() {
+      return checkKeysArePressed();
+    }
+    window.addEventListener('resize', updateOverlay);
+    document.addEventListener('scroll', updateOverlay);
+  })();
+</script>
+

@@ -1,0 +1,23 @@
+{
+  "timestamp": "2025-09-17T00:21:54.047Z",
+  "testEnvironment": "headless",
+  "pageAnalysis": {
+    "title": "",
+    "bodyText": "← Retour à la liste\nCréation d'une nouvelle entité\nNOM AFFICHÉ\nNouvelle entité\nSCHÉMA\nUtilisateur de test (test-user)\nVERSION\nv1.3\n📝 Prêt pour la création\n👁️ Voir JSON\n❌ Annuler\n✨ Créer l'entité\n🔄 Réinitialiser\nUtilisateur de test\nNiveau 0\n📝\nid*\nstring\nIdentifiant unique de l'utilisateur\n📝\nnom*\nstring\nNom de famille de l'utilisateur\n📝\nemail*\nstring\nAdresse email de l'utilisateur\n🔢\nage\ninteger\nÂge de l'utilisateur\nMin: 0\nMax: 150\n📋\nadresse\narray\n→\n📝 Éditer en JSON\n🏠 Utilisateur de test",
+    "forms": 0,
+    "buttons": 8,
+    "inputs": 4,
+    "properties": [],
+    "addButtons": [],
+    "url": "http://localhost:5505/bdd/test-user/new/"
+  },
+  "interactions": {
+    "addressPropertyFound": false,
+    "addButtonsFound": false
+  },
+  "consoleLogs": [],
+  "errors": [],
+  "conclusions": [
+    "✅ Aucune erreur JavaScript détectée"
+  ]
+}

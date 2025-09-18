@@ -19,7 +19,7 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
   // Obtenir les données de la colonne depuis le contexte
   const column = store.state.columns[props.columnIndex];
   if (!column) {
-    return <div class="entity-column">Colonne introuvable</div>;
+    return <div class="column entity-column">Colonne introuvable</div>;
   }
 
   const handleDirectSave = $((key: string, newValue: any) => {
@@ -130,14 +130,61 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
     return '📄';
   };
 
-  const canExpand = (value: any) => {
-    return value !== null && value !== undefined && (typeof value === 'object' || Array.isArray(value));
+  const canExpand = (value: any, fieldSchema?: any) => {
+
+    // PRIORITÉ ABSOLUE : Si le schéma définit que c'est navigable, on peut naviguer !
+    if (fieldSchema) {
+      // Si c'est un objet avec des propriétés définies dans le schéma → NAVIGABLE
+      if (fieldSchema.type === 'object' && fieldSchema.properties && Object.keys(fieldSchema.properties).length > 0) {
+        console.log('✅ Navigable par SCHÉMA (objet avec propriétés)');
+        return true;
+      }
+      // Si c'est un array avec des items définis → NAVIGABLE
+      if (fieldSchema.type === 'array' && fieldSchema.items) {
+        console.log('✅ Navigable par SCHÉMA (array avec items)');
+        return true;
+      }
+    }
+
+    // Sinon, vérifier la valeur (mais moins prioritaire)
+    const result = value !== null && value !== undefined && (typeof value === 'object' || Array.isArray(value)) &&
+           ((Array.isArray(value) && value.length > 0) || (typeof value === 'object' && Object.keys(value).length > 0));
+
+    console.log('🔍 Navigable par DATA:', result);
+    return result;
   };
 
   const renderField = (key: string, value: any, schema: any) => {
     const fieldSchema = schema.properties?.[key];
     const isRequired = schema.required?.includes(key);
-    const canExpanded = canExpand(value);
+    const canExpanded = canExpand(value, fieldSchema);
+
+
+    // Debug spécifique pour adresse
+    if (key === 'adresse') {
+      console.log('🚨 DEBUG ADRESSE:', {
+        key,
+        value,
+        fieldSchema,
+        canExpanded,
+        schemaType: fieldSchema?.type,
+        hasItems: !!fieldSchema?.items
+      });
+    }
+
+    // Debug logs for navigation issue at level 3+
+    if (key === 'test' && column.level >= 2) {
+      console.log('🐛 DEBUG renderField - key "test" at level', column.level, {
+        key,
+        value,
+        canExpanded,
+        valueType: typeof value,
+        isArray: Array.isArray(value),
+        columnIndex: props.columnIndex,
+        columnPath: column.path,
+        columnData: column.data
+      });
+    }
 
     const isPrimitiveValue = (
       typeof value === 'string' ||
@@ -148,8 +195,8 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
     );
 
     const isEditableComplex = (
-      Array.isArray(value) ||
-      (typeof value === 'object' && value !== null && Object.keys(value).length === 0)
+      Array.isArray(value)
+      // SUPPRIMÉ: Les objets ne sont JAMAIS éditables, toujours navigables !
     );
 
     const canEdit = !props.isReadOnly && (isPrimitiveValue || isEditableComplex);
@@ -238,20 +285,6 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
                     />
                   )}
                 </div>
-              ) : (fieldSchema?.type === 'object') ? (
-                <textarea
-                  class="direct-edit-textarea"
-                  value={(() => {
-                    if (value === null || value === undefined) return '';
-                    return JSON.stringify(value, null, 2);
-                  })()}
-                  onChange$={(e) => {
-                    const target = e.target as HTMLTextAreaElement;
-                    handleDirectSave(key, target.value);
-                  }}
-                  rows={4}
-                  placeholder="Entrez un object JSON valide..."
-                />
               ) : (
                 <input
                   class="direct-edit-input"
@@ -311,43 +344,70 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
     actions.removeArrayElement(column.path, index);
   });
 
+  const handleValidateTemporaryItem = $((index: number) => {
+    if (props.isReadOnly) return;
+
+    const currentArray = [...column.data];
+    const item = currentArray[index];
+
+    if (item && item._temporary) {
+      // Enlever le marqueur temporaire
+      delete item._temporary;
+      actions.updateEntityData(column.path, currentArray);
+    }
+  });
+
   const renderArrayItems = (arrayData: any[]) => {
-    return arrayData.map((item, index) => (
-      <div key={index} class="array-item">
-        <div class="array-item-header">
-          <span class="array-index">[{index}]</span>
-          <span class="array-item-type">{typeof item}</span>
-          <div class="array-item-actions">
-            <button
-              class="btn btn-xs btn-outline"
-              onClick$={() => actions.navigateToArrayItem(index, props.columnIndex)}
-              title="Explorer cet élément"
-            >
-              →
-            </button>
-            {!props.isReadOnly && (
+    return arrayData.map((item, index) => {
+      const isTemporary = item && item._temporary === true;
+
+      return (
+        <div key={index} class={`array-item ${isTemporary ? 'temporary-item' : ''}`}>
+          <div class="array-item-header">
+            <span class="array-index">[{index}]</span>
+            <span class="array-item-type">{typeof item}</span>
+            {isTemporary && <span class="temporary-badge">⏳ Temporaire</span>}
+            <div class="array-item-actions">
+              {isTemporary && !props.isReadOnly && (
+                <button
+                  class="btn btn-xs btn-success"
+                  onClick$={() => handleValidateTemporaryItem(index)}
+                  title="Valider cet élément"
+                >
+                  ✅
+                </button>
+              )}
               <button
-                class="btn btn-xs btn-danger"
-                onClick$={() => handleRemoveArrayItem(index)}
-                title="Supprimer cet élément"
+                class="btn btn-xs btn-outline"
+                onClick$={() => actions.navigateToArrayItem(index, props.columnIndex)}
+                title="Explorer cet élément"
               >
-                🗑️
+                →
               </button>
-            )}
+              {!props.isReadOnly && (
+                <button
+                  class="btn btn-xs btn-danger"
+                  onClick$={() => handleRemoveArrayItem(index)}
+                  title="Supprimer cet élément"
+                >
+                  🗑️
+                </button>
+              )}
+            </div>
+          </div>
+          <div
+            class="array-item-preview"
+            onClick$={() => actions.navigateToArrayItem(index, props.columnIndex)}
+          >
+            {getValueDisplay(item)}
           </div>
         </div>
-        <div
-          class="array-item-preview"
-          onClick$={() => actions.navigateToArrayItem(index, props.columnIndex)}
-        >
-          {getValueDisplay(item)}
-        </div>
-      </div>
-    ));
+      );
+    });
   };
 
   return (
-    <div class="entity-column" style={{ width: '350px', minWidth: '350px' }}>
+    <div class="column entity-column" style={{ width: '400px', minWidth: '400px' }}>
       {/* Header de la colonne */}
       <div class="column-header">
         {column.level > 0 && (

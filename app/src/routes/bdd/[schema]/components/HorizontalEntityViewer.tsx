@@ -284,7 +284,7 @@ export const HorizontalEntityViewer = component$<HorizontalEntityViewerProps>((p
           position: 'absolute',
           left: 0,
           top: 0,
-          width: '350px',
+          width: '400px',
           height: '100%',
           overflow: 'auto',
           borderRight: '1px solid #e9ecef',
@@ -474,7 +474,7 @@ export const HorizontalEntityViewer = component$<HorizontalEntityViewerProps>((p
       <div 
         class="columns-container" 
         style={{
-          marginLeft: '350px'
+          marginLeft: '400px'
         }}
       >
         <div 
@@ -514,7 +514,7 @@ export const HorizontalEntityViewer = component$<HorizontalEntityViewerProps>((p
         style={{
           position: 'fixed',
           bottom: 0,
-          left: '350px',
+          left: '400px',
           right: 0,
           backgroundColor: '#fff',
           borderTop: '1px solid #e9ecef',

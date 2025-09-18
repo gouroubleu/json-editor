@@ -70,3 +70,35 @@ export type SchemaEditorState = {
   isValid: boolean;
   errors: string[];
 };
+
+// Types additionnels pour la compatibilité
+export type JsonSchema = {
+  id?: string;
+  name: string;
+  title?: string;
+  description?: string;
+  type: JsonSchemaType;
+  properties?: Record<string, any>;
+  required?: string[];
+  items?: any;
+  additionalProperties?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+};
+
+export type Entity = {
+  id: string;
+  schemaId: string;
+  data: Record<string, any>;
+  createdAt: string;
+  updatedAt: string;
+  version?: number;
+};
+
+export type AvailableSchema = {
+  id: string;
+  name: string;
+  title?: string;
+  description?: string;
+  version?: string;
+};

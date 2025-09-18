@@ -519,7 +519,7 @@ export const ExampleMigratedComponent = component$(() => {
       <p>Mode: {isUsingContext ? 'Contexte' : 'Local'}</p>
       <p>Schémas: {state.schemas?.length || 0}</p>
 
-      <button onClick$={() => handleSave('/bo/schemaEditor/')}>
+      <button onClick$={() => handleSave('/')}>
         Sauvegarder et retourner
       </button>
 

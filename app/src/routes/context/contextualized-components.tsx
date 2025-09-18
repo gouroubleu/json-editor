@@ -15,7 +15,7 @@ import {
 import type { JsonSchemaType } from '../types';
 
 // ========================================================================================
-// PAGE PRINCIPALE CONTEXTUALISÉE (remplace src/routes/bo/schemaEditor/index.tsx)
+// PAGE PRINCIPALE CONTEXTUALISÉE (remplace src/routes/index.tsx)
 // ========================================================================================
 
 export const SchemaEditorMainPage = component$(() => {
@@ -64,7 +64,7 @@ export const SchemaEditorMainPage = component$(() => {
         <div class="header-actions">
           <button
             class="btn btn-info btn-large"
-            onClick$={() => nav('/bo/schemaEditor/bdd/')}
+            onClick$={() => nav('/bdd/')}
             title="Accéder aux entités basées sur vos schémas"
           >
             🗃️ Base de Données
@@ -72,7 +72,7 @@ export const SchemaEditorMainPage = component$(() => {
 
           <button
             class="btn btn-primary btn-large"
-            onClick$={() => nav('/bo/schemaEditor/new/')}
+            onClick$={() => nav('/new/')}
           >
             ➕ Nouveau Schéma
           </button>
@@ -115,7 +115,7 @@ export const SchemaEditorMainPage = component$(() => {
             </p>
             <button
               class="btn btn-primary"
-              onClick$={() => nav('/bo/schemaEditor/new/')}
+              onClick$={() => nav('/new/')}
             >
               Créer mon premier schéma
             </button>
@@ -167,7 +167,7 @@ export const SchemaEditorMainPage = component$(() => {
                 <div class="card-actions">
                   <button
                     class="btn btn-primary btn-sm"
-                    onClick$={() => nav(`/bo/schemaEditor/edit/${schema.id}/`)}
+                    onClick$={() => nav(`/edit/${schema.id}/`)}
                     title="Éditer le schéma"
                   >
                     ✏️ Éditer
@@ -175,7 +175,7 @@ export const SchemaEditorMainPage = component$(() => {
 
                   <button
                     class="btn btn-success btn-sm"
-                    onClick$={() => nav(`/bo/schemaEditor/bdd/${schema.name}/`)}
+                    onClick$={() => nav(`/bdd/${schema.name}/`)}
                     title="Voir les entités basées sur ce schéma"
                   >
                     🗃️ Entités
@@ -208,7 +208,7 @@ export const SchemaEditorMainPage = component$(() => {
 });
 
 // ========================================================================================
-// PAGE DE CRÉATION CONTEXTUALISÉE (remplace src/routes/bo/schemaEditor/new/index.tsx)
+// PAGE DE CRÉATION CONTEXTUALISÉE (remplace src/routes/new/index.tsx)
 // ========================================================================================
 
 export const CreateSchemaPage = component$(() => {
@@ -252,7 +252,7 @@ export const CreateSchemaPage = component$(() => {
     const result = await saveCurrentSchema();
     if (result.success) {
       showNotification('success', result.message);
-      setTimeout(() => nav('/bo/schemaEditor/'), 1500);
+      setTimeout(() => nav('/'), 1500);
     } else {
       showNotification('error', result.message);
     }
@@ -306,7 +306,7 @@ export const CreateSchemaPage = component$(() => {
 });
 
 // ========================================================================================
-// PAGE D'ÉDITION CONTEXTUALISÉE (remplace src/routes/bo/schemaEditor/edit/[id]/index.tsx)
+// PAGE D'ÉDITION CONTEXTUALISÉE (remplace src/routes/edit/[id]/index.tsx)
 // ========================================================================================
 
 type EditSchemaPageProps = {
@@ -338,7 +338,7 @@ export const EditSchemaPage = component$<EditSchemaPageProps>((props) => {
     const result = await saveCurrentSchema();
     if (result.success) {
       showNotification('success', result.message);
-      setTimeout(() => nav('/bo/schemaEditor/'), 1500);
+      setTimeout(() => nav('/'), 1500);
     } else {
       showNotification('error', result.message);
     }

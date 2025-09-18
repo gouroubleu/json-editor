@@ -21,12 +21,12 @@ import {
   handleUpdateArrayItemType
 } from '../../nestedHandlers';
 import { updateSchema } from '../../services';
-import { HorizontalSchemaEditor } from '../../components/HorizontalSchemaEditor';
+import { HorizontalSchemaEditor } from '../../../components/HorizontalSchemaEditor';
 import { generatePropertyId, ensureAllPropertyIds } from '../../utils';
 import type { SchemaProperty, SchemaInfo, JsonSchemaType } from '../../types';
-import HORIZONTAL_STYLES from '../../components/HorizontalSchemaEditor.scss?inline';
-import COLUMN_STYLES from '../../components/PropertyColumn.scss?inline';
-import COMMON_STYLES from '../../components/CommonStyles.scss?inline';
+import HORIZONTAL_STYLES from '../../../components/HorizontalSchemaEditor.scss?inline';
+import COLUMN_STYLES from '../../../components/PropertyColumn.scss?inline';
+import COMMON_STYLES from '../../../components/CommonStyles.scss?inline';
 
 // Fonction pour convertir un JSON Schema en SchemaProperty[]
 const convertJsonSchemaToProperties = (schema: any): SchemaProperty[] => {
@@ -81,7 +81,7 @@ export const useSchemaData = routeLoader$(async ({ params }) => {
     const fs = await import('fs/promises');
     const path = await import('path');
     
-    const schemasDir = path.join(process.cwd(), 'serverMedias', 'schemas');
+    const schemasDir = path.join(process.cwd(), '..', 'serverMedias', 'schemas');
     const filePath = path.join(schemasDir, `${schemaId}.json`);
     
     // Vérifier que le fichier existe
@@ -306,7 +306,7 @@ export default component$(() => {
       uiState.hasModifications = false;
       
       setTimeout(() => {
-        nav('/bo/schemaEditor/');
+        nav('/');
       }, 1500);
     }
   });

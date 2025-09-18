@@ -1,0 +1,201 @@
+{
+  "id": "test-niveaux-infinis",
+  "name": "test-niveaux-infinis",
+  "version": "1.0",
+  "schema": {
+    "type": "object",
+    "title": "Test Niveaux Infinis",
+    "description": "Schéma de test pour valider la navigation à niveaux multiples",
+    "properties": {
+      "niveau1": {
+        "type": "object",
+        "description": "Premier niveau d'imbrication",
+        "properties": {
+          "nom": {
+            "type": "string",
+            "description": "Nom du niveau 1"
+          },
+          "niveau2": {
+            "type": "object",
+            "description": "Deuxième niveau d'imbrication",
+            "properties": {
+              "nom": {
+                "type": "string",
+                "description": "Nom du niveau 2"
+              },
+              "niveau3": {
+                "type": "object",
+                "description": "Troisième niveau d'imbrication",
+                "properties": {
+                  "nom": {
+                    "type": "string",
+                    "description": "Nom du niveau 3"
+                  },
+                  "niveau4": {
+                    "type": "object",
+                    "description": "Quatrième niveau d'imbrication",
+                    "properties": {
+                      "nom": {
+                        "type": "string",
+                        "description": "Nom du niveau 4"
+                      },
+                      "niveau5": {
+                        "type": "object",
+                        "description": "Cinquième niveau d'imbrication",
+                        "properties": {
+                          "nom": {
+                            "type": "string",
+                            "description": "Nom du niveau 5"
+                          },
+                          "niveau6": {
+                            "type": "object",
+                            "description": "Sixième niveau d'imbrication",
+                            "properties": {
+                              "nom": {
+                                "type": "string",
+                                "description": "Nom du niveau 6"
+                              },
+                              "niveau7": {
+                                "type": "object",
+                                "description": "Septième niveau d'imbrication",
+                                "properties": {
+                                  "nom": {
+                                    "type": "string",
+                                    "description": "Nom du niveau 7"
+                                  },
+                                  "niveau8": {
+                                    "type": "object",
+                                    "description": "Huitième niveau d'imbrication",
+                                    "properties": {
+                                      "nom": {
+                                        "type": "string",
+                                        "description": "Nom du niveau 8"
+                                      },
+                                      "donneesFinales": {
+                                        "type": "array",
+                                        "description": "Données finales au niveau le plus profond",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "valeur": {
+                                              "type": "string",
+                                              "description": "Valeur finale"
+                                            },
+                                            "imbriqueProfond": {
+                                              "type": "object",
+                                              "description": "Encore plus profond",
+                                              "properties": {
+                                                "tresProfond": {
+                                                  "type": "object",
+                                                  "description": "Niveau très profond",
+                                                  "properties": {
+                                                    "ultime": {
+                                                      "type": "string",
+                                                      "description": "Valeur ultime"
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "tableauComplexe": {
+        "type": "array",
+        "description": "Tableau avec imbrications complexes",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Identifiant de l'élément"
+            },
+            "sousElements": {
+              "type": "array",
+              "description": "Sous-éléments imbriqués",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "nom": {
+                    "type": "string",
+                    "description": "Nom du sous-élément"
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "description": "Métadonnées complexes",
+                    "properties": {
+                      "tags": {
+                        "type": "array",
+                        "description": "Tags associés",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "libelle": {
+                              "type": "string",
+                              "description": "Libellé du tag"
+                            },
+                            "config": {
+                              "type": "object",
+                              "description": "Configuration du tag",
+                              "properties": {
+                                "couleur": {
+                                  "type": "string",
+                                  "description": "Couleur du tag"
+                                },
+                                "permissions": {
+                                  "type": "object",
+                                  "description": "Permissions associées",
+                                  "properties": {
+                                    "lecture": {
+                                      "type": "boolean",
+                                      "description": "Autorisation de lecture"
+                                    },
+                                    "ecriture": {
+                                      "type": "boolean",
+                                      "description": "Autorisation d'écriture"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "required": ["niveau1"],
+    "version": "1.0"
+  },
+  "versionInfo": {
+    "version": "1.0",
+    "createdAt": "2025-09-17T15:45:00.000Z",
+    "changeType": "major",
+    "changeDescription": "Schéma de test pour navigation niveaux infinis",
+    "previousVersion": null
+  },
+  "createdAt": "2025-09-17T15:45:00.000Z",
+  "updatedAt": "2025-09-17T15:45:00.000Z"
+}

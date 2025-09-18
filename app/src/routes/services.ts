@@ -171,7 +171,7 @@ export const saveSchema = server$(async function(
     const fs = await import('fs/promises');
     const path = await import('path');
     
-    const schemasDir = path.join(process.cwd(), 'serverMedias', 'schemas');
+    const schemasDir = path.join(process.cwd(), '..', 'serverMedias', 'schemas');
     const filePath = path.join(schemasDir, `${name}.json`);
     
     // Vérifier que le dossier existe
@@ -214,7 +214,7 @@ export const updateSchema = server$(async function(
     const fs = await import('fs/promises');
     const path = await import('path');
     
-    const schemasDir = path.join(process.cwd(), 'serverMedias', 'schemas');
+    const schemasDir = path.join(process.cwd(), '..', 'serverMedias', 'schemas');
     const originalFilePath = path.join(schemasDir, `${originalId}.json`);
     
     // Vérifier que le schéma original existe
@@ -312,7 +312,7 @@ export const loadSchemas = server$(async function(): Promise<Array<{
     const fs = await import('fs/promises');
     const path = await import('path');
     
-    const schemasDir = path.join(process.cwd(), 'serverMedias', 'schemas');
+    const schemasDir = path.join(process.cwd(), '..', 'serverMedias', 'schemas');
     const schemas: any[] = [];
     
     // Vérifier que le dossier existe
@@ -382,7 +382,7 @@ export const deleteSchema = server$(async function(
     const fs = await import('fs/promises');
     const path = await import('path');
     
-    const schemasDir = path.join(process.cwd(), 'serverMedias', 'schemas');
+    const schemasDir = path.join(process.cwd(), '..', 'serverMedias', 'schemas');
     const filePath = path.join(schemasDir, `${name}.json`);
     const versionsDir = path.join(schemasDir, 'versions', name);
     

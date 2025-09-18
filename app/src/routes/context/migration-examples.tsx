@@ -175,7 +175,7 @@ export const CreateSchemaPageNEW = component$(() => {
     const result = await saveCurrentSchema();
     if (result.success) {
       showNotification('success', result.message);
-      setTimeout(() => nav('/bo/schemaEditor/'), 1500);
+      setTimeout(() => nav('/'), 1500);
     } else {
       showNotification('error', result.message);
     }

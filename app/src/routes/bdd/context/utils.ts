@@ -215,7 +215,7 @@ export const queryParamsToFilters = (params: Record<string, string>): EntityFilt
  * Génère une URL pour naviguer vers une entité
  */
 export const getEntityUrl = (entityId: string, schemaName?: string): string => {
-  const baseUrl = '/bo/schemaEditor/bdd';
+  const baseUrl = '/bdd';
   const params = new URLSearchParams();
 
   if (schemaName) {
@@ -231,7 +231,7 @@ export const getEntityUrl = (entityId: string, schemaName?: string): string => {
  * Génère une URL pour naviguer vers une liste d'entités d'un schéma
  */
 export const getSchemaEntitiesUrl = (schemaName: string, filters?: EntityFilters): string => {
-  const baseUrl = '/bo/schemaEditor/bdd';
+  const baseUrl = '/bdd';
   const params = new URLSearchParams();
 
   params.set('schema', schemaName);

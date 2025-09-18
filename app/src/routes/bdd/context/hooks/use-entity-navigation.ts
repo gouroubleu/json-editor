@@ -79,14 +79,14 @@ export const useEntityNavigation = () => {
   // Breadcrumbs dynamiques
   const dynamicBreadcrumbs = useComputed$(() => {
     const breadcrumbs: BreadcrumbItem[] = [
-      createBreadcrumbItem('Entités', '/bo/schemaEditor/bdd', () => actions.ui.setActiveView('summary'), false)
+      createBreadcrumbItem('Entités', '/bdd', () => actions.ui.setActiveView('summary'), false)
     ];
 
     if (state.ui.selectedSchemaName) {
       breadcrumbs.push(
         createBreadcrumbItem(
           state.ui.selectedSchemaName,
-          `/bo/schemaEditor/bdd/${state.ui.selectedSchemaName}`,
+          `/bdd/${state.ui.selectedSchemaName}`,
           () => {
             actions.entities.selectSchema(state.ui.selectedSchemaName);
             actions.ui.setActiveView('list');
@@ -102,7 +102,7 @@ export const useEntityNavigation = () => {
         breadcrumbs.push(
           createBreadcrumbItem(
             title,
-            `/bo/schemaEditor/bdd/${state.ui.selectedSchemaName}/${state.ui.selectedEntityId}`,
+            `/bdd/${state.ui.selectedSchemaName}/${state.ui.selectedEntityId}`,
             undefined,
             true
           )

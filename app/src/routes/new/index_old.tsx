@@ -136,7 +136,7 @@ export default component$(() => {
       {/* Header avec navigation */}
       <div class="header">
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
-          <Link href="/bo/schemaEditor/" class="btn btn-secondary">
+          <Link href="/" class="btn btn-secondary">
             ← Retour à la liste
           </Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
@@ -510,7 +510,7 @@ export default component$(() => {
                   uiState.hasUnsavedChanges = false;
                   // Redirection après sauvegarde réussie
                   setTimeout(() => {
-                    window.location.href = '/bo/schemaEditor/';
+                    window.location.href = '/';
                   }, 1500);
                 }
                 

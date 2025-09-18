@@ -48,19 +48,23 @@ export const generateDefaultValue = (schema: any): any => {
     
     case 'array':
       // Retourner un tableau vide par défaut
+      // Si des items sont définis dans le schéma, créer au moins un élément par défaut
+      if (schema.items) {
+        return [generateDefaultValue(schema.items)];
+      }
       return [];
     
     case 'object':
       // Générer un objet avec toutes les propriétés par défaut
       const defaultObject: Record<string, any> = {};
-      
+
       if (schema.properties && typeof schema.properties === 'object') {
         // Générer les valeurs pour toutes les propriétés définies
         for (const [propName, propSchema] of Object.entries(schema.properties)) {
           defaultObject[propName] = generateDefaultValue(propSchema);
         }
       }
-      
+
       return defaultObject;
     
     case null:
@@ -168,7 +172,7 @@ export const getEntitiesSummary = server$(async function(): Promise<EntitySummar
     const fs = await import('fs/promises');
     const path = await import('path');
     
-    const entitiesDir = path.join(process.cwd(), 'serverMedias', 'entities');
+    const entitiesDir = path.join(process.cwd(), '..', 'serverMedias', 'entities');
     const summaries: EntitySummary[] = [];
     
     // Charger les schémas disponibles
@@ -237,7 +241,7 @@ export const listEntities = server$(async function(filters: EntityFilters = {}):
     const fs = await import('fs/promises');
     const path = await import('path');
     
-    const entitiesDir = path.join(process.cwd(), 'serverMedias', 'entities');
+    const entitiesDir = path.join(process.cwd(), '..', 'serverMedias', 'entities');
     const entities: EntityData[] = [];
     
     const { schemaName, version, search, limit = 50, offset = 0 } = filters;
@@ -378,7 +382,7 @@ export const createEntity = server$(async function(request: CreateEntityRequest)
     };
     
     // Créer le dossier du schéma s'il n'existe pas
-    const entitiesDir = path.join(process.cwd(), 'serverMedias', 'entities');
+    const entitiesDir = path.join(process.cwd(), '..', 'serverMedias', 'entities');
     const schemaEntitiesDir = path.join(entitiesDir, request.schemaName);
     await fs.mkdir(schemaEntitiesDir, { recursive: true });
     
@@ -400,7 +404,7 @@ export const getEntity = server$(async function(entityId: string): Promise<Entit
     const fs = await import('fs/promises');
     const path = await import('path');
     
-    const entitiesDir = path.join(process.cwd(), 'serverMedias', 'entities');
+    const entitiesDir = path.join(process.cwd(), '..', 'serverMedias', 'entities');
     
     // Chercher dans tous les dossiers de schémas
     const schemaDirs = await fs.readdir(entitiesDir, { withFileTypes: true });
@@ -465,7 +469,7 @@ export const updateEntity = server$(async function(entityId: string, request: Up
     };
     
     // Sauvegarder
-    const entitiesDir = path.join(process.cwd(), 'serverMedias', 'entities');
+    const entitiesDir = path.join(process.cwd(), '..', 'serverMedias', 'entities');
     const entityFilePath = path.join(entitiesDir, existingEntity.schemaName, `${entityId}.json`);
     await fs.writeFile(entityFilePath, JSON.stringify(updatedEntity, null, 2), 'utf8');
     
@@ -492,7 +496,7 @@ export const migrateSchemaEntities = server$(async function(schemaName: string):
     }
     
     const currentVersion = schema.version || '1.0';
-    const entitiesDir = path.join(process.cwd(), 'serverMedias', 'entities');
+    const entitiesDir = path.join(process.cwd(), '..', 'serverMedias', 'entities');
     const schemaEntitiesDir = path.join(entitiesDir, schemaName);
     
     let migratedCount = 0;
@@ -552,7 +556,7 @@ export const deleteEntity = server$(async function(entityId: string): Promise<{ 
     const fs = await import('fs/promises');
     const path = await import('path');
     
-    const entitiesDir = path.join(process.cwd(), 'serverMedias', 'entities');
+    const entitiesDir = path.join(process.cwd(), '..', 'serverMedias', 'entities');
     
     // Chercher et supprimer dans tous les dossiers de schémas
     const schemaDirs = await fs.readdir(entitiesDir, { withFileTypes: true });

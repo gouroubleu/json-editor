@@ -4,9 +4,9 @@ import { getEntity } from '../../services';
 import { loadSchemas } from '../../../services';
 import type { EntityData } from '../../types';
 import { HorizontalEntityViewer } from '../components/HorizontalEntityViewer';
-import HORIZONTAL_STYLES from '../../../components/HorizontalSchemaEditor.scss?inline';
-import COLUMN_STYLES from '../../../components/PropertyColumn.scss?inline';
-import COMMON_STYLES from '../../../components/CommonStyles.scss?inline';
+import HORIZONTAL_STYLES from '../../../../components/HorizontalSchemaEditor.scss?inline';
+import COLUMN_STYLES from '../../../../components/PropertyColumn.scss?inline';
+import COMMON_STYLES from '../../../../components/CommonStyles.scss?inline';
 import ENTITY_STYLES from '../components/EntityViewer.scss?inline';
 
 export const useEntityData = routeLoader$(async (requestEvent) => {
@@ -61,11 +61,11 @@ export default component$(() => {
   });
 
   const handleEdit = $(() => {
-    nav(`/bo/schemaEditor/bdd/${entityData.value.schemaName}/${entityData.value.entity.id}/edit/`);
+    nav(`/bdd/${entityData.value.schemaName}/${entityData.value.entity.id}/edit/`);
   });
 
   const handleGoBack = $(() => {
-    nav(`/bo/schemaEditor/bdd/${entityData.value.schemaName}/`);
+    nav(`/bdd/${entityData.value.schemaName}/`);
   });
 
   const isOutdated = entityData.value.entity.version !== entityData.value.schemaVersion;

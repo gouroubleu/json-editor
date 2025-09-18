@@ -3,8 +3,8 @@ import { readdir, readFile, writeFile, unlink, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import { join } from 'path';
 
-const SCHEMAS_PATH = join(process.cwd(), 'serverMedias/schemas');
-const ENTITIES_PATH = join(process.cwd(), 'serverMedias/entities');
+const SCHEMAS_PATH = join(process.cwd(), '..', 'serverMedias/schemas');
+const ENTITIES_PATH = join(process.cwd(), '..', 'serverMedias/entities');
 
 export class FileSystemService {
   

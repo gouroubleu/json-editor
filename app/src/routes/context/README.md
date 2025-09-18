@@ -15,7 +15,7 @@ Le contexte SchemaEditor est un système de gestion d'état centralisé pour l'�
 ## 📁 Structure des fichiers
 
 ```
-src/routes/bo/schemaEditor/context/
+src/routes/context/
 ├── schema-editor-context.tsx    # Contexte principal avec hooks
 ├── provider.tsx                 # Provider avec gestion d'état
 ├── example.tsx                  # Exemple d'utilisation simple

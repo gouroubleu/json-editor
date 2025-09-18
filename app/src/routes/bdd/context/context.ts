@@ -181,15 +181,15 @@ export const INITIAL_ENTITY_STATE = {
 /**
  * Types pour les événements du contexte EntityEditor
  */
-export interface EntityEditorEvent {
+export type EntityEditorEvent = {
   type: string;
   payload?: any;
   timestamp: string;
   entityId?: string;
   schemaName?: string;
-}
+};
 
-export interface EntityEditorEventMap {
+export type EntityEditorEventMap = {
   // Événements d'entités
   'entity:created': { entityId: string; schemaName: string; data: any };
   'entity:updated': { entityId: string; data: any; changes: any[] };

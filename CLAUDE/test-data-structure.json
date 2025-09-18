@@ -1,0 +1,24 @@
+{
+  "id": "test-123",
+  "nom": "Test User",
+  "email": "test@example.com",
+  "age": 30,
+  "adresse": [
+    {
+      "adresse": "123 Test Street",
+      "cp": "12345",
+      "ville": "Test City",
+      "place": {
+        "nom": "Test Place",
+        "test": [
+          {
+            "name": "Test Item 1"
+          },
+          {
+            "name": "Test Item 2"
+          }
+        ]
+      }
+    }
+  ]
+}
