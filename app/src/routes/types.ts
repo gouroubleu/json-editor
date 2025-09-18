@@ -1,5 +1,10 @@
 // Types pour l'éditeur de JSON Schema
-export type JsonSchemaType = 'string' | 'number' | 'integer' | 'boolean' | 'array' | 'object';
+export type JsonSchemaType = 'string' | 'number' | 'integer' | 'boolean' | 'array' | 'object' | 'select';
+
+export type SelectOption = {
+  key: string;
+  value: string;
+};
 
 export type SchemaProperty = {
   name: string;
@@ -11,6 +16,7 @@ export type SchemaProperty = {
   minimum?: number;
   maximum?: number;
   enum?: string[];
+  selectOptions?: SelectOption[];
   format?: 'email' | 'date' | 'uri' | 'datetime-local';
   
   // Propriétés imbriquées pour objects

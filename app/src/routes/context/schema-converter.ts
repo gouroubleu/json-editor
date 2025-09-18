@@ -88,6 +88,13 @@ const convertPropertySchema = (
     if (propSchema.maximum !== undefined) property.maximum = propSchema.maximum;
   }
 
+  // Contraintes pour le type select
+  if (type === 'select') {
+    if (propSchema.options && Array.isArray(propSchema.options)) {
+      property.selectOptions = propSchema.options;
+    }
+  }
+
   // Propriétés imbriquées pour objects
   if (type === 'object' && propSchema.properties) {
     const required = propSchema.required || [];
@@ -141,7 +148,7 @@ const convertPropertySchema = (
  * Vérifie si un type est un type JSON Schema valide
  */
 const isValidJsonSchemaType = (type: any): type is JsonSchemaType => {
-  const validTypes = ['string', 'number', 'integer', 'boolean', 'array', 'object'];
+  const validTypes = ['string', 'number', 'integer', 'boolean', 'array', 'object', 'select'];
   return validTypes.includes(type);
 };
 
@@ -228,6 +235,14 @@ const buildPropertySchema = (prop: SchemaProperty): any => {
   if (prop.type === 'number' || prop.type === 'integer') {
     if (prop.minimum !== undefined) propSchema.minimum = prop.minimum;
     if (prop.maximum !== undefined) propSchema.maximum = prop.maximum;
+  }
+
+  // Gestion du type select (garde le type select)
+  if (prop.type === 'select') {
+    propSchema.type = 'select';
+    if (prop.selectOptions && prop.selectOptions.length > 0) {
+      propSchema.options = prop.selectOptions;
+    }
   }
 
   // Gestion des objets imbriqués

@@ -18,7 +18,15 @@ const buildPropertySchema = (prop: SchemaProperty): any => {
       propSchema.enum = prop.enum.filter(v => v.trim());
     }
   }
-  
+
+  // Gestion du type select (garde le type select)
+  if (prop.type === 'select') {
+    propSchema.type = 'select';
+    if (prop.selectOptions && prop.selectOptions.length > 0) {
+      propSchema.options = prop.selectOptions;
+    }
+  }
+
   if (prop.type === 'number' || prop.type === 'integer') {
     if (prop.minimum !== undefined) propSchema.minimum = prop.minimum;
     if (prop.maximum !== undefined) propSchema.maximum = prop.maximum;

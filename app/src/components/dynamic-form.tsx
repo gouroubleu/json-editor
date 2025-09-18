@@ -138,6 +138,21 @@ export const DynamicForm = component$<DynamicFormProps>(({ schema, initialData =
           </div>
         );
 
+      case 'select':
+        return (
+          <select
+            value={formData[name] || ''}
+            onChange$={(e: any) => formData[name] = e.target.value}
+            class={`form-control ${error ? 'is-invalid' : ''}`}
+            required={isRequired}
+          >
+            <option value="">Select {property.title || name}</option>
+            {property.options && property.options.map((option: any) => (
+              <option key={option.key} value={option.key}>{option.value}</option>
+            ))}
+          </select>
+        );
+
       case 'array':
         const arrayValue = formData[name] || [];
         return (

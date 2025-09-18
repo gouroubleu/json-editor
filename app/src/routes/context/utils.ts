@@ -211,6 +211,14 @@ const buildPropertySchema = (prop: SchemaProperty): any => {
     if (prop.maximum !== undefined) propSchema.maximum = prop.maximum;
   }
 
+  // Gestion du type select (garde le type select)
+  if (prop.type === 'select') {
+    propSchema.type = 'select';
+    if (prop.selectOptions && prop.selectOptions.length > 0) {
+      propSchema.options = prop.selectOptions;
+    }
+  }
+
   // Gestion des objets imbriqués
   if (prop.type === 'object' && prop.properties && prop.properties.length > 0) {
     propSchema.properties = {};
@@ -637,7 +645,7 @@ export const createArrayProperty = (
  * Vérifie si une valeur est un type JSON Schema valide
  */
 export const isValidJsonSchemaType = (type: any): type is JsonSchemaType => {
-  return ['string', 'number', 'integer', 'boolean', 'array', 'object'].includes(type);
+  return ['string', 'number', 'integer', 'boolean', 'array', 'object', 'select'].includes(type);
 };
 
 /**
@@ -704,7 +712,8 @@ export const PROPERTY_TYPES: JsonSchemaType[] = [
   'integer',
   'boolean',
   'array',
-  'object'
+  'object',
+  'select'
 ] as const;
 
 export const STRING_FORMATS = [

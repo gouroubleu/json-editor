@@ -104,6 +104,12 @@ export const AdvancedSchemaEditor = component$<AdvancedSchemaEditorProps>(({ sch
         if (prop.enum && prop.enum.length > 0) {
           jsonProp.enum = prop.enum.filter(v => v.trim());
         }
+      } else if (prop.type === 'select') {
+        // Convertir select en string avec enum
+        jsonProp.type = 'string';
+        if (prop.enum && prop.enum.length > 0) {
+          jsonProp.enum = prop.enum.filter(v => v.trim());
+        }
       } else if (prop.type === 'number' || prop.type === 'integer') {
         if (prop.minimum !== undefined) jsonProp.minimum = prop.minimum;
         if (prop.maximum !== undefined) jsonProp.maximum = prop.maximum;

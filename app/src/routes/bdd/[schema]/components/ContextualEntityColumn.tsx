@@ -113,6 +113,7 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
         case 'number': return '🔢';
         case 'integer': return '🔢';
         case 'boolean': return '☑️';
+        case 'select': return '🔽';
         case 'array': return '📋';
         case 'object': return '📁';
         default: return '📄';
@@ -244,6 +245,20 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
                 >
                   <option value="true">true</option>
                   <option value="false">false</option>
+                </select>
+              ) : fieldSchema?.type === 'select' && fieldSchema?.options ? (
+                <select
+                  class="direct-edit-input"
+                  value={String(value)}
+                  onChange$={(e) => {
+                    const target = e.target as HTMLSelectElement;
+                    handleDirectSave(key, target.value);
+                  }}
+                >
+                  <option value="">Sélectionner...</option>
+                  {fieldSchema.options.map((option: any) => (
+                    <option key={option.key} value={option.key}>{option.value}</option>
+                  ))}
                 </select>
               ) : fieldSchema?.enum ? (
                 <select
@@ -522,6 +537,20 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
                           >
                             <option value="true">true</option>
                             <option value="false">false</option>
+                          </select>
+                        ) : column.schema.type === 'select' && column.schema.options ? (
+                          <select
+                            class="direct-edit-input"
+                            value={String(column.data)}
+                            onChange$={(e) => {
+                              const target = e.target as HTMLSelectElement;
+                              handleArrayItemSave(target.value);
+                            }}
+                          >
+                            <option value="">Sélectionner...</option>
+                            {column.schema.options.map((option: any) => (
+                              <option key={option.key} value={option.key}>{option.value}</option>
+                            ))}
                           </select>
                         ) : column.schema.enum ? (
                           <select

@@ -1,13 +1,14 @@
 import { component$, useStore, useSignal, type PropFunction, $ } from '@builder.io/qwik';
 import type { SchemaProperty, SchemaInfo, JsonSchemaType } from '../routes/types';
 import { PropertyColumn } from './PropertyColumn';
+import { SelectOptionsColumn } from './SelectOptionsColumn';
 import { findPropertyById } from '../routes/utils';
 
 type HorizontalSchemaEditorProps = {
   schemaInfo: SchemaInfo;
   properties: SchemaProperty[];
   onUpdateSchemaInfo$: PropFunction<(updates: Partial<SchemaInfo>) => Promise<void>>;
-  onAddProperty$: PropFunction<(parentId: string | null, name: string, type: JsonSchemaType, required: boolean, description: string) => Promise<void>>;
+  onAddProperty$: PropFunction<(parentId: string | null, property: SchemaProperty) => Promise<void>>;
   onRemoveProperty$: PropFunction<(propertyId: string) => Promise<void>>;
   onUpdateProperty$: PropFunction<(propertyId: string, updates: Partial<SchemaProperty>) => Promise<void>>;
   onUpdatePropertyType$: PropFunction<(propertyId: string, newType: JsonSchemaType) => Promise<void>>;
@@ -61,12 +62,17 @@ export const HorizontalSchemaEditor = component$<HorizontalSchemaEditorProps>((p
       } else if (property.type === 'array' && property.items?.properties) {
         childProperties = property.items.properties;
         parentName += ' (items)';
+      } else if (property.type === 'select') {
+        // Pour le type select, on créera une colonne de configuration spéciale
+        childProperties = [];
+        parentName += ' (options)';
       }
 
       // Seulement créer une colonne si :
       // - C'est un objet (même vide)
       // - C'est un array d'objets (même vide)
-      if (property.type === 'object' || (property.type === 'array' && property.items?.type === 'object')) {
+      // - C'est un select (pour configuration des options)
+      if (property.type === 'object' || (property.type === 'array' && property.items?.type === 'object') || property.type === 'select') {
         columns.push({
           properties: childProperties,
           parentId: propertyId,
@@ -87,7 +93,11 @@ export const HorizontalSchemaEditor = component$<HorizontalSchemaEditorProps>((p
     
     // Vérifier si la propriété peut avoir des enfants
     const property = findPropertyById(props.properties, propertyId);
-    if (property && (property.type === 'object' || (property.type === 'array' && property.items?.type === 'object'))) {
+    if (property && (
+      property.type === 'object' ||
+      (property.type === 'array' && property.items?.type === 'object') ||
+      property.type === 'select'
+    )) {
       uiState.selectedPath = newPath;
       uiState.expandedColumns = Math.max(uiState.expandedColumns, columnIndex + 2);
     }
@@ -294,24 +304,45 @@ export const HorizontalSchemaEditor = component$<HorizontalSchemaEditorProps>((p
             height: '100%'
           }}
         >
-          {columns.map((column, columnIndex) => (
-            <PropertyColumn
-              key={`${column.parentId || 'root'}-${columnIndex}`}
-              properties={column.properties}
-              parentId={column.parentId}
-              parentName={column.parentName}
-              level={column.level}
-              selectedPath={uiState.selectedPath}
-              columnIndex={columnIndex}
-              onSelectProperty$={handlePropertySelect}
-              onGoBack$={handleGoBack}
-              onAddProperty$={props.onAddProperty$}
-              onRemoveProperty$={props.onRemoveProperty$}
-              onUpdateProperty$={props.onUpdateProperty$}
-              onUpdatePropertyType$={props.onUpdatePropertyType$}
-              onUpdateArrayItemType$={props.onUpdateArrayItemType$}
-            />
-          ))}
+          {columns.map((column, columnIndex) => {
+            // Déterminer si cette colonne est pour une propriété select
+            const isSelectColumn = column.parentId && (() => {
+              const parentProperty = findPropertyById(props.properties, column.parentId);
+              return parentProperty?.type === 'select';
+            })();
+
+            if (isSelectColumn) {
+              const selectProperty = findPropertyById(props.properties, column.parentId!);
+              return (
+                <SelectOptionsColumn
+                  key={`select-${column.parentId}-${columnIndex}`}
+                  selectProperty={selectProperty!}
+                  parentName={column.parentName}
+                  onUpdateProperty$={props.onUpdateProperty$}
+                  onGoBack$={$(() => handleGoBack(columnIndex))}
+                />
+              );
+            }
+
+            return (
+              <PropertyColumn
+                key={`${column.parentId || 'root'}-${columnIndex}`}
+                properties={column.properties}
+                parentId={column.parentId}
+                parentName={column.parentName}
+                level={column.level}
+                selectedPath={uiState.selectedPath}
+                columnIndex={columnIndex}
+                onSelectProperty$={handlePropertySelect}
+                onGoBack$={handleGoBack}
+                onAddProperty$={props.onAddProperty$}
+                onRemoveProperty$={props.onRemoveProperty$}
+                onUpdateProperty$={props.onUpdateProperty$}
+                onUpdatePropertyType$={props.onUpdatePropertyType$}
+                onUpdateArrayItemType$={props.onUpdateArrayItemType$}
+              />
+            );
+          })}
         </div>
       </div>
 

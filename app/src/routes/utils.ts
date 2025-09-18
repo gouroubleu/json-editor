@@ -1,4 +1,4 @@
-import type { SchemaProperty, JsonSchemaType } from './types';
+import type { SchemaProperty, JsonSchemaType, SelectOption } from './types';
 
 // Génère un ID unique pour une propriété
 export const generatePropertyId = (): string => {
@@ -49,6 +49,14 @@ export const createNewProperty = (
       properties: []
     };
     property.isExpanded = true; // Expandu par défaut pour les nouveaux arrays
+  }
+
+  // Initialiser les options par défaut pour le type select
+  if (type === 'select') {
+    property.selectOptions = [
+      { key: 'option1', value: 'Option 1' },
+      { key: 'option2', value: 'Option 2' }
+    ];
   }
 
   return property;

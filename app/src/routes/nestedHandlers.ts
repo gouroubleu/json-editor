@@ -16,7 +16,8 @@ export const handleAddNestedProperty = $(async (
   name: string,
   type: JsonSchemaType,
   required: boolean = false,
-  description: string = ''
+  description: string = '',
+  fullProperty?: SchemaProperty
 ) => {
   // Valider le nom dans le contexte
   const validation = validatePropertyNameInContext(properties, parentId, name);
@@ -24,10 +25,14 @@ export const handleAddNestedProperty = $(async (
     return { success: false, error: validation.error };
   }
 
-  // Créer la nouvelle propriété
-  const newProperty = createNewProperty(name, type);
-  newProperty.required = required;
-  newProperty.description = description;
+  // Utiliser la propriété complète si fournie, sinon créer une nouvelle
+  const newProperty = fullProperty ? { ...fullProperty } : createNewProperty(name, type);
+  if (!fullProperty) {
+    newProperty.required = required;
+    newProperty.description = description;
+  }
+
+
 
   // Ajouter au parent approprié
   const success = addPropertyToParent(properties, parentId, newProperty);
@@ -100,11 +105,16 @@ export const handleUpdatePropertyType = $(async (
   }
 
   // Nettoyer les contraintes non applicables
-  if (newType !== 'string') {
+  if (newType !== 'string' && newType !== 'select') {
     delete property.minLength;
     delete property.maxLength;
     delete property.format;
     delete property.enum;
+  }
+
+  // Initialiser enum pour le type select si nécessaire
+  if (newType === 'select' && !property.enum) {
+    property.enum = ['Option 1', 'Option 2'];
   }
   if (newType !== 'number' && newType !== 'integer') {
     delete property.minimum;

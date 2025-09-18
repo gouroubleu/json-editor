@@ -133,9 +133,9 @@ export default component$(() => {
     Object.assign(schemaInfo, updates);
   });
 
-  const handleAddProperty = $(async (parentId: string | null, name: string, type: JsonSchemaType, required: boolean, description: string) => {
+  const handleAddProperty = $(async (parentId: string | null, property: SchemaProperty) => {
     ensureAllPropertyIds(properties);
-    const result = await handleAddNestedProperty(properties, parentId, name, type, required, description);
+    const result = await handleAddNestedProperty(properties, parentId, property.name, property.type, property.required, property.description, property);
     if (!result.success && result.error) {
       await handleShowNotification('error', result.error, uiState);
     }

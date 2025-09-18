@@ -1,5 +1,5 @@
 import { component$, useStore, type PropFunction, $ } from '@builder.io/qwik';
-import type { SchemaProperty, JsonSchemaType } from '../routes/types';
+import type { SchemaProperty, JsonSchemaType, SelectOption } from '../routes/types';
 import { createNewProperty } from '../routes/utils';
 
 type PropertyColumnProps = {
@@ -11,7 +11,7 @@ type PropertyColumnProps = {
   columnIndex: number;
   onSelectProperty$: PropFunction<(propertyId: string, columnIndex: number) => void>;
   onGoBack$: PropFunction<(columnIndex: number) => void>;
-  onAddProperty$: PropFunction<(parentId: string | null, name: string, type: JsonSchemaType, required: boolean, description: string) => Promise<void>>;
+  onAddProperty$: PropFunction<(parentId: string | null, property: SchemaProperty) => Promise<void>>;
   onRemoveProperty$: PropFunction<(propertyId: string) => Promise<void>>;
   onUpdateProperty$: PropFunction<(propertyId: string, updates: Partial<SchemaProperty>) => Promise<void>>;
   onUpdatePropertyType$: PropFunction<(propertyId: string, newType: JsonSchemaType) => Promise<void>>;
@@ -29,10 +29,7 @@ export const PropertyColumn = component$<PropertyColumnProps>((props) => {
 
     await props.onAddProperty$(
       props.parentId,
-      localState.newProperty.name,
-      localState.newProperty.type,
-      localState.newProperty.required,
-      localState.newProperty.description
+      localState.newProperty
     );
 
     // Reset form
@@ -47,6 +44,10 @@ export const PropertyColumn = component$<PropertyColumnProps>((props) => {
     if (property.type === 'array') {
       // Seulement les arrays d'objets peuvent avoir des enfants
       return property.items?.type === 'object';
+    }
+    if (property.type === 'select') {
+      // Le type select ouvre une colonne pour configurer les options
+      return true;
     }
     return false;
   };
@@ -90,19 +91,38 @@ export const PropertyColumn = component$<PropertyColumnProps>((props) => {
               value={localState.newProperty.type}
               onChange$={(event) => {
                 const type = (event.target as HTMLSelectElement).value as JsonSchemaType;
-                localState.newProperty.type = type;
-                // Initialiser selon le type
+
+                // Créer une nouvelle propriété pour que Qwik détecte le changement
+                const newProp = { ...localState.newProperty };
+                newProp.type = type;
+
+                // Nettoyer les anciennes propriétés
+                delete newProp.properties;
+                delete newProp.items;
+                delete newProp.selectOptions;
+
+                // Initialiser selon le nouveau type
                 if (type === 'object') {
-                  localState.newProperty.properties = [];
+                  newProp.properties = [];
                 } else if (type === 'array') {
-                  localState.newProperty.items = { type: 'string', properties: [] };
+                  newProp.items = { type: 'string', properties: [] };
+                } else if (type === 'select') {
+                  newProp.selectOptions = [
+                    { key: 'option1', value: 'Option 1' },
+                    { key: 'option2', value: 'Option 2' }
+                  ];
                 }
+
+
+                // Remplacer l'objet complet
+                localState.newProperty = newProp;
               }}
             >
               <option value="string" selected={localState.newProperty.type === 'string'}>String</option>
               <option value="number" selected={localState.newProperty.type === 'number'}>Number</option>
               <option value="integer" selected={localState.newProperty.type === 'integer'}>Integer</option>
               <option value="boolean" selected={localState.newProperty.type === 'boolean'}>Boolean</option>
+              <option value="select" selected={localState.newProperty.type === 'select'}>Select</option>
               <option value="array" selected={localState.newProperty.type === 'array'}>Array</option>
               <option value="object" selected={localState.newProperty.type === 'object'}>Object</option>
             </select>
@@ -186,6 +206,7 @@ export const PropertyColumn = component$<PropertyColumnProps>((props) => {
                   <option value="number" selected={property.type === 'number'}>Number</option>
                   <option value="integer" selected={property.type === 'integer'}>Integer</option>
                   <option value="boolean" selected={property.type === 'boolean'}>Boolean</option>
+                  <option value="select" selected={property.type === 'select'}>Select</option>
                   <option value="array" selected={property.type === 'array'}>Array</option>
                   <option value="object" selected={property.type === 'object'}>Object</option>
                 </select>
@@ -326,6 +347,7 @@ export const PropertyColumn = component$<PropertyColumnProps>((props) => {
                 />
               </div>
             )}
+
 
             {/* Badges informatifs */}
             <div class="property-badges">

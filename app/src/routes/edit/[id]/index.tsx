@@ -36,19 +36,40 @@ const convertJsonSchemaToProperties = (schema: any): SchemaProperty[] => {
     for (const [propName, propDef] of Object.entries(schema.properties)) {
       const prop = propDef as any;
       
+      // Détecter si c'est un select basé sur la présence d'enum OU si type = "select"
+      const isSelect = (prop.type === 'string' && prop.enum && Array.isArray(prop.enum)) ||
+                       (prop.type === 'select');
+
       const schemaProperty: SchemaProperty = {
         id: generatePropertyId(),
         name: propName,
-        type: prop.type || 'string',
+        type: isSelect ? 'select' : (prop.type || 'string'),
         required: schema.required?.includes(propName) || false,
         description: prop.description || '',
         minLength: prop.minLength,
         maxLength: prop.maxLength,
         minimum: prop.minimum,
         maximum: prop.maximum,
-        enum: prop.enum,
+        enum: isSelect ? undefined : prop.enum, // Pas besoin d'enum si c'est un select
         format: prop.format
       };
+
+      // Convertir enum OU options en selectOptions pour le type select
+      if (isSelect) {
+        if (prop.enum && Array.isArray(prop.enum)) {
+          // Cas enum classique (string + enum)
+          schemaProperty.selectOptions = prop.enum.map((value: string, index: number) => ({
+            key: `option${index + 1}`,
+            value: value
+          }));
+        } else if (prop.options && Array.isArray(prop.options)) {
+          // Cas options personnalisées (type: select + options)
+          schemaProperty.selectOptions = prop.options.map((option: any) => ({
+            key: option.key || option.id || `option${Math.random()}`,
+            value: option.value || option.label || String(option)
+          }));
+        }
+      }
       
       // Gérer les objets imbriqués
       if (prop.type === 'object' && prop.properties) {
@@ -243,9 +264,10 @@ export default component$(() => {
     Object.assign(schemaInfo, updates);
   });
 
-  const handleAddProperty = $(async (parentId: string | null, name: string, type: JsonSchemaType, required: boolean, description: string) => {
+  const handleAddProperty = $(async (parentId: string | null, property: SchemaProperty) => {
     ensureAllPropertyIds(properties);
-    const result = await handleAddNestedProperty(properties, parentId, name, type, required, description);
+    console.log('🔍 edit/[id]/index.tsx - handleAddProperty - propriété reçue:', property);
+    const result = await handleAddNestedProperty(properties, parentId, property.name, property.type, property.required, property.description, property);
     if (!result.success && result.error) {
       await handleShowNotification('error', result.error, uiState);
     }
