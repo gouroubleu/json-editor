@@ -1,6 +1,7 @@
-import { component$, useStore, $ } from '@builder.io/qwik';
+import { component$, useStore, $, useTask$ } from '@builder.io/qwik';
 import { useEntityCreation } from '../../context/entity-creation-context';
 import { generateDefaultValue } from '../../services';
+import { validateField } from '../../utils/validation';
 
 type ContextualEntityColumnProps = {
   columnIndex: number;
@@ -13,11 +14,37 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
   const uiState = useStore({
     editingField: null as string | null,
     editValue: '' as any,
-    showJsonEditor: {} as Record<string, boolean>
+    showJsonEditor: {} as Record<string, boolean>,
+    fieldErrors: {} as Record<string, string>,
+    fieldValues: {} as Record<string, any> // Pour l'affichage des valeurs
   });
 
   // Obtenir les données de la colonne depuis le contexte
   const column = store.state.columns[props.columnIndex];
+
+  // Initialiser les valeurs de champs avec les données existantes pour éviter la perte d'affichage
+  useTask$(({ track }) => {
+    track(() => store.state.columns[props.columnIndex]);
+
+    // Obtenir la colonne courante
+    const currentColumn = store.state.columns[props.columnIndex];
+
+    // Réinitialiser les valeurs locales quand la colonne change
+    if (currentColumn && currentColumn.data && typeof currentColumn.data === 'object' && !Array.isArray(currentColumn.data)) {
+      // Copier les valeurs existantes dans fieldValues pour l'affichage initial
+      const initialValues: Record<string, any> = {};
+      Object.entries(currentColumn.data).forEach(([key, value]) => {
+        if (value !== null && value !== undefined) {
+          initialValues[key] = value;
+        }
+      });
+
+      // Seulement mettre à jour si les valeurs ont changé
+      if (Object.keys(initialValues).length > 0) {
+        uiState.fieldValues = { ...uiState.fieldValues, ...initialValues };
+      }
+    }
+  });
   if (!column) {
     return <div class="column entity-column">Colonne introuvable</div>;
   }
@@ -67,6 +94,37 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
     actions.updateEntityData(fieldPath, convertedValue);
   });
 
+  const validateAndSave = $((key: string, newValue: any) => {
+    if (props.isReadOnly) return;
+
+    // ÉTAPE 1: Mettre à jour l'affichage local immédiatement AVANT tout traitement
+    // Utiliser une nouvelle référence d'objet pour garantir la réactivité Qwik
+    const newFieldValues = { ...uiState.fieldValues };
+    newFieldValues[key] = newValue;
+    uiState.fieldValues = newFieldValues;
+
+    // ÉTAPE 2: Sauvegarder la valeur (toujours en premier)
+    handleDirectSave(key, newValue);
+
+    // ÉTAPE 3: Validation et gestion des erreurs (sans affecter l'affichage)
+    const fieldSchema = column.schema.properties?.[key];
+    if (fieldSchema) {
+      const validation = validateField(newValue, fieldSchema, key);
+
+      // Créer un nouvel objet d'erreurs pour garantir la réactivité
+      const newErrors = { ...uiState.fieldErrors };
+
+      if (!validation.isValid) {
+        newErrors[key] = validation.errors[0];
+      } else {
+        // Supprimer l'erreur si validation réussie
+        delete newErrors[key];
+      }
+
+      uiState.fieldErrors = newErrors;
+    }
+  });
+
   const handleArrayItemSave = $((newValue: any) => {
     if (props.isReadOnly || column.arrayIndex === undefined) return;
 
@@ -104,6 +162,20 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
       return `"${value.substring(0, 50)}..."`;
     }
     return String(value);
+  };
+
+  // Fonction centralisée pour obtenir la valeur d'affichage d'un champ
+  const getFieldDisplayValue = (key: string, originalValue: any): string => {
+    // Priorité 1: Valeur en cours de saisie (uiState.fieldValues)
+    if (uiState.fieldValues[key] !== undefined) {
+      const displayValue = uiState.fieldValues[key];
+      if (displayValue === null || displayValue === undefined) return '';
+      return String(displayValue);
+    }
+
+    // Priorité 2: Valeur originale des données
+    if (originalValue === null || originalValue === undefined) return '';
+    return String(originalValue);
   };
 
   const getFieldIcon = (type?: string, value?: any) => {
@@ -237,10 +309,10 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
               {fieldSchema?.type === 'boolean' ? (
                 <select
                   class="direct-edit-input"
-                  value={String(value)}
+                  value={getFieldDisplayValue(key, value)}
                   onChange$={(e) => {
                     const target = e.target as HTMLSelectElement;
-                    handleDirectSave(key, target.value === 'true');
+                    validateAndSave(key, target.value === 'true');
                   }}
                 >
                   <option value="true">true</option>
@@ -249,10 +321,10 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
               ) : fieldSchema?.type === 'select' && fieldSchema?.options ? (
                 <select
                   class="direct-edit-input"
-                  value={String(value)}
+                  value={getFieldDisplayValue(key, value)}
                   onChange$={(e) => {
                     const target = e.target as HTMLSelectElement;
-                    handleDirectSave(key, target.value);
+                    validateAndSave(key, target.value);
                   }}
                 >
                   <option value="">Sélectionner...</option>
@@ -263,10 +335,10 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
               ) : fieldSchema?.enum ? (
                 <select
                   class="direct-edit-input"
-                  value={String(value)}
+                  value={getFieldDisplayValue(key, value)}
                   onChange$={(e) => {
                     const target = e.target as HTMLSelectElement;
-                    handleDirectSave(key, target.value);
+                    validateAndSave(key, target.value);
                   }}
                 >
                   {fieldSchema.enum.map((option: any) => (
@@ -293,7 +365,7 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
                       })()}
                       onChange$={(e) => {
                         const target = e.target as HTMLTextAreaElement;
-                        handleDirectSave(key, target.value);
+                        validateAndSave(key, target.value);
                       }}
                       rows={4}
                       placeholder="Entrez un array JSON valide..."
@@ -307,13 +379,10 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
                     const editType = fieldSchema?.type || typeof value;
                     return (editType === 'number' || editType === 'integer') ? 'number' : 'text';
                   })()}
-                  value={(() => {
-                    if (value === null || value === undefined) return '';
-                    return String(value);
-                  })()}
+                  value={getFieldDisplayValue(key, value)}
                   onChange$={(e) => {
                     const target = e.target as HTMLInputElement;
-                    handleDirectSave(key, target.value);
+                    validateAndSave(key, target.value);
                   }}
                   min={fieldSchema?.minimum}
                   max={fieldSchema?.maximum}
@@ -333,6 +402,13 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
             </div>
           )}
         </div>
+
+        {/* Affichage des erreurs de validation */}
+        {uiState.fieldErrors[key] && (
+          <div class="field-error" style="color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem; padding: 0.25rem; background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 4px;">
+            ⚠️ {uiState.fieldErrors[key]}
+          </div>
+        )}
 
         {fieldSchema && (
           <div class="field-constraints">
