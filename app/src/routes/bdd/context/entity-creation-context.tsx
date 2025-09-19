@@ -53,6 +53,9 @@ export type EntityCreationUI = {
   saving: boolean;
   validating: boolean;
   showJsonPreview: boolean;
+  // Gestion globale des erreurs de validation pour désactivation des boutons
+  fieldErrors: Record<string, string>;
+  hasValidationErrors: boolean;
   notification: {
     show: boolean;
     type: 'success' | 'error' | 'warning' | 'info';
@@ -85,6 +88,9 @@ export type EntityCreationActions = {
   toggleJsonPreview: () => void;
   setLoading: (loading: boolean) => void;
   setSaving: (saving: boolean) => void;
+  // Gestion des erreurs de validation
+  setFieldError: (fieldPath: string, error: string | null) => void;
+  clearAllFieldErrors: () => void;
 
   // Actions de validation
   validateEntity: () => Promise<{ isValid: boolean; errors: string[] }>;
@@ -99,6 +105,7 @@ export type EntityCreationActions = {
 export type EntityCreationContextType = {
   store: EntityCreationStore;
   actions: EntityCreationActions;
+  validationSignal: Signal<number>;
 }
 
 // Créer le contexte
@@ -324,6 +331,8 @@ export const EntityCreationProvider = component$<{
       saving: false,
       validating: false,
       showJsonPreview: false,
+      fieldErrors: {},
+      hasValidationErrors: false,
       notification: {
         show: false,
         type: 'success',
@@ -334,6 +343,9 @@ export const EntityCreationProvider = component$<{
 
   // Signal pour forcer la mise à jour des colonnes
   const forceUpdateSignal = useSignal(0);
+
+  // Signal pour forcer la mise à jour de l'état de validation
+  const validationSignal = useSignal(0);
 
   // Fonction utilitaire pour mettre à jour les données et recalculer les colonnes
   const updateEntityDataInternal = $((path: string[], newValue: any) => {
@@ -612,6 +624,47 @@ export const EntityCreationProvider = component$<{
       store.ui.saving = saving;
     }),
 
+    setFieldError: $((fieldPath: string, error: string | null) => {
+      const newErrors = { ...store.ui.fieldErrors };
+
+      if (error) {
+        newErrors[fieldPath] = error;
+      } else {
+        delete newErrors[fieldPath];
+      }
+
+      const hasErrors = Object.keys(newErrors).length > 0;
+
+      // CORRECTION RÉACTIVITÉ QWIK : Créer complètement nouveau store.ui
+      const newUI: EntityCreationUI = {
+        loading: store.ui.loading,
+        saving: store.ui.saving,
+        validating: store.ui.validating,
+        showJsonPreview: store.ui.showJsonPreview,
+        fieldErrors: newErrors,
+        hasValidationErrors: hasErrors,
+        notification: { ...store.ui.notification }
+      };
+
+      // Remplacer complètement store.ui
+      store.ui = newUI;
+
+      // Forcer la réactivité avec un signal
+      validationSignal.value++;
+
+      console.log('🔧 setFieldError - FINAL:', 'field=' + fieldPath, 'hasErrors=' + hasErrors, 'signal=' + validationSignal.value);
+    }),
+
+    clearAllFieldErrors: $(() => {
+      // CORRECTION RÉACTIVITÉ QWIK : Forcer une nouvelle référence d'objet
+      store.ui = {
+        ...store.ui,
+        fieldErrors: {},
+        hasValidationErrors: false
+      };
+      console.log('🔧 Toutes les erreurs de validation supprimées');
+    }),
+
     validateEntity: $(async () => {
       // TODO: Implémenter la validation selon le schéma
       return { isValid: true, errors: [] };
@@ -662,7 +715,7 @@ export const EntityCreationProvider = component$<{
   });
 
   // Fournir le contexte
-  useContextProvider(EntityCreationContext, { store, actions });
+  useContextProvider(EntityCreationContext, { store, actions, validationSignal });
 
   return <Slot />;
 });

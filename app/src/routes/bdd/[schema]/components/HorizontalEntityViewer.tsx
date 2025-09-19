@@ -12,6 +12,8 @@ type HorizontalEntityViewerProps = {
   isReadOnly: boolean;
   hasModifications?: boolean;
   loading?: boolean;
+  hasValidationErrors?: boolean;
+  validationErrors?: Record<string, string>;
   updateVersionOption?: boolean;
   updateVersion?: boolean;
   onDataChange$?: PropFunction<(newData: Record<string, any>) => void>;
@@ -425,10 +427,12 @@ export const HorizontalEntityViewer = component$<HorizontalEntityViewerProps>((p
                 <button
                   class={`btn ${isNewEntity ? 'btn-primary' : (props.hasModifications ? 'btn-warning' : 'btn-success')}`}
                   onClick$={props.onSave$}
-                  disabled={props.loading}
+                  disabled={props.loading || props.hasValidationErrors}
                   style="width: 100%; padding: 0.75rem;"
+                  title={props.hasValidationErrors ? `Erreurs de validation présentes: ${Object.keys(props.validationErrors || {}).join(', ')}` : ''}
                 >
-                  {props.loading ? (isNewEntity ? '⏳ Création...' : '⏳ Sauvegarde...') : 
+                  {props.loading ? (isNewEntity ? '⏳ Création...' : '⏳ Sauvegarde...') :
+                   props.hasValidationErrors ? '⚠️ Erreurs à corriger' :
                    isNewEntity ? '✨ Créer l\'entité' :
                    props.hasModifications ? '⚠️ Sauvegarder les modifications' : '💾 Sauvegarder'}
                 </button>

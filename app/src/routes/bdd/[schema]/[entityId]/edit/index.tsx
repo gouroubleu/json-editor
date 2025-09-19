@@ -4,6 +4,7 @@ import { getEntity, updateEntity } from '../../../services';
 import { loadSchemas } from '../../../../services';
 import type { EntityData, UpdateEntityRequest } from '../../../types';
 import { HorizontalEntityViewer } from '../../components/HorizontalEntityViewer';
+import { validateEntityData } from '../../../utils/validation';
 import HORIZONTAL_STYLES from '../../../../../components/HorizontalSchemaEditor.scss?inline';
 import COLUMN_STYLES from '../../../../../components/PropertyColumn.scss?inline';
 import COMMON_STYLES from '../../../../../components/CommonStyles.scss?inline';
@@ -58,7 +59,10 @@ export default component$(() => {
     notification: { show: false, type: 'success', message: '' },
     hasModifications: false,
     loading: false,
-    updateVersion: false // Option pour migrer vers la nouvelle version
+    updateVersion: false, // Option pour migrer vers la nouvelle version
+    // Gestion des erreurs de validation pour désactivation du bouton
+    validationErrors: {} as Record<string, string>,
+    hasValidationErrors: false
   });
 
   const originalData = useSignal(JSON.stringify(entityData.value.entity.data));
@@ -99,19 +103,27 @@ export default component$(() => {
   const handleSave = $(async () => {
     try {
       uiState.loading = true;
-      
+
+      // VALIDATION AVANT SAUVEGARDE
+      const validation = validateEntityData(editableEntity.data, entityData.value.schema);
+
+      if (!validation.isValid) {
+        await showNotification('error', `Erreurs de validation:\n${validation.errors.join('\n')}`);
+        return;
+      }
+
       console.log('🐛 DEBUG - Données à modifier:', {
         entityId: editableEntity.id,
         data: editableEntity.data,
         updateVersion: uiState.updateVersion,
         hasData: Object.keys(editableEntity.data).length > 0
       });
-      
+
       const request: UpdateEntityRequest = {
         data: editableEntity.data,
         updateVersion: uiState.updateVersion
       };
-      
+
       const result = await updateEntity(editableEntity.id, request);
       
       console.log('🐛 DEBUG - Résultat modification:', result);
@@ -158,6 +170,31 @@ export default component$(() => {
     console.log('🐛 DEBUG - handleDataChange appelé avec:', newData);
     editableEntity.data = { ...newData };
     console.log('🐛 DEBUG - editableEntity.data mis à jour:', editableEntity.data);
+
+    // Révaluer la validation après chaque changement de données
+    setTimeout(() => {
+      const validation = validateEntityData(editableEntity.data, entityData.value.schema);
+      console.log('🔧 VALIDATION - Résultat:', validation);
+
+      if (!validation.isValid) {
+        // Stocker les erreurs par chemin de champ
+        const newErrors: Record<string, string> = {};
+        validation.errors.forEach((error, index) => {
+          newErrors[`field_${index}`] = error;
+        });
+        uiState.validationErrors = newErrors;
+        uiState.hasValidationErrors = true;
+      } else {
+        // Nettoyer les erreurs si validation réussie
+        uiState.validationErrors = {};
+        uiState.hasValidationErrors = false;
+      }
+
+      console.log('🔧 VALIDATION - État des erreurs:', {
+        hasErrors: uiState.hasValidationErrors,
+        errors: uiState.validationErrors
+      });
+    }, 100); // Petit délai pour laisser les données se propager
   });
 
   const isOutdated = editableEntity.version !== entityData.value.schemaVersion;
@@ -174,6 +211,8 @@ export default component$(() => {
         isReadOnly={false}
         hasModifications={uiState.hasModifications}
         loading={uiState.loading}
+        hasValidationErrors={uiState.hasValidationErrors}
+        validationErrors={uiState.validationErrors}
         onDataChange$={handleDataChange}
         onSave$={handleSave}
         onCancel$={handleCancel}

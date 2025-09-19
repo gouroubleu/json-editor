@@ -5,6 +5,7 @@ import { loadSchemas } from '../../../services';
 import type { CreateEntityRequest, EntityData } from '../../types';
 import { EntityCreationProvider, useEntityCreation } from '../../context/entity-creation-context';
 import { ContextualHorizontalEntityViewer } from '../components/ContextualHorizontalEntityViewer';
+import { validateEntityData } from '../../utils/validation';
 import HORIZONTAL_STYLES from '../../../../components/HorizontalSchemaEditor.scss?inline';
 import COLUMN_STYLES from '../../../../components/PropertyColumn.scss?inline';
 import COMMON_STYLES from '../../../../components/CommonStyles.scss?inline';
@@ -53,6 +54,14 @@ const NewEntityPageContent = component$(() => {
   const handleSave = $(async () => {
     try {
       actions.setSaving(true);
+
+      // VALIDATION AVANT SAUVEGARDE
+      const validation = validateEntityData(store.state.entity.data, store.state.schema);
+
+      if (!validation.isValid) {
+        actions.showNotification(`Erreurs de validation:\n${validation.errors.join('\n')}`, 'error');
+        return;
+      }
 
       console.log('🐛 DEBUG - Données à sauvegarder:', {
         schemaName: store.state.schemaName,

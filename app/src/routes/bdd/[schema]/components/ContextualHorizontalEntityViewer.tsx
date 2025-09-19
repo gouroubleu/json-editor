@@ -12,7 +12,7 @@ type ContextualHorizontalEntityViewerProps = {
 };
 
 export const ContextualHorizontalEntityViewer = component$<ContextualHorizontalEntityViewerProps>((props) => {
-  const { store, actions } = useEntityCreation();
+  const { store, actions, validationSignal } = useEntityCreation();
 
   const getEntityDisplayName = () => {
     const data = store.state.entity.data;
@@ -151,11 +151,30 @@ export const ContextualHorizontalEntityViewer = component$<ContextualHorizontalE
 
                 <button
                   class={`btn ${isNewEntity ? 'btn-primary' : (store.state.modifications.hasChanges ? 'btn-warning' : 'btn-success')}`}
-                  onClick$={props.onSave$}
-                  disabled={store.ui.loading || store.ui.saving}
+                  onClick$={() => {
+                    console.log('🔧 DEBUG BOUTON - Cliqué avec état:',
+                      'loading=' + store.ui.loading,
+                      'saving=' + store.ui.saving,
+                      'hasValidationErrors=' + store.ui.hasValidationErrors,
+                      'fieldErrors=' + JSON.stringify(store.ui.fieldErrors),
+                      'totalErrors=' + Object.keys(store.ui.fieldErrors).length
+                    );
+                    if (props.onSave$) {
+                      props.onSave$();
+                    }
+                  }}
+                  disabled={(() => {
+                    // Forcer la réactivité en lisant le signal de validation
+                    const _ = validationSignal.value;
+                    const isDisabled = store.ui.loading || store.ui.saving || store.ui.hasValidationErrors;
+                    console.log('🔧 DEBUG BOUTON - RENDER disabled avec signal:', 'loading=' + store.ui.loading, 'saving=' + store.ui.saving, 'hasValidationErrors=' + store.ui.hasValidationErrors, 'validationSignal=' + validationSignal.value, 'isDisabled=' + isDisabled);
+                    return isDisabled;
+                  })()}
                   style="width: 100%; padding: 0.75rem;"
+                  title={store.ui.hasValidationErrors ? `Erreurs de validation présentes: ${Object.keys(store.ui.fieldErrors).join(', ')}` : ''}
                 >
                   {store.ui.saving ? (isNewEntity ? '⏳ Création...' : '⏳ Sauvegarde...') :
+                   store.ui.hasValidationErrors ? '⚠️ Erreurs à corriger' :
                    isNewEntity ? '✨ Créer l\'entité' :
                    store.state.modifications.hasChanges ? '⚠️ Sauvegarder les modifications' : '💾 Sauvegarder'}
                 </button>
