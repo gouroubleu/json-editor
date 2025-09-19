@@ -43,6 +43,38 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
       if (Object.keys(initialValues).length > 0) {
         uiState.fieldValues = { ...uiState.fieldValues, ...initialValues };
       }
+
+      // *** NOUVELLE FONCTIONNALITÉ : VALIDATION INITIALE DES CHAMPS REQUIS ***
+      // Valider automatiquement tous les champs requis vides au chargement
+      if (currentColumn.schema && currentColumn.schema.required && Array.isArray(currentColumn.schema.required)) {
+        console.log('🔧 VALIDATION INITIALE - Champs requis détectés:', currentColumn.schema.required);
+
+        currentColumn.schema.required.forEach((requiredField: string) => {
+          const value = currentColumn.data[requiredField];
+          const fieldSchema = currentColumn.schema.properties?.[requiredField];
+
+          // Si le champ requis est vide, déclencher immédiatement la validation
+          if ((value === undefined || value === null || value === '') && fieldSchema) {
+            console.log('🔧 VALIDATION INITIALE - Champ requis vide détecté:', requiredField, 'value=', value);
+
+            // Utiliser validateField pour obtenir le message d'erreur approprié
+            const validation = validateField(value, fieldSchema, requiredField, true);
+            console.log('🔧 VALIDATION INITIALE - Résultat pour', requiredField, ':', validation);
+
+            if (!validation.isValid) {
+              // Erreur locale (affichage sous le champ)
+              const newErrors = { ...uiState.fieldErrors };
+              newErrors[requiredField] = validation.errors[0];
+              uiState.fieldErrors = newErrors;
+
+              // Erreur globale (désactivation bouton)
+              const fieldPath = [...currentColumn.path, requiredField].join('.');
+              console.log('🔧 VALIDATION INITIALE - Ajout erreur globale avec path:', fieldPath);
+              actions.setFieldError(fieldPath, validation.errors[0]);
+            }
+          }
+        });
+      }
     }
   });
   if (!column) {
@@ -106,22 +138,38 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
     // ÉTAPE 2: Sauvegarder la valeur (toujours en premier)
     handleDirectSave(key, newValue);
 
-    // ÉTAPE 3: Validation et gestion des erreurs (sans affecter l'affichage)
+    // ÉTAPE 3: Validation et gestion des erreurs (GLOBAL ET LOCAL)
     const fieldSchema = column.schema.properties?.[key];
-    if (fieldSchema) {
-      const validation = validateField(newValue, fieldSchema, key);
+    const isRequired = column.schema.required?.includes(key) || false;
 
-      // Créer un nouvel objet d'erreurs pour garantir la réactivité
-      const newErrors = { ...uiState.fieldErrors };
+    if (fieldSchema) {
+      console.log('🔧 VALIDATION - Début validation pour:', key, 'value=', newValue, 'schema=', fieldSchema, 'isRequired=', isRequired);
+      const validation = validateField(newValue, fieldSchema, key, isRequired);
+      console.log('🔧 VALIDATION - Résultat:', validation);
+
+      // Créer le chemin de champ complet pour l'erreur globale
+      const fieldPath = [...column.path, key].join('.');
 
       if (!validation.isValid) {
+        console.log('🔧 VALIDATION - ERREUR DÉTECTÉE pour', key, ':', validation.errors[0]);
+        // Erreur locale (affichage)
+        const newErrors = { ...uiState.fieldErrors };
         newErrors[key] = validation.errors[0];
-      } else {
-        // Supprimer l'erreur si validation réussie
-        delete newErrors[key];
-      }
+        uiState.fieldErrors = newErrors;
 
-      uiState.fieldErrors = newErrors;
+        // Erreur globale (désactivation boutons)
+        console.log('🔧 VALIDATION - Appel setFieldError avec path:', fieldPath);
+        actions.setFieldError(fieldPath, validation.errors[0]);
+      } else {
+        console.log('🔧 VALIDATION - VALIDE pour', key);
+        // Supprimer l'erreur locale
+        const newErrors = { ...uiState.fieldErrors };
+        delete newErrors[key];
+        uiState.fieldErrors = newErrors;
+
+        // Supprimer l'erreur globale
+        actions.setFieldError(fieldPath, null);
+      }
     }
   });
 
