@@ -1,0 +1,15 @@
+{
+  "pageLoaded": true,
+  "statusCode": 404,
+  "hasSelectOptions": false,
+  "hasInputForPop": false,
+  "hasArrayButtons": false,
+  "corrections": {
+    "popFieldCorrect": false,
+    "arrayNavigationCorrect": false
+  },
+  "summary": {
+    "successRate": 0,
+    "status": "CORRECTIONS_INSUFFISANTES"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "title": "Test Schema avec Select Key/Value",
+  "description": "Schema avec type select en format key/value",
+  "properties": {
+    "status": {
+      "type": "select",
+      "description": "Statut de test",
+      "options": [
+        {
+          "key": "active",
+          "value": "Actif"
+        },
+        {
+          "key": "inactive",
+          "value": "Inactif"
+        },
+        {
+          "key": "pending",
+          "value": "En attente"
+        }
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Nom"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

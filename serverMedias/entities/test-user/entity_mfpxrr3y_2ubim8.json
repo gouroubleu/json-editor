@@ -1,0 +1,31 @@
+{
+  "id": "entity_mfpxrr3y_2ubim8",
+  "version": "5.3",
+  "schemaName": "test-user",
+  "data": {
+    "id": "xwc",
+    "nom": "jhj",
+    "email": "jjh",
+    "age": 0,
+    "adresse": [
+      {
+        "adresse": "",
+        "cp": "",
+        "ville": "",
+        "place": {
+          "nom": "",
+          "type_lieu": null,
+          "test": [
+            {
+              "name": "",
+              "categorie": null
+            }
+          ]
+        }
+      }
+    ],
+    "pop": "test"
+  },
+  "createdAt": "2025-09-18T21:42:01.726Z",
+  "updatedAt": "2025-09-18T21:42:01.726Z"
+}

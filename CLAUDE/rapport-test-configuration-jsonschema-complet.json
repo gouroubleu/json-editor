@@ -1,0 +1,140 @@
+{
+  "startTime": "2025-09-19T17:55:06.992Z",
+  "endTime": "2025-09-19T17:55:14.962Z",
+  "status": "PASSED",
+  "tests": [
+    {
+      "name": "application_access",
+      "status": "passed",
+      "timestamp": "2025-09-19T17:55:08.224Z",
+      "details": {
+        "url": "http://localhost:5501",
+        "title": ""
+      }
+    },
+    {
+      "name": "schema_editor_navigation",
+      "status": "passed",
+      "timestamp": "2025-09-19T17:55:08.932Z",
+      "details": {
+        "finalUrl": "http://localhost:5501/bdd/test-user/"
+      }
+    },
+    {
+      "name": "select_property_creation",
+      "status": "passed",
+      "timestamp": "2025-09-19T17:55:12.296Z",
+      "details": {
+        "buttonsFound": 1,
+        "inputsFound": 2
+      }
+    },
+    {
+      "name": "select_options_configuration",
+      "status": "passed",
+      "timestamp": "2025-09-19T17:55:13.399Z",
+      "details": {
+        "optionFieldsFound": 0,
+        "testOptionsAdded": 3
+      }
+    },
+    {
+      "name": "json_schema_validation",
+      "status": "passed",
+      "timestamp": "2025-09-19T17:55:13.517Z",
+      "details": {
+        "schemaFound": false,
+        "validation": {
+          "hasType": false,
+          "hasProperties": false,
+          "hasSelectProperty": false,
+          "selectHasEnum": false,
+          "selectHasStringType": false
+        },
+        "schema": null
+      }
+    },
+    {
+      "name": "end_to_end_user_flow",
+      "status": "passed",
+      "timestamp": "2025-09-19T17:55:14.770Z",
+      "details": {
+        "navigationElements": 23,
+        "performanceMetrics": {
+          "Timestamp": 1055001.336573,
+          "Documents": 8,
+          "Frames": 2,
+          "JSEventListeners": 50,
+          "Nodes": 1402,
+          "LayoutCount": 95,
+          "RecalcStyleCount": 127,
+          "LayoutDuration": 0.186227,
+          "RecalcStyleDuration": 0.07528,
+          "ScriptDuration": 0.030663,
+          "TaskDuration": 0.670671,
+          "JSHeapUsedSize": 6928620,
+          "JSHeapTotalSize": 9457664
+        }
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "name": "Application chargée",
+      "path": "CLAUDE/screenshots/jsonschema-config-test/app-access-1758304508155.png",
+      "timestamp": "2025-09-19T17:55:08.222Z"
+    },
+    {
+      "name": "Éditeur de schéma chargé",
+      "path": "CLAUDE/screenshots/jsonschema-config-test/schema-editor-1758304508853.png",
+      "timestamp": "2025-09-19T17:55:08.932Z"
+    },
+    {
+      "name": "Après clic ajout propriété",
+      "path": "CLAUDE/screenshots/jsonschema-config-test/add-property-clicked-1758304512003.png",
+      "timestamp": "2025-09-19T17:55:12.088Z"
+    },
+    {
+      "name": "Configuration propriété select",
+      "path": "CLAUDE/screenshots/jsonschema-config-test/select-configured-1758304512227.png",
+      "timestamp": "2025-09-19T17:55:12.295Z"
+    },
+    {
+      "name": "Options select configurées",
+      "path": "CLAUDE/screenshots/jsonschema-config-test/options-configured-1758304513317.png",
+      "timestamp": "2025-09-19T17:55:13.399Z"
+    },
+    {
+      "name": "Validation JSON Schema",
+      "path": "CLAUDE/screenshots/jsonschema-config-test/schema-validation-1758304513428.png",
+      "timestamp": "2025-09-19T17:55:13.516Z"
+    },
+    {
+      "name": "Vue desktop",
+      "path": "CLAUDE/screenshots/jsonschema-config-test/desktop-view-1758304514538.png",
+      "timestamp": "2025-09-19T17:55:14.621Z"
+    },
+    {
+      "name": "Vue tablette",
+      "path": "CLAUDE/screenshots/jsonschema-config-test/tablet-view-1758304514626.png",
+      "timestamp": "2025-09-19T17:55:14.699Z"
+    },
+    {
+      "name": "Vue mobile",
+      "path": "CLAUDE/screenshots/jsonschema-config-test/mobile-view-1758304514703.png",
+      "timestamp": "2025-09-19T17:55:14.762Z"
+    },
+    {
+      "name": "État final de l'application",
+      "path": "CLAUDE/screenshots/jsonschema-config-test/final-state-1758304514770.png",
+      "timestamp": "2025-09-19T17:55:14.852Z"
+    }
+  ],
+  "errors": [],
+  "summary": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0
+  }
+}

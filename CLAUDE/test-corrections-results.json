@@ -1,0 +1,32 @@
+{
+  "timestamp": "2025-09-19T15:24:23.803Z",
+  "tests": [
+    {
+      "name": "Champ pop est un select",
+      "success": false,
+      "details": {
+        "found": true,
+        "hasSelect": false,
+        "hasInput": true,
+        "selectOptions": [],
+        "fieldHtml": "<div class=\"field-header\" data-qwik-inspector=\"/src/routes/bdd/[schema]/components/EntityColumn.tsx:275:9\"><div class=\"field-info\" data-qwik-inspector=\"/src/routes/bdd/[schema]/components/EntityColumn.tsx:276:11\"><span class=\"field-icon\" data-qwik-inspector=\"/src/routes/bdd/[schema]/components/EntityColumn.tsx:277:13\">📄</span><span class=\"field-name\" data-qwik-inspector=\"/src/routes/bdd/[schema]/components/EntityColumn.tsx:278:13\">pop</span><span class=\"field-type\" data-qwik-inspector=\"/src/rou"
+      }
+    },
+    {
+      "name": "Présence bouton ajout array",
+      "success": false,
+      "details": {
+        "found": false,
+        "buttonText": null,
+        "arrayContainerExists": false
+      }
+    }
+  ],
+  "success": 0,
+  "failed": 2,
+  "summary": {
+    "total": 2,
+    "successRate": 0,
+    "status": "PROBLEMES_PERSISTANTS"
+  }
+}

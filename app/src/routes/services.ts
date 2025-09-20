@@ -19,11 +19,28 @@ const buildPropertySchema = (prop: SchemaProperty): any => {
     }
   }
 
-  // Gestion du type select (garde le type select)
+  // Gestion du type select (conversion vers JSON Schema standard)
   if (prop.type === 'select') {
-    propSchema.type = 'select';
+    propSchema.type = 'string';
     if (prop.selectOptions && prop.selectOptions.length > 0) {
-      propSchema.options = prop.selectOptions;
+      propSchema.enum = prop.selectOptions.map(opt => opt.value);
+    }
+  }
+
+  // Gestion du type jsonschema (génération $ref)
+  if (prop.type === 'jsonschema') {
+    if (prop.$refMetadata?.schemaName) {
+      const schemaRef = prop.$refMetadata.schemaVersion
+        ? `#/definitions/${prop.$refMetadata.schemaName}_v${prop.$refMetadata.schemaVersion}`
+        : `#/definitions/${prop.$refMetadata.schemaName}`;
+
+      if (prop.$refMetadata.multiple) {
+        propSchema.type = 'array';
+        propSchema.items = { $ref: schemaRef };
+      } else {
+        propSchema.$ref = schemaRef;
+        delete propSchema.type;
+      }
     }
   }
 

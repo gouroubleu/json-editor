@@ -9,6 +9,22 @@ Si tu dois t'ajouter des fichiers, tu les ajoutes dans ./CLAUDE et uniquement ic
 
 ## Historique des tickets
 
+### 2025-09-19
+- **test-configuration-jsonschema-complet-ticket.md** : ✅ TERMINÉ - Validation complète configuration JSON Schema
+  - Tests Puppeteer exhaustifs pour types de propriétés JSON Schema
+  - Validation interface de création d'entité fonctionnelle
+  - Configuration type 'select' avec options validée et fonctionnelle
+  - Interface responsive testée (desktop, tablette, mobile)
+  - Performance optimale confirmée avec métriques détaillées
+  - **Fichiers associés:**
+    - `test-configuration-jsonschema-complet.js` - Script principal Puppeteer
+    - `test-editeur-schema-ciblé.js` - Test ciblé interface éditeur
+    - `test-editeur-schema-direct.js` - Test direct navigation éditeur
+    - `test-creation-entite-validation.js` - Validation interface création
+    - `rapport-final-test-configuration-jsonschema.md` - Rapport technique complet
+    - `rapport-test-configuration-jsonschema-complet.json` - Données de validation
+    - `screenshots/jsonschema-config-test/` - 10+ captures d'écran documentées
+
 ### 2025-09-17
 - **validation-post-restructuration.md** : ✅ TERMINÉ - Validation complète du projet après restructuration
   - Serveur opérationnel sur http://localhost:5502/

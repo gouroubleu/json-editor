@@ -1,5 +1,6 @@
 import { component$, useStore, useTask$, type PropFunction, $ } from '@builder.io/qwik';
 import { generateDefaultValue } from '../../services';
+import { useEntityCreation } from '../../context/entity-creation-context';
 
 type EntityColumnProps = {
   data: any;
@@ -315,6 +316,20 @@ export const EntityColumn = component$<EntityColumnProps>((props) => {
                   <option value="true">true</option>
                   <option value="false">false</option>
                 </select>
+              ) : fieldSchema?.type === 'select' && fieldSchema?.options ? (
+                <select
+                  class="direct-edit-input"
+                  value={String(props.data[key])}
+                  onChange$={(e) => {
+                    const target = e.target as HTMLSelectElement;
+                    handleDirectSave(target.value);
+                  }}
+                >
+                  <option value="">Sélectionner...</option>
+                  {fieldSchema.options.map((option: any) => (
+                    <option key={option.key} value={option.value}>{option.value}</option>
+                  ))}
+                </select>
               ) : fieldSchema?.enum ? (
                 <select
                   class="direct-edit-input"
@@ -429,37 +444,20 @@ export const EntityColumn = component$<EntityColumnProps>((props) => {
   };
 
   const handleAddArrayItem = $(() => {
-    console.log('🔧 EntityColumn - handleAddArrayItem appelé:', {
+    console.log('🔧 EntityColumn - handleAddArrayItem appelé - UTILISE CONTEXTE MAINTENANT:', {
       path: props.path,
       currentData: props.data,
       arrayLength: props.data?.length || 0,
       schema: props.schema
     });
 
-    // Ajouter un nouvel élément vide basé sur le schéma de l'item
-    const newItem = generateDefaultValue(props.schema.items);
+    // CORRECTION FINALE : Utiliser directement le contexte qui gère la réactivité !
+    // Ne plus dupliquer la logique, utiliser le système qui fonctionne
+    const { actions } = useEntityCreation();
 
-    // Sécurité : si generateDefaultValue retourne null ou undefined, créer un objet par défaut
-    const safeNewItem = (newItem !== null && newItem !== undefined) ? newItem : (
-      props.schema.items?.type === 'object' || props.schema.items?.properties ? {} : ''
-    );
-
-    const newArray = [...props.data, safeNewItem];
-    const fieldPath = [...props.path];
-
-    console.log('🔧 EntityColumn - Nouvel élément généré:', newItem);
-    console.log('🔧 EntityColumn - Nouvel élément utilisé (sécurisé):', safeNewItem);
-    console.log('🔧 EntityColumn - Nouveau tableau:', newArray);
-
-    // Sauvegarder les nouvelles données
-    props.onDataChange$?.(fieldPath, newArray);
-
-    // Navigation automatique vers le nouvel élément ajouté
-    const newItemIndex = newArray.length - 1; // Index du nouvel élément (dernier)
-    console.log('🔧 EntityColumn - Navigation vers l\'élément index:', newItemIndex);
-
-    // Déclencher la sélection du nouvel élément pour naviguer automatiquement
-    props.onSelectArrayItem$?.(newItemIndex, props.columnIndex);
+    console.log('🔧 EntityColumn - Appel actions.addArrayElement du contexte');
+    actions.addArrayElement(props.path, props.schema);
+    console.log('🔧 EntityColumn - addArrayElement du contexte terminé');
   });
   
   const handleRemoveArrayItem = $((index: number) => {

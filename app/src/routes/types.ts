@@ -1,5 +1,5 @@
 // Types pour l'éditeur de JSON Schema
-export type JsonSchemaType = 'string' | 'number' | 'integer' | 'boolean' | 'array' | 'object' | 'select';
+export type JsonSchemaType = 'string' | 'number' | 'integer' | 'boolean' | 'array' | 'object' | 'select' | 'jsonschema';
 
 export type SelectOption = {
   key: string;
@@ -27,7 +27,15 @@ export type SchemaProperty = {
     type: JsonSchemaType;
     properties?: SchemaProperty[];
   };
-  
+
+  // Configuration pour références jsonschema
+  $refMetadata?: {
+    schemaName?: string;
+    schemaVersion?: string;
+    title?: string;
+    multiple?: boolean;
+  };
+
   // Métadonnées pour l'interface
   isExpanded?: boolean;
   level?: number;

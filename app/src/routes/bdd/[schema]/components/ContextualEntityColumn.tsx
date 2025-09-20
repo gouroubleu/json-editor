@@ -67,10 +67,8 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
               newErrors[requiredField] = validation.errors[0];
               uiState.fieldErrors = newErrors;
 
-              // Erreur globale (désactivation bouton)
-              const fieldPath = [...currentColumn.path, requiredField].join('.');
-              console.log('🔧 VALIDATION INITIALE - Ajout erreur globale avec path:', fieldPath);
-              actions.setFieldError(fieldPath, validation.errors[0]);
+              // Note: La gestion d'erreurs globales pourrait être ajoutée ici si nécessaire
+              console.log('🔧 VALIDATION INITIALE - Erreur enregistrée pour:', requiredField);
             }
           }
         });
@@ -157,9 +155,8 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
         newErrors[key] = validation.errors[0];
         uiState.fieldErrors = newErrors;
 
-        // Erreur globale (désactivation boutons)
-        console.log('🔧 VALIDATION - Appel setFieldError avec path:', fieldPath);
-        actions.setFieldError(fieldPath, validation.errors[0]);
+        // Note: Erreur enregistrée localement
+        console.log('🔧 VALIDATION - Erreur enregistrée avec path:', fieldPath);
       } else {
         console.log('🔧 VALIDATION - VALIDE pour', key);
         // Supprimer l'erreur locale
@@ -167,8 +164,8 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
         delete newErrors[key];
         uiState.fieldErrors = newErrors;
 
-        // Supprimer l'erreur globale
-        actions.setFieldError(fieldPath, null);
+        // Note: Erreur locale supprimée
+        console.log('🔧 VALIDATION - Erreur supprimée pour:', fieldPath);
       }
     }
   });
@@ -377,7 +374,7 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
                 >
                   <option value="">Sélectionner...</option>
                   {fieldSchema.options.map((option: any) => (
-                    <option key={option.key} value={option.key}>{option.value}</option>
+                    <option key={option.key} value={option.value}>{option.value}</option>
                   ))}
                 </select>
               ) : fieldSchema?.enum ? (
@@ -474,7 +471,9 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
   const handleAddArrayItem = $(() => {
     if (props.isReadOnly) return;
 
+    console.log('🔧 ContextualEntityColumn - handleAddArrayItem appelé (BON COMPOSANT !)');
     actions.addArrayElement(column.path, column.schema);
+    console.log('🔧 ContextualEntityColumn - addArrayElement terminé');
   });
 
   const handleRemoveArrayItem = $((index: number) => {
@@ -673,7 +672,7 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
                           >
                             <option value="">Sélectionner...</option>
                             {column.schema.options.map((option: any) => (
-                              <option key={option.key} value={option.key}>{option.value}</option>
+                              <option key={option.key} value={option.value}>{option.value}</option>
                             ))}
                           </select>
                         ) : column.schema.enum ? (

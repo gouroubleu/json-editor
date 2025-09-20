@@ -1,0 +1,221 @@
+{
+  "timestamp": "2025-09-19T16:34:57.595Z",
+  "etatInitial": {
+    "itemsCount": 1,
+    "details": [
+      {
+        "index": 0,
+        "preview": "{4 propriétés}",
+        "hasInputs": 0,
+        "hasTemporaryClass": false,
+        "hasTemporaryText": false,
+        "hasSaveButton": false,
+        "innerHTML": "<div class=\"array-item-header\"><span class=\"array-index\">[0]</span><span class=\"array-item-type\">object</span><div class=\"array-item-actions\"><button class=\"btn btn-xs btn-outline\" title=\"Explorer cet élément\">→</button><button class=\"btn btn-xs btn-danger\" title=\"Supprimer cet élément\">🗑️</button></div></div><div class=\"array-item-preview\">{4 propriétés}</div>"
+      }
+    ],
+    "containerText": "📋1 élément➕ Ajouter[0]object→🗑️{4 propriétés}➕Ajouter un élément"
+  },
+  "analyses": [
+    {
+      "moment": "APRES_1000ms",
+      "itemsCount": 2,
+      "details": [
+        {
+          "index": 0,
+          "preview": "{4 propriétés}",
+          "inputsCount": 0,
+          "inputsDetails": [],
+          "hasTemporaryClass": false,
+          "hasTemporaryText": false,
+          "hasSaveButton": false,
+          "saveButtonTexts": [],
+          "estEditable": false,
+          "innerHTML": "<div class=\"array-item-header\"><span class=\"array-index\">[0]</span><span class=\"array-item-type\">object</span><div class=\"array-item-actions\"><button class=\"btn btn-xs btn-outline\" title=\"Explorer cet"
+        },
+        {
+          "index": 1,
+          "preview": "{5 propriétés}",
+          "inputsCount": 0,
+          "inputsDetails": [],
+          "hasTemporaryClass": true,
+          "hasTemporaryText": true,
+          "hasSaveButton": true,
+          "saveButtonTexts": [
+            "Valider cet élément"
+          ],
+          "estEditable": false,
+          "innerHTML": "<div class=\"array-item-header\"><span class=\"array-index\">[1]</span><span class=\"array-item-type\">object</span><span class=\"temporary-badge\">⏳ Temporaire</span><div class=\"array-item-actions\"><button c"
+        }
+      ],
+      "nouveauxElements": [
+        {
+          "index": 1,
+          "preview": "{5 propriétés}",
+          "inputsCount": 0,
+          "inputsDetails": [],
+          "hasTemporaryClass": true,
+          "hasTemporaryText": true,
+          "hasSaveButton": true,
+          "saveButtonTexts": [
+            "Valider cet élément"
+          ],
+          "estEditable": false,
+          "innerHTML": "<div class=\"array-item-header\"><span class=\"array-index\">[1]</span><span class=\"array-item-type\">object</span><span class=\"temporary-badge\">⏳ Temporaire</span><div class=\"array-item-actions\"><button c"
+        }
+      ],
+      "elementsEditables": []
+    },
+    {
+      "moment": "APRES_2000ms",
+      "itemsCount": 2,
+      "details": [
+        {
+          "index": 0,
+          "preview": "{4 propriétés}",
+          "inputsCount": 0,
+          "inputsDetails": [],
+          "hasTemporaryClass": false,
+          "hasTemporaryText": false,
+          "hasSaveButton": false,
+          "saveButtonTexts": [],
+          "estEditable": false,
+          "innerHTML": "<div class=\"array-item-header\"><span class=\"array-index\">[0]</span><span class=\"array-item-type\">object</span><div class=\"array-item-actions\"><button class=\"btn btn-xs btn-outline\" title=\"Explorer cet"
+        },
+        {
+          "index": 1,
+          "preview": "{5 propriétés}",
+          "inputsCount": 0,
+          "inputsDetails": [],
+          "hasTemporaryClass": true,
+          "hasTemporaryText": true,
+          "hasSaveButton": true,
+          "saveButtonTexts": [
+            "Valider cet élément"
+          ],
+          "estEditable": false,
+          "innerHTML": "<div class=\"array-item-header\"><span class=\"array-index\">[1]</span><span class=\"array-item-type\">object</span><span class=\"temporary-badge\">⏳ Temporaire</span><div class=\"array-item-actions\"><button c"
+        }
+      ],
+      "nouveauxElements": [
+        {
+          "index": 1,
+          "preview": "{5 propriétés}",
+          "inputsCount": 0,
+          "inputsDetails": [],
+          "hasTemporaryClass": true,
+          "hasTemporaryText": true,
+          "hasSaveButton": true,
+          "saveButtonTexts": [
+            "Valider cet élément"
+          ],
+          "estEditable": false,
+          "innerHTML": "<div class=\"array-item-header\"><span class=\"array-index\">[1]</span><span class=\"array-item-type\">object</span><span class=\"temporary-badge\">⏳ Temporaire</span><div class=\"array-item-actions\"><button c"
+        }
+      ],
+      "elementsEditables": []
+    },
+    {
+      "moment": "APRES_3000ms",
+      "itemsCount": 2,
+      "details": [
+        {
+          "index": 0,
+          "preview": "{4 propriétés}",
+          "inputsCount": 0,
+          "inputsDetails": [],
+          "hasTemporaryClass": false,
+          "hasTemporaryText": false,
+          "hasSaveButton": false,
+          "saveButtonTexts": [],
+          "estEditable": false,
+          "innerHTML": "<div class=\"array-item-header\"><span class=\"array-index\">[0]</span><span class=\"array-item-type\">object</span><div class=\"array-item-actions\"><button class=\"btn btn-xs btn-outline\" title=\"Explorer cet"
+        },
+        {
+          "index": 1,
+          "preview": "{5 propriétés}",
+          "inputsCount": 0,
+          "inputsDetails": [],
+          "hasTemporaryClass": true,
+          "hasTemporaryText": true,
+          "hasSaveButton": true,
+          "saveButtonTexts": [
+            "Valider cet élément"
+          ],
+          "estEditable": false,
+          "innerHTML": "<div class=\"array-item-header\"><span class=\"array-index\">[1]</span><span class=\"array-item-type\">object</span><span class=\"temporary-badge\">⏳ Temporaire</span><div class=\"array-item-actions\"><button c"
+        }
+      ],
+      "nouveauxElements": [
+        {
+          "index": 1,
+          "preview": "{5 propriétés}",
+          "inputsCount": 0,
+          "inputsDetails": [],
+          "hasTemporaryClass": true,
+          "hasTemporaryText": true,
+          "hasSaveButton": true,
+          "saveButtonTexts": [
+            "Valider cet élément"
+          ],
+          "estEditable": false,
+          "innerHTML": "<div class=\"array-item-header\"><span class=\"array-index\">[1]</span><span class=\"array-item-type\">object</span><span class=\"temporary-badge\">⏳ Temporaire</span><div class=\"array-item-actions\"><button c"
+        }
+      ],
+      "elementsEditables": []
+    },
+    {
+      "moment": "APRES_5000ms",
+      "itemsCount": 2,
+      "details": [
+        {
+          "index": 0,
+          "preview": "{4 propriétés}",
+          "inputsCount": 0,
+          "inputsDetails": [],
+          "hasTemporaryClass": false,
+          "hasTemporaryText": false,
+          "hasSaveButton": false,
+          "saveButtonTexts": [],
+          "estEditable": false,
+          "innerHTML": "<div class=\"array-item-header\"><span class=\"array-index\">[0]</span><span class=\"array-item-type\">object</span><div class=\"array-item-actions\"><button class=\"btn btn-xs btn-outline\" title=\"Explorer cet"
+        },
+        {
+          "index": 1,
+          "preview": "{5 propriétés}",
+          "inputsCount": 0,
+          "inputsDetails": [],
+          "hasTemporaryClass": true,
+          "hasTemporaryText": true,
+          "hasSaveButton": true,
+          "saveButtonTexts": [
+            "Valider cet élément"
+          ],
+          "estEditable": false,
+          "innerHTML": "<div class=\"array-item-header\"><span class=\"array-index\">[1]</span><span class=\"array-item-type\">object</span><span class=\"temporary-badge\">⏳ Temporaire</span><div class=\"array-item-actions\"><button c"
+        }
+      ],
+      "nouveauxElements": [
+        {
+          "index": 1,
+          "preview": "{5 propriétés}",
+          "inputsCount": 0,
+          "inputsDetails": [],
+          "hasTemporaryClass": true,
+          "hasTemporaryText": true,
+          "hasSaveButton": true,
+          "saveButtonTexts": [
+            "Valider cet élément"
+          ],
+          "estEditable": false,
+          "innerHTML": "<div class=\"array-item-header\"><span class=\"array-index\">[1]</span><span class=\"array-item-type\">object</span><span class=\"temporary-badge\">⏳ Temporaire</span><div class=\"array-item-actions\"><button c"
+        }
+      ],
+      "elementsEditables": []
+    }
+  ],
+  "testSaisie": null,
+  "screenshots": [
+    "screenshot-avant-clic.png",
+    "screenshot-apres-clic.png"
+  ]
+}

@@ -1,0 +1,491 @@
+{
+  "timestamp": "2025-09-19T17:58:48.505Z",
+  "testType": "Entity Creation Validation",
+  "finalUrl": "http://localhost:5501/bdd/test-user/new/",
+  "entityCreationInterface": {
+    "url": "http://localhost:5501/bdd/test-user/new/",
+    "title": "",
+    "columns": [
+      {
+        "classes": "columns-container",
+        "content": "Utilisateur de testNiveau 0📝id*stringIdentifiant unique de l'utilisateur⚠️ Le champ \"id\" est requis",
+        "childrenCount": 1
+      },
+      {
+        "classes": "columns-scroll",
+        "content": "Utilisateur de testNiveau 0📝id*stringIdentifiant unique de l'utilisateur⚠️ Le champ \"id\" est requis",
+        "childrenCount": 1
+      },
+      {
+        "classes": "column entity-column",
+        "content": "Utilisateur de testNiveau 0📝id*stringIdentifiant unique de l'utilisateur⚠️ Le champ \"id\" est requis",
+        "childrenCount": 2
+      },
+      {
+        "classes": "column-header",
+        "content": "Utilisateur de testNiveau 0",
+        "childrenCount": 2
+      },
+      {
+        "classes": "column-title",
+        "content": "Utilisateur de test",
+        "childrenCount": 0
+      },
+      {
+        "classes": "column-level",
+        "content": "Niveau 0",
+        "childrenCount": 0
+      },
+      {
+        "classes": "column-content",
+        "content": "📝id*stringIdentifiant unique de l'utilisateur⚠️ Le champ \"id\" est requis📝nom*stringNom de famille ",
+        "childrenCount": 1
+      }
+    ],
+    "schemaEditor": [
+      {
+        "tag": "DIV",
+        "classes": "schema-editor-layout",
+        "content": "← Retour à la listeCréation d'une nouvelle entitéNom affichéNouvelle entitéSchém"
+      },
+      {
+        "tag": "DIV",
+        "classes": "horizontal-entity-viewer",
+        "content": "← Retour à la listeCréation d'une nouvelle entitéNom affichéNouvelle entitéSchém"
+      }
+    ],
+    "propertyButtons": [],
+    "forms": [],
+    "allInputs": [
+      {
+        "type": "text",
+        "name": "",
+        "placeholder": "Entrez string...",
+        "value": "",
+        "parentClass": "direct-edit-container"
+      },
+      {
+        "type": "text",
+        "name": "",
+        "placeholder": "Entrez string...",
+        "value": "",
+        "parentClass": "direct-edit-container"
+      },
+      {
+        "type": "text",
+        "name": "",
+        "placeholder": "Entrez string...",
+        "value": "",
+        "parentClass": "direct-edit-container"
+      },
+      {
+        "type": "number",
+        "name": "",
+        "placeholder": "Entrez integer...",
+        "value": "0",
+        "parentClass": "direct-edit-container"
+      },
+      {
+        "type": "select-one",
+        "name": "",
+        "value": "",
+        "parentClass": "direct-edit-container"
+      }
+    ],
+    "editorElements": [
+      {
+        "tag": "DIV",
+        "classes": "schema-editor-layout",
+        "id": "",
+        "content": "← Retour à la listeCréation d'une nouvelle entitéNom affiché"
+      },
+      {
+        "tag": "DIV",
+        "classes": "horizontal-entity-viewer",
+        "id": "",
+        "content": "← Retour à la listeCréation d'une nouvelle entitéNom affiché"
+      },
+      {
+        "tag": "DIV",
+        "classes": "object-fields",
+        "id": "",
+        "content": "📝id*stringIdentifiant unique de l'utilisateur⚠️ Le champ \"i"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-item",
+        "id": "",
+        "content": "📝id*stringIdentifiant unique de l'utilisateur⚠️ Le champ \"i"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-header",
+        "id": "",
+        "content": "📝id*string"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-info",
+        "id": "",
+        "content": "📝id*string"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "field-icon",
+        "id": "",
+        "content": "📝"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "field-name",
+        "id": "",
+        "content": "id*"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "field-type",
+        "id": "",
+        "content": "string"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-actions",
+        "id": "",
+        "content": ""
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-description",
+        "id": "",
+        "content": "Identifiant unique de l'utilisateur"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-value",
+        "id": "",
+        "content": ""
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-error",
+        "id": "",
+        "content": "⚠️ Le champ \"id\" est requis"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-constraints",
+        "id": "",
+        "content": ""
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-item",
+        "id": "",
+        "content": "📝nom*stringNom de famille de l'utilisateur⚠️ Le champ \"nom\""
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-header",
+        "id": "",
+        "content": "📝nom*string"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-info",
+        "id": "",
+        "content": "📝nom*string"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "field-icon",
+        "id": "",
+        "content": "📝"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "field-name",
+        "id": "",
+        "content": "nom*"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "field-type",
+        "id": "",
+        "content": "string"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-actions",
+        "id": "",
+        "content": ""
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-description",
+        "id": "",
+        "content": "Nom de famille de l'utilisateur"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-value",
+        "id": "",
+        "content": ""
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-error",
+        "id": "",
+        "content": "⚠️ Le champ \"nom\" est requis"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-constraints",
+        "id": "",
+        "content": ""
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-item",
+        "id": "",
+        "content": "📝email*stringAdresse email de l'utilisateur⚠️ Le champ \"ema"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-header",
+        "id": "",
+        "content": "📝email*string"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-info",
+        "id": "",
+        "content": "📝email*string"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "field-icon",
+        "id": "",
+        "content": "📝"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "field-name",
+        "id": "",
+        "content": "email*"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "field-type",
+        "id": "",
+        "content": "string"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-actions",
+        "id": "",
+        "content": ""
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-description",
+        "id": "",
+        "content": "Adresse email de l'utilisateur"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-value",
+        "id": "",
+        "content": ""
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-error",
+        "id": "",
+        "content": "⚠️ Le champ \"email\" est requis"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-constraints",
+        "id": "",
+        "content": ""
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-item",
+        "id": "",
+        "content": "🔢ageintegerÂge de l'utilisateurMin: 0Max: 150"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-header",
+        "id": "",
+        "content": "🔢ageinteger"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-info",
+        "id": "",
+        "content": "🔢ageinteger"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "field-icon",
+        "id": "",
+        "content": "🔢"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "field-name",
+        "id": "",
+        "content": "age"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "field-type",
+        "id": "",
+        "content": "integer"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-actions",
+        "id": "",
+        "content": ""
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-description",
+        "id": "",
+        "content": "Âge de l'utilisateur"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-value",
+        "id": "",
+        "content": ""
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-constraints",
+        "id": "",
+        "content": "Min: 0Max: 150"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-item",
+        "id": "",
+        "content": "📋adressearray→📝 Éditer en JSON"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-header",
+        "id": "",
+        "content": "📋adressearray→"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-info",
+        "id": "",
+        "content": "📋adressearray"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "field-icon",
+        "id": "",
+        "content": "📋"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "field-name",
+        "id": "",
+        "content": "adresse"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "field-type",
+        "id": "",
+        "content": "array"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-actions",
+        "id": "",
+        "content": "→"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-value",
+        "id": "",
+        "content": "📝 Éditer en JSON"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-constraints",
+        "id": "",
+        "content": ""
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-item",
+        "id": "",
+        "content": "🔽popselectSélectionner...Option 1Option 2Option 3"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-header",
+        "id": "",
+        "content": "🔽popselect"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-info",
+        "id": "",
+        "content": "🔽popselect"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "field-icon",
+        "id": "",
+        "content": "🔽"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "field-name",
+        "id": "",
+        "content": "pop"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "field-type",
+        "id": "",
+        "content": "select"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-actions",
+        "id": "",
+        "content": ""
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-value",
+        "id": "",
+        "content": "Sélectionner...Option 1Option 2Option 3"
+      },
+      {
+        "tag": "DIV",
+        "classes": "field-constraints",
+        "id": "",
+        "content": ""
+      }
+    ]
+  },
+  "jsonSchemaFound": false,
+  "jsonSchema": null,
+  "testResults": {
+    "interfaceLoaded": true,
+    "propertyButtonsFound": false,
+    "inputsAvailable": true,
+    "editorElementsFound": true,
+    "canAddProperties": false
+  }
+}

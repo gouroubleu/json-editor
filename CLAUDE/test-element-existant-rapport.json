@@ -1,0 +1,109 @@
+{
+  "timestamp": "2025-09-19T16:57:43.450Z",
+  "etatInitial": {
+    "nombreElements": 1,
+    "headerText": "📋1 élément➕ Ajouter",
+    "containerText": "📋1 élément➕ Ajouter[0]object→🗑️{4 propriétés}➕Ajouter un élément",
+    "elementsDetails": [
+      {
+        "index": 0,
+        "indexAffiché": "[0]",
+        "type": "object",
+        "preview": "{4 propriétés}",
+        "isTemporary": false,
+        "hasDeleteButton": true,
+        "hasExploreButton": true,
+        "innerHTML": "<div class=\"array-item-header\"><span class=\"array-index\">[0]</span><span class=\"array-item-type\">object</span><div class=\"array-item-actions\"><button class=\"btn btn-xs btn-outline\" title=\"Explorer cet"
+      }
+    ],
+    "urlActuelle": "http://localhost:5501/bdd/test-user/entity_mfqm0qvi_ainoph/edit/"
+  },
+  "ajoutResult": {
+    "success": true,
+    "avantClic": {
+      "items": 1,
+      "headerText": "📋1 élément➕ Ajouter"
+    }
+  },
+  "verifications": [
+    {
+      "moment": "APRES_500ms",
+      "nombreElements": 1,
+      "headerText": "📋1 élément➕ Ajouter",
+      "elementsDetails": [
+        {
+          "index": 0,
+          "indexAffiché": "[0]",
+          "type": "object",
+          "preview": "{4 propriétés}",
+          "isTemporary": false
+        }
+      ],
+      "changementDepuisInitial": 0
+    },
+    {
+      "moment": "APRES_1000ms",
+      "nombreElements": 1,
+      "headerText": "📋1 élément➕ Ajouter",
+      "elementsDetails": [
+        {
+          "index": 0,
+          "indexAffiché": "[0]",
+          "type": "object",
+          "preview": "{4 propriétés}",
+          "isTemporary": false
+        }
+      ],
+      "changementDepuisInitial": 0
+    },
+    {
+      "moment": "APRES_2000ms",
+      "nombreElements": 1,
+      "headerText": "📋1 élément➕ Ajouter",
+      "elementsDetails": [
+        {
+          "index": 0,
+          "indexAffiché": "[0]",
+          "type": "object",
+          "preview": "{4 propriétés}",
+          "isTemporary": false
+        }
+      ],
+      "changementDepuisInitial": 0
+    },
+    {
+      "moment": "APRES_3000ms",
+      "nombreElements": 1,
+      "headerText": "📋1 élément➕ Ajouter",
+      "elementsDetails": [
+        {
+          "index": 0,
+          "indexAffiché": "[0]",
+          "type": "object",
+          "preview": "{4 propriétés}",
+          "isTemporary": false
+        }
+      ],
+      "changementDepuisInitial": 0
+    },
+    {
+      "moment": "APRES_5000ms",
+      "nombreElements": 1,
+      "headerText": "📋1 élément➕ Ajouter",
+      "elementsDetails": [
+        {
+          "index": 0,
+          "indexAffiché": "[0]",
+          "type": "object",
+          "preview": "{4 propriétés}",
+          "isTemporary": false
+        }
+      ],
+      "changementDepuisInitial": 0
+    }
+  ],
+  "screenshots": [
+    "screenshot-avant-ajout-element-existant.png",
+    "screenshot-apres-ajout-element-existant.png"
+  ]
+}

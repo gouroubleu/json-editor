@@ -1,0 +1,31 @@
+{
+  "id": "entity_mfqm0qvi_ainoph",
+  "version": "5.3",
+  "schemaName": "test-user",
+  "data": {
+    "id": "bn,;;",
+    "nom": "hello",
+    "email": "gghj@gmail.com",
+    "age": 0,
+    "adresse": [
+      {
+        "adresse": "",
+        "cp": "",
+        "ville": "",
+        "place": {
+          "nom": "",
+          "type_lieu": null,
+          "test": [
+            {
+              "name": "",
+              "categorie": null
+            }
+          ]
+        }
+      }
+    ],
+    "pop": null
+  },
+  "createdAt": "2025-09-19T09:00:52.110Z",
+  "updatedAt": "2025-09-19T09:00:52.110Z"
+}

@@ -1,0 +1,32 @@
+Timestamp: ven. 19 sept. 2025 16:22:05 CEST
+Base URL: http://localhost:5502
+
+Test 1: Page d'accueil
+------------------------
+Response code: 200
+STATUS: PASS
+Content size: 170466 bytes
+Keywords found: schema
+Keywords found: editor
+
+Test 2: Page création entité (Arrays)
+---------------------------------------
+Response code: 301
+STATUS: FAIL
+ARRAYS_TEST: FAIL
+
+Test 3: Page éditeur schéma (Select + JsonSchema)
+---------------------------------------------------
+Response code: 200
+STATUS: PASS
+Content size: 36 bytes
+Select-related keywords: 0
+SELECT_TEST: FAIL
+JsonSchema-related keywords: 0
+JSONSCHEMA_TEST: FAIL
+
+Résumé final
+=============
+Tests passés: 1/4
+Taux de succès: 25%
+MISSION_STATUS: PARTIALLY_SUCCESSFUL

@@ -49,6 +49,10 @@ export const PropertyColumn = component$<PropertyColumnProps>((props) => {
       // Le type select ouvre une colonne pour configurer les options
       return true;
     }
+    if (property.type === 'jsonschema') {
+      // Le type jsonschema ouvre une colonne pour configurer la référence
+      return true;
+    }
     return false;
   };
 
@@ -100,6 +104,7 @@ export const PropertyColumn = component$<PropertyColumnProps>((props) => {
                 delete newProp.properties;
                 delete newProp.items;
                 delete newProp.selectOptions;
+                delete newProp.$refMetadata;
 
                 // Initialiser selon le nouveau type
                 if (type === 'object') {
@@ -111,6 +116,12 @@ export const PropertyColumn = component$<PropertyColumnProps>((props) => {
                     { key: 'option1', value: 'Option 1' },
                     { key: 'option2', value: 'Option 2' }
                   ];
+                } else if (type === 'jsonschema') {
+                  newProp.$refMetadata = {
+                    schemaName: '',
+                    title: '',
+                    multiple: false
+                  };
                 }
 
 
@@ -125,6 +136,7 @@ export const PropertyColumn = component$<PropertyColumnProps>((props) => {
               <option value="select" selected={localState.newProperty.type === 'select'}>Select</option>
               <option value="array" selected={localState.newProperty.type === 'array'}>Array</option>
               <option value="object" selected={localState.newProperty.type === 'object'}>Object</option>
+              <option value="jsonschema" selected={localState.newProperty.type === 'jsonschema'}>JSON Schema</option>
             </select>
 
             <label class="checkbox-container">
@@ -209,6 +221,7 @@ export const PropertyColumn = component$<PropertyColumnProps>((props) => {
                   <option value="select" selected={property.type === 'select'}>Select</option>
                   <option value="array" selected={property.type === 'array'}>Array</option>
                   <option value="object" selected={property.type === 'object'}>Object</option>
+                  <option value="jsonschema" selected={property.type === 'jsonschema'}>JSON Schema</option>
                 </select>
               </div>
 

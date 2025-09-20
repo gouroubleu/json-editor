@@ -1,0 +1,170 @@
+{
+  "timestamp": "2025-09-19T16:47:38.893Z",
+  "debugAvant": {
+    "itemsCount": 1,
+    "containerText": "📋1 élément➕ Ajouter[0]object→🗑️{4 propriétés}➕Ajouter un élément"
+  },
+  "clicResult": {
+    "success": true,
+    "stateAvantClic": {
+      "itemsCount": 1,
+      "containerText": "📋1 élément➕ Ajouter[0]object→🗑️{4 propriétés}➕Ajouter un élément"
+    },
+    "stateApresClic": {
+      "itemsCount": 1,
+      "containerText": "📋1 élément➕ Ajouter[0]object→🗑️{4 propriétés}➕Ajouter un élément"
+    }
+  },
+  "debugFinal": {
+    "itemsCount": 1,
+    "containerText": "📋1 élément➕ Ajouter[0]object→🗑️{4 propriétés}➕Ajouter un élément"
+  },
+  "allLogs": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "timestamp": "2025-09-19T16:47:23.300Z"
+    },
+    {
+      "type": "debug",
+      "text": "%c⭐️ Qwik Dev SSR Mode background: #0c75d2; color: white; padding: 2px 3px; border-radius: 2px; font-size: 0.8em; App is running in SSR development mode!\n - Additional JS is loaded by Vite for debugging and live reloading\n - Rendering performance might not be optimal\n - Delayed interactivity because prefetching is disabled\n - Vite dev bundles do not represent production output\n\nProduction build can be tested running 'npm run preview'",
+      "timestamp": "2025-09-19T16:47:23.752Z"
+    },
+    {
+      "type": "debug",
+      "text": "%c🔍 Qwik Click-To-Source background: #564CE0; color: white; padding: 2px 3px; border-radius: 2px; font-size: 0.8em; Hold-press the 'Alt' key and click a component to jump directly to the source code in your IDE!",
+      "timestamp": "2025-09-19T16:47:23.847Z"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting...",
+      "timestamp": "2025-09-19T16:47:23.896Z"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected.",
+      "timestamp": "2025-09-19T16:47:24.029Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 NAVIGATE TO PROPERTY - CALLED: adresse columnIndex: 0",
+      "timestamp": "2025-09-19T16:47:28.603Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 HorizontalEntityViewer - useComputed$ triggered: JSHandle@object",
+      "timestamp": "2025-09-19T16:47:28.824Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 DEBUG AVANT - DOM State: JSHandle@object",
+      "timestamp": "2025-09-19T16:47:32.764Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 DEBUG AVANT - Array items found: 1",
+      "timestamp": "2025-09-19T16:47:32.765Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 AVANT CLIC - Recherche boutons ajouter...",
+      "timestamp": "2025-09-19T16:47:32.768Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 AVANT CLIC - Boutons trouvés: 2",
+      "timestamp": "2025-09-19T16:47:32.772Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 AVANT CLIC - État DOM: JSHandle@object",
+      "timestamp": "2025-09-19T16:47:32.773Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 CLIC SUR BOUTON AJOUTER - DÉBUT",
+      "timestamp": "2025-09-19T16:47:32.773Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 CLIC SUR BOUTON AJOUTER - FIN",
+      "timestamp": "2025-09-19T16:47:32.807Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 APRES CLIC IMMEDIAT - État DOM: JSHandle@object",
+      "timestamp": "2025-09-19T16:47:32.807Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 EntityColumn - handleAddArrayItem appelé: JSHandle@object",
+      "timestamp": "2025-09-19T16:47:33.099Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 EntityColumn - Nouvel élément généré: JSHandle@object",
+      "timestamp": "2025-09-19T16:47:33.102Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 EntityColumn - Nouvel élément utilisé (sécurisé): JSHandle@object",
+      "timestamp": "2025-09-19T16:47:33.102Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 EntityColumn - Nouveau tableau: JSHandle@array",
+      "timestamp": "2025-09-19T16:47:33.103Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 EntityColumn - Élément temporaire créé: true",
+      "timestamp": "2025-09-19T16:47:33.104Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 EntityColumn - Navigation vers l'élément index: 1",
+      "timestamp": "2025-09-19T16:47:33.105Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 HorizontalEntityViewer - handleDataChange appelé: JSHandle@object",
+      "timestamp": "2025-09-19T16:47:33.136Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 HorizontalEntityViewer - Nouvelles données: JSHandle@object",
+      "timestamp": "2025-09-19T16:47:33.142Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 HorizontalEntityViewer - onDataChange$ appelé",
+      "timestamp": "2025-09-19T16:47:33.146Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 HorizontalEntityViewer - useComputed$ triggered: JSHandle@object",
+      "timestamp": "2025-09-19T16:47:33.156Z"
+    },
+    {
+      "type": "log",
+      "text": "🐛 DEBUG - handleDataChange appelé avec: JSHandle@object",
+      "timestamp": "2025-09-19T16:47:33.185Z"
+    },
+    {
+      "type": "log",
+      "text": "🐛 DEBUG - editableEntity.data mis à jour: JSHandle@proxy",
+      "timestamp": "2025-09-19T16:47:33.186Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 HorizontalEntityViewer - useComputed$ triggered: JSHandle@object",
+      "timestamp": "2025-09-19T16:47:33.186Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 DEBUG FINAL - État DOM: JSHandle@object",
+      "timestamp": "2025-09-19T16:47:38.890Z"
+    }
+  ],
+  "problemeIdentifie": true
+}

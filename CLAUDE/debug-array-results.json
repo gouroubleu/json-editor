@@ -1,0 +1,137 @@
+{
+  "timestamp": "2025-09-19T15:40:00.878Z",
+  "steps": [
+    {
+      "step": 1,
+      "name": "Navigation adresse",
+      "result": {
+        "success": true,
+        "message": "Navigation vers adresse effectuée"
+      }
+    },
+    {
+      "step": 2,
+      "name": "État initial",
+      "result": {
+        "success": true,
+        "initialItemCount": 1,
+        "addButtonsCount": 2,
+        "arrayItems": [
+          {
+            "index": 0,
+            "preview": "{4 propriétés}",
+            "hasDeleteButton": true
+          }
+        ]
+      }
+    },
+    {
+      "step": 3,
+      "name": "Ajout élément",
+      "result": {
+        "success": true,
+        "message": "Clic sur bouton d'ajout effectué"
+      }
+    },
+    {
+      "step": 4,
+      "name": "État après ajout",
+      "result": {
+        "success": true,
+        "newItemCount": 2,
+        "arrayItems": [
+          {
+            "index": 0,
+            "preview": "{4 propriétés}",
+            "hasDeleteButton": true,
+            "isTemporary": false
+          },
+          {
+            "index": 1,
+            "preview": "{5 propriétés}",
+            "hasDeleteButton": true,
+            "isTemporary": true
+          }
+        ]
+      }
+    },
+    {
+      "step": 5,
+      "name": "Suppression premier élément",
+      "result": {
+        "success": true,
+        "message": "Clic suppression premier élément effectué"
+      }
+    },
+    {
+      "step": 6,
+      "name": "État final",
+      "result": {
+        "success": true,
+        "finalItemCount": 1,
+        "arrayItems": [
+          {
+            "index": 0,
+            "preview": "{5 propriétés}",
+            "hasDeleteButton": true
+          }
+        ]
+      }
+    },
+    {
+      "step": "ERROR",
+      "name": "Erreur générale",
+      "result": {
+        "success": false,
+        "error": "Cannot read properties of undefined (reading 'initialItemCount')"
+      }
+    }
+  ],
+  "logs": [
+    "🔧 NAVIGATE TO PROPERTY - CALLED: adresse columnIndex: 0",
+    "🔧 NAVIGATE - Valeur actuelle: JSHandle@proxy object",
+    "🔧 NAVIGATE - Schéma trouvé: true",
+    "🔧 VALIDATION INITIALE - Champs requis détectés: JSHandle@proxy",
+    "🔧 VALIDATION INITIALE - Champ requis vide détecté: id value= ",
+    "🔧 VALIDATION INITIALE - Résultat pour id : JSHandle@object",
+    "🔧 VALIDATION INITIALE - Erreur enregistrée pour: id",
+    "🔧 VALIDATION INITIALE - Champ requis vide détecté: nom value= ",
+    "🔧 VALIDATION INITIALE - Résultat pour nom : JSHandle@object",
+    "🔧 VALIDATION INITIALE - Erreur enregistrée pour: nom",
+    "🔧 VALIDATION INITIALE - Champ requis vide détecté: email value= ",
+    "🔧 VALIDATION INITIALE - Résultat pour email : JSHandle@object",
+    "🔧 VALIDATION INITIALE - Erreur enregistrée pour: email",
+    "🔧 EntityCreationContext - addArrayElement: JSHandle@object",
+    "🔧 Schema.items: JSHandle@proxy",
+    "🔧 generateDefaultValue result: JSHandle@object",
+    "🔧 newItem after property check: JSHandle@object",
+    "🔧 EntityCreationContext - updateEntityData: JSHandle@object",
+    "🔧 DEBUG SCHEMA ARRAY ITEM: JSHandle@object",
+    "🔧 EntityCreationContext - Données mises à jour: JSHandle@object",
+    "🔧 VALIDATION INITIALE - Champs requis détectés: JSHandle@proxy",
+    "🔧 VALIDATION INITIALE - Champ requis vide détecté: id value= ",
+    "🔧 VALIDATION INITIALE - Résultat pour id : JSHandle@object",
+    "🔧 VALIDATION INITIALE - Erreur enregistrée pour: id",
+    "🔧 VALIDATION INITIALE - Champ requis vide détecté: nom value= ",
+    "🔧 VALIDATION INITIALE - Résultat pour nom : JSHandle@object",
+    "🔧 VALIDATION INITIALE - Erreur enregistrée pour: nom",
+    "🔧 VALIDATION INITIALE - Champ requis vide détecté: email value= ",
+    "🔧 VALIDATION INITIALE - Résultat pour email : JSHandle@object",
+    "🔧 VALIDATION INITIALE - Erreur enregistrée pour: email",
+    "🔧 VALIDATION INITIALE - Champs requis détectés: JSHandle@proxy",
+    "🔧 EntityCreationContext - removeArrayElement: JSHandle@object",
+    "🔧 EntityCreationContext - updateEntityData: JSHandle@object",
+    "🔧 EntityCreationContext - Données mises à jour: JSHandle@object",
+    "🔧 VALIDATION INITIALE - Champs requis détectés: JSHandle@proxy",
+    "🔧 VALIDATION INITIALE - Champ requis vide détecté: id value= ",
+    "🔧 VALIDATION INITIALE - Résultat pour id : JSHandle@object",
+    "🔧 VALIDATION INITIALE - Erreur enregistrée pour: id",
+    "🔧 VALIDATION INITIALE - Champ requis vide détecté: nom value= ",
+    "🔧 VALIDATION INITIALE - Résultat pour nom : JSHandle@object",
+    "🔧 VALIDATION INITIALE - Erreur enregistrée pour: nom",
+    "🔧 VALIDATION INITIALE - Champ requis vide détecté: email value= ",
+    "🔧 VALIDATION INITIALE - Résultat pour email : JSHandle@object",
+    "🔧 VALIDATION INITIALE - Erreur enregistrée pour: email"
+  ],
+  "success": false
+}

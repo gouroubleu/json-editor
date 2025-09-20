@@ -1,0 +1,23 @@
+{
+  "timestamp": "2025-09-19T17:57:06.584Z",
+  "finalUrl": "http://localhost:5501/schema/test-user",
+  "editorContent": {
+    "url": "http://localhost:5501/bdd/test-user/schema/",
+    "title": "404 Entité ou schéma introuvable",
+    "schemaElements": [],
+    "actionButtons": [],
+    "forms": [],
+    "jsonContent": []
+  },
+  "interactionResult": {
+    "addButtons": [],
+    "editForms": 0,
+    "typeSelectors": []
+  },
+  "testStatus": {
+    "pageLoaded": true,
+    "editorFound": false,
+    "interactionPossible": false,
+    "typeSelectorsAvailable": false
+  }
+}

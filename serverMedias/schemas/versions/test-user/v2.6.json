@@ -1,0 +1,180 @@
+{
+  "id": "test-user",
+  "name": "test-user",
+  "version": "2.6",
+  "schema": {
+    "type": "object",
+    "title": "Utilisateur de test",
+    "description": "Schéma de test pour valider le fonctionnement après restructuration",
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "Identifiant unique de l'utilisateur"
+      },
+      "nom": {
+        "type": "string",
+        "description": "Nom de famille de l'utilisateur"
+      },
+      "email": {
+        "type": "string",
+        "description": "Adresse email de l'utilisateur",
+        "format": "email"
+      },
+      "age": {
+        "type": "integer",
+        "description": "Âge de l'utilisateur",
+        "minimum": 0,
+        "maximum": 150
+      },
+      "adresse": {
+        "type": "array",
+        "description": "",
+        "items": {
+          "type": "object",
+          "properties": {
+            "adresse": {
+              "type": "string",
+              "description": ""
+            },
+            "cp": {
+              "type": "string",
+              "description": ""
+            },
+            "ville": {
+              "type": "string",
+              "description": ""
+            },
+            "place": {
+              "type": "object",
+              "description": "",
+              "properties": {
+                "nom": {
+                  "type": "string",
+                  "description": ""
+                },
+                "type_lieu": {
+                  "type": "string",
+                  "description": "Type de lieu",
+                  "enum": [
+                    "maison",
+                    "appartement",
+                    "bureau",
+                    "commerce",
+                    "autre"
+                  ]
+                },
+                "test": {
+                  "type": "array",
+                  "description": "",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": ""
+                      },
+                      "categorie": {
+                        "type": "string",
+                        "description": "Catégorie du test",
+                        "enum": [
+                          "personnel",
+                          "professionnel",
+                          "temporaire"
+                        ]
+                      }
+                    },
+                    "required": []
+                  }
+                }
+              }
+            }
+          },
+          "required": []
+        }
+      },
+      "pop": {
+        "type": "string",
+        "description": ""
+      },
+      "statut": {
+        "type": "string",
+        "description": "Statut de l'utilisateur",
+        "enum": [
+          "actif",
+          "inactif",
+          "en_attente"
+        ]
+      },
+      "priorite": {
+        "type": "string",
+        "description": "Niveau de priorité",
+        "enum": [
+          "haute",
+          "moyenne",
+          "basse"
+        ]
+      },
+      "genre": {
+        "type": "string",
+        "description": "Genre de l'utilisateur",
+        "enum": [
+          "homme",
+          "femme",
+          "autre",
+          "non_precise"
+        ]
+      },
+      "tty": {
+        "type": "string",
+        "description": "",
+        "enum": [
+          "pop",
+          "pop",
+          "llmlm",
+          "ghjk"
+        ]
+      },
+      "dddd": {
+        "type": "string",
+        "description": "",
+        "enum": [
+          "Option 1",
+          "Option 2"
+        ]
+      },
+      "iiiiii": {
+        "type": "string",
+        "description": "",
+        "enum": [
+          "Option 1",
+          "Option 2",
+          "dfsddf"
+        ]
+      },
+      "trtrtrtrtr": {
+        "type": "string",
+        "description": "",
+        "enum": [
+          "Option 1",
+          "Option 2",
+          "pop"
+        ]
+      }
+    },
+    "required": [
+      "id",
+      "nom",
+      "email"
+    ],
+    "version": "2.6"
+  },
+  "versionInfo": {
+    "version": "2.6",
+    "createdAt": "2025-09-18T20:44:54.461Z",
+    "changeType": "minor",
+    "changeDescription": "Nouvelles propriétés: trtrtrtrtr",
+    "previousVersion": "2.5"
+  },
+  "createdAt": "2025-09-17T00:34:00.000Z",
+  "updatedAt": "2025-09-18T20:44:54.461Z"
+}

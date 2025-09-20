@@ -1,0 +1,74 @@
+[
+  {
+    "test": 1,
+    "url": "http://localhost:5501/bdd/test-user/entity_mfqm0qvi_ainoph/contextual-edit",
+    "status": 404,
+    "pageInfo": {
+      "title": "404 Not Found",
+      "url": "http://localhost:5501/bdd/test-user/entity_mfqm0qvi_ainoph/contextual-edit",
+      "hasForm": false,
+      "inputCount": 0,
+      "buttonCount": 0,
+      "hasColumns": false,
+      "hasError": false,
+      "hasEntity": false,
+      "bodyText": "404 /bdd/test-user/entity_mfqm0qvi_ainoph/contextual-edit not found.\n\nAvailable Routes\n/bdd/[schema]/[entityId]/edit/\n/api/test-generate-default/\n/bdd/test-array-sync/\n/bdd/[schema]/[entityId]/\n/bdd/c"
+    },
+    "logs": [
+      "[error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "[error] Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "errors": [],
+    "screenshotPath": "/home/gouroubleu/WS/json-editor/CLAUDE/edit-entity-test-1.png",
+    "timestamp": "2025-09-19T15:03:09.922Z",
+    "working": false
+  },
+  {
+    "test": 2,
+    "url": "http://localhost:5501/bdd/test-user/entity_mfpxrr3y_2ubim8/contextual-edit",
+    "status": 404,
+    "pageInfo": {
+      "title": "404 Not Found",
+      "url": "http://localhost:5501/bdd/test-user/entity_mfpxrr3y_2ubim8/contextual-edit",
+      "hasForm": false,
+      "inputCount": 0,
+      "buttonCount": 0,
+      "hasColumns": false,
+      "hasError": false,
+      "hasEntity": false,
+      "bodyText": "404 /bdd/test-user/entity_mfpxrr3y_2ubim8/contextual-edit not found.\n\nAvailable Routes\n/bdd/[schema]/[entityId]/edit/\n/api/test-generate-default/\n/bdd/test-array-sync/\n/bdd/[schema]/[entityId]/\n/bdd/c"
+    },
+    "logs": [
+      "[error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "[error] Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "errors": [],
+    "screenshotPath": "/home/gouroubleu/WS/json-editor/CLAUDE/edit-entity-test-2.png",
+    "timestamp": "2025-09-19T15:03:20.956Z",
+    "working": false
+  },
+  {
+    "test": 3,
+    "url": "http://localhost:5501/bdd/test-user/entity_mfphhms0_5asvf1/contextual-edit",
+    "status": 404,
+    "pageInfo": {
+      "title": "404 Not Found",
+      "url": "http://localhost:5501/bdd/test-user/entity_mfphhms0_5asvf1/contextual-edit",
+      "hasForm": false,
+      "inputCount": 0,
+      "buttonCount": 0,
+      "hasColumns": false,
+      "hasError": false,
+      "hasEntity": false,
+      "bodyText": "404 /bdd/test-user/entity_mfphhms0_5asvf1/contextual-edit not found.\n\nAvailable Routes\n/bdd/[schema]/[entityId]/edit/\n/api/test-generate-default/\n/bdd/test-array-sync/\n/bdd/[schema]/[entityId]/\n/bdd/c"
+    },
+    "logs": [
+      "[error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "[error] Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "errors": [],
+    "screenshotPath": "/home/gouroubleu/WS/json-editor/CLAUDE/edit-entity-test-3.png",
+    "timestamp": "2025-09-19T15:03:56.135Z",
+    "working": false
+  }
+]

@@ -1,0 +1,157 @@
+{
+  "timestamp": "2025-09-19T16:51:28.901Z",
+  "problemeDetecte": false,
+  "detailsProbleme": "",
+  "etapes": [
+    {
+      "nom": "Chargement page",
+      "resultat": {
+        "titre": "",
+        "champsTrouves": [
+          "id*",
+          "nom*",
+          "email*",
+          "age",
+          "adresse",
+          "pop"
+        ],
+        "hasAdresse": true
+      }
+    },
+    {
+      "nom": "Navigation adresse",
+      "resultat": {
+        "success": true
+      }
+    },
+    {
+      "nom": "État initial tableau",
+      "resultat": {
+        "success": true,
+        "elementsCount": 1,
+        "elementsDetails": [
+          {
+            "index": 0,
+            "preview": "{4 propriétés}",
+            "hasDeleteBtn": true
+          }
+        ],
+        "addButtonsCount": 2,
+        "addButtonsTexts": [
+          "➕ Ajouter",
+          "➕Ajouter un élément"
+        ],
+        "textContainer": "📋1 élément➕ Ajouter[0]object→🗑️{4 propriétés}➕Ajouter un élément",
+        "urlActuelle": "http://localhost:5501/bdd/test-user/new/"
+      }
+    },
+    {
+      "nom": "Clic ajouter",
+      "resultat": {
+        "success": true,
+        "avant": {
+          "count": 1,
+          "text": "📋1 élément➕ Ajouter[0]object→🗑️{4 propriétés}➕Ajouter un élément"
+        }
+      }
+    },
+    {
+      "nom": "Vérifications ajout",
+      "resultat": [
+        {
+          "delai": 500,
+          "count": 2,
+          "changement": 1,
+          "details": [
+            {
+              "index": 0,
+              "preview": "{4 propriétés}",
+              "estTemporaire": false
+            },
+            {
+              "index": 1,
+              "preview": "{5 propriétés}",
+              "estTemporaire": true
+            }
+          ]
+        },
+        {
+          "delai": 1000,
+          "count": 2,
+          "changement": 1,
+          "details": [
+            {
+              "index": 0,
+              "preview": "{4 propriétés}",
+              "estTemporaire": false
+            },
+            {
+              "index": 1,
+              "preview": "{5 propriétés}",
+              "estTemporaire": true
+            }
+          ]
+        },
+        {
+          "delai": 2000,
+          "count": 2,
+          "changement": 1,
+          "details": [
+            {
+              "index": 0,
+              "preview": "{4 propriétés}",
+              "estTemporaire": false
+            },
+            {
+              "index": 1,
+              "preview": "{5 propriétés}",
+              "estTemporaire": true
+            }
+          ]
+        },
+        {
+          "delai": 3000,
+          "count": 2,
+          "changement": 1,
+          "details": [
+            {
+              "index": 0,
+              "preview": "{4 propriétés}",
+              "estTemporaire": false
+            },
+            {
+              "index": 1,
+              "preview": "{5 propriétés}",
+              "estTemporaire": true
+            }
+          ]
+        },
+        {
+          "delai": 5000,
+          "count": 2,
+          "changement": 1,
+          "details": [
+            {
+              "index": 0,
+              "preview": "{4 propriétés}",
+              "estTemporaire": false
+            },
+            {
+              "index": 1,
+              "preview": "{5 propriétés}",
+              "estTemporaire": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nom": "Test suppression",
+      "resultat": {
+        "avant": 2,
+        "apres": 1,
+        "fonctionne": true
+      }
+    }
+  ]
+}

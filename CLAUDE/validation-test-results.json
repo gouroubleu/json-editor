@@ -1,0 +1,16 @@
+{
+  "timestamp": "2025-09-19T08:06:44.170Z",
+  "testName": "Button Enable/Disable Validation",
+  "steps": [],
+  "success": false,
+  "errors": [
+    "Aucun schéma trouvé"
+  ],
+  "screenshots": [
+    {
+      "name": "01-homepage",
+      "filename": "validation-test-01-homepage-1758269211060.png",
+      "description": "Page d'accueil des BDD"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "title": "Test Schema",
+  "description": "Schema avec type select",
+  "properties": {
+    "status": {
+      "type": "select",
+      "description": "Statut de test",
+      "enum": [
+        "Actif",
+        "Inactif",
+        "En attente"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Nom"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

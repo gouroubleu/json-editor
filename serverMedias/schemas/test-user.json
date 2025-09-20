@@ -73,8 +73,13 @@
         }
       },
       "pop": {
-        "type": "string",
-        "description": ""
+        "type": "select",
+        "description": "",
+        "options": [
+          {"key": "option1", "value": "Option 1"},
+          {"key": "option2", "value": "Option 2"},
+          {"key": "option3", "value": "Option 3"}
+        ]
       }
     },
     "required": [

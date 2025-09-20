@@ -1,0 +1,107 @@
+{
+  "timestamp": "2025-09-19T16:10:05.392Z",
+  "etapes": [
+    {
+      "nom": "Navigation",
+      "resultat": {
+        "success": true
+      }
+    },
+    {
+      "nom": "État initial",
+      "resultat": {
+        "arrayItemsCount": 1,
+        "indicesDetectes": 1,
+        "textuelContainer": "📋1 élément➕ Ajouter[0]object→🗑️{4 propriétés}➕Ajouter un élément",
+        "addButtonsCount": 2,
+        "addButtonsTexts": [
+          "➕ Ajouter",
+          "➕Ajouter un élément"
+        ],
+        "urlActuelle": "http://localhost:5501/bdd/test-user/new/"
+      }
+    },
+    {
+      "nom": "Test ajout",
+      "resultat": {
+        "success": true,
+        "avant": {
+          "arrayItems": 1,
+          "indices": 1,
+          "textExtrait": "📋1 élément➕ Ajouter[0]object→🗑️{4 propriétés}➕Ajouter un élément"
+        },
+        "apres": {
+          "arrayItems": 1,
+          "indices": 1,
+          "textExtrait": "📋1 élément➕ Ajouter[0]object→🗑️{4 propriétés}➕Ajouter un élément"
+        },
+        "changement": {
+          "arrayItemsDelta": 0,
+          "indicesDelta": 0
+        }
+      }
+    },
+    {
+      "nom": "État final",
+      "resultat": {
+        "arrayItemsCount": 2,
+        "indicesDetectes": 2,
+        "textuelContainer": "📋2 éléments➕ Ajouter[0]object→🗑️{4 propriétés}[1]object⏳ Temporaire✅→🗑️{5 propriétés}➕Ajouter un élément",
+        "details": [
+          {
+            "index": 0,
+            "preview": "{4 propriétés}",
+            "temporaire": false
+          },
+          {
+            "index": 1,
+            "preview": "{5 propriétés}",
+            "temporaire": true
+          }
+        ]
+      }
+    }
+  ],
+  "problemeConfirme": false,
+  "details": {
+    "etatInitialItems": 1,
+    "etatFinalItems": 2,
+    "changementImmediat": 0,
+    "changementFinal": 1,
+    "ajoutFonctionne": true,
+    "problemeDetecte": false
+  },
+  "logs": [
+    "🔧 NAVIGATE TO PROPERTY - CALLED: adresse columnIndex: 0",
+    "🔧 NAVIGATE - Valeur actuelle: JSHandle@proxy object",
+    "🔧 NAVIGATE - Schéma trouvé: true",
+    "🔧 VALIDATION INITIALE - Champs requis détectés: JSHandle@proxy",
+    "🔧 VALIDATION INITIALE - Champ requis vide détecté: id value= ",
+    "🔧 VALIDATION INITIALE - Résultat pour id : JSHandle@object",
+    "🔧 VALIDATION INITIALE - Erreur enregistrée pour: id",
+    "🔧 VALIDATION INITIALE - Champ requis vide détecté: nom value= ",
+    "🔧 VALIDATION INITIALE - Résultat pour nom : JSHandle@object",
+    "🔧 VALIDATION INITIALE - Erreur enregistrée pour: nom",
+    "🔧 VALIDATION INITIALE - Champ requis vide détecté: email value= ",
+    "🔧 VALIDATION INITIALE - Résultat pour email : JSHandle@object",
+    "🔧 VALIDATION INITIALE - Erreur enregistrée pour: email",
+    "🔧 EntityCreationContext - addArrayElement: JSHandle@object",
+    "🔧 Schema.items: JSHandle@proxy",
+    "🔧 generateDefaultValue result: JSHandle@object",
+    "🔧 newItem after property check: JSHandle@object",
+    "🔧 EntityCreationContext - updateEntityData: JSHandle@object",
+    "🔧 DEBUG SCHEMA ARRAY ITEM: JSHandle@object",
+    "🔧 EntityCreationContext - Données mises à jour: JSHandle@object",
+    "🔧 VALIDATION INITIALE - Champs requis détectés: JSHandle@proxy",
+    "🔧 VALIDATION INITIALE - Champ requis vide détecté: id value= ",
+    "🔧 VALIDATION INITIALE - Résultat pour id : JSHandle@object",
+    "🔧 VALIDATION INITIALE - Erreur enregistrée pour: id",
+    "🔧 VALIDATION INITIALE - Champ requis vide détecté: nom value= ",
+    "🔧 VALIDATION INITIALE - Résultat pour nom : JSHandle@object",
+    "🔧 VALIDATION INITIALE - Erreur enregistrée pour: nom",
+    "🔧 VALIDATION INITIALE - Champ requis vide détecté: email value= ",
+    "🔧 VALIDATION INITIALE - Résultat pour email : JSHandle@object",
+    "🔧 VALIDATION INITIALE - Erreur enregistrée pour: email",
+    "🔧 VALIDATION INITIALE - Champs requis détectés: JSHandle@proxy"
+  ]
+}

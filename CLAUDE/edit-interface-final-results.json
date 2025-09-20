@@ -1,0 +1,111 @@
+[
+  {
+    "test": 1,
+    "url": "http://localhost:5501/bdd/test-user/entity_mfqm0qvi_ainoph/edit/",
+    "error": "Navigation timeout of 15000 ms exceeded",
+    "timestamp": "2025-09-19T15:08:38.964Z",
+    "working": false
+  },
+  {
+    "test": 2,
+    "url": "http://localhost:5501/bdd/test-user/entity_mfpxrr3y_2ubim8/edit/",
+    "status": 200,
+    "pageAnalysis": {
+      "title": "",
+      "url": "http://localhost:5501/bdd/test-user/entity_mfpxrr3y_2ubim8/edit/",
+      "hasForm": false,
+      "inputCount": 6,
+      "buttonCount": 7,
+      "hasHorizontalEditor": false,
+      "hasColumns": true,
+      "hasLeftPanel": true,
+      "hasEntity": true,
+      "hasPropertyColumn": false,
+      "hasSchemaEditor": false,
+      "hasError": false,
+      "hasLoading": false,
+      "hasContent": true,
+      "bodyTextPreview": "← Retour à la liste\nÉdition de l'entité\nNOM AFFICHÉ\nEntité 2ubim8\nID\nentity_mfpxrr3y_2ubim8\nSCHÉMA\nUtilisateur de test (test-user)\nVERSION\nv5.3\n⚠️ Version obsolète\nActuelle: v2.0\nCRÉÉ LE\n18/09/2025 23",
+      "hasTextareas": 0,
+      "hasSelects": 0,
+      "mainClasses": [
+        "schema-editor-layout",
+        "entity-edit-page",
+        "columns-container",
+        "columns-scroll",
+        "entity-column",
+        "column-header",
+        "column-title",
+        "column-level",
+        "column-content",
+        "direct-edit-container"
+      ]
+    },
+    "logs": [
+      "[error] Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "[debug] %c⭐️ Qwik Dev SSR Mode background: #0c75d2; color: white; padding: 2px 3px; border-radius: 2px; font-size: 0.8em; App is running in SSR development mode!\n - Additional JS is loaded by Vite for debugging and live reloading\n - Rendering performance might not be optimal\n - Delayed interactivity because prefetching is disabled\n - Vite dev bundles do not represent production output\n\nProduction build can be tested running 'npm run preview'",
+      "[debug] %c🔍 Qwik Click-To-Source background: #564CE0; color: white; padding: 2px 3px; border-radius: 2px; font-size: 0.8em; Hold-press the 'Alt' key and click a component to jump directly to the source code in your IDE!",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected."
+    ],
+    "errors": [
+      "[NETWORK] http://referenceconfigcolumn.scss/ - net::ERR_NAME_NOT_RESOLVED",
+      "[error] Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    ],
+    "warnings": [],
+    "screenshotPath": "/home/gouroubleu/WS/json-editor/CLAUDE/edit-final-test-2.png",
+    "timestamp": "2025-09-19T15:08:58.044Z",
+    "working": true
+  },
+  {
+    "test": 3,
+    "url": "http://localhost:5501/bdd/test-user/entity_mfphhms0_5asvf1/edit/",
+    "status": 200,
+    "pageAnalysis": {
+      "title": "",
+      "url": "http://localhost:5501/bdd/test-user/entity_mfphhms0_5asvf1/edit/",
+      "hasForm": false,
+      "inputCount": 7,
+      "buttonCount": 7,
+      "hasHorizontalEditor": false,
+      "hasColumns": true,
+      "hasLeftPanel": true,
+      "hasEntity": true,
+      "hasPropertyColumn": false,
+      "hasSchemaEditor": false,
+      "hasError": false,
+      "hasLoading": false,
+      "hasContent": true,
+      "bodyTextPreview": "← Retour à la liste\nÉdition de l'entité\nNOM AFFICHÉ\nEntité 5asvf1\nID\nentity_mfphhms0_5asvf1\nSCHÉMA\nUtilisateur de test (test-user)\nVERSION\nv1.5\n⚠️ Version obsolète\nActuelle: v2.0\nCRÉÉ LE\n18/09/2025 16",
+      "hasTextareas": 0,
+      "hasSelects": 0,
+      "mainClasses": [
+        "schema-editor-layout",
+        "entity-edit-page",
+        "columns-container",
+        "columns-scroll",
+        "entity-column",
+        "column-header",
+        "column-title",
+        "column-level",
+        "column-content",
+        "direct-edit-container"
+      ]
+    },
+    "logs": [
+      "[error] Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "[debug] %c⭐️ Qwik Dev SSR Mode background: #0c75d2; color: white; padding: 2px 3px; border-radius: 2px; font-size: 0.8em; App is running in SSR development mode!\n - Additional JS is loaded by Vite for debugging and live reloading\n - Rendering performance might not be optimal\n - Delayed interactivity because prefetching is disabled\n - Vite dev bundles do not represent production output\n\nProduction build can be tested running 'npm run preview'",
+      "[debug] %c🔍 Qwik Click-To-Source background: #564CE0; color: white; padding: 2px 3px; border-radius: 2px; font-size: 0.8em; Hold-press the 'Alt' key and click a component to jump directly to the source code in your IDE!",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected."
+    ],
+    "errors": [
+      "[NETWORK] http://referenceconfigcolumn.scss/ - net::ERR_NAME_NOT_RESOLVED",
+      "[error] Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    ],
+    "warnings": [],
+    "screenshotPath": "/home/gouroubleu/WS/json-editor/CLAUDE/edit-final-test-3.png",
+    "timestamp": "2025-09-19T15:09:20.954Z",
+    "working": true
+  }
+]

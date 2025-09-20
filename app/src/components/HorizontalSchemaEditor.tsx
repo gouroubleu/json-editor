@@ -2,6 +2,7 @@ import { component$, useStore, useSignal, type PropFunction, $ } from '@builder.
 import type { SchemaProperty, SchemaInfo, JsonSchemaType } from '../routes/types';
 import { PropertyColumn } from './PropertyColumn';
 import { SelectOptionsColumn } from './SelectOptionsColumn';
+import { ReferenceConfigColumn } from './ReferenceConfigColumn';
 import { findPropertyById } from '../routes/utils';
 
 type HorizontalSchemaEditorProps = {
@@ -311,6 +312,12 @@ export const HorizontalSchemaEditor = component$<HorizontalSchemaEditorProps>((p
               return parentProperty?.type === 'select';
             })();
 
+            // Déterminer si cette colonne est pour une propriété jsonschema
+            const isJsonSchemaColumn = column.parentId && (() => {
+              const parentProperty = findPropertyById(props.properties, column.parentId);
+              return parentProperty?.type === 'jsonschema';
+            })();
+
             if (isSelectColumn) {
               const selectProperty = findPropertyById(props.properties, column.parentId!);
               return (
@@ -320,6 +327,20 @@ export const HorizontalSchemaEditor = component$<HorizontalSchemaEditorProps>((p
                   parentName={column.parentName}
                   onUpdateProperty$={props.onUpdateProperty$}
                   onGoBack$={$(() => handleGoBack(columnIndex))}
+                />
+              );
+            }
+
+            if (isJsonSchemaColumn) {
+              const jsonSchemaProperty = findPropertyById(props.properties, column.parentId!);
+              return (
+                <ReferenceConfigColumn
+                  key={`jsonschema-${column.parentId}-${columnIndex}`}
+                  property={jsonSchemaProperty!}
+                  columnIndex={columnIndex}
+                  onUpdateProperty$={props.onUpdateProperty$}
+                  onGoBack$={$((colIndex: number) => handleGoBack(colIndex))}
+                  availableSchemas={[]}
                 />
               );
             }

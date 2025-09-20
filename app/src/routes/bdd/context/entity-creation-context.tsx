@@ -354,8 +354,11 @@ export const EntityCreationProvider = component$<{
     const currentDataStr = JSON.stringify(newData);
     store.state.modifications.hasChanges = currentDataStr !== store.state.modifications.originalData;
 
-    // Forcer la mise à jour
+    // Forcer la mise à jour immédiate
     forceUpdateSignal.value++;
+
+    console.log('🔧 EntityCreationContext - Données mises à jour:',
+      `Signal: ${forceUpdateSignal.value}, Colonnes: ${store.state.columns.length}`);
 
     console.log('🔧 EntityCreationContext - Données mises à jour:', newData);
   });
@@ -397,11 +400,9 @@ export const EntityCreationProvider = component$<{
 
       updateEntityDataInternal(path, newArray);
 
-      // Navigation automatique vers le nouvel élément
-      const newItemIndex = newArray.length - 1;
-      const newPath = [...store.state.navigation.selectedPath.slice(0, path.length), newItemIndex.toString()];
-      store.state.navigation.selectedPath = newPath;
-      store.state.navigation.expandedColumns = Math.max(store.state.navigation.expandedColumns, path.length + 2);
+      // CORRECTION : Pas de navigation automatique - laisse l'utilisateur voir l'ajout
+      // La navigation automatique créait des conflits de mise à jour
+      console.log('🔧 Élément ajouté au tableau - mise à jour immédiate');
     }),
 
     removeArrayElement: $((path: string[], index: number) => {
@@ -647,19 +648,12 @@ export const EntityCreationProvider = component$<{
     })
   };
 
-  // Surveiller les changements de props pour mettre à jour le store
-  useTask$(({ track }) => {
-    track(() => props.entity);
-    track(() => props.schema);
-
-    store.state = createInitialState(
-      props.entity,
-      props.schema,
-      props.schemaName,
-      props.schemaTitle,
-      props.schemaVersion
-    );
-  });
+  // DÉSACTIVATION TEMPORAIRE pour débugger la boucle
+  // useTask$(({ track }) => {
+  //   track(() => props.entity);
+  //   track(() => props.schema);
+  //   console.log('🔧 EntityCreationContext - Synchronisation désactivée pour débug');
+  // });
 
   // Fournir le contexte
   useContextProvider(EntityCreationContext, { store, actions });
