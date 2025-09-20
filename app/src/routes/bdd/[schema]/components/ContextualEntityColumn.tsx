@@ -1,7 +1,8 @@
-import { component$, useStore, $, useTask$ } from '@builder.io/qwik';
+import { component$, useStore, $, useTask$, useSignal, useComputed$ } from '@builder.io/qwik';
 import { useEntityCreation } from '../../context/entity-creation-context';
 import { generateDefaultValue } from '../../services';
 import { validateField } from '../../utils/validation';
+import { loadSchemas } from '../../../services';
 
 type ContextualEntityColumnProps = {
   columnIndex: number;
@@ -16,11 +17,77 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
     editValue: '' as any,
     showJsonEditor: {} as Record<string, boolean>,
     fieldErrors: {} as Record<string, string>,
-    fieldValues: {} as Record<string, any> // Pour l'affichage des valeurs
+    fieldValues: {} as Record<string, any>, // Pour l'affichage des valeurs
+    referencedSchemas: {} as Record<string, any> // Cache des schémas référencés
   });
+
+  // Signal pour forcer le re-rendu après résolution des schémas
+  const schemaResolvedSignal = useSignal(0);
 
   // Obtenir les données de la colonne depuis le contexte
   const column = store.state.columns[props.columnIndex];
+
+  // Protection contre les colonnes null/undefined
+  if (!column) {
+    return <div class="column entity-column" style="width: 400px; min-width: 400px;">
+      <div class="column-header">
+        <h3 class="column-title">Chargement...</h3>
+      </div>
+    </div>;
+  }
+
+  // Fonction pour charger un schéma référencé
+  const loadReferencedSchema = $(async (ref: string) => {
+    console.log('🔧 JSONSCHEMA - Chargement du schéma référencé:', ref);
+
+    if (uiState.referencedSchemas[ref]) {
+      console.log('✅ JSONSCHEMA - Schéma déjà en cache:', ref);
+      return uiState.referencedSchemas[ref];
+    }
+
+    try {
+      // Le $ref pour user devient "user"
+      const schemaName = ref.replace('#/definitions/', '');
+      console.log('🔧 JSONSCHEMA - Recherche du schéma:', schemaName);
+
+      const schemas = await loadSchemas();
+      const referencedSchema = schemas.find(s => s.name === schemaName || s.id === schemaName);
+
+      if (referencedSchema) {
+        console.log('✅ JSONSCHEMA - Schéma trouvé:', referencedSchema.name, referencedSchema.schema);
+        uiState.referencedSchemas[ref] = referencedSchema.schema;
+        return referencedSchema.schema;
+      } else {
+        console.log('❌ JSONSCHEMA - Schéma non trouvé:', schemaName);
+        return null;
+      }
+    } catch (error) {
+      console.error('❌ JSONSCHEMA - Erreur chargement schéma:', error);
+      return null;
+    }
+  });
+
+  // Tâche pour résoudre les schémas référencés
+  useTask$(async ({ track }) => {
+    track(() => store.state.columns[props.columnIndex]);
+
+    const currentColumn = store.state.columns[props.columnIndex];
+    if (!currentColumn) return;
+
+    // NOUVELLE LOGIQUE : Résoudre les $ref dans le schéma de la colonne
+    if (currentColumn.schema && currentColumn.schema.$ref) {
+      console.log('🎯 CONTEXTUAL COLUMN - Détection $ref dans le schéma de colonne:', currentColumn.schema.$ref);
+      const resolvedSchema = await loadReferencedSchema(currentColumn.schema.$ref);
+
+      if (resolvedSchema) {
+        console.log('✅ CONTEXTUAL COLUMN - Schéma résolu, mise à jour de la colonne');
+        // Mettre à jour le schéma de la colonne directement
+        currentColumn.schema = resolvedSchema;
+        // Forcer le re-rendu
+        schemaResolvedSignal.value++;
+      }
+    }
+  });
 
   // Initialiser les valeurs de champs avec les données existantes pour éviter la perte d'affichage
   useTask$(({ track }) => {
@@ -84,7 +151,7 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
 
     const fieldPath = [...column.path, key];
     const fieldSchema = column.schema.properties?.[key];
-    const targetType = fieldSchema?.type || (column.data[key] !== null && column.data[key] !== undefined ? typeof column.data[key] : 'string');
+    const targetType = fieldSchema?.type || (column.data && column.data[key] !== null && column.data[key] !== undefined ? typeof column.data[key] : 'string');
 
     let convertedValue = newValue;
     switch (targetType) {
@@ -262,6 +329,11 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
         console.log('✅ Navigable par SCHÉMA (array avec items)');
         return true;
       }
+      // NOUVELLE DÉTECTION : Si c'est un array avec $ref (jsonschema) → NAVIGABLE
+      if (fieldSchema.type === 'array' && fieldSchema.items && fieldSchema.items.$ref) {
+        console.log('✅ Navigable par SCHÉMA (array jsonschema avec $ref)');
+        return true;
+      }
     }
 
     // Sinon, vérifier la valeur (mais moins prioritaire)
@@ -273,6 +345,9 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
   };
 
   const renderField = (key: string, value: any, schema: any) => {
+    // Track schema resolution signal pour force re-render
+    schemaResolvedSignal.value;
+
     const fieldSchema = schema.properties?.[key];
     const isRequired = schema.required?.includes(key);
     const canExpanded = canExpand(value, fieldSchema);
@@ -468,11 +543,30 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
     );
   };
 
-  const handleAddArrayItem = $(() => {
+  const handleAddArrayItem = $(async () => {
     if (props.isReadOnly) return;
 
     console.log('🔧 ContextualEntityColumn - handleAddArrayItem appelé (BON COMPOSANT !)');
-    actions.addArrayElement(column.path, column.schema);
+
+    // NOUVELLE LOGIQUE : Détecter si c'est un array avec $ref (jsonschema)
+    let targetSchema = column.schema;
+
+    if (column.schema.items && column.schema.items.$ref) {
+      console.log('🎯 JSONSCHEMA - Détection array avec $ref:', column.schema.items.$ref);
+      const referencedSchema = await loadReferencedSchema(column.schema.items.$ref);
+
+      if (referencedSchema) {
+        console.log('✅ JSONSCHEMA - Utilisation du schéma référencé pour l\'ajout');
+        targetSchema = {
+          ...column.schema,
+          items: referencedSchema
+        };
+      } else {
+        console.log('❌ JSONSCHEMA - Impossible de charger le schéma référencé, utilisation du schéma par défaut');
+      }
+    }
+
+    actions.addArrayElement(column.path, targetSchema);
     console.log('🔧 ContextualEntityColumn - addArrayElement terminé');
   });
 
@@ -619,16 +713,44 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
         ) : column.arrayIndex !== undefined ? (
           // Cas spécial: édition d'un élément d'array individuel
           <div class="object-container">
-            {typeof column.data === 'object' && column.data !== null && !Array.isArray(column.data) ? (
+            {(() => {
+              const hasData = typeof column.data === 'object' && column.data !== null && !Array.isArray(column.data);
+              const hasSchema = !!column.schema;
+              const hasProperties = !!(column.schema && column.schema.properties);
+              const propertiesCount = column.schema && column.schema.properties ? Object.keys(column.schema.properties).length : 0;
+
+              console.log('🔧 ARRAY ITEM RENDER - Analyse:', {
+                hasData,
+                hasSchema,
+                hasProperties,
+                propertiesCount,
+                schemaKeys: column.schema ? Object.keys(column.schema) : [],
+                schemaProperties: column.schema?.properties ? Object.keys(column.schema.properties) : 'UNDEFINED',
+                data: column.data,
+                arrayIndex: column.arrayIndex
+              });
+
+              // NOUVELLE LOGIQUE : Forcer l'affichage des champs si on a un schéma avec des propriétés
+              const shouldShowFields = hasData || (hasSchema && hasProperties && propertiesCount > 0);
+              console.log('🔧 ARRAY ITEM RENDER - Décision shouldShowFields:', shouldShowFields);
+
+              // CORRECTION FORCÉE : Si on a un schéma avec properties, toujours afficher les champs
+              if (hasSchema && hasProperties && propertiesCount > 0) {
+                console.log('🔧 FORCE SCHEMA FIELDS - Forçage de l\'affichage des champs du schéma');
+                return true;
+              }
+
+              return shouldShowFields;
+            })() ? (
               <div class="object-fields">
                 {/* Propriétés définies dans le schéma */}
                 {column.schema.properties && Object.keys(column.schema.properties).map((key) => {
-                  const value = column.data[key];
+                  const value = column.data && typeof column.data === 'object' ? column.data[key] : undefined;
                   return renderField(key, value, column.schema);
                 })}
 
                 {/* Propriétés supplémentaires dans les données */}
-                {Object.entries(column.data)
+                {column.data && typeof column.data === 'object' && Object.entries(column.data)
                   .filter(([key]) => !column.schema.properties?.[key])
                   .map(([key, value]) => {
                     return renderField(key, value, column.schema);
@@ -726,7 +848,7 @@ export const ContextualEntityColumn = component$<ContextualEntityColumnProps>((p
             <div class="object-fields">
               {/* Afficher toutes les propriétés définies dans le schéma */}
               {column.schema.properties && Object.keys(column.schema.properties).map((key) => {
-                const value = column.data[key];
+                const value = column.data && typeof column.data === 'object' ? column.data[key] : undefined;
                 return renderField(key, value, column.schema);
               })}
 

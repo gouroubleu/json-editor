@@ -2,8 +2,8 @@
 
 const puppeteer = require('puppeteer');
 
-async function testFinalSimple() {
-  console.log('🎯 Test final simple - Validation que les champs apparaissent');
+async function testWaitForColumns() {
+  console.log('🎯 Test avec attente des 3 colonnes');
 
   const browser = await puppeteer.launch({
     headless: 'new',
@@ -48,24 +48,50 @@ async function testFinalSimple() {
     console.log('🔍 Étape 3: Navigation vers l\'élément existant...');
     const arrayItemButton = await page.$('.array-item .btn[title="Explorer cet élément"]');
     await arrayItemButton.click();
-    await new Promise(resolve => setTimeout(resolve, 8000)); // Attendre tous les logs
 
-    // 4. Analyser le résultat final
+    // 4. NOUVEAU: Attendre que les 3 colonnes apparaissent réellement dans le DOM
+    console.log('⏳ Attente que les 3 colonnes apparaissent dans le DOM...');
+
+    let attempts = 0;
+    let columnsFound = false;
+
+    while (attempts < 10 && !columnsFound) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      attempts++;
+
+      const columnsCount = await page.evaluate(() => {
+        return document.querySelectorAll('.entity-column').length;
+      });
+
+      console.log(`Tentative ${attempts}: ${columnsCount} colonnes trouvées`);
+
+      if (columnsCount >= 3) {
+        columnsFound = true;
+        console.log('✅ 3 colonnes détectées dans le DOM !');
+      }
+    }
+
+    if (!columnsFound) {
+      console.log('❌ Timeout: Les 3 colonnes ne sont jamais apparues');
+      return false;
+    }
+
+    // 5. Analyser le contenu de la 3ème colonne
     const finalAnalysis = await page.evaluate(() => {
       const columns = document.querySelectorAll('.entity-column');
+      const thirdColumn = columns[2];
 
-      if (columns.length < 3) {
-        return { error: `Seulement ${columns.length} colonnes trouvées` };
+      if (!thirdColumn) {
+        return { error: 'Pas de 3ème colonne trouvée' };
       }
 
-      const thirdColumn = columns[2];
       const objectFields = thirdColumn.querySelector('.object-fields');
       const fieldItems = objectFields ? objectFields.querySelectorAll('.field-item') : [];
 
       return {
         success: true,
         columnsCount: columns.length,
-        thirdColumnExists: !!thirdColumn,
+        thirdColumnExists: true,
         objectFieldsExists: !!objectFields,
         fieldItemsCount: fieldItems.length,
         fieldNames: Array.from(fieldItems).map(item => {
@@ -83,7 +109,7 @@ async function testFinalSimple() {
     console.log('\n📊 RÉSULTAT FINAL:');
     console.log(JSON.stringify(finalAnalysis, null, 2));
 
-    await page.screenshot({ path: 'CLAUDE/screenshots/test-final-simple.png', fullPage: true });
+    await page.screenshot({ path: 'CLAUDE/screenshots/test-wait-for-columns.png', fullPage: true });
 
     const success = !finalAnalysis.error && finalAnalysis.hasUserFields;
     console.log(success ? '\n🎉 TEST RÉUSSI - Les champs du schéma user s\'affichent !' : '\n❌ TEST ÉCHOUÉ');
@@ -100,5 +126,5 @@ async function testFinalSimple() {
 
 // Exécution
 if (require.main === module) {
-  testFinalSimple().catch(console.error);
+  testWaitForColumns().catch(console.error);
 }

@@ -1,0 +1,131 @@
+{
+  "title": "",
+  "url": "http://localhost:5503/bdd/test-user/new/",
+  "inputsCount": 4,
+  "buttonsCount": 10,
+  "fieldsCount": 7,
+  "columnsCount": 1,
+  "inputs": [
+    {
+      "type": "text",
+      "name": "",
+      "value": "",
+      "placeholder": "Entrez string...",
+      "id": "",
+      "className": "direct-edit-input"
+    },
+    {
+      "type": "text",
+      "name": "",
+      "value": "",
+      "placeholder": "Entrez string...",
+      "id": "",
+      "className": "direct-edit-input"
+    },
+    {
+      "type": "text",
+      "name": "",
+      "value": "",
+      "placeholder": "Entrez string...",
+      "id": "",
+      "className": "direct-edit-input"
+    },
+    {
+      "type": "number",
+      "name": "",
+      "value": "0",
+      "placeholder": "Entrez integer...",
+      "id": "",
+      "className": "direct-edit-input"
+    }
+  ],
+  "buttons": [
+    {
+      "text": "← Retour à la liste",
+      "title": "",
+      "className": "btn btn-secondary w-100"
+    },
+    {
+      "text": "👁️ Voir JSON",
+      "title": "",
+      "className": "btn btn-info"
+    },
+    {
+      "text": "❌ Annuler",
+      "title": "",
+      "className": "btn btn-secondary"
+    },
+    {
+      "text": "✨ Créer l'entité",
+      "title": "",
+      "className": "btn btn-primary"
+    },
+    {
+      "text": "🔄 Réinitialiser",
+      "title": "Réinitialiser aux valeurs par défaut",
+      "className": "btn btn-outline btn-sm"
+    },
+    {
+      "text": "→",
+      "title": "Explorer",
+      "className": "btn btn-xs btn-outline"
+    },
+    {
+      "text": "📝 Éditer en JSON",
+      "title": "",
+      "className": "btn btn-xs btn-outline"
+    },
+    {
+      "text": "→",
+      "title": "Explorer",
+      "className": "btn btn-xs btn-outline"
+    },
+    {
+      "text": "📝 Éditer en JSON",
+      "title": "",
+      "className": "btn btn-xs btn-outline"
+    },
+    {
+      "text": "🏠 Utilisateur de test",
+      "title": "",
+      "className": "breadcrumb-item active"
+    }
+  ],
+  "fieldItems": [
+    {
+      "name": "id*",
+      "hasInput": true,
+      "hasButton": false
+    },
+    {
+      "name": "nom*",
+      "hasInput": true,
+      "hasButton": false
+    },
+    {
+      "name": "email*",
+      "hasInput": true,
+      "hasButton": false
+    },
+    {
+      "name": "age",
+      "hasInput": true,
+      "hasButton": false
+    },
+    {
+      "name": "adresse",
+      "hasInput": false,
+      "hasButton": true
+    },
+    {
+      "name": "pop",
+      "hasInput": true,
+      "hasButton": false
+    },
+    {
+      "name": "hhh",
+      "hasInput": false,
+      "hasButton": true
+    }
+  ]
+}

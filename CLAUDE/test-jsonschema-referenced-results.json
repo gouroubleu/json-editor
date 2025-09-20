@@ -1,0 +1,22 @@
+{
+  "timestamp": "2025-09-20T19:25:43.648Z",
+  "test": "jsonschema-referenced-entity",
+  "url": "http://localhost:5503/bdd/test-user/new/",
+  "columnsCount": 2,
+  "expectedFields": [
+    "id",
+    "nom",
+    "email",
+    "age"
+  ],
+  "foundFields": [
+    "id",
+    "nom",
+    "email",
+    "age"
+  ],
+  "missingFields": [],
+  "totalInputs": 5,
+  "hasCorrectSchema": true,
+  "success": true
+}

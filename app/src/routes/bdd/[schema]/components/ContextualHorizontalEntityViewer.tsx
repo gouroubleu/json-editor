@@ -224,13 +224,16 @@ export const ContextualHorizontalEntityViewer = component$<ContextualHorizontalE
             height: '100%'
           }}
         >
-          {store.state.columns.map((column, columnIndex) => (
-            <ContextualEntityColumn
-              key={`column-${columnIndex}-${column.path.join('-')}`}
-              columnIndex={columnIndex}
-              isReadOnly={props.isReadOnly}
-            />
-          ))}
+          {store.state.columns.map((column, columnIndex) => {
+            console.log('🔧 RENDER COLUMN:', { columnIndex, pathJoin: column.path.join('-'), totalColumns: store.state.columns.length });
+            return (
+              <ContextualEntityColumn
+                key={`column-${columnIndex}-${column.path.join('-')}`}
+                columnIndex={columnIndex}
+                isReadOnly={props.isReadOnly}
+              />
+            );
+          })}
         </div>
       </div>
 

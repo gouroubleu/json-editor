@@ -1,105 +1,105 @@
-/**
- * Debug simple du contenu de la page
- */
+#!/usr/bin/env node
 
 const puppeteer = require('puppeteer');
 
 async function debugPageContent() {
+  console.log('🔍 Debug contenu de la page');
+
   const browser = await puppeteer.launch({
-    headless: true,
+    headless: 'new',
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
 
   const page = await browser.newPage();
+  await page.setViewport({ width: 1400, height: 900 });
 
   try {
-    console.log('🚀 Debug - Chargement page...');
-
-    await page.goto('http://localhost:5501/bdd/test-user/new/', {
-      waitUntil: 'networkidle0',
+    console.log('🌐 Navigation vers http://localhost:5503/bdd/test-user/new/');
+    await page.goto('http://localhost:5503/bdd/test-user/new/', {
+      waitUntil: 'domcontentloaded',
       timeout: 30000
     });
 
     await new Promise(resolve => setTimeout(resolve, 3000));
 
     // Analyser le contenu de la page
-    const pageContent = await page.evaluate(() => {
-      // Chercher tous les champs
-      const fieldNames = Array.from(document.querySelectorAll('.field-name')).map(el => el.textContent);
-
-      // Chercher tous les boutons
-      const buttons = Array.from(document.querySelectorAll('button')).map(btn => btn.textContent);
-
-      // Chercher le texte général de la page
-      const hasAdresse = document.body.textContent.includes('adresse');
-      const hasPop = document.body.textContent.includes('pop');
-
-      // Structure générale
-      const hasEntityColumn = !!document.querySelector('.entity-column');
-      const hasPropertyColumn = !!document.querySelector('.property-column');
-      const hasFieldItems = document.querySelectorAll('.field-item').length;
-
+    const pageInfo = await page.evaluate(() => {
       return {
-        fieldNames,
-        buttons: buttons.slice(0, 10), // Limiter pour éviter le spam
-        hasAdresse,
-        hasPop,
-        hasEntityColumn,
-        hasPropertyColumn,
-        fieldItemsCount: hasFieldItems,
+        title: document.title,
         url: window.location.href,
-        title: document.title
+
+        // Compter les éléments
+        inputsCount: document.querySelectorAll('input').length,
+        buttonsCount: document.querySelectorAll('button').length,
+        fieldsCount: document.querySelectorAll('.field-item').length,
+        columnsCount: document.querySelectorAll('.entity-column').length,
+
+        // Lister tous les inputs
+        inputs: Array.from(document.querySelectorAll('input')).map(input => ({
+          type: input.type,
+          name: input.name,
+          value: input.value,
+          placeholder: input.placeholder,
+          id: input.id,
+          className: input.className
+        })),
+
+        // Lister tous les boutons
+        buttons: Array.from(document.querySelectorAll('button')).map(btn => ({
+          text: btn.textContent?.trim(),
+          title: btn.title,
+          className: btn.className
+        })),
+
+        // Lister les champs
+        fieldItems: Array.from(document.querySelectorAll('.field-item')).map(field => {
+          const nameEl = field.querySelector('.field-name');
+          const inputEl = field.querySelector('input, select, textarea');
+          return {
+            name: nameEl?.textContent?.trim(),
+            hasInput: !!inputEl,
+            hasButton: !!field.querySelector('button')
+          };
+        })
       };
     });
 
-    console.log('📊 CONTENU DE LA PAGE:');
-    console.log('   URL:', pageContent.url);
-    console.log('   Titre:', pageContent.title);
-    console.log('   Champs trouvés:', pageContent.fieldNames);
-    console.log('   Boutons (premiers 10):', pageContent.buttons);
-    console.log('   Contient "adresse":', pageContent.hasAdresse);
-    console.log('   Contient "pop":', pageContent.hasPop);
-    console.log('   Entity columns:', pageContent.hasEntityColumn);
-    console.log('   Property columns:', pageContent.hasPropertyColumn);
-    console.log('   Nombre field-items:', pageContent.fieldItemsCount);
+    console.log('📊 ANALYSE DE LA PAGE:');
+    console.log(`📋 Title: ${pageInfo.title}`);
+    console.log(`📋 URL: ${pageInfo.url}`);
+    console.log(`📋 Inputs: ${pageInfo.inputsCount}`);
+    console.log(`📋 Boutons: ${pageInfo.buttonsCount}`);
+    console.log(`📋 Champs (.field-item): ${pageInfo.fieldsCount}`);
+    console.log(`📋 Colonnes: ${pageInfo.columnsCount}`);
 
-    // Test spécifique pour "pop" s'il existe
-    if (pageContent.hasPop) {
-      const popTest = await page.evaluate(() => {
-        const fieldElements = Array.from(document.querySelectorAll('.field-name'));
-        const popField = fieldElements.find(el => el.textContent.includes('pop'));
+    console.log('\n📝 INPUTS TROUVÉS:');
+    pageInfo.inputs.forEach((input, i) => {
+      console.log(`  ${i}: ${JSON.stringify(input)}`);
+    });
 
-        if (!popField) {
-          return { found: false };
-        }
+    console.log('\n🔘 BOUTONS TROUVÉS:');
+    pageInfo.buttons.forEach((btn, i) => {
+      console.log(`  ${i}: ${JSON.stringify(btn)}`);
+    });
 
-        const fieldContainer = popField.closest('.field-item');
-        const selectElement = fieldContainer?.querySelector('select.direct-edit-input');
-        const inputElement = fieldContainer?.querySelector('input.direct-edit-input');
+    console.log('\n📄 CHAMPS TROUVÉS:');
+    pageInfo.fieldItems.forEach((field, i) => {
+      console.log(`  ${i}: ${JSON.stringify(field)}`);
+    });
 
-        return {
-          found: true,
-          hasSelect: !!selectElement,
-          hasInput: !!inputElement,
-          selectOptions: selectElement ? Array.from(selectElement.options).map(opt => opt.textContent) : []
-        };
-      });
-
-      console.log('🎯 TEST CHAMP POP:', popTest);
-
-      if (popTest.found && popTest.hasSelect) {
-        console.log('✅ CORRECTION SELECT VALIDÉE !');
-      } else if (popTest.found && popTest.hasInput) {
-        console.log('❌ PROBLÈME: Pop reste un input');
-      }
-    }
+    // Sauvegarder
+    const fs = require('fs').promises;
+    await fs.writeFile('CLAUDE/debug-page-analysis.json', JSON.stringify(pageInfo, null, 2));
+    console.log('\n📄 Analyse sauvegardée');
 
   } catch (error) {
-    console.error('❌ Erreur:', error.message);
+    console.error('❌ ERREUR:', error.message);
+  } finally {
+    await browser.close();
   }
-
-  await browser.close();
 }
 
 // Exécution
-debugPageContent().catch(console.error);
+if (require.main === module) {
+  debugPageContent().catch(console.error);
+}

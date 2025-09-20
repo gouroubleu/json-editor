@@ -1,0 +1,29 @@
+{
+  "timestamp": "2025-09-20T19:53:31.680Z",
+  "test": "navigation-existing-element",
+  "url": "http://localhost:5503/bdd/test-user/new/",
+  "columnsCount": 3,
+  "thirdColumn": {
+    "columnTitle": "hhh[0]",
+    "fieldsCount": 1,
+    "fields": [
+      {
+        "name": "Valeur",
+        "type": "object",
+        "hasInput": true,
+        "inputType": "text",
+        "placeholder": "Entrez object..."
+      }
+    ]
+  },
+  "expectedUserFields": [
+    "id",
+    "nom",
+    "email",
+    "age"
+  ],
+  "foundUserFields": [],
+  "hasCorrectSchema": false,
+  "isGenericForm": true,
+  "success": false
+}

@@ -12,6 +12,7 @@ import {
 } from '@builder.io/qwik';
 import type { EntityData } from '../types';
 import { generateDefaultValue } from '../services';
+import { loadSchemas } from '../../services';
 
 // Types pour le contexte de création d'entité
 export type EntityCreationState = {
@@ -244,6 +245,8 @@ const calculateColumns = (
           if (!isNaN(arrayIndex) && arrayIndex < freshArrayData.length) {
             const itemData = freshArrayData[arrayIndex];
             const itemSchema = arraySchema.items;
+
+            // Note: La résolution des $ref sera gérée dans ContextualEntityColumn
 
             if (itemSchema) {
               console.log('🔧 DEBUG SCHEMA ARRAY ITEM:', {
@@ -541,17 +544,27 @@ export const EntityCreationProvider = component$<{
     }),
 
     navigateToArrayItem: $((arrayIndex: number, columnIndex: number) => {
+      console.log('🔧 NAVIGATE TO ARRAY ITEM - CALLED:', { arrayIndex, columnIndex });
       const newPath = [...store.state.navigation.selectedPath.slice(0, columnIndex), arrayIndex.toString()];
+      console.log('🔧 NAVIGATE TO ARRAY ITEM - New path:', newPath);
       store.state.navigation.selectedPath = newPath;
       store.state.navigation.expandedColumns = Math.max(store.state.navigation.expandedColumns, columnIndex + 2);
+      console.log('🔧 NAVIGATE TO ARRAY ITEM - Expanded columns:', store.state.navigation.expandedColumns);
 
       // Recalculer les colonnes
-      store.state.columns = calculateColumns(
+      console.log('🔧 NAVIGATE TO ARRAY ITEM - Calculating columns...');
+      const newColumns = calculateColumns(
         store.state.entity.data,
         store.state.schema,
         newPath,
         store.state.schemaTitle
       );
+      console.log('🔧 NAVIGATE TO ARRAY ITEM - New columns count:', newColumns.length);
+
+      // Force reactivity by replacing the array content
+      store.state.columns.length = 0;
+      store.state.columns.push(...newColumns);
+      console.log('🔧 NAVIGATE TO ARRAY ITEM - Forced reactivity, final count:', store.state.columns.length);
     }),
 
     goBack: $((columnIndex: number) => {

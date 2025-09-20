@@ -2,8 +2,8 @@
 
 const puppeteer = require('puppeteer');
 
-async function testFinalSimple() {
-  console.log('🎯 Test final simple - Validation que les champs apparaissent');
+async function debugSchemaConditions() {
+  console.log('🔍 Debug des conditions de rendu du schéma');
 
   const browser = await puppeteer.launch({
     headless: 'new',
@@ -17,7 +17,7 @@ async function testFinalSimple() {
     // Activer les logs de console de la page
     page.on('console', msg => {
       const text = msg.text();
-      if (text.includes('🔧') || text.includes('✅') || text.includes('❌') || text.includes('FORCE')) {
+      if (text.includes('🔧') || text.includes('✅') || text.includes('❌') || text.includes('CONTEXTUAL') || text.includes('FORCE')) {
         console.log('PAGE LOG:', text);
       }
     });
@@ -48,51 +48,36 @@ async function testFinalSimple() {
     console.log('🔍 Étape 3: Navigation vers l\'élément existant...');
     const arrayItemButton = await page.$('.array-item .btn[title="Explorer cet élément"]');
     await arrayItemButton.click();
-    await new Promise(resolve => setTimeout(resolve, 8000)); // Attendre tous les logs
+    await new Promise(resolve => setTimeout(resolve, 8000)); // Plus de temps pour voir tous les logs
 
-    // 4. Analyser le résultat final
-    const finalAnalysis = await page.evaluate(() => {
+    // 4. Analyser l'état final du DOM
+    const finalState = await page.evaluate(() => {
       const columns = document.querySelectorAll('.entity-column');
-
-      if (columns.length < 3) {
-        return { error: `Seulement ${columns.length} colonnes trouvées` };
-      }
+      if (columns.length < 3) return { error: 'Pas assez de colonnes' };
 
       const thirdColumn = columns[2];
       const objectFields = thirdColumn.querySelector('.object-fields');
       const fieldItems = objectFields ? objectFields.querySelectorAll('.field-item') : [];
 
       return {
-        success: true,
         columnsCount: columns.length,
-        thirdColumnExists: !!thirdColumn,
+        thirdColumnHtml: thirdColumn.innerHTML.slice(0, 500), // Premier chunk du HTML
         objectFieldsExists: !!objectFields,
         fieldItemsCount: fieldItems.length,
         fieldNames: Array.from(fieldItems).map(item => {
           const nameEl = item.querySelector('.field-name');
           return nameEl ? nameEl.textContent.trim() : 'NO_NAME';
-        }),
-        hasUserFields: Array.from(fieldItems).some(item => {
-          const nameEl = item.querySelector('.field-name');
-          const name = nameEl ? nameEl.textContent.trim() : '';
-          return ['id', 'nom', 'email', 'age'].some(expected => name.includes(expected));
         })
       };
     });
 
-    console.log('\n📊 RÉSULTAT FINAL:');
-    console.log(JSON.stringify(finalAnalysis, null, 2));
+    console.log('\n📊 ÉTAT FINAL DU DOM:');
+    console.log(JSON.stringify(finalState, null, 2));
 
-    await page.screenshot({ path: 'CLAUDE/screenshots/test-final-simple.png', fullPage: true });
-
-    const success = !finalAnalysis.error && finalAnalysis.hasUserFields;
-    console.log(success ? '\n🎉 TEST RÉUSSI - Les champs du schéma user s\'affichent !' : '\n❌ TEST ÉCHOUÉ');
-
-    return success;
+    await page.screenshot({ path: 'CLAUDE/screenshots/debug-schema-conditions.png', fullPage: true });
 
   } catch (error) {
     console.error('❌ ERREUR:', error.message);
-    return false;
   } finally {
     await browser.close();
   }
@@ -100,5 +85,5 @@ async function testFinalSimple() {
 
 // Exécution
 if (require.main === module) {
-  testFinalSimple().catch(console.error);
+  debugSchemaConditions().catch(console.error);
 }
