@@ -1,0 +1,28 @@
+{
+  "timestamp": "2025-09-20T18:29:47.104Z",
+  "testType": "Design validation ReferenceConfigColumn",
+  "success": false,
+  "steps": [
+    {
+      "step": "Navigation vers test-user",
+      "status": "success",
+      "timestamp": "2025-09-20T18:29:48.671Z"
+    },
+    {
+      "step": "Erreur durant le test",
+      "status": "error",
+      "error": "page.waitForTimeout is not a function",
+      "timestamp": "2025-09-20T18:29:48.795Z"
+    }
+  ],
+  "screenshots": [
+    "design-test-initial-1758392988671.png"
+  ],
+  "designValidation": {
+    "headerStyle": false,
+    "inputStyle": false,
+    "selectStyle": false,
+    "checkboxStyle": false,
+    "consistencyWithPropertyColumn": false
+  }
+}

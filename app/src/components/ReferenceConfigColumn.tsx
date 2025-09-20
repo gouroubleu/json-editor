@@ -54,101 +54,100 @@ export const ReferenceConfigColumn = component$<ReferenceConfigColumnProps>((pro
         <button class="back-btn" onClick$={() => props.onGoBack$(props.columnIndex)}>
           ← Retour
         </button>
-        <h3 class="column-title">🔗 Configuration: {props.property.name}</h3>
+        <h3 class="column-title">{props.property.name} (référence)</h3>
       </div>
 
       {/* Configuration de la référence */}
-      <div class="reference-config-content">
-        <div class="config-section">
-          <h4>Schema référencé</h4>
-          <select
-            class="select"
-            value={refMetadata.schemaName || ''}
+      <div class="properties-list">
+        {/* Schema référencé */}
+        <label class="config-label">Schema référencé</label>
+        <select
+          class="property-type"
+          value={refMetadata.schemaName || ''}
+          onChange$={async (event) => {
+            const schemaName = (event.target as HTMLSelectElement).value;
+
+            // Auto-générer un titre si pas défini
+            let title = refMetadata.title;
+            if (!title && schemaName) {
+              const schema = props.availableSchemas?.find(s => s.name === schemaName);
+              title = schema?.title || schemaName;
+            }
+
+            await handleUpdateReference({ schemaName, title });
+          }}
+        >
+          <option value="">Sélectionner un schema...</option>
+          {props.availableSchemas?.map(schema => (
+            <option key={schema.name} value={schema.name}>
+              {schema.title} ({schema.name})
+            </option>
+          ))}
+        </select>
+
+        {/* Séparateur */}
+        <hr class="config-separator" />
+
+        {/* Options */}
+        <label class="config-label">Options</label>
+        <label class="checkbox-label">
+          <input
+            type="checkbox"
+            checked={refMetadata.multiple || false}
             onChange$={async (event) => {
-              const schemaName = (event.target as HTMLSelectElement).value;
-
-              // Auto-générer un titre si pas défini
-              let title = refMetadata.title;
-              if (!title && schemaName) {
-                const schema = props.availableSchemas?.find(s => s.name === schemaName);
-                title = schema?.title || schemaName;
-              }
-
-              await handleUpdateReference({ schemaName, title });
+              const multiple = (event.target as HTMLInputElement).checked;
+              await handleUpdateReference({ multiple });
             }}
-          >
-            <option value="">Sélectionner un schema...</option>
-            {props.availableSchemas?.map(schema => (
-              <option key={schema.name} value={schema.name}>
-                {schema.title} ({schema.name})
-              </option>
-            ))}
-          </select>
-        </div>
+          />
+          <span>Multiple (array du schema référencé)</span>
+        </label>
 
-        <div class="config-section">
-          <h4>Options</h4>
+        <label class="checkbox-label">
+          <input
+            type="checkbox"
+            checked={props.property.required || false}
+            onChange$={async (event) => {
+              const required = (event.target as HTMLInputElement).checked;
+              await props.onUpdateProperty$(props.property.id!, { required });
+            }}
+          />
+          <span>Propriété requise</span>
+        </label>
 
-          <label class="checkbox-label">
-            <input
-              type="checkbox"
-              checked={refMetadata.multiple || false}
-              onChange$={async (event) => {
-                const multiple = (event.target as HTMLInputElement).checked;
-                await handleUpdateReference({ multiple });
-              }}
-            />
-            <span>Multiple (array du schema référencé)</span>
-          </label>
+        {/* Séparateur */}
+        <hr class="config-separator" />
 
-          <label class="checkbox-label">
-            <input
-              type="checkbox"
-              checked={props.property.required || false}
-              onChange$={async (event) => {
-                const required = (event.target as HTMLInputElement).checked;
-                await props.onUpdateProperty$(props.property.id!, { required });
-              }}
-            />
-            <span>Propriété requise</span>
-          </label>
-        </div>
+        {/* Affichage */}
+        <label class="config-label">Affichage</label>
 
-        <div class="config-section">
-          <h4>Affichage</h4>
+        <label class="field-label">Titre personnalisé</label>
+        <input
+          class="property-name"
+          type="text"
+          value={refMetadata.title || ''}
+          onInput$={async (event) => {
+            const title = (event.target as HTMLInputElement).value;
+            await handleUpdateReference({ title });
+          }}
+          placeholder="Titre pour l'affichage (optionnel)"
+        />
 
-          <div class="form-group">
-            <label>Titre personnalisé</label>
-            <input
-              class="input"
-              type="text"
-              value={refMetadata.title || ''}
-              onInput$={async (event) => {
-                const title = (event.target as HTMLInputElement).value;
-                await handleUpdateReference({ title });
-              }}
-              placeholder="Titre pour l'affichage (optionnel)"
-            />
-          </div>
-
-          <div class="form-group">
-            <label>Description</label>
-            <textarea
-              class="textarea"
-              value={props.property.description || ''}
-              onInput$={async (event) => {
-                const description = (event.target as HTMLTextAreaElement).value;
-                await props.onUpdateProperty$(props.property.id!, { description });
-              }}
-              placeholder="Description de cette propriété"
-            />
-          </div>
-        </div>
+        <label class="field-label">Description</label>
+        <textarea
+          class="description-input"
+          value={props.property.description || ''}
+          onInput$={async (event) => {
+            const description = (event.target as HTMLTextAreaElement).value;
+            await props.onUpdateProperty$(props.property.id!, { description });
+          }}
+          placeholder="Description de cette propriété"
+        />
 
         {/* Informations du schema référencé */}
         {refMetadata.schemaName && (
-          <div class="config-section info-section">
-            <h4>Informations du schema</h4>
+          <>
+            <hr class="config-separator" />
+            <label class="config-label">Informations du schema</label>
             {(() => {
               const schema = props.availableSchemas?.find(s => s.name === refMetadata.schemaName);
               return schema ? (
@@ -162,7 +161,7 @@ export const ReferenceConfigColumn = component$<ReferenceConfigColumnProps>((pro
                 <div class="schema-warning">⚠️ Schema non trouvé</div>
               );
             })()}
-          </div>
+          </>
         )}
       </div>
     </div>

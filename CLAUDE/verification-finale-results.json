@@ -1,0 +1,34 @@
+{
+  "timestamp": "2025-09-20T18:53:06.312Z",
+  "status": "SUCCESS",
+  "tests": [
+    {
+      "name": "Propriété jsonschema détectée",
+      "status": "PASSED"
+    },
+    {
+      "name": "Type correctement affiché",
+      "status": "PASSED"
+    },
+    {
+      "name": "Bouton configurer présent",
+      "status": "PASSED"
+    },
+    {
+      "name": "Colonne configuration ouvre",
+      "status": "PASSED"
+    },
+    {
+      "name": "Design conforme",
+      "status": "PASSED"
+    },
+    {
+      "name": "Éléments de configuration présents",
+      "status": "PASSED"
+    },
+    {
+      "name": "Valeurs conservées",
+      "status": "PASSED"
+    }
+  ]
+}

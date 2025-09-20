@@ -1,0 +1,21 @@
+{
+  "timestamp": "2025-09-20T18:26:14.562Z",
+  "testType": "Design validation ReferenceConfigColumn",
+  "success": false,
+  "steps": [
+    {
+      "step": "Erreur durant le test",
+      "status": "error",
+      "error": "Failed to launch the browser process:  Code: 1\n\nstderr:\n[2497996:2497996:0920/202614.728742:ERROR:ui/ozone/platform/x11/ozone_platform_x11.cc:249] Missing X server or $DISPLAY\n[2497996:2497996:0920/202614.728813:ERROR:ui/aura/env.cc:257] The platform failed to initialize.  Exiting.\n\nTROUBLESHOOTING: https://pptr.dev/troubleshooting\n",
+      "timestamp": "2025-09-20T18:26:14.741Z"
+    }
+  ],
+  "screenshots": [],
+  "designValidation": {
+    "headerStyle": false,
+    "inputStyle": false,
+    "selectStyle": false,
+    "checkboxStyle": false,
+    "consistencyWithPropertyColumn": false
+  }
+}

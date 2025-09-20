@@ -1,0 +1,266 @@
+{
+  "success": true,
+  "steps": [
+    {
+      "name": "Navigation vers la page d'édition",
+      "success": true,
+      "duration": 1223,
+      "timestamp": "2025-09-20T18:07:08.602Z"
+    },
+    {
+      "name": "Ajout propriété JsonSchema",
+      "success": true,
+      "duration": 1445,
+      "timestamp": "2025-09-20T18:07:10.047Z"
+    },
+    {
+      "name": "Test bouton Configuration",
+      "success": true,
+      "duration": 1257,
+      "timestamp": "2025-09-20T18:07:11.304Z"
+    },
+    {
+      "name": "Test colonne configuration référence",
+      "success": true,
+      "duration": 117,
+      "timestamp": "2025-09-20T18:07:11.422Z"
+    },
+    {
+      "name": "Test sélection schéma",
+      "success": true,
+      "duration": 1262,
+      "timestamp": "2025-09-20T18:07:12.684Z"
+    },
+    {
+      "name": "Test configuration options",
+      "success": true,
+      "duration": 1991,
+      "timestamp": "2025-09-20T18:07:14.676Z"
+    },
+    {
+      "name": "Test navigation retour",
+      "success": true,
+      "duration": 1253,
+      "timestamp": "2025-09-20T18:07:15.930Z"
+    },
+    {
+      "name": "Validation finale interface",
+      "success": true,
+      "duration": 121,
+      "timestamp": "2025-09-20T18:07:16.051Z"
+    }
+  ],
+  "issues": [],
+  "screenshots": [
+    {
+      "step": "initial-page",
+      "filename": "jsonschema-01-initial-page.png",
+      "info": "Page initiale chargée",
+      "timestamp": "2025-09-20T18:07:08.573Z"
+    },
+    {
+      "step": "add-property-form-opened",
+      "filename": "jsonschema-02-add-property-form-opened.png",
+      "info": "Formulaire d'ajout ouvert",
+      "timestamp": "2025-09-20T18:07:08.754Z"
+    },
+    {
+      "step": "property-form-filled",
+      "filename": "jsonschema-03-property-form-filled.png",
+      "info": "Formulaire rempli: myReference, type: jsonschema",
+      "timestamp": "2025-09-20T18:07:08.920Z"
+    },
+    {
+      "step": "property-added",
+      "filename": "jsonschema-04-property-added.png",
+      "info": "Propriété JsonSchema ajoutée",
+      "timestamp": "2025-09-20T18:07:10.037Z"
+    },
+    {
+      "step": "before-configure-click",
+      "filename": "jsonschema-05-before-configure-click.png",
+      "info": "Avant clic sur Configurer",
+      "timestamp": "2025-09-20T18:07:10.156Z"
+    },
+    {
+      "step": "after-configure-click",
+      "filename": "jsonschema-06-after-configure-click.png",
+      "info": "Après clic sur Configurer",
+      "timestamp": "2025-09-20T18:07:11.294Z"
+    },
+    {
+      "step": "reference-config-opened",
+      "filename": "jsonschema-07-reference-config-opened.png",
+      "info": "Colonne de configuration ouverte",
+      "timestamp": "2025-09-20T18:07:11.411Z"
+    },
+    {
+      "step": "before-schema-selection",
+      "filename": "jsonschema-08-before-schema-selection.png",
+      "info": "Avant sélection schéma",
+      "timestamp": "2025-09-20T18:07:11.559Z"
+    },
+    {
+      "step": "after-schema-selection",
+      "filename": "jsonschema-09-after-schema-selection.png",
+      "info": "Schéma sélectionné: Utilisateur de test (test-user)",
+      "timestamp": "2025-09-20T18:07:12.675Z"
+    },
+    {
+      "step": "before-options-config",
+      "filename": "jsonschema-10-before-options-config.png",
+      "info": "Avant configuration options",
+      "timestamp": "2025-09-20T18:07:12.793Z"
+    },
+    {
+      "step": "after-options-config",
+      "filename": "jsonschema-11-after-options-config.png",
+      "info": "Après configuration options",
+      "timestamp": "2025-09-20T18:07:14.676Z"
+    },
+    {
+      "step": "before-back-navigation",
+      "filename": "jsonschema-12-before-back-navigation.png",
+      "info": "Avant navigation retour",
+      "timestamp": "2025-09-20T18:07:14.775Z"
+    },
+    {
+      "step": "after-back-navigation",
+      "filename": "jsonschema-13-after-back-navigation.png",
+      "info": "Après navigation retour",
+      "timestamp": "2025-09-20T18:07:15.914Z"
+    },
+    {
+      "step": "final-interface-state",
+      "filename": "jsonschema-14-final-interface-state.png",
+      "info": "État final de l'interface",
+      "timestamp": "2025-09-20T18:07:16.042Z"
+    }
+  ],
+  "timing": {
+    "total": 9054
+  },
+  "testResults": {
+    "navigation": {
+      "url": "http://localhost:5502/new",
+      "pageTitle": ""
+    },
+    "addProperty": {
+      "propertyName": "myReference",
+      "type": "jsonschema"
+    },
+    "configButton": {
+      "columnsBefore": 1,
+      "columnsAfter": 2,
+      "buttonText": "Configurer →"
+    },
+    "configColumn": {
+      "configSections": [
+        {
+          "title": "Schema référencé",
+          "hasSelect": true,
+          "hasInputs": false,
+          "hasTextarea": false
+        },
+        {
+          "title": "Options",
+          "hasSelect": false,
+          "hasInputs": true,
+          "hasTextarea": false
+        },
+        {
+          "title": "Affichage",
+          "hasSelect": false,
+          "hasInputs": true,
+          "hasTextarea": true
+        }
+      ],
+      "actualTitles": [
+        "Schema référencé",
+        "Options",
+        "Affichage"
+      ]
+    },
+    "schemaSelection": {
+      "selectedSchema": {
+        "value": "test-user",
+        "text": "Utilisateur de test (test-user)"
+      },
+      "availableOptions": [
+        {
+          "value": "",
+          "text": "Sélectionner un schema..."
+        },
+        {
+          "value": "test-user",
+          "text": "Utilisateur de test (test-user)"
+        },
+        {
+          "value": "test-niveaux-infinis",
+          "text": "Test Niveaux Infinis (test-niveaux-infinis)"
+        },
+        {
+          "value": "encoreuntest",
+          "text": "encoreuntest (encoreuntest)"
+        },
+        {
+          "value": "user",
+          "text": "Utilisateur (user)"
+        },
+        {
+          "value": "order",
+          "text": "Commande E-commerce (order)"
+        },
+        {
+          "value": "test-entity",
+          "text": "Test Entity (test-entity)"
+        },
+        {
+          "value": "BigTest",
+          "text": "tz (BigTest)"
+        },
+        {
+          "value": "test",
+          "text": "Test Schema (test)"
+        },
+        {
+          "value": "product",
+          "text": "Produit (product)"
+        },
+        {
+          "value": "book",
+          "text": "Book (book)"
+        }
+      ]
+    },
+    "optionsConfig": {
+      "configured": true
+    },
+    "backNavigation": {
+      "propertyCards": [
+        {
+          "type": "jsonschema",
+          "name": "myReference",
+          "hasConfigButton": true
+        }
+      ],
+      "jsonSchemaProperty": {
+        "type": "jsonschema",
+        "name": "myReference",
+        "hasConfigButton": true
+      }
+    },
+    "finalValidation": {
+      "hasPropertyColumn": true,
+      "hasJsonSchemaProperty": true,
+      "hasConfigButton": true,
+      "stylesLoaded": true
+    }
+  },
+  "metadata": {
+    "timestamp": "2025-09-20T18:07:16.052Z",
+    "testVersion": "1.0.0",
+    "environment": "local",
+    "url": "http://localhost:5502/bdd/test-user/new"
+  }
+}

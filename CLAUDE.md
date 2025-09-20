@@ -9,6 +9,18 @@ Si tu dois t'ajouter des fichiers, tu les ajoutes dans ./CLAUDE et uniquement ic
 
 ## Historique des tickets
 
+### 2025-09-20
+- **test-probleme-jsonschema-admin-ticket.md** : ✅ TERMINÉ - Diagnostic problème JSONSchema administration
+  - Test Puppeteer automatisé pour reproduire le problème avec propriétés jsonschema
+  - Identification critique : type "jsonschema" absent de l'interface malgré présence dans le code
+  - 7 screenshots documentés de chaque étape du processus
+  - Analyse technique complète des composants impliqués
+  - **Fichiers associés:**
+    - `test-probleme-jsonschema-admin.js` - Script Puppeteer complet de diagnostic
+    - `test-jsonschema-admin-rapport.json` - Rapport JSON détaillé des résultats
+    - `rapport-diagnostic-jsonschema-admin.md` - Rapport final avec recommandations
+    - `screenshots/` - 7 captures d'écran documentées du processus
+
 ### 2025-09-19
 - **test-configuration-jsonschema-complet-ticket.md** : ✅ TERMINÉ - Validation complète configuration JSON Schema
   - Tests Puppeteer exhaustifs pour types de propriétés JSON Schema
@@ -24,6 +36,19 @@ Si tu dois t'ajouter des fichiers, tu les ajoutes dans ./CLAUDE et uniquement ic
     - `rapport-final-test-configuration-jsonschema.md` - Rapport technique complet
     - `rapport-test-configuration-jsonschema-complet.json` - Données de validation
     - `screenshots/jsonschema-config-test/` - 10+ captures d'écran documentées
+
+### 2025-09-20
+- **correction-design-reference-config-column-ticket.md** : ✅ TERMINÉ - Correction complète du design ReferenceConfigColumn
+  - Problème résolu : ReferenceConfigColumn avait des styles incohérents avec PropertyColumn
+  - Interface d'administration parfaitement harmonisée
+  - Header, inputs, selects, et boutons avec design identique à PropertyColumn
+  - Structure CSS complètement réécrite pour cohérence
+  - **Fichiers modifiés :**
+    - `ReferenceConfigColumn.scss` - Réécriture complète des styles
+  - **Validation effectuée :**
+    - Tests Puppeteer de validation design
+    - Captures d'écran de documentation
+    - Rapport détaillé des corrections appliquées
 
 ### 2025-09-17
 - **validation-post-restructuration.md** : ✅ TERMINÉ - Validation complète du projet après restructuration

@@ -1,0 +1,38 @@
+{
+  "timestamp": "2025-09-20T18:45:45.848Z",
+  "status": "SUCCESS",
+  "tests": [
+    {
+      "name": "Navigation vers page édition",
+      "status": "PASSED"
+    },
+    {
+      "name": "Bouton ajouter présent",
+      "status": "PASSED"
+    },
+    {
+      "name": "Option jsonschema disponible",
+      "status": "PASSED"
+    },
+    {
+      "name": "Ajout propriété jsonschema",
+      "status": "PASSED"
+    },
+    {
+      "name": "Bouton \"Configurer →\" présent",
+      "status": "PASSED"
+    },
+    {
+      "name": "Ouverture colonne configuration",
+      "status": "PASSED"
+    },
+    {
+      "name": "Éléments de design conformes",
+      "status": "PASSED"
+    },
+    {
+      "name": "Fonctionnalité configuration",
+      "status": "PASSED"
+    }
+  ]
+}

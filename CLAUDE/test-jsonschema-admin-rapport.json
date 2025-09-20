@@ -1,0 +1,90 @@
+{
+  "timestamp": "2025-09-20T11:32:09.356Z",
+  "success": false,
+  "errors": [
+    "Add jsonschema property failed: Champ nom de propriété non trouvé"
+  ],
+  "screenshots": [
+    {
+      "name": "01-page-loaded",
+      "description": "Page d'administration chargée",
+      "filename": "01-page-loaded-1758367932817.png",
+      "filepath": "CLAUDE/screenshots/01-page-loaded-1758367932817.png",
+      "timestamp": "2025-09-20T11:32:13.114Z"
+    },
+    {
+      "name": "02-interface-initial",
+      "description": "État initial de l'interface",
+      "filename": "02-interface-initial-1758367935542.png",
+      "filepath": "CLAUDE/screenshots/02-interface-initial-1758367935542.png",
+      "timestamp": "2025-09-20T11:32:15.837Z"
+    },
+    {
+      "name": "03-before-add-click",
+      "description": "Avant clic bouton ajout",
+      "filename": "03-before-add-click-1758367939476.png",
+      "filepath": "CLAUDE/screenshots/03-before-add-click-1758367939476.png",
+      "timestamp": "2025-09-20T11:32:19.770Z"
+    },
+    {
+      "name": "04-after-add-click",
+      "description": "Après clic bouton ajout",
+      "filename": "04-after-add-click-1758367942406.png",
+      "filepath": "CLAUDE/screenshots/04-after-add-click-1758367942406.png",
+      "timestamp": "2025-09-20T11:32:22.717Z"
+    },
+    {
+      "name": "06-add-property-error",
+      "description": "Erreur ajout propriété",
+      "filename": "06-add-property-error-1758367944534.png",
+      "filepath": "CLAUDE/screenshots/06-add-property-error-1758367944534.png",
+      "timestamp": "2025-09-20T11:32:24.835Z"
+    },
+    {
+      "name": "08-before-save",
+      "description": "Avant tentative de sauvegarde",
+      "filename": "08-before-save-1758367947669.png",
+      "filepath": "CLAUDE/screenshots/08-before-save-1758367947669.png",
+      "timestamp": "2025-09-20T11:32:27.967Z"
+    },
+    {
+      "name": "09-after-save-click",
+      "description": "Après clic sauvegarde",
+      "filename": "09-after-save-click-1758367951602.png",
+      "filepath": "CLAUDE/screenshots/09-after-save-click-1758367951602.png",
+      "timestamp": "2025-09-20T11:32:31.891Z"
+    }
+  ],
+  "phase": "save_attempt",
+  "details": {
+    "interfaceAnalysis": {
+      "schemaEditor": true,
+      "propertyColumns": 1,
+      "addButtons": 1,
+      "selectElements": 11,
+      "totalButtons": 14,
+      "totalInputs": 28,
+      "errorElements": 0,
+      "availableTypes": [],
+      "typeSelectsFound": 0
+    },
+    "jsonSchemaTypeAvailable": false,
+    "saveResult": {
+      "notifications": [],
+      "errors": [],
+      "currentUrl": "http://localhost:5501/"
+    }
+  },
+  "networkIssues": [],
+  "consoleMessages": [],
+  "completedAt": "2025-09-20T11:32:32.093Z",
+  "duration": 22737,
+  "problemAnalysis": {
+    "criticalIssues": [
+      "Type \"jsonschema\" non disponible dans les options de type de propriété",
+      "1 erreur(s) détectée(s) pendant les tests"
+    ],
+    "warnings": [],
+    "recommendations": []
+  }
+}

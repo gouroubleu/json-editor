@@ -1,0 +1,108 @@
+{
+  "id": "test-user",
+  "name": "test-user",
+  "version": "3.2",
+  "schema": {
+    "type": "object",
+    "title": "Utilisateur de test",
+    "description": "Schéma de test pour valider le fonctionnement après restructuration",
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "Identifiant unique de l'utilisateur"
+      },
+      "nom": {
+        "type": "string",
+        "description": "Nom de famille de l'utilisateur"
+      },
+      "email": {
+        "type": "string",
+        "description": "Adresse email de l'utilisateur",
+        "format": "email"
+      },
+      "age": {
+        "type": "integer",
+        "description": "Âge de l'utilisateur",
+        "minimum": 0,
+        "maximum": 150
+      },
+      "adresse": {
+        "type": "array",
+        "description": "",
+        "items": {
+          "type": "object",
+          "properties": {
+            "adresse": {
+              "type": "string",
+              "description": ""
+            },
+            "cp": {
+              "type": "string",
+              "description": ""
+            },
+            "ville": {
+              "type": "string",
+              "description": ""
+            },
+            "place": {
+              "type": "object",
+              "description": "",
+              "properties": {
+                "nom": {
+                  "type": "string",
+                  "description": ""
+                },
+                "test": {
+                  "type": "array",
+                  "description": "",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": ""
+                      }
+                    },
+                    "required": []
+                  }
+                }
+              }
+            }
+          },
+          "required": []
+        }
+      },
+      "pop": {
+        "type": "string",
+        "description": "",
+        "enum": [
+          "Option 1",
+          "Option 2",
+          "Option 3"
+        ]
+      },
+      "hhh": {
+        "type": "array",
+        "description": "encoreuntest",
+        "items": {
+          "$ref": "#/definitions/encoreuntest"
+        }
+      }
+    },
+    "required": [
+      "id",
+      "nom",
+      "email"
+    ],
+    "version": "3.2"
+  },
+  "versionInfo": {
+    "version": "3.2",
+    "createdAt": "2025-09-20T18:46:55.173Z",
+    "changeType": "minor",
+    "changeDescription": "Nouvelles propriétés: hhh",
+    "previousVersion": "3.1"
+  },
+  "createdAt": "2025-09-17T00:34:00.000Z",
+  "updatedAt": "2025-09-20T18:46:55.173Z"
+}

@@ -1,110 +1,127 @@
-.reference-config-column {
-  width: 350px;
-  height: 100%;
-  border-right: 1px solid #e1e5e9;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-
+// Styles spécifiques pour ReferenceConfigColumn
+.property-column {
+  // Forcer la hauteur du header à 68px exactement comme les autres colonnes
   .column-header {
-    padding: 1rem;
-    border-bottom: 1px solid #e1e5e9;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    min-height: 60px;
+    min-height: 68px;
+    height: 68px;
+    box-sizing: border-box;
+  }
 
-    .back-btn {
-      background: #f8f9fa;
-      border: 1px solid #dee2e6;
+  .properties-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    padding-bottom: 80px;
+
+    // Labels de section avec style simple
+    .config-label {
+      display: block;
+      font-weight: 600;
+      color: #2c3e50;
+      font-size: 1rem;
+      margin: 0 0 0.75rem 0;
+
+      &:not(:first-child) {
+        margin-top: 1.5rem;
+      }
+    }
+
+    // Labels de champs
+    .field-label {
+      display: block;
+      font-weight: 500;
+      color: #495057;
+      font-size: 0.9rem;
+      margin: 1rem 0 0.5rem 0;
+    }
+
+    // Séparateurs entre sections
+    .config-separator {
+      border: none;
+      border-top: 1px solid #dee2e6;
+      margin: 1.5rem 0;
+      opacity: 0.8;
+    }
+
+    // Styles des inputs et selects - EXACTEMENT comme PropertyColumn
+    .property-type,
+    .property-name,
+    .description-input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
       border-radius: 4px;
-      padding: 0.25rem 0.5rem;
-      cursor: pointer;
+      font-size: 0.9rem;
+      background: white;
+      margin-bottom: 0.75rem;
+
+      &:focus {
+        outline: none;
+        border-color: #3498db;
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+      }
+    }
+
+    .description-input {
+      resize: vertical;
+      min-height: 80px;
+      font-family: inherit;
+    }
+
+    // Labels de checkbox avec style simple
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0.75rem 0;
       font-size: 0.9rem;
       color: #495057;
+      cursor: pointer;
+
+      input[type="checkbox"] {
+        margin: 0;
+        transform: scale(1.1);
+      }
+
+      span {
+        user-select: none;
+        font-weight: 500;
+      }
 
       &:hover {
-        background: #e9ecef;
+        color: #2c3e50;
       }
     }
 
-    .column-title {
-      margin: 0;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #212529;
-      flex: 1;
-    }
-  }
-
-  .config-form {
-    padding: 1rem;
-    overflow-y: auto;
-    flex: 1;
-
-    .form-row {
-      margin-bottom: 1rem;
-
-      label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-        color: #495057;
-        font-size: 0.9rem;
-      }
-
-      .input {
-        width: 100%;
-        padding: 0.5rem;
-        border: 1px solid #ced4da;
-        border-radius: 4px;
-        font-size: 0.9rem;
-
-        &:focus {
-          outline: none;
-          border-color: #007bff;
-          box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-        }
-      }
-
-      .checkbox-container {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        cursor: pointer;
-
-        input[type="checkbox"] {
-          margin: 0;
-        }
-      }
-    }
-  }
-
-  .preview-section {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 4px;
-
-    h4 {
-      margin: 0 0 0.5rem 0;
-      font-size: 0.9rem;
-      color: #495057;
-    }
-
-    .json-preview {
-      background: #fff;
-      border: 1px solid #dee2e6;
-      border-radius: 4px;
+    // Informations schema avec style discret
+    .schema-info {
+      background: #f8f9fa;
+      border-radius: 6px;
       padding: 0.75rem;
-      font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
-      font-size: 0.8rem;
-      color: #212529;
-      overflow-x: auto;
-      white-space: pre-wrap;
-      max-height: 200px;
-      overflow-y: auto;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin-top: 0.5rem;
+
+      div {
+        margin: 0.3rem 0;
+
+        strong {
+          color: #2c3e50;
+          font-weight: 600;
+        }
+      }
+    }
+
+    .schema-warning {
+      background: #fff3cd;
+      border: 1px solid #ffeaa7;
+      border-radius: 6px;
+      padding: 0.75rem;
+      color: #856404;
+      font-size: 0.85rem;
+      text-align: center;
+      margin-top: 0.5rem;
+      font-weight: 500;
     }
   }
 }

@@ -1,9 +1,10 @@
-import { component$, useStore, useSignal, type PropFunction, $ } from '@builder.io/qwik';
-import type { SchemaProperty, SchemaInfo, JsonSchemaType } from '../routes/types';
+import { component$, useStore, useSignal, useTask$, type PropFunction, $ } from '@builder.io/qwik';
+import type { SchemaProperty, SchemaInfo, JsonSchemaType, AvailableSchema } from '../routes/types';
 import { PropertyColumn } from './PropertyColumn';
 import { SelectOptionsColumn } from './SelectOptionsColumn';
 import { ReferenceConfigColumn } from './ReferenceConfigColumn';
 import { findPropertyById } from '../routes/utils';
+import { loadSchemas } from '../routes/services';
 
 type HorizontalSchemaEditorProps = {
   schemaInfo: SchemaInfo;
@@ -27,8 +28,26 @@ export const HorizontalSchemaEditor = component$<HorizontalSchemaEditorProps>((p
     selectedPath: [] as string[], // Chemin des propriétés sélectionnées pour navigation
     expandedColumns: 1 // Nombre de colonnes visibles
   });
-  
+
   const showPreview = useSignal(false);
+  const availableSchemas = useSignal<AvailableSchema[]>([]);
+
+  // Charger les schémas disponibles pour les références jsonschema
+  useTask$(async () => {
+    try {
+      const schemas = await loadSchemas();
+      availableSchemas.value = schemas.map(schema => ({
+        id: schema.name,
+        name: schema.name,
+        title: schema.schema.title,
+        description: schema.schema.description,
+        version: schema.version
+      }));
+    } catch (error) {
+      console.error('Erreur lors du chargement des schémas:', error);
+      availableSchemas.value = [];
+    }
+  });
 
   // Construire les colonnes basées sur le chemin sélectionné
   const buildColumns = () => {
@@ -67,13 +86,18 @@ export const HorizontalSchemaEditor = component$<HorizontalSchemaEditorProps>((p
         // Pour le type select, on créera une colonne de configuration spéciale
         childProperties = [];
         parentName += ' (options)';
+      } else if (property.type === 'jsonschema') {
+        // Pour le type jsonschema, on créera une colonne de configuration de référence
+        childProperties = [];
+        parentName += ' (référence)';
       }
 
       // Seulement créer une colonne si :
       // - C'est un objet (même vide)
       // - C'est un array d'objets (même vide)
       // - C'est un select (pour configuration des options)
-      if (property.type === 'object' || (property.type === 'array' && property.items?.type === 'object') || property.type === 'select') {
+      // - C'est un jsonschema (pour configuration de référence)
+      if (property.type === 'object' || (property.type === 'array' && property.items?.type === 'object') || property.type === 'select' || property.type === 'jsonschema') {
         columns.push({
           properties: childProperties,
           parentId: propertyId,
@@ -91,13 +115,15 @@ export const HorizontalSchemaEditor = component$<HorizontalSchemaEditorProps>((p
   const handlePropertySelect = $((propertyId: string, columnIndex: number) => {
     // Tronquer le chemin au niveau sélectionné et ajouter la nouvelle propriété
     const newPath = [...uiState.selectedPath.slice(0, columnIndex), propertyId];
-    
+
     // Vérifier si la propriété peut avoir des enfants
     const property = findPropertyById(props.properties, propertyId);
+
     if (property && (
       property.type === 'object' ||
       (property.type === 'array' && property.items?.type === 'object') ||
-      property.type === 'select'
+      property.type === 'select' ||
+      property.type === 'jsonschema'
     )) {
       uiState.selectedPath = newPath;
       uiState.expandedColumns = Math.max(uiState.expandedColumns, columnIndex + 2);
@@ -340,7 +366,7 @@ export const HorizontalSchemaEditor = component$<HorizontalSchemaEditorProps>((p
                   columnIndex={columnIndex}
                   onUpdateProperty$={props.onUpdateProperty$}
                   onGoBack$={$((colIndex: number) => handleGoBack(colIndex))}
-                  availableSchemas={[]}
+                  availableSchemas={availableSchemas.value}
                 />
               );
             }

@@ -1,0 +1,10 @@
+{
+  "timestamp": "2025-09-20T18:41:12.361Z",
+  "tests": [
+    {
+      "name": "Workflow jsonschema",
+      "status": "FAILED",
+      "error": "Waiting for selector `.horizontal-editor` failed"
+    }
+  ]
+}

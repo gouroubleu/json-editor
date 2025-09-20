@@ -1,0 +1,47 @@
+{
+  "timestamp": "2025-09-20T12:13:56.045Z",
+  "testName": "Validation bouton Configurer jsonschema",
+  "url": "http://localhost:5501/edit/test-user/",
+  "steps": [
+    {
+      "step": 1,
+      "description": "Navigation vers page édition test-user (/edit/test-user)",
+      "success": true,
+      "screenshot": "validation-jsonschema-step1-1758370439106.png"
+    },
+    {
+      "step": 3,
+      "description": "Configuration propriété jsonschema (nom: reference_test)",
+      "success": true,
+      "screenshot": "validation-jsonschema-step3-1758370443878.png"
+    },
+    {
+      "step": 4,
+      "description": "Propriété trouvée: false, Bouton Configurer trouvé: true",
+      "success": false,
+      "screenshot": "validation-jsonschema-step4-1758370445992.png"
+    },
+    {
+      "step": 5,
+      "description": "Clic sur bouton Configurer effectué",
+      "success": true,
+      "screenshot": "validation-jsonschema-step5-1758370448601.png"
+    },
+    {
+      "step": 6,
+      "description": "Colonne config: false, Dropdown schémas: false",
+      "success": false,
+      "screenshot": "validation-jsonschema-step6-1758370448699.png"
+    }
+  ],
+  "success": false,
+  "screenshots": [
+    "validation-jsonschema-step1-1758370439106.png",
+    "validation-jsonschema-step3-1758370443878.png",
+    "validation-jsonschema-step4-1758370445992.png",
+    "validation-jsonschema-step5-1758370448601.png",
+    "validation-jsonschema-step6-1758370448699.png",
+    "validation-jsonschema-final-1758370448792.png"
+  ],
+  "errors": []
+}

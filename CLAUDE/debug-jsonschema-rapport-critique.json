@@ -1,0 +1,64 @@
+{
+  "timestamp": "2025-09-20T12:39:45.048Z",
+  "mission": "Debug critique bouton Configurer JsonSchema",
+  "steps": [
+    {
+      "step": 1,
+      "action": "Navigation homepage",
+      "status": "SUCCESS",
+      "url": "http://localhost:5502/"
+    },
+    {
+      "step": 2,
+      "action": "Navigation éditeur schéma",
+      "status": "SUCCESS",
+      "url": "http://localhost:5502/edit/test-user/"
+    },
+    {
+      "step": 3,
+      "action": "Clic Ajouter propriété",
+      "status": "SUCCESS"
+    },
+    {
+      "step": 4,
+      "action": "Saisie nom propriété",
+      "status": "SUCCESS",
+      "value": "ma_reference"
+    },
+    {
+      "step": 5,
+      "action": "Sélection type jsonschema",
+      "status": "SUCCESS"
+    },
+    {
+      "step": 6,
+      "action": "Validation propriété",
+      "status": "SUCCESS"
+    },
+    {
+      "step": 9,
+      "action": "Clic bouton Configurer",
+      "status": "SUCCESS",
+      "analysis": {
+        "url": "http://localhost:5502/edit/test-user/",
+        "title": "",
+        "hasModal": false,
+        "hasNewContent": false,
+        "columnCount": 2
+      }
+    }
+  ],
+  "consoleMessages": [
+    "[DEBUG] %c⭐️ Qwik Dev SSR Mode background: #0c75d2; color: white; padding: 2px 3px; border-radius: 2px; font-size: 0.8em; App is running in SSR development mode!\n - Additional JS is loaded by Vite for debugging and live reloading\n - Rendering performance might not be optimal\n - Delayed interactivity because prefetching is disabled\n - Vite dev bundles do not represent production output\n\nProduction build can be tested running 'npm run preview'",
+    "[DEBUG] %c🔍 Qwik Click-To-Source background: #564CE0; color: white; padding: 2px 3px; border-radius: 2px; font-size: 0.8em; Hold-press the 'Alt' key and click a component to jump directly to the source code in your IDE!",
+    "[DEBUG] [vite] connecting...",
+    "[DEBUG] [vite] connected.",
+    "[ERROR] Detected Layout Shift during page load 0.08872378603617351",
+    "[DEBUG] %c⭐️ Qwik Dev SSR Mode background: #0c75d2; color: white; padding: 2px 3px; border-radius: 2px; font-size: 0.8em; App is running in SSR development mode!\n - Additional JS is loaded by Vite for debugging and live reloading\n - Rendering performance might not be optimal\n - Delayed interactivity because prefetching is disabled\n - Vite dev bundles do not represent production output\n\nProduction build can be tested running 'npm run preview'",
+    "[DEBUG] %c🔍 Qwik Click-To-Source background: #564CE0; color: white; padding: 2px 3px; border-radius: 2px; font-size: 0.8em; Hold-press the 'Alt' key and click a component to jump directly to the source code in your IDE!",
+    "[DEBUG] [vite] connecting...",
+    "[DEBUG] [vite] connected."
+  ],
+  "errors": [],
+  "finalAnalysis": ""
+}

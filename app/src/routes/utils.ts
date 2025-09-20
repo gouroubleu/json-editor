@@ -59,6 +59,15 @@ export const createNewProperty = (
     ];
   }
 
+  // Initialiser les métadonnées de référence pour le type jsonschema
+  if (type === 'jsonschema') {
+    property.$refMetadata = {
+      schemaName: '',
+      title: '',
+      multiple: false
+    };
+  }
+
   return property;
 };
 

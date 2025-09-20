@@ -1,0 +1,27 @@
+{
+  "timestamp": "2025-09-20T19:04:14.925Z",
+  "headerHeights": {
+    "column0": 68,
+    "column1": 68,
+    "aligned": true
+  },
+  "designTests": [
+    {
+      "name": "Select schema stylé",
+      "status": "PASSED"
+    },
+    {
+      "name": "Input titre stylé",
+      "status": "PASSED"
+    },
+    {
+      "name": "Textarea description stylée",
+      "status": "PASSED"
+    },
+    {
+      "name": "Séparateurs présents",
+      "status": "PASSED"
+    }
+  ],
+  "allTestsPassed": true
+}

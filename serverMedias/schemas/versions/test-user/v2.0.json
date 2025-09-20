@@ -52,17 +52,6 @@
                   "type": "string",
                   "description": ""
                 },
-                "type_lieu": {
-                  "type": "string",
-                  "enum": [
-                    "maison",
-                    "appartement",
-                    "bureau",
-                    "commerce",
-                    "autre"
-                  ],
-                  "description": "Type de lieu"
-                },
                 "test": {
                   "type": "array",
                   "description": "",
@@ -72,15 +61,6 @@
                       "name": {
                         "type": "string",
                         "description": ""
-                      },
-                      "categorie": {
-                        "type": "string",
-                        "enum": [
-                          "personnel",
-                          "professionnel",
-                          "temporaire"
-                        ],
-                        "description": "Catégorie du test"
                       }
                     },
                     "required": []
@@ -93,36 +73,22 @@
         }
       },
       "pop": {
-        "type": "string",
-        "description": ""
-      },
-      "statut": {
-        "type": "string",
-        "enum": [
-          "actif",
-          "inactif",
-          "en_attente"
-        ],
-        "description": "Statut de l'utilisateur"
-      },
-      "priorite": {
-        "type": "string",
-        "enum": [
-          "haute",
-          "moyenne",
-          "basse"
-        ],
-        "description": "Niveau de priorité"
-      },
-      "genre": {
-        "type": "string",
-        "enum": [
-          "homme",
-          "femme",
-          "autre",
-          "non_precise"
-        ],
-        "description": "Genre de l'utilisateur"
+        "type": "select",
+        "description": "",
+        "options": [
+          {
+            "key": "option1",
+            "value": "Option 1"
+          },
+          {
+            "key": "option2",
+            "value": "Option 2"
+          },
+          {
+            "key": "option3",
+            "value": "Option 3"
+          }
+        ]
       }
     },
     "required": [

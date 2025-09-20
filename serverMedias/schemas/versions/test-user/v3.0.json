@@ -52,17 +52,6 @@
                   "type": "string",
                   "description": ""
                 },
-                "type_lieu": {
-                  "type": "string",
-                  "description": "Type de lieu",
-                  "enum": [
-                    "maison",
-                    "appartement",
-                    "bureau",
-                    "commerce",
-                    "autre"
-                  ]
-                },
                 "test": {
                   "type": "array",
                   "description": "",
@@ -72,15 +61,6 @@
                       "name": {
                         "type": "string",
                         "description": ""
-                      },
-                      "categorie": {
-                        "type": "string",
-                        "description": "Catégorie du test",
-                        "enum": [
-                          "personnel",
-                          "professionnel",
-                          "temporaire"
-                        ]
                       }
                     },
                     "required": []
@@ -94,78 +74,11 @@
       },
       "pop": {
         "type": "string",
-        "description": ""
-      },
-      "statut": {
-        "type": "string",
-        "description": "Statut de l'utilisateur",
-        "enum": [
-          "actif",
-          "inactif",
-          "en_attente"
-        ]
-      },
-      "priorite": {
-        "type": "string",
-        "description": "Niveau de priorité",
-        "enum": [
-          "haute",
-          "moyenne",
-          "basse"
-        ]
-      },
-      "genre": {
-        "type": "string",
-        "description": "Genre de l'utilisateur",
-        "enum": [
-          "homme",
-          "femme",
-          "autre",
-          "non_precise"
-        ]
-      },
-      "tty": {
-        "type": "string",
-        "description": "",
-        "enum": [
-          "pop",
-          "pop",
-          "llmlm",
-          "ghjk"
-        ]
-      },
-      "dddd": {
-        "type": "string",
-        "description": "",
-        "enum": [
-          "Option 1",
-          "Option 2"
-        ]
-      },
-      "iiiiii": {
-        "type": "string",
         "description": "",
         "enum": [
           "Option 1",
           "Option 2",
-          "dfsddf"
-        ]
-      },
-      "trtrtrtrtr": {
-        "type": "select",
-        "description": "",
-        "enum": [
-          "Option 1",
-          "Option 2",
-          "pop",
-          "dsds"
-        ]
-      },
-      "fgfg": {
-        "type": "select",
-        "description": "",
-        "enum": [
-          "Option 1"
+          "Option 3"
         ]
       }
     },
@@ -178,11 +91,11 @@
   },
   "versionInfo": {
     "version": "3.0",
-    "createdAt": "2025-09-18T20:49:08.420Z",
+    "createdAt": "2025-09-20T11:31:52.288Z",
     "changeType": "major",
-    "changeDescription": "Nouvelles propriétés: fgfg; Types incompatibles: trtrtrtrtr: string → select",
-    "previousVersion": "2.6"
+    "changeDescription": "Types incompatibles: pop: select → string",
+    "previousVersion": "2.0"
   },
   "createdAt": "2025-09-17T00:34:00.000Z",
-  "updatedAt": "2025-09-18T20:49:08.420Z"
+  "updatedAt": "2025-09-20T11:31:52.288Z"
 }

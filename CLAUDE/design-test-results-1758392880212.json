@@ -1,0 +1,28 @@
+{
+  "timestamp": "2025-09-20T18:27:47.957Z",
+  "testType": "Design validation ReferenceConfigColumn",
+  "success": false,
+  "steps": [
+    {
+      "step": "Navigation vers test-user/new",
+      "status": "success",
+      "timestamp": "2025-09-20T18:27:49.972Z"
+    },
+    {
+      "step": "Erreur durant le test",
+      "status": "error",
+      "error": "Waiting for selector `.property-column` failed",
+      "timestamp": "2025-09-20T18:28:00.103Z"
+    }
+  ],
+  "screenshots": [
+    "design-test-initial-1758392869972.png"
+  ],
+  "designValidation": {
+    "headerStyle": false,
+    "inputStyle": false,
+    "selectStyle": false,
+    "checkboxStyle": false,
+    "consistencyWithPropertyColumn": false
+  }
+}

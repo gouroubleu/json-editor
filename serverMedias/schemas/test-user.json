@@ -1,7 +1,7 @@
 {
   "id": "test-user",
   "name": "test-user",
-  "version": "2.0",
+  "version": "3.4",
   "schema": {
     "type": "object",
     "title": "Utilisateur de test",
@@ -69,17 +69,26 @@
               }
             }
           },
-          "required": []
+          "required": [
+            "adresse"
+          ]
         }
       },
       "pop": {
-        "type": "select",
+        "type": "string",
         "description": "",
-        "options": [
-          {"key": "option1", "value": "Option 1"},
-          {"key": "option2", "value": "Option 2"},
-          {"key": "option3", "value": "Option 3"}
+        "enum": [
+          "Option 1",
+          "Option 2",
+          "Option 3"
         ]
+      },
+      "hhh": {
+        "type": "array",
+        "description": "Test Entity",
+        "items": {
+          "$ref": "#/definitions/user"
+        }
       }
     },
     "required": [
@@ -87,15 +96,15 @@
       "nom",
       "email"
     ],
-    "version": "2.0"
+    "version": "3.4"
   },
   "versionInfo": {
-    "version": "2.0",
-    "createdAt": "2025-09-18T14:08:27.841Z",
-    "changeType": "major",
-    "changeDescription": "Propriétés supprimées: romain",
-    "previousVersion": "1.5"
+    "version": "3.4",
+    "createdAt": "2025-09-20T19:08:12.088Z",
+    "changeType": "minor",
+    "changeDescription": "Contraintes modifiées: Description hhh",
+    "previousVersion": "3.3"
   },
   "createdAt": "2025-09-17T00:34:00.000Z",
-  "updatedAt": "2025-09-18T14:08:27.841Z"
+  "updatedAt": "2025-09-20T19:08:12.088Z"
 }

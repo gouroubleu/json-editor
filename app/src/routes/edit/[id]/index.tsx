@@ -26,6 +26,7 @@ import { generatePropertyId, ensureAllPropertyIds } from '../../utils';
 import type { SchemaProperty, SchemaInfo, JsonSchemaType } from '../../types';
 import HORIZONTAL_STYLES from '../../../components/HorizontalSchemaEditor.scss?inline';
 import COLUMN_STYLES from '../../../components/PropertyColumn.scss?inline';
+import REFERENCE_STYLES from '../../../components/ReferenceConfigColumn.scss?inline';
 import COMMON_STYLES from '../../../components/CommonStyles.scss?inline';
 
 // Fonction pour convertir un JSON Schema en SchemaProperty[]
@@ -40,10 +41,13 @@ const convertJsonSchemaToProperties = (schema: any): SchemaProperty[] => {
       const isSelect = (prop.type === 'string' && prop.enum && Array.isArray(prop.enum)) ||
                        (prop.type === 'select');
 
+      // Détecter si c'est une référence JSON Schema ($ref ou array avec items.$ref)
+      const isJsonSchemaRef = prop.$ref || (prop.type === 'array' && prop.items?.$ref);
+
       const schemaProperty: SchemaProperty = {
         id: generatePropertyId(),
         name: propName,
-        type: isSelect ? 'select' : (prop.type || 'string'),
+        type: isJsonSchemaRef ? 'jsonschema' : (isSelect ? 'select' : (prop.type || 'string')),
         required: schema.required?.includes(propName) || false,
         description: prop.description || '',
         minLength: prop.minLength,
@@ -53,6 +57,18 @@ const convertJsonSchemaToProperties = (schema: any): SchemaProperty[] => {
         enum: isSelect ? undefined : prop.enum, // Pas besoin d'enum si c'est un select
         format: prop.format
       };
+
+      // Gérer les références JSON Schema
+      if (isJsonSchemaRef) {
+        const refString = prop.$ref || prop.items?.$ref;
+        const schemaName = refString?.replace('#/definitions/', '').replace(/_v\d+(\.\d+)*$/, '');
+
+        schemaProperty.$refMetadata = {
+          schemaName: schemaName || '',
+          title: prop.title || '',
+          multiple: prop.type === 'array' // Si c'est un array, c'est multiple
+        };
+      }
 
       // Convertir enum OU options en selectOptions pour le type select
       if (isSelect) {
@@ -150,6 +166,7 @@ export const useSchemaData = routeLoader$(async ({ params }) => {
 export default component$(() => {
   useStyles$(HORIZONTAL_STYLES);
   useStyles$(COLUMN_STYLES);
+  useStyles$(REFERENCE_STYLES);
   useStyles$(COMMON_STYLES);
   
   const nav = useNavigate();

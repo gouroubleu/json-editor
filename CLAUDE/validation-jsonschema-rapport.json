@@ -1,0 +1,188 @@
+{
+  "testName": "Validation Correction JsonSchema",
+  "timestamp": "2025-09-20T11:39:06.895Z",
+  "steps": [
+    {
+      "name": "Navigation",
+      "action": "Accès à la page d'accueil pour trouver test-user",
+      "success": true,
+      "timestamp": "2025-09-20T11:39:07.266Z",
+      "details": {}
+    },
+    {
+      "name": "Vérification chargement",
+      "action": "Page d'accueil chargée avec titre: ",
+      "success": true,
+      "timestamp": "2025-09-20T11:39:10.467Z",
+      "details": {
+        "title": ""
+      }
+    },
+    {
+      "name": "Recherche bouton éditer",
+      "action": "Recherche du bouton \"Éditer\" pour le schéma test-user",
+      "success": true,
+      "timestamp": "2025-09-20T11:39:10.467Z",
+      "details": {}
+    },
+    {
+      "name": "Accès éditeur",
+      "action": "Accès réussi à l'éditeur de schéma test-user",
+      "success": true,
+      "timestamp": "2025-09-20T11:39:13.621Z",
+      "details": {
+        "success": true
+      }
+    },
+    {
+      "name": "Ajout propriété",
+      "action": "Tentative d'ajout d'une propriété de type jsonschema",
+      "success": true,
+      "timestamp": "2025-09-20T11:39:13.621Z",
+      "details": {}
+    },
+    {
+      "name": "Erreur ajout propriété",
+      "action": "Erreur lors du clic sur ajout: Waiting for selector `button[data-action=\"add-property\"], .add-property-btn, button:has-text(\"Ajouter\")` failed",
+      "success": false,
+      "timestamp": "2025-09-20T11:39:18.625Z",
+      "details": {
+        "error": "Waiting for selector `button[data-action=\"add-property\"], .add-property-btn, button:has-text(\"Ajouter\")` failed"
+      }
+    },
+    {
+      "name": "Test disponibilité type",
+      "action": "Vérification de la disponibilité du type jsonschema",
+      "success": true,
+      "timestamp": "2025-09-20T11:39:18.625Z",
+      "details": {}
+    },
+    {
+      "name": "Détection dropdown type",
+      "action": "Dropdown de type trouvé: true",
+      "success": true,
+      "timestamp": "2025-09-20T11:39:20.253Z",
+      "details": {
+        "found": true
+      }
+    },
+    {
+      "name": "Option jsonschema",
+      "action": "Option jsonschema disponible: true",
+      "success": true,
+      "timestamp": "2025-09-20T11:39:20.253Z",
+      "details": {
+        "available": true
+      }
+    },
+    {
+      "name": "Sélection jsonschema",
+      "action": "Type jsonschema sélectionné avec succès",
+      "success": true,
+      "timestamp": "2025-09-20T11:39:21.370Z",
+      "details": {}
+    },
+    {
+      "name": "Test dropdown schémas",
+      "action": "Vérification du chargement des schémas disponibles",
+      "success": true,
+      "timestamp": "2025-09-20T11:39:21.370Z",
+      "details": {}
+    },
+    {
+      "name": "Dropdown schémas détecté",
+      "action": "Dropdown de schémas trouvé: false",
+      "success": false,
+      "timestamp": "2025-09-20T11:39:23.502Z",
+      "details": {
+        "found": false
+      }
+    },
+    {
+      "name": "Schémas chargés",
+      "action": "Schémas disponibles chargés: false (0 schémas)",
+      "success": false,
+      "timestamp": "2025-09-20T11:39:23.502Z",
+      "details": {
+        "loaded": false,
+        "count": 0,
+        "schemas": []
+      }
+    },
+    {
+      "name": "Validation finale",
+      "action": "Vérification de l'état final de l'interface",
+      "success": true,
+      "timestamp": "2025-09-20T11:39:23.502Z",
+      "details": {}
+    },
+    {
+      "name": "Erreurs JavaScript",
+      "action": "Erreurs console détectées: 0",
+      "success": true,
+      "timestamp": "2025-09-20T11:39:26.602Z",
+      "details": {
+        "errorCount": 0,
+        "errors": []
+      }
+    },
+    {
+      "name": "Propriété visible",
+      "action": "Propriété jsonschema visible dans l'interface: false",
+      "success": false,
+      "timestamp": "2025-09-20T11:39:26.610Z",
+      "details": {
+        "visible": false
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "name": "page-accueil",
+      "filename": "validation-jsonschema-page-accueil-1758368350355.png",
+      "filepath": "/home/gouroubleu/WS/json-editor/CLAUDE/screenshots/validation-jsonschema-page-accueil-1758368350355.png",
+      "timestamp": "2025-09-20T11:39:10.465Z"
+    },
+    {
+      "name": "editeur-schema",
+      "filename": "validation-jsonschema-editeur-schema-1758368353522.png",
+      "filepath": "/home/gouroubleu/WS/json-editor/CLAUDE/screenshots/validation-jsonschema-editeur-schema-1758368353522.png",
+      "timestamp": "2025-09-20T11:39:13.621Z"
+    },
+    {
+      "name": "dropdown-types",
+      "filename": "validation-jsonschema-dropdown-types-1758368360161.png",
+      "filepath": "/home/gouroubleu/WS/json-editor/CLAUDE/screenshots/validation-jsonschema-dropdown-types-1758368360161.png",
+      "timestamp": "2025-09-20T11:39:20.253Z"
+    },
+    {
+      "name": "jsonschema-selectionne",
+      "filename": "validation-jsonschema-jsonschema-selectionne-1758368361257.png",
+      "filepath": "/home/gouroubleu/WS/json-editor/CLAUDE/screenshots/validation-jsonschema-jsonschema-selectionne-1758368361257.png",
+      "timestamp": "2025-09-20T11:39:21.369Z"
+    },
+    {
+      "name": "dropdown-schemas",
+      "filename": "validation-jsonschema-dropdown-schemas-1758368363391.png",
+      "filepath": "/home/gouroubleu/WS/json-editor/CLAUDE/screenshots/validation-jsonschema-dropdown-schemas-1758368363391.png",
+      "timestamp": "2025-09-20T11:39:23.502Z"
+    },
+    {
+      "name": "etat-final",
+      "filename": "validation-jsonschema-etat-final-1758368366505.png",
+      "filepath": "/home/gouroubleu/WS/json-editor/CLAUDE/screenshots/validation-jsonschema-etat-final-1758368366505.png",
+      "timestamp": "2025-09-20T11:39:26.602Z"
+    }
+  ],
+  "errors": [],
+  "success": true,
+  "summary": {
+    "totalSteps": 16,
+    "successfulSteps": 12,
+    "failedSteps": 4,
+    "successRate": "75.0%",
+    "criticalErrors": 0,
+    "screenshotCount": 6,
+    "testDuration": "2025-09-20T11:39:26.610Z"
+  }
+}
